@@ -1,5 +1,7 @@
 .contact-section{
-    background: #dbdefd
+    background: #dbdefd;
+    border-radius: 24px;
+    
 }
 
 .contact-details h4{
