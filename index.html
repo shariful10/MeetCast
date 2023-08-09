@@ -1,5 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite + React</title>
+    </head>
+    <body>
+        <div id="root"></div>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+		</script>
+		<script type="text/javascript">
+		  (function () {
+			emailjs.init("20lU8cjsUmR77TPiI");
+		  })();
+		</script>
+        <script type="module" src="/src/main.jsx"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js%22%3E"></script>
+        <script>
+            AOS.init({
+                offset: 400,
+                duration: 1000,
+            });
+        </script>
+    </body>
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
