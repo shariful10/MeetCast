@@ -5,6 +5,7 @@ import { MdOutlineEmail } from 'react-icons/md';
 
 
 import './Contact.css'
+import Container from '../../Components/Share/Container/Container';
 
 const Contact = () => {
 
@@ -25,7 +26,8 @@ const Contact = () => {
             });
     };
     return (
-        <div className='my-14'>
+        <Container>
+            <div className='my-14'>
             <h2 className='text-center text-5xl font-bold my-24'>Get in touch with us</h2>
             <div className='contact-section py-12 md:flex justify-between items-center'>
 
@@ -60,6 +62,7 @@ const Contact = () => {
                 </div>
             </div>
         </div>
+        </Container>
     );
 };
 
