@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../assets/Logo.svg";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
   const [open, setOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -122,12 +125,63 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link
-            to="/login"
-            className="bg-secondary px-5 md:px-10 py-2 md:py-3 rounded-full md:font-semibold font-NotoSans primary_button text-white"
-          >
-            Join a Meeting
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <label
+                className="btn btn-ghost btn-circle avatar"
+                onClick={() => setProfileOpen(!profileOpen)}
+              >
+                <div className="w-10 rounded-full">
+                  <img src={user?.photoURL} />
+                </div>
+              </label>
+
+              <div
+                className={`${
+                  profileOpen
+                    ? "top-14 right-2 text-black"
+                    : "-top-[500px] right-2"
+                } bg-white rounded px-8 py-10 shadow-2xl border absolute z-10 transition-all duration-500 text-sm`}
+              >
+                <ul className="w-40 h-40 flex flex-col justify-between">
+                  <span className="text-sm mb-3">
+                    Welcome!{" "}
+                    <span className="text-blue-600 font-semibold">
+                      {user?.displayName}
+                    </span>
+                  </span>
+                  <li>
+                    <Link className="font-NotoSans group " to="#">
+                      Profile
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="font-NotoSans  group " to="#">
+                      Meeting
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="font-NotoSans  group "
+                      onClick={() => logOut()}
+                    >
+                      Log Out
+                      <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="bg-secondary px-5 md:px-10 py-2 md:py-3 rounded-full md:font-semibold font-NotoSans primary_button text-white"
+            >
+              Join a Meeting
+            </Link>
+          )}
         </div>
       </div>
     </div>
