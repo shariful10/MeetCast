@@ -1,4 +1,4 @@
-![MeetCast](https://i.ibb.co/y6GP39V/Meet-Cast-1.png)
+# React + Vite
 
 ## Live Priview:
 ## Live Priview: [MeetCast]()
