@@ -28,7 +28,10 @@ const Navbar = () => {
         scrolling ? "bg-white z-10 shadow-sm" : "bg-transparent"
       } duration-500`}
     >
-      <div className="navbar max-w-[1520px] mx-auto p-3 md:p-5 2xl:p-0">
+      <div
+        className="navbar max-w-[1520px] mx-auto p-3 md:p-5 2xl:p-0"
+        onClick={() => open && setOpen(false)}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <label
@@ -54,7 +57,7 @@ const Navbar = () => {
             <div
               className={`${
                 open
-                  ? "top-12 -left-2 lg:hidden text-black"
+                  ? "top-12 left-2 lg:hidden text-black"
                   : "top-10 -left-[500px] lg:hidden"
               } bg-white rounded px-8 py-10 shadow-2xl border text-lg absolute z-10 transition-all duration-500`}
             >
@@ -72,11 +75,14 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="text-lg font-NotoSans  group "
-                    to="/services"
-                  >
+                  <Link className="text-lg font-NotoSans  group " to="/pricing">
                     Pricing
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-lg font-NotoSans  group " to="/contact">
+                    Contact
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                   </Link>
                 </li>
@@ -102,8 +108,14 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link className="text-lg font-NotoSans  group " to="/services">
+              <Link className="text-lg font-NotoSans  group " to="/pricing">
                 Pricing
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary   mt-[1px]"></span>
+              </Link>
+            </li>
+            <li>
+              <Link className="text-lg font-NotoSans  group " to="/contact">
+                Contact
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary   mt-[1px]"></span>
               </Link>
             </li>
@@ -112,7 +124,7 @@ const Navbar = () => {
         <div className="navbar-end">
           <Link
             to="/login"
-            className="bg-secondary px-10 py-2 md:py-3 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white"
+            className="bg-secondary px-5 md:px-10 py-2 md:py-3 rounded-full md:font-semibold font-NotoSans primary_button text-white"
           >
             Join a Meeting
           </Link>
