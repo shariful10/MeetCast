@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../components/Shared/Container/Container";
+import Container from "../../Components/Shared/Container/Container";
 
 const Pricing = () => {
   return (
