@@ -5,6 +5,7 @@ import { MdOutlineEmail } from 'react-icons/md';
 import toast, { Toaster } from 'react-hot-toast';
 
 import Container from '../../Components/Share/Container/Container';
+import Congratulation from '../../Components/Share/Congratulation/Congratulation';
 
 const Contact = () => {
 
@@ -62,6 +63,7 @@ const Contact = () => {
                     <p className='ml-16'>Seals Enquiry</p>
                 </div>
             </div>
+            <Congratulation></Congratulation>
         </div>
         </Container>
     );
