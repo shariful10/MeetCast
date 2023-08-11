@@ -151,7 +151,7 @@ const Navbar = () => {
                     </span>
                   </span>
                   <li>
-                    <Link className="font-NotoSans group " to="#">
+                    <Link className="font-NotoSans group " to="/userprofile">
                       Profile
                       <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                     </Link>
