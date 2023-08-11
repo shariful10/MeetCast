@@ -45,10 +45,6 @@ return (
                                 <input className='my-2 md:ml-3 p-2 w-full rounded-lg' type="text" placeholder='Company Name' name="company" /><br />
                             </div>
 
-                            <div className='md:flex justify-between w-full'>
-                                <input className='my-2 p-2 w-full rounded-lg' type="text" placeholder='Full Name' name="user_name" /><br />
-                                <input className='my-2 md:ml-3 p-2 w-full rounded-lg' type="text" placeholder='Company Name' name="company" /><br />
-                            </div>
 
                             <input className='w-full my-2 p-2 rounded-lg' type="email" placeholder='Work Email' name="user_email" /><br />
 
