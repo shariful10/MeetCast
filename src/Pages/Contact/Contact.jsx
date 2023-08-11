@@ -40,16 +40,16 @@ const Contact = () => {
                             <form ref={form} onSubmit={sendEmail}>
 
                                 <div className='md:flex justify-between w-full'>
-                                    <input className='my-2 p-2 w-full' type="text" placeholder='Full Name' name="user_name" /><br />
-                                    <input className='my-2 md:mx-3 p-2 w-full' type="text" placeholder='Company Name' name="company" /><br />
+                                    <input className='my-2 p-2 w-full rounded-lg' type="text" placeholder='Full Name' name="user_name" /><br />
+                                    <input className='my-2 md:ml-3 p-2 w-full rounded-lg' type="text" placeholder='Company Name' name="company" /><br />
                                 </div>
 
-                                <input className='w-full my-2 p-2' type="email" placeholder='Work Email' name="user_email" /><br />
+                                <input className='w-full my-2 p-2 rounded-lg' type="email" placeholder='Work Email' name="user_email" /><br />
 
-                                <input className='w-full my-2 p-2' type="text" placeholder='Subject' name="subject" /><br />
+                                <input className='w-full my-2 p-2 rounded-lg' type="text" placeholder='Subject' name="subject" /><br />
 
-                                <textarea className='w-full my-2 p-2' placeholder='Message' name="message" /><br />
-                                <input onClick={notify} className='w-full my-2 p-2 bg-black text-white' type="submit" value="Send" />
+                                <textarea className='w-full my-2 p-2 rounded-lg' placeholder='Message' name="message" /><br />
+                                <input onClick={notify} className='w-full my-2 p-2 bg-black text-white rounded-lg' type="submit" value="Send" />
                                 <Toaster />
                             </form>
                         </div>
