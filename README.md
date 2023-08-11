@@ -1,4 +1,3 @@
 # React + Vite
 
-## Live Priview:
-## Live Priview: [MeetCast]()
+## Live Priview: [MeetCast](https://meetcast.vercel.app/)
