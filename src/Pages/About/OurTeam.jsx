@@ -2,15 +2,15 @@ import React from "react";
 
 const OurTeam = () => {
   return (
-    <div className="flex justify-between gap-0 my-16">
-      <div className="w-1/4">
-        <h2 className="text-3xl font-semibold font-manrope my-4">Our talented Team</h2>
+    <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-0 my-16">
+      <div className="md:w-1/4 ms-0 md:ms-16">
+        <h2 className="text-3xl font-bold font-manrope my-4">Our talented Team</h2>
         <p>
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
           nonumy eirmod tempor invidunt ut labore.
         </p>
       </div>
-      <div className="grid grid-cols-3 gap-6 w-4/6 text-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:w-4/6 text-center">
         <div className="bg-white text-center rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
           <div className="mb-4 w-[200px] mx-auto">
             <img
