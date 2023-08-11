@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../../../components/Shared/Container/Container";
-import VerticalLine from "../../../components/VerticalLine/VerticalLine";
+import Container from "../../../Components/Shared/Container/Container";
+import VerticalLine from "../../../Components/VerticalLine/VerticalLine";
 
 const Vision = () => {
   return (

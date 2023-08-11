@@ -1,12 +1,12 @@
 import heroBg from "../../assets/banner.png";
-import Container from "../../components/Shared/Container/Container";
-import VerticalLine from "../../components/VerticalLine/VerticalLine";
+import Container from "../../Components/Shared/Container/Container";
+import VerticalLine from "../../Components/VerticalLine/VerticalLine";
 import heroImage from "../../assets/hero-image.png";
 
 const HeroSection = () => {
   return (
     <div
-      className="bg-white md:h-[900px] bg-contain bg-no-repeat w-full md:flex justify-center items-center py-32 md:py-20"
+      className="bg-white md:h-[800px] bg-contain bg-no-repeat w-full md:flex justify-center items-center py-32 md:py-20"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       <Container>

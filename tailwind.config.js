@@ -6,6 +6,7 @@ export default {
       colors: {
         primary: "#1D2130",
         secondary: "#6B7CFF",
+        darkBg: "#0F0E2C",
       },
       fontFamily: {
         manrope: ["Manrope", "sans-serif"],

@@ -24,7 +24,6 @@ body {
 
 .primary_button {
   border: none;
-  border-radius: 30px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   outline: 3px solid rgba(255, 255, 255, 0);
@@ -39,7 +38,6 @@ body {
 
 .secondary_button {
   border: none;
-  border-radius: 30px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   outline: 3px solid #6b7cff;
@@ -48,6 +46,18 @@ body {
 .secondary_button:hover {
   outline: 3px solid #6b7cff;
   outline-offset: -8px;
+  background-color: transparent;
+  color: #fff;
+}
+.get_started_button {
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  outline: 3px solid transparent;
+}
+
+.get_started_button:hover {
+  outline: 2px solid #fff;
   background-color: transparent;
   color: #fff;
 }
@@ -65,14 +75,4 @@ body {
   background-color: #fff;
   color: #6b7cff;
   border-radius: 8px;
-}
-
-.progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background: var(--red);
-  transform-origin: 0%;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import waveUp from "../../../assets/wave-up.svg";
-import Container from "../../../components/Shared/Container/Container";
+import Container from "../../../Components/Shared/Container/Container";
 import ServiceCard from "./ServiceCard";
 import { PiStudent } from "react-icons/pi";
 import { IoBusinessOutline } from "react-icons/io5";
@@ -10,7 +10,7 @@ const Services = () => {
   return (
     <div className="md:flex justify-center">
       <div
-        className="g-white md:h-screen bg-cover bg-no-repeat w-full bg-right bottom-0"
+        className="g-white bg-cover bg-no-repeat w-full bg-right bottom-0"
         style={{ backgroundImage: `url(${waveUp})` }}
       >
         <Container>
