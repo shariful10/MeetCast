@@ -10,6 +10,7 @@ import {
 } from "react-icons/lu";
 import { FaCreativeCommonsNcEu } from "react-icons/fa6";
 import Blur_Gradient from "../../assets/Blur_Gradient.svg";
+import OurTeam from "./OurTeam";
 
 const About = () => {
   return (
@@ -73,7 +74,7 @@ const About = () => {
             <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">
               Out Goals
             </span>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold">
               To upscale your business to the next level
             </h2>
             <p className="text-gray-400 mt-4">
@@ -87,7 +88,7 @@ const About = () => {
             <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">
               Out Goals
             </span>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold">
               To provide solutions for growing companies
             </h2>
             <p className="text-gray-400 mt-4">
@@ -112,81 +113,83 @@ const About = () => {
           </div>
           <div className="grid grid-cols-3 gap-16 py-20 px-10 rounded-xl bg-[#F9F0FB]">
             <div>
-              <span>
-                <LuThumbsUp />
+              <span className="text-4xl pb-6  text-[#6B7CFF]">
+                <LuThumbsUp className="mb-6" />
               </span>
-              <h2 className="text-2xl mb-2 font-manrope font-bold">
+              <h2 className="text-2xl my-2 font-manrope font-bold">
                 Best in Class
               </h2>
-              <p className="text-gray-400 mt-4">
+              <p className="text-gray-400 mt-2">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy.
               </p>
             </div>
             <div>
-              <span>
-                <FaPerbyte />
+              <span className="text-4xl text-[#6B7CFF]">
+                <FaPerbyte className="mb-6"/>
               </span>
-              <h2 className="text-2xl mb-2 font-manrope font-bold">
+              <h2 className="text-2xl my-2 font-manrope font-bold">
                 Authenticity
               </h2>
-              <p className="text-gray-400 mt-4">
+              <p className="text-gray-400 mt-2">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy.
               </p>
             </div>
             <div>
-              <span>
-                <LuMail />
+              <span className="text-4xl text-[#6B7CFF]">
+                <LuMail className="mb-6"/>
               </span>
 
-              <h2 className="text-2xl mb-2 font-manrope font-bold">
+              <h2 className="text-2xl my-2 font-manrope font-bold">
                 Email Support
               </h2>
-              <p className="text-gray-400 mt-4">
+              <p className="text-gray-400 mt-2">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy.
               </p>
             </div>
             <div>
-              <span>
-                <FaCreativeCommonsNcEu />
+              <span className="text-4xl text-[#6B7CFF]">
+                <FaCreativeCommonsNcEu className="mb-6"/>
               </span>
-              <h2 className="text-2xl mb-2 font-manrope font-bold">
+              <h2 className="text-2xl my-2 font-manrope font-bold">
                 Discounts Available{" "}
               </h2>
-              <p className="text-gray-400 mt-4">
+              <p className="text-gray-400 mt-2">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy.
               </p>
             </div>
             <div>
-              <span>
-                <LuMegaphone />
+              <span className="text-4xl text-[#6B7CFF]">
+                <LuMegaphone className="mb-6"/>
               </span>
 
-              <h2 className="text-2xl mb-2 font-manrope font-bold">
+              <h2 className="text-2xl my-2 font-manrope font-bold">
                 Powerful Marketing
               </h2>
-              <p className="text-gray-400 mt-4">
+              <p className="text-gray-400 mt-2">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy.
               </p>
             </div>
             <div>
-              <span>
-                <LuCalendarRange />
+              <span className="text-4xl text-[#6B7CFF]">
+                <LuCalendarRange className="mb-6"/>
               </span>
-              <h2 className="text-2xl mb-2 font-manrope font-bold">
+              <h2 className="text-2xl my-2 font-manrope font-bold">
                 Inventory management
               </h2>
-              <p className="text-gray-400 mt-4">
+              <p className="text-gray-400 mt-2">
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
                 diam nonumy.
               </p>
             </div>
           </div>
         </div>
+        <OurTeam></OurTeam>
+        
       </Container>
     </div>
   );
