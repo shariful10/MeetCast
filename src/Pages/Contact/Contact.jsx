@@ -45,7 +45,7 @@ return (
 
                             <div className='md:flex justify-between w-full'>
                                 <input className='my-2 p-2 w-full' type="text" placeholder='Full Name' name="user_name" /><br />
-                                <input className='my-2 md:mx-3 p-2 w-full' type="text" placeholder='Company Name' name="company" /><br />
+                                <input className='my-2 md:ml-3 p-2 w-full' type="text" placeholder='Company Name' name="company" /><br />
                             </div>
 
                             <input className='w-full my-2 p-2' type="email" placeholder='Work Email' name="user_email" /><br />
