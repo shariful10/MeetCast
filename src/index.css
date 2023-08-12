@@ -78,10 +78,10 @@ body {
 }
 
 .Blur_Gradient {
-  background: radial-gradient(2762.36% 537.65% at -49.50% -250.00%, #e856ff 17.55%, #9BFFA5 27.56%, #8AB5E9 49.89%, #C9D4EF 56.53%, #CACFFA 65.69%);
+  background: radial-gradient(2762.36% 537.65% at -49.50% -250.00%, #D798E1 17.55%, hsl(126, 85%, 50%) 27.56%, #8AB5E9 49.89%, #C9D4EF 56.53%, #CACFFA 65.69%);
 filter: blur(235px);
 }
 .Pricing_Blur_Gradient {
-  background: radial-gradient(2762.36% 537.65% at -49.50% -250.00%, #df0dff 17.55%, #0ff526 27.56%, #8AB5E9 49.89%, #5182fc 56.53%, #4e5ff6 65.69%);
-filter: blur(235px);
+  background: radial-gradient(2762.36% 537.65% at -49.50% -250.00%, #e641ff 17.55%, #40ff53 27.56%, #64a9fd 49.89%, #C9D4EF 56.53%, #5364ff 65.69%);
+filter: blur(210px);
 }
