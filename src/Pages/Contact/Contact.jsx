@@ -77,7 +77,7 @@ const Contact = () => {
 								<input
 									onClick={notify}
 									// className="w-full my-2 p-2 bg-black text-white rounded-lg"
-									className="bg-secondary primary_button w-full py-2 md:py-3 rounded-md hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]"
+									className="bg-secondary hover:bg-transparent border-2 hover:border-[#1d2130] duration-300 spacing-2 w-full py-2 md:py-3 rounded-md hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]"
 									type="submit"
 									value="Send"
 								/>
