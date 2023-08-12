@@ -68,7 +68,7 @@ const Contact = () => {
 								<br />
 
 								<textarea
-									className="w-full my-2 p-2 rounded-lg focus:outline-[#6b7cff] h-[148px]"
+									className="w-full my-2 py-5 pl-6 rounded-lg focus:outline-[#6b7cff] h-[148px]"
 									placeholder="Message"
 									name="message"
 									// rows="5"
