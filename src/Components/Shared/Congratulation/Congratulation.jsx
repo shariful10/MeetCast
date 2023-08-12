@@ -2,7 +2,9 @@ import React from 'react';
 
 const Congratulation = () => {
     return (
-        <div className='text-center my-12 md:my-24'>
+        <div className='text-center my-12 md:my-24'
+        data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300"
+        >
            <h2 className='text-5xl font-bold mb-8'>Are you ready to grow your <br /> business with us</h2>
            <p>With one of our MeetCast services, you'll get high-level audio and video conferencing system</p> 
            <button className='btn bg-black text-white my-8'>View pricing</button>
