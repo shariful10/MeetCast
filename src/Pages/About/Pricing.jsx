@@ -9,8 +9,7 @@ const Pricing = () => {
           Are you ready to grow your <br className="hidden md:inline" /> business with us?
         </h2>
         <p className="text-gray-400 mt-3 md:mt-4">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy.
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
         </p>
         <button className="bg-primary w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white mt-6 md:mt-8">
           View Pricing
