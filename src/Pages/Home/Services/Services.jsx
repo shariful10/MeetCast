@@ -30,7 +30,7 @@ const Services = () => {
           <div className="my-12 flex flex-wrap justify-center items-center gap-8">
             {/* Card Item */}
             <ServiceCard
-              animation="fade-right"
+              animation="fade-down"
               Icon={PiStudent}
               title="Student"
               subTitle="Design remote and hybrid learning environments, empower teachers and students, and create more equitable educational opportunities."
@@ -42,7 +42,7 @@ const Services = () => {
               subTitle="Improve access and information sharing, build stronger relationships, and better serve your constituents."
             />
             <ServiceCard
-              animation="fade-left"
+              animation="fade-down"
               Icon={IoBusinessOutline}
               title="Commercial Institute"
               subTitle="Improve access and information sharing, build stronger relationships, and better serve your constituents."
