@@ -12,7 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <Home />,
     children: [
       {
         path: "/",
@@ -22,28 +22,11 @@ export const router = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
-      {
-        path: "/pricing",
-        element: <Pricing />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/userProfile",
-        element: <PrivateRoute>
-          <UserProfile />,
-        </PrivateRoute>
-      },
+   {
+     path: "/products",
+     element : <Products/>
+   }
+      
     ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
   },
 ]);
