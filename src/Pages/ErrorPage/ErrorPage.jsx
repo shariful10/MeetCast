@@ -10,13 +10,13 @@ const ErrorPage = () => {
 
                 <img className="w-screen h-screen" src={image} alt="" />
 
-                <div className='absolute bottom-24 left-1/3 px-16'
+                <div className='absolute bottom-8 md:bottom-24 md:left-1/3 px-16'
                 data-aos="fade-up"
                 data-aos-duration="1200"
                 data-aos-delay="700"
                 >
-                    <h1 className="text-6xl font-extrabold">{status}</h1>
-                    <h3 className="text-3xl font-semibold my-4">{error?.message}</h3>
+                    <h1 className="text-6xl font-bold md:font-extrabold">{status}</h1>
+                    <h3 className="text-3xl md:font-semibold my-4">{error?.message}</h3>
                     <Link to='/'>
                         <button className="bg-secondary w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white">
                            Go to homepage
