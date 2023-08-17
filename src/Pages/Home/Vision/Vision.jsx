@@ -4,12 +4,12 @@ import VerticalLine from "../../../Components/VerticalLine/VerticalLine";
 
 const Vision = () => {
   return (
-    <div className="bg-[#F0F2FE] ">
+    <div className="bg-[#F0F2FE]">
       <Container>
         <div className="md:flex justify-between items-center py-10">
           <div
             className="max-w-[660px] space-y-3"
-            data-aos="fade-right"
+            data-aos="fade-up"
             data-aos-duration="1200"
           >
             <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">
@@ -34,7 +34,8 @@ const Vision = () => {
           />
           <div
             className="max-w-[660px] space-y-3"
-            data-aos="fade-left"
+            data-aos="fade-up"
+            data-aos-delay="500"
             data-aos-duration="1200"
           >
             <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">

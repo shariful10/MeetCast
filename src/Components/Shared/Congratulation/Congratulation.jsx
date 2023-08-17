@@ -1,15 +1,18 @@
-import React from 'react';
+import React from "react";
 
 const Congratulation = () => {
-    return (
-        <div className='text-center my-12 md:my-24'
-        data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300"
-        >
-           <h2 className='text-5xl font-bold mb-8'>Are you ready to grow your <br /> business with us</h2>
-           <p>With one of our MeetCast services, you'll get high-level audio and video conferencing system</p> 
-           <button className='btn bg-black text-white my-8'>View pricing</button>
-        </div>
-    );
+	return (
+		<div className="text-center py-12 md:py-[128px]">
+			<h2 className="text-3xl md:text-5xl font-bold md:w-2/4 mx-auto">
+				Are you ready to grow your business with us
+			</h2>
+			<p className="mt-6 mb-8">
+				With one of our MeetCast services, you'll get high-level audio and video
+				conferencing system
+			</p>
+			<button className="bg-secondary primary_button w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]">View pricing</button>
+		</div>
+	);
 };
 
 export default Congratulation;
