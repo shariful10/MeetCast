@@ -9,8 +9,8 @@ const Home = () => {
 	return (
 		<div>
 			<HeroSection />
-			<FaceToFace />
 			<Vision />
+			<FaceToFace />
 			<CallToAction />
 			<Services />
 			<GetInTouch />

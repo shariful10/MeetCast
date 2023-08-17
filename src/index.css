@@ -81,3 +81,7 @@ body {
   background: radial-gradient(2762.36% 537.65% at -49.50% -250.00%, #D798E1 17.55%, #9BFFA5 27.56%, #8AB5E9 49.89%, #C9D4EF 56.53%, #CACFFA 65.69%);
 filter: blur(235px);
 }
+
+.custom-shadow {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}

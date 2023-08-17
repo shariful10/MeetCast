@@ -10,40 +10,42 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Main />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/pricing",
-        element: <Pricing />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/userProfile",
-        element: <PrivateRoute>
-          <UserProfile />,
-        </PrivateRoute>
-      },
-    ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
-  },
+	{
+		path: "/",
+		element: <Main />,
+		children: [
+			{
+				path: "/",
+				element: <Home />,
+			},
+			{
+				path: "/about",
+				element: <About />,
+			},
+			{
+				path: "/pricing",
+				element: <Pricing />,
+			},
+			{
+				path: "/contact",
+				element: <Contact />,
+			},
+			{
+				path: "/userProfile",
+				element: (
+					<PrivateRoute>
+						<UserProfile />,
+					</PrivateRoute>
+				),
+			},
+		],
+	},
+	{
+		path: "/login",
+		element: <Login />,
+	},
+	{
+		path: "/signup",
+		element: <SignUp />,
+	},
 ]);
