@@ -8,7 +8,7 @@ const UserProfile = () => {
 
     return (
         <Container>
-            <div className='bg-darkBg m-auto p-6'>
+            <div className='m-auto p-6'>
                 <div className='bg-white p-6 w-3/6 m-auto'>
                     <div className='w-full bg-white flex md:flex-row p-6 border'>
                         <div className='p-6 md:w-1/2'>

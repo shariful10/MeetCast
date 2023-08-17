@@ -7,6 +7,7 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import Pricing from "../Pages/Pricing/Pricing";
 import UserProfile from "../Pages/UserProfile/UserProfile";
+import Messaging from "../Pages/Messaging/Messaging";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
           <UserProfile />,
         </PrivateRoute>
+      },
+      {
+        path: "/messaging",
+        element: <Messaging></Messaging>
       },
     ],
   },
