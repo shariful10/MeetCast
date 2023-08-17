@@ -5,79 +5,103 @@
 @tailwind utilities;
 
 body {
-  --black: #111111;
-  --white: #fdfdfd;
-  --green: #22cc88;
-  --blue: #0055ff;
-  --purple: #8855ff;
-  --red: #ff0055;
-  --orange: #ee4444;
-  --yellow: #ffcc00;
-  --mustard: #ffaa00;
+	--black: #111111;
+	--white: #fdfdfd;
+	--green: #22cc88;
+	--blue: #0055ff;
+	--purple: #8855ff;
+	--red: #ff0055;
+	--orange: #ee4444;
+	--yellow: #ffcc00;
+	--mustard: #ffaa00;
 
-  --background: var(--white);
-  --accent: var(--black);
+	--background: var(--white);
+	--accent: var(--black);
 
-  background-color: var(--background);
-  color: var(--accent);
+	background-color: var(--background);
+	color: var(--accent);
 }
 
 .primary_button {
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  outline: 3px solid rgba(255, 255, 255, 0);
+	border: none;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	outline: 3px solid rgba(255, 255, 255, 0);
 }
 
 .primary_button:hover {
-  outline: 3px solid #1d2130;
-  outline-offset: -8px;
-  background-color: transparent;
-  color: #1d2130;
+	outline: 3px solid #1d2130;
+	outline-offset: -8px;
+	background-color: transparent;
+	color: #1d2130;
 }
 
 .secondary_button {
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  outline: 3px solid #6b7cff;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	outline: 3px solid #6b7cff;
 }
 
 .secondary_button:hover {
-  outline: 3px solid #6b7cff;
-  outline-offset: -8px;
-  background-color: transparent;
-  color: #fff;
+	outline: 3px solid #6b7cff;
+	outline-offset: -8px;
+	background-color: transparent;
+	color: #fff;
 }
+
 .get_started_button {
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  outline: 3px solid transparent;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	outline: 3px solid transparent;
 }
 
 .get_started_button:hover {
-  outline: 2px solid #fff;
-  background-color: transparent;
-  color: #fff;
+	outline: 2px solid #fff;
+	background-color: transparent;
+	color: #fff;
 }
 
 .sign_up {
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  outline: 3px solid #6b7cff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	outline: 3px solid #6b7cff;
 }
 
 .sign_up:hover {
-  outline: 3px solid #6b7cff;
-  background-color: #fff;
-  color: #6b7cff;
-  border-radius: 8px;
+	outline: 3px solid #6b7cff;
+	background-color: #fff;
+	color: #6b7cff;
+	border-radius: 8px;
 }
 
 .Blur_Gradient {
-  background: radial-gradient(2762.36% 537.65% at -49.50% -250.00%, #D798E1 17.55%, #9BFFA5 27.56%, #8AB5E9 49.89%, #C9D4EF 56.53%, #CACFFA 65.69%);
-filter: blur(235px);
+	background: radial-gradient(
+		2762.36% 537.65% at -49.5% -250%,
+		#d798e1 17.55%,
+		hsl(126, 85%, 50%) 27.56%,
+		#8ab5e9 49.89%,
+		#c9d4ef 56.53%,
+		#cacffa 65.69%
+	);
+	filter: blur(235px);
+}
+
+.Pricing_Blur_Gradient {
+	background: radial-gradient(
+		2762.36% 537.65% at -49.5% -250%,
+		#e641ff 17.55%,
+		#40ff53 27.56%,
+		#64a9fd 49.89%,
+		#c9d4ef 56.53%,
+		#5364ff 65.69%
+	);
+	filter: blur(210px);
+}
+
+.custom-shadow {
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
