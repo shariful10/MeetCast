@@ -28,7 +28,7 @@ const Messaging = () => {
     setMessageInput("");
   };
 
-  console.log(chatHistory)
+  console.log(chatHistory);
 
   useEffect(() => {
     const recievedMessage = (data) => {
@@ -36,16 +36,28 @@ const Messaging = () => {
       setChathistory((prevHistory) => [...prevHistory, data]);
     };
     socket.on("recieve_message", recievedMessage);
-    return ()=>{
-      socket.off("recieve_message", recievedMessage)
-    }
+    return () => {
+      socket.off("recieve_message", recievedMessage);
+    };
   }, []);
+
+  const getRoom = (event) => {
+    event.preventDefault();
+    const roomNum = event.target.roomNumber.value;
+    setRoom(roomNum)
+
+    if (room !== "") {
+      socket.emit("join_room", room);
+    }
+  };
+
+  console.log(room);
 
   return (
     <div className="">
       <div className="bg-slate-400 mt-36">
         {/* ------------room section--------------- */}
-        <form className="border p-6 flex">
+        <form onSubmit={getRoom} className="border p-6 flex">
           <input
             className="p-1 m-3 rounded-lg"
             type="text"
@@ -62,14 +74,15 @@ const Messaging = () => {
           ref={chatHistoryRef}
         >
           {chatHistory.map((messageData, index) => (
-            <p key={index} 
-            >
-              <span className="font-bold text-black">{`${index}: `}
+            <p key={index}>
+              <span className="font-bold text-black">
+                {`${index}: `}
                 {messageData.sender === user?.email
                   ? "You"
                   : messageData.sender}
-              </span>: 
-              {messageData.message}</p>
+              </span>
+              :{messageData.message}
+            </p>
           ))}
         </div>
         <form onSubmit={sendMessage} className="p-6">
