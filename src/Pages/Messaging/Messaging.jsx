@@ -6,10 +6,7 @@ const socket = io.connect("http://localhost:5001");
 
 const Messaging = () => {
   const [room, setRoom] = useState("");
-  const [chatHistory, setChathistory] = useState([
-    // { sender: "user@example.com", message: "Hello there!" },
-    // { sender: "other@example.com", message: "Hi, how are you?" },
-  ]);
+  const [chatHistory, setChathistory] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const { user } = useContext(AuthContext);
 
@@ -20,41 +17,37 @@ const Messaging = () => {
 
   const sendMessage = (event) => {
     event.preventDefault();
-    const message = event.target.message.value;
-    socket.emit("the message", message);
+    const newMessage = {
+      sender: user?.email,
+      message: event.target.message.value,
+    };
+    console.log(newMessage);
+    socket.emit("the message", newMessage);
     setMessageInput("");
   };
 
-  const changeRoom = (event) => {
-    event.preventDefault();
-    const roomNum = event.target.roomNumber.value;
-    console.log(roomNum);
-    setRoom(roomNum);
-  };
-
-  const joinRoom = () => {
-    if (room !== "") {
-      socket.emit("join_room", room);
-    }
-  };
-
   useEffect(() => {
-    socket.on("recieve_message", (data) => {
-      console.log("messege from server", data);
+    const dataReceived = (data) => {
+      console.log("message from server", data);
       setChathistory((prevHistory) => [...prevHistory, data]);
-    });
+    };
+    socket.on("recieve_message", dataReceived);
+      
+    return () => {
+      socket.off("recieve_message", dataReceived);
+    };
   }, []);
+
   return (
     <div className="">
       <div className="bg-slate-400 mt-36">
         {/* ------------room section--------------- */}
-        <form onSubmit={changeRoom} className="border p-6 flex">
+        <form className="border p-6 flex">
           <input
             className="p-1 m-3 rounded-lg"
             type="text"
             name="roomNumber"
             placeholder="write here"
-            onChange={changeRoom}
           />
           <button className="border p-4" type="submit">
             Submit
@@ -65,11 +58,15 @@ const Messaging = () => {
           className="bg-gray-200 h-[200px] p-6 overflow-y-auto"
           ref={chatHistoryRef}
         >
-          {chatHistory.map((history, index) => (
+          {chatHistory.map((messageData, index) => (
             <p key={index}>
-              {" "}
-              <span className="font-bold">{user?.email}: </span>
-              {history}
+              <span className="font-bold">
+                {messageData.sender === user?.email
+                  ? "You"
+                  : messageData.sender}
+                :{" "}
+              </span>
+              {messageData.message}
             </p>
           ))}
         </div>
@@ -79,8 +76,8 @@ const Messaging = () => {
             type="text"
             name="message"
             placeholder="write here"
-            value={messageInput}
-            onChange={(e) => setMessageInput(e.target.value)}
+            // value={messageInput}
+            // onChange={(e) => setMessageInput(e.target.value)}
           />
           <button className="border p-4" type="submit">
             Submit
