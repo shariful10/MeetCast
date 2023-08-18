@@ -17,25 +17,28 @@ const Messaging = () => {
 
   const sendMessage = (event) => {
     event.preventDefault();
+    const message = event.target.message.value;
     const newMessage = {
       sender: user?.email,
-      message: event.target.message.value,
+      message: message,
     };
-    console.log(newMessage);
+    setChathistory((prevHistory) => [...prevHistory, newMessage]);
     socket.emit("the message", newMessage);
+    console.log(newMessage);
     setMessageInput("");
   };
 
+  console.log(chatHistory)
+
   useEffect(() => {
-    const dataReceived = (data) => {
-      console.log("message from server", data);
+    const recievedMessage = (data) => {
+      console.log("messege from server", data);
       setChathistory((prevHistory) => [...prevHistory, data]);
     };
-    socket.on("recieve_message", dataReceived);
-      
-    return () => {
-      socket.off("recieve_message", dataReceived);
-    };
+    socket.on("recieve_message", recievedMessage);
+    return ()=>{
+      socket.off("recieve_message", recievedMessage)
+    }
   }, []);
 
   return (
@@ -59,15 +62,14 @@ const Messaging = () => {
           ref={chatHistoryRef}
         >
           {chatHistory.map((messageData, index) => (
-            <p key={index}>
-              <span className="font-bold">
+            <p key={index} 
+            >
+              <span className="font-bold text-black">{`${index}: `}
                 {messageData.sender === user?.email
                   ? "You"
                   : messageData.sender}
-                :{" "}
-              </span>
-              {messageData.message}
-            </p>
+              </span>: 
+              {messageData.message}</p>
           ))}
         </div>
         <form onSubmit={sendMessage} className="p-6">
@@ -76,8 +78,6 @@ const Messaging = () => {
             type="text"
             name="message"
             placeholder="write here"
-            // value={messageInput}
-            // onChange={(e) => setMessageInput(e.target.value)}
           />
           <button className="border p-4" type="submit">
             Submit
