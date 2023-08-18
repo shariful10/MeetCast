@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import io from "socket.io-client";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const socket = io.connect("http://localhost:5001");
 
 const Messaging = () => {
   const [room, setRoom] = useState("");
   const [chatHistory, setChathistory] = useState([]);
+  // const [user] = useContext(AuthContext)
 
   const sendMessage = (event) => {
     event.preventDefault();
@@ -49,7 +51,7 @@ const Messaging = () => {
         </form>
         <div className="bg-gray-200 h-[200px] p-6">
           {chatHistory.map((history, index) => (
-            <p key={index}>{history}</p>
+            <p key={index}> <span></span>{history}</p>
           ))}
         </div>
         <form onSubmit={sendMessage} className="p-6">
