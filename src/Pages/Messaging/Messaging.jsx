@@ -7,12 +7,14 @@ const socket = io.connect("http://localhost:5001");
 const Messaging = () => {
   const [room, setRoom] = useState("");
   const [chatHistory, setChathistory] = useState([]);
-  // const [user] = useContext(AuthContext)
+  const [messageInput, setMessageInput] = useState("");
+  const { user } = useContext(AuthContext);
 
   const sendMessage = (event) => {
     event.preventDefault();
     const message = event.target.message.value;
     socket.emit("the message", message);
+    setMessageInput("");
   };
 
   const changeRoom = (event) => {
@@ -37,6 +39,7 @@ const Messaging = () => {
   return (
     <div className="">
       <div className="bg-slate-400 mt-36">
+          {/* ------------room section--------------- */}
         <form onSubmit={changeRoom} className="border p-6 flex">
           <input
             className="p-1 m-3 rounded-lg"
@@ -49,9 +52,10 @@ const Messaging = () => {
             Submit
           </button>
         </form>
+        {/* ------------room section--------------- */}
         <div className="bg-gray-200 h-[200px] p-6">
           {chatHistory.map((history, index) => (
-            <p key={index}> <span></span>{history}</p>
+            <p key={index}> <span className="font-bold">{user?.displayName}: </span>{history}</p>
           ))}
         </div>
         <form onSubmit={sendMessage} className="p-6">
@@ -60,6 +64,8 @@ const Messaging = () => {
             type="text"
             name="message"
             placeholder="write here"
+            value={messageInput} 
+            onChange={(e) => setMessageInput(e.target.value)}
           />
           <button className="border p-4" type="submit">
             Submit
