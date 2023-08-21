@@ -47,7 +47,6 @@ const Messaging = () => {
   const getRoom = (event) => {
     event.preventDefault();
     const roomNum = event.target.roomNumber.value;
-    console.log("room", roomNum)
     setRoom(roomNum);
     if (room !== "") {
       socket.emit("join_room", room);
@@ -55,13 +54,13 @@ const Messaging = () => {
   };
 
   return (
-    <div className="w-1/2 m-auto">
+    <div className="m-auto">
       <div className="bg-slate-400 mt-32">
         <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
-        <form onSubmit={getRoom} className="border p-6 flex justify-center">
+        <form onSubmit={getRoom} className="border p-1 flex justify-center">
           <input
-            className="rounded-lg py-3 px-2 mx-3"
+            className="rounded-lg py-1 px-2 mx-3"
             type="text"
             name="roomNumber"
             placeholder="Room Number"
@@ -72,30 +71,30 @@ const Messaging = () => {
         </form>
         {/* ------------room section--------------- */}
         <div
-          className="bg-white h-[300px] p-6 overflow-y-auto"
+          className="bg-white h-[350px] p-6 overflow-y-auto border w-5/6 m-auto my-2 rounded"
           ref={chatHistoryRef}
         >
           {chatHistory.map((messageData, index) => (
-            <p
+            <div
               className={`${
                 messageData.sender === user?.email
-                  ? "bg-gray-100 mt-2"
-                  : "bg-blue-100 mt-2"
-              }`}
+                  ? "bg-gray-200 mt-2"
+                  : "bg-blue-400 mt-2"
+              } h-8 flex` }
               key={index}
             >
-              <p className="font-bold text-black btn btn-primary w-56 p-2 text-left">
+              <p className="font-bold text-black btn-primary w-56 p-1 text-left">
                 {messageData.sender === user?.email
                   ? "You"
-                  : messageData.sender}
+                  : messageData.sender}:
               </p>
               <span className="mx-3">{messageData.message}</span>
-            </p>
+            </div>
           ))}
         </div>
-        <form onSubmit={sendMessage} className="border p-6 flex justify-center">
+        <form onSubmit={sendMessage} className="border p-1 flex justify-center">
           <input
-            className="rounded-lg py-3 px-2 mx-3"
+            className="rounded-lg py-1 px-2 mx-3"
             type="text"
             name="message"
             placeholder="write here"
