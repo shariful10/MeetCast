@@ -31,52 +31,59 @@ const Contact = () => {
 					</h2>
 					<div className="contact-section bg-indigo-100 md:py-12 grid md:grid-cols-2 justify-between gap-6 items-center rounded-2xl py-10">
 						<div className="md:mx-8 mx-4">
-							<div className="md:my-8">
-								<h4 className="text-[36px] font-bold">Drop us a message</h4>
-								<p className="text-[18px]">will you get back to you as soon as possible</p>
+							<div className="my-8">
+								<h4 className="text-3xl md:text-[36px] font-bold">
+									Drop us a message
+								</h4>
+								<p className="text-[16px] md:text-[18px] mt-3">
+									will you get back to you as soon as possible
+								</p>
 							</div>
 							<form ref={form} onSubmit={sendEmail}>
-								<div className="grid md:grid-cols-2 gap-x-4 justify-between w-full">
+								<div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-between my-2">
+									<div className="w-full">
+										<input
+											className="rounded-lg w-full py-5 pl-6 focus:outline-[#6b7cff]"
+											type="name"
+											name="user_name"
+											placeholder="Full Name"
+										/>
+									</div>
+									<div className="w-full">
+										<input
+											className="rounded-lg w-full py-5 pl-6 focus:outline-[#6b7cff]"
+											type="name"
+											name="company"
+											placeholder="Company Name"
+										/>
+									</div>
+								</div>
+								<div>
 									<input
-										className="my-2 py-5 pl-6 w-full rounded-lg focus:outline-[#6b7cff]"
-										type="text"
-										placeholder="Full Name"
-										name="user_name"
-									/>
-									<input
-										className="my-2 py-5 pl-6 w-full rounded-lg focus:outline-[#6b7cff]"
-										type="text"
-										placeholder="Company Name"
-										name="company"
+										className="w-full my-2 py-5 pl-6 rounded-lg focus:outline-[#6b7cff]"
+										type="email"
+										placeholder="Work Email"
+										name="user_email"
 									/>
 								</div>
-
-								<input
-									className="w-full my-2 py-5 pl-6 rounded-lg focus:outline-[#6b7cff]"
-									type="email"
-									placeholder="Work Email"
-									name="user_email"
-								/>
-								<br />
-
-								<input
-									className="w-full my-2 py-5 pl-6 rounded-lg focus:outline-[#6b7cff]"
-									type="text"
-									placeholder="Subject"
-									name="subject"
-								/>
-								<br />
-
-								<textarea
-									className="w-full my-2 py-5 pl-6 rounded-lg focus:outline-[#6b7cff] h-[148px]"
-									placeholder="Message"
-									name="message"
-									// rows="5"
-								/>
-								<br />
+								<div>
+									<input
+										className="w-full my-2 py-5 pl-6 rounded-lg focus:outline-[#6b7cff]"
+										type="text"
+										placeholder="Subject"
+										name="subject"
+									/>
+								</div>
+								<div>
+									<textarea
+										className="w-full my-2 py-5 pl-6 rounded-lg focus:outline-[#6b7cff] h-[148px]"
+										placeholder="Message"
+										name="message"
+									/>
+								</div>
 								<input
 									onClick={notify}
-									className="bg-secondary hover:bg-transparent border-2 hover:border-[#1d2130] duration-300 spacing-2 w-full py-2 md:py-3 rounded-md hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]"
+									className="bg-secondary hover:bg-transparent border-2 hover:border-[#1d2130] duration-500 spacing-2 w-full py-2 md:py-3 rounded-md hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]"
 									type="submit"
 									value="Send"
 								/>
