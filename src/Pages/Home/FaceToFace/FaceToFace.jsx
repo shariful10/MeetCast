@@ -36,7 +36,9 @@ const FaceToFace = () => {
 								<h5 className="text-center">Active Users</h5>
 							</div>
 						</div>
-						<Buttons title={"Join a Meeting"} />
+						<div className="text-center">
+							<Buttons title={"Join a Meeting"} />
+						</div>
 					</div>
 					<div className="md:flex order-first md:order-last gap-10 space-y-10 items-center">
 						<img

@@ -5,7 +5,7 @@ import Container from "../Container/Container";
 const Footer = () => {
   return (
     <Container>
-      <footer className="footer p-10 text-base-content">
+      <footer className="footer py-10 text-base-content">
         <div data-aos="fade-up" data-aos-duration="1200">
           <span className="footer-title">Services</span>
           <Link className="link link-hover">Branding</Link>
