@@ -21,17 +21,17 @@ const Messaging = () => {
     const newMessage = {
       sender: user?.email,
       message: message,
+      room: room
     };
     setChathistory((prevHistory) => [...prevHistory, newMessage]);
-    socket.emit("the message", newMessage);
+    console.log(newMessage)
+    socket.emit("messege to server", newMessage);
     setMessageInput("");
   };
 
   const handleInputChange = (event) => {
     setMessageInput(event.target.value);
   };
-
-  console.log(chatHistory);
 
   useEffect(() => {
     const recievedMessage = (data) => {
@@ -47,19 +47,17 @@ const Messaging = () => {
   const getRoom = (event) => {
     event.preventDefault();
     const roomNum = event.target.roomNumber.value;
+    console.log("room", roomNum)
     setRoom(roomNum);
-
     if (room !== "") {
       socket.emit("join_room", room);
     }
   };
 
-  console.log(room);
-
   return (
     <div className="w-1/2 m-auto">
       <div className="bg-slate-400 mt-32">
-        <div className="m-auto text-center">{room? (`Room #${room}`):"#"}</div>
+        <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
         <form onSubmit={getRoom} className="border p-6 flex justify-center">
           <input
@@ -69,7 +67,7 @@ const Messaging = () => {
             placeholder="Room Number"
           />
           <button className="border rounded-lg px-3" type="submit">
-            Submit
+            Join
           </button>
         </form>
         {/* ------------room section--------------- */}
@@ -105,7 +103,7 @@ const Messaging = () => {
             onChange={handleInputChange}
           />
           <button className="border rounded-lg px-3" type="submit">
-            Submit
+            send
           </button>
         </form>
       </div>
