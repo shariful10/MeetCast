@@ -24,8 +24,11 @@ const Messaging = () => {
     };
     setChathistory((prevHistory) => [...prevHistory, newMessage]);
     socket.emit("the message", newMessage);
-    console.log(newMessage);
     setMessageInput("");
+  };
+
+  const handleInputChange = (event) => {
+    setMessageInput(event.target.value);
   };
 
   console.log(chatHistory);
@@ -44,7 +47,7 @@ const Messaging = () => {
   const getRoom = (event) => {
     event.preventDefault();
     const roomNum = event.target.roomNumber.value;
-    setRoom(roomNum)
+    setRoom(roomNum);
 
     if (room !== "") {
       socket.emit("join_room", room);
@@ -54,45 +57,54 @@ const Messaging = () => {
   console.log(room);
 
   return (
-    <div className="">
-      <div className="bg-slate-400 mt-36">
+    <div className="w-1/2 m-auto">
+      <div className="bg-slate-400 mt-32">
+        <div className="m-auto text-center">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
-        <form onSubmit={getRoom} className="border p-6 flex">
+        <form onSubmit={getRoom} className="border p-6 flex justify-center">
           <input
-            className="p-1 m-3 rounded-lg"
+            className="rounded-lg py-3 px-2 mx-3"
             type="text"
             name="roomNumber"
-            placeholder="write here"
+            placeholder="Room Number"
           />
-          <button className="border p-4" type="submit">
+          <button className="border rounded-lg px-3" type="submit">
             Submit
           </button>
         </form>
         {/* ------------room section--------------- */}
         <div
-          className="bg-gray-200 h-[200px] p-6 overflow-y-auto"
+          className="bg-white h-[300px] p-6 overflow-y-auto"
           ref={chatHistoryRef}
         >
           {chatHistory.map((messageData, index) => (
-            <p key={index}>
-              <span className="font-bold text-black">
-                {`${index}: `}
+            <p
+              className={`${
+                messageData.sender === user?.email
+                  ? "bg-gray-100 mt-2"
+                  : "bg-blue-100 mt-2"
+              }`}
+              key={index}
+            >
+              <p className="font-bold text-black btn btn-primary w-56 p-2 text-left">
                 {messageData.sender === user?.email
                   ? "You"
                   : messageData.sender}
-              </span>
-              :{messageData.message}
+              </p>
+              <span className="mx-3">{messageData.message}</span>
             </p>
           ))}
         </div>
-        <form onSubmit={sendMessage} className="p-6">
+        <form onSubmit={sendMessage} className="border p-6 flex justify-center">
           <input
-            className="p-6 m-3 rounded-lg border"
+            className="rounded-lg py-3 px-2 mx-3"
             type="text"
             name="message"
             placeholder="write here"
+            value={messageInput}
+            onChange={handleInputChange}
           />
-          <button className="border p-4" type="submit">
+          <button className="border rounded-lg px-3" type="submit">
             Submit
           </button>
         </form>
