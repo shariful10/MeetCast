@@ -21,14 +21,17 @@ const Messaging = () => {
     const newMessage = {
       sender: user?.email,
       message: message,
+      room: room
     };
     setChathistory((prevHistory) => [...prevHistory, newMessage]);
-    socket.emit("the message", newMessage);
-    console.log(newMessage);
+    console.log(newMessage)
+    socket.emit("messege to server", newMessage);
     setMessageInput("");
   };
 
-  console.log(chatHistory);
+  const handleInputChange = (event) => {
+    setMessageInput(event.target.value);
+  };
 
   useEffect(() => {
     const recievedMessage = (data) => {
@@ -44,56 +47,62 @@ const Messaging = () => {
   const getRoom = (event) => {
     event.preventDefault();
     const roomNum = event.target.roomNumber.value;
-    setRoom(roomNum)
-
+    setRoom(roomNum);
     if (room !== "") {
       socket.emit("join_room", room);
     }
   };
 
-  console.log(room);
-
   return (
-    <div className="">
-      <div className="bg-slate-400 mt-36">
+    <div className="m-auto">
+      <div className="bg-slate-400 mt-32">
+        <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
-        <form onSubmit={getRoom} className="border p-6 flex">
+        <form onSubmit={getRoom} className="border p-1 flex justify-center">
           <input
-            className="p-1 m-3 rounded-lg"
+            className="rounded-lg py-1 px-2 mx-3"
             type="text"
             name="roomNumber"
-            placeholder="write here"
+            placeholder="Room Number"
           />
-          <button className="border p-4" type="submit">
-            Submit
+          <button className="border rounded-lg px-3" type="submit">
+            Join
           </button>
         </form>
         {/* ------------room section--------------- */}
         <div
-          className="bg-gray-200 h-[200px] p-6 overflow-y-auto"
+          className="bg-white h-[350px] p-6 overflow-y-auto border w-5/6 m-auto my-2 rounded"
           ref={chatHistoryRef}
         >
           {chatHistory.map((messageData, index) => (
-            <p key={index}>
-              <span className="font-bold text-black">
-                {`${index}: `}
+            <div
+              className={`${
+                messageData.sender === user?.email
+                  ? "bg-gray-200 mt-2"
+                  : "bg-blue-400 mt-2"
+              } h-8 flex` }
+              key={index}
+            >
+              <p className="font-bold text-black btn-primary w-56 p-1 text-left">
                 {messageData.sender === user?.email
                   ? "You"
-                  : messageData.sender}
-              </span>
-              :{messageData.message}
-            </p>
+                  : messageData.sender}:
+              </p>
+              <span className="mx-3">{messageData.message}</span>
+            </div>
           ))}
         </div>
-        <form onSubmit={sendMessage} className="p-6">
+        <form onSubmit={sendMessage} className="border p-1 flex justify-center">
           <input
-            className="p-6 m-3 rounded-lg border"
+            className="rounded-lg py-1 px-2 mx-3"
             type="text"
             name="message"
             placeholder="write here"
+            value={messageInput}
+            onChange={handleInputChange}
           />
-          <button className="border p-4" type="submit">
-            Submit
+          <button className="border rounded-lg px-3" type="submit">
+            send
           </button>
         </form>
       </div>

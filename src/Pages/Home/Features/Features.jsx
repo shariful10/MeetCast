@@ -24,7 +24,7 @@ const Features = () => {
 							presence with video webinars.
 						</p>
 					</div>
-					<div>
+					<div className="pt-[50px] md:pt-0">
 						<div className="bg-yellow-500 w-14 h-14 rounded-2xl flex justify-center items-center text-white">
 							<GoDeviceCameraVideo size={25} />
 						</div>
@@ -38,7 +38,7 @@ const Features = () => {
 							presence with video webinars.
 						</p>
 					</div>
-					<div>
+					<div className="pt-[50px] md:pt-0">
 						<div className="bg-blue-700 w-14 h-14 rounded-2xl flex justify-center items-center text-white">
 							<HiOutlineUserGroup size={25} />
 						</div>
@@ -53,7 +53,7 @@ const Features = () => {
 						</p>
 					</div>
 				</div>
-				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-[50px] md:mt-16">
 					<div>
 						<div className="bg-red-600 w-14 h-14 rounded-2xl flex justify-center items-center text-white">
 							<HiOutlineUserGroup size={25} />
@@ -68,7 +68,7 @@ const Features = () => {
 							presence with video webinars.
 						</p>
 					</div>
-					<div>
+					<div className="pt-[50px] md:pt-0">
 						<div className="bg-fuchsia-500 w-14 h-14 rounded-2xl flex justify-center items-center text-white">
 							<BsChatLeftDots size={25} />
 						</div>
@@ -82,7 +82,7 @@ const Features = () => {
 							presence with video webinars.
 						</p>
 					</div>
-					<div>
+					<div className="pt-[50px] md:pt-0">
 						<div className="bg-green-400 w-14 h-14 rounded-2xl flex justify-center items-center text-white">
 							<GoGear size={25} />
 						</div>

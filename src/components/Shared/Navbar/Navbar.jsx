@@ -133,7 +133,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link className="text-lg font-NotoSans  group " to="/messaging">
-                Join a Meeting
+                Join a Meetings
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
               </Link>
             </li>
