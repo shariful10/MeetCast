@@ -22,21 +22,21 @@ const FaceToFace = () => {
 							connections, all from wherever you are. Join us and redefine your video
 							conferencing experience today.
 						</p>
-						<div className="grid grid-cols-2 justify-between gap-8 mb-10 md:w-[80%]">
-							<div className="border p-10 rounded-lg shadow-md">
+						<div className="grid grid-cols-2 justify-between gap-4 md:gap-8 mb-10 md:w-[80%]">
+							<div className="border p-5 md:p-10 rounded-lg shadow-md">
 								<h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-3">
 									12
 								</h2>
 								<h5 className="text-center">Years of Exp</h5>
 							</div>
-							<div className="border p-10 rounded-lg shadow-md">
+							<div className="border p-5 md:p-10 rounded-lg shadow-md">
 								<h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-3">
 									20.5M
 								</h2>
 								<h5 className="text-center">Active Users</h5>
 							</div>
 						</div>
-						<div className="text-center">
+						<div className="text-center md:text-left">
 							<Buttons title={"Join a Meeting"} />
 						</div>
 					</div>
