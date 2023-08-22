@@ -9,6 +9,7 @@ import Pricing from "../Pages/Pricing/Pricing";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 import Messaging from "../Pages/Messaging/Messaging";
+import Meetings from "../Pages/Meetings/Meetings";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,12 @@ export const router = createBrowserRouter([
         path: "/messaging",
         element: <PrivateRoute>
           <Messaging></Messaging>
+        </PrivateRoute>
+      },
+      {
+        path: "/meetings",
+        element: <PrivateRoute>
+          <Meetings></Meetings>
         </PrivateRoute>
       },
     ],
