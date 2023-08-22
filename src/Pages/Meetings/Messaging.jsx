@@ -54,8 +54,8 @@ const Messaging = () => {
   };
 
   return (
-    <div className="m-auto">
-      <div className="bg-slate-400 mt-32">
+    <div className="m-auto w-[300px] border">
+      <div className="w-full">
         <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
         <form onSubmit={getRoom} className="border p-1 flex justify-center">
@@ -71,7 +71,7 @@ const Messaging = () => {
         </form>
         {/* ------------room section--------------- */}
         <div
-          className="bg-white h-[350px] p-6 overflow-y-auto border w-5/6 m-auto my-2 rounded"
+          className="bg-white h-[350px] p-1 overflow-y-auto m-auto my-1 rounded"
           ref={chatHistoryRef}
         >
           {chatHistory.map((messageData, index) => (
@@ -80,15 +80,15 @@ const Messaging = () => {
                 messageData.sender === user?.email
                   ? "bg-gray-200 mt-2"
                   : "bg-blue-400 mt-2"
-              } h-8 flex` }
+              } flex rounded-lg flex-col` }
               key={index}
             >
-              <p className="font-bold text-black btn-primary w-56 p-1 text-left">
+              <p className="font-bold text-black btn-primary p-1 text-left w-12 m-1 rounded">
                 {messageData.sender === user?.email
                   ? "You"
                   : messageData.sender}:
               </p>
-              <span className="mx-3">{messageData.message}</span>
+              <span className="p-1">{messageData.message}</span>
             </div>
           ))}
         </div>
