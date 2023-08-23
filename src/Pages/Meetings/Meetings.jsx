@@ -13,7 +13,7 @@ const Meetings = () => {
     setRoomNumber(room)
   }
 
-  console.log("room from roomsection",roomNumber)
+  console.log("room from roomsection", roomNumber)
 
 
   return (
