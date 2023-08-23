@@ -4,11 +4,13 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 const socket = io.connect("http://localhost:5001");
 
-const Messaging = () => {
+const Messaging = (roomNumber) => {
   const [room, setRoom] = useState("");
   const [chatHistory, setChathistory] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const { user } = useContext(AuthContext);
+
+  console.log(roomNumber.room)
 
   const chatHistoryRef = useRef(null);
   useEffect(() => {
@@ -47,7 +49,10 @@ const Messaging = () => {
   const getRoom = (event) => {
     event.preventDefault();
     const roomNum = event.target.roomNumber.value;
-    setRoom(roomNum);
+    console.log("room number from parent", roomNumber)
+    setRoom(roomNumber);
+    console.log("room number in child", room)
+    // setRoom(roomNum);
     if (room !== "") {
       socket.emit("join_room", room);
     }
