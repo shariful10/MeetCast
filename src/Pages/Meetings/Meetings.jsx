@@ -1,29 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import Messaging from "./Messaging";
+import { NavLink, Outlet } from "react-router-dom";
+import Users from "./Users";
+import RoomSection from "./RoomSection";
+import VideoMeet from "./VideoMeet";
 
 const Meetings = () => {
+  const [roomNumber, setRoomNumber] = useState()
+
+  const gettingRoomNumber =(rooming)=>{
+    const room = rooming
+    setRoomNumber(room)
+  }
+
+  console.log("room from roomsection", roomNumber)
+
+
   return (
-    <div className="drawer lg:drawer-open">
-      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
-        {/* Page content here */}
-        <label
-          htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
-        >
-          Open drawer
-        </label>
-      </div>
-      <div className="drawer-side">
-        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-          {/* Sidebar content here */}
-          <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
-        </ul>
+    <div className="mt-28 border m-2 p-2">
+      <div className="flex">
+        <RoomSection gettingRoomNumber={gettingRoomNumber}></RoomSection>
+        <VideoMeet></VideoMeet>
+        <Messaging room={roomNumber}></Messaging>
+        <Users></Users>
       </div>
     </div>
   );
