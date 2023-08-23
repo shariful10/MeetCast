@@ -9,6 +9,7 @@ import Pricing from "../Pages/Pricing/Pricing";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 import Messaging from "../Pages/Messaging/Messaging";
+import MeetingSchedule from "../Pages/MeetingSchedule/MeetingSchedule";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/schedule",
+        element: <MeetingSchedule />,
       },
       {
         path: "/userProfile",
