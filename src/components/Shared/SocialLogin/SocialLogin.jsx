@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { saveUser } from "../../APIs/auth";
+import { toast } from "react-hot-toast";
 
 const SocialLogin = () => {
   const { setLoading, signInWithGoogle } = useContext(AuthContext);
@@ -15,7 +16,7 @@ const SocialLogin = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("Successfully Login");
-        // saveUser(res.user);
+        saveUser(res.user);
         navigate(from, { replace: true });
       })
       .catch((err) => {

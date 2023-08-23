@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import img from "../../assets/images/signup.svg";
 import SocialLogin from "../../Components/Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { saveUser } from "../../Components/APIs/auth";
 
 const SignUp = () => {
   const { loading, setLoading, createUser, updateUserProfile } =
@@ -42,6 +43,7 @@ const SignUp = () => {
             updateUserProfile(name, imageUrl)
               .then(() => {
                 toast.success("Successfully Sign Up");
+                saveUser(res.user);
                 navigate(from, { replace: true });
               })
               .catch((err) => {
@@ -61,7 +63,7 @@ const SignUp = () => {
         console.log(err.message);
         toast.error(err.message);
       });
-    fetch(`${import.meta.env.VITE_IMGBB_API}/user`, {
+    fetch(`${import.meta.env.VITE_IMGBB_API}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
