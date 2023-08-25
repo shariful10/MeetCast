@@ -59,11 +59,11 @@ const Messaging = (roomNumber) => {
   };
 
   return (
-    <div className="w-[400px] border">
+    <div className="w-[500px] border">
       <div className="w-full">
         <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
-        <form onSubmit={getRoom} className="border p-1 flex ">
+        <form onSubmit={getRoom} className="border p-1 flex">
           <input
             className="rounded-lg py-1 px-2 mx-3 w-2/3"
             type="text"

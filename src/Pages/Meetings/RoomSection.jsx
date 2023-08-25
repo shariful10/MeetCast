@@ -72,14 +72,14 @@ const RoomSection = ({ gettingRoomNumber }) => {
 
 	return (
 		<div className="p-2 m-2 border">
-			<button className="w-[100px] border btn m-1" onClick={createRoom}>
+			<button className="w-[120px] border btn m-1" onClick={createRoom}>
 				Create a Room
 			</button>
 			<div className="divider"></div>
 			{rooms.map(({ roomName, _id }) => (
 				<div
 					key={_id}
-					className="w-[100px] border btn m-1 cursor-pointer"
+					className="py-3 px-4 bg-neutral-200 my-2 rounded-md cursor-pointer"
 					onClick={() => handleRoomClick({ _id, roomName })}
 				>
 					Room #{roomName}

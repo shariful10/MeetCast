@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Messaging from "./Messaging";
-import { NavLink, Outlet } from "react-router-dom";
 import Users from "./Users";
 import RoomSection from "./RoomSection";
 import VideoMeet from "./VideoMeet";
