@@ -50,7 +50,7 @@ const Messaging = (roomNumber) => {
     event.preventDefault();
     const roomNum = event.target.roomNumber.value;
     console.log("room number from parent", roomNumber)
-    setRoom(roomNumber);
+    setRoom(roomNum);
     console.log("room number in child", room)
     // setRoom(roomNum);
     if (room !== "") {
@@ -59,18 +59,18 @@ const Messaging = (roomNumber) => {
   };
 
   return (
-    <div className="m-auto w-[300px] border">
+    <div className="w-[400px] border">
       <div className="w-full">
         <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
-        <form onSubmit={getRoom} className="border p-1 flex justify-center">
+        <form onSubmit={getRoom} className="border p-1 flex ">
           <input
-            className="rounded-lg py-1 px-2 mx-3"
+            className="rounded-lg py-1 px-2 mx-3 w-2/3"
             type="text"
             name="roomNumber"
             placeholder="Room Number"
           />
-          <button className="border rounded-lg px-3" type="submit">
+          <button className="border rounded-lg px-3 w-1/3" type="submit">
             Join
           </button>
         </form>
@@ -83,15 +83,15 @@ const Messaging = (roomNumber) => {
             <div
               className={`${
                 messageData.sender === user?.email
-                  ? "bg-gray-200 mt-2"
-                  : "bg-blue-400 mt-2"
+                  ? "bg-slate-200  mt-2"
+                  : "bg-green-200 mt-2"
               } flex rounded-lg flex-col` }
               key={index}
             >
-              <p className="font-bold text-black btn-primary p-1 text-left w-12 m-1 rounded">
+              <p className="font-bold text-black bg-blue-300 p-1 text-left m-1 rounded">
                 {messageData.sender === user?.email
                   ? "You"
-                  : messageData.sender}:
+                  : messageData.sender}
               </p>
               <span className="p-1">{messageData.message}</span>
             </div>
@@ -99,14 +99,14 @@ const Messaging = (roomNumber) => {
         </div>
         <form onSubmit={sendMessage} className="border p-1 flex justify-center">
           <input
-            className="rounded-lg py-1 px-2 mx-3"
+            className="rounded-lg py-1 px-2 mx-3 w-2/3"
             type="text"
             name="message"
             placeholder="write here"
             value={messageInput}
             onChange={handleInputChange}
           />
-          <button className="border rounded-lg px-3" type="submit">
+          <button className="border rounded-lg px-3 w-1/3" type="submit">
             send
           </button>
         </form>

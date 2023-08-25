@@ -7,11 +7,18 @@ import VideoMeet from "./VideoMeet";
 
 const Meetings = () => {
   const [roomNumber, setRoomNumber] = useState()
+  const [messageStatus, setMessageStatus] = useState()
 
   const gettingRoomNumber =(rooming)=>{
     const room = rooming
     setRoomNumber(room)
   }
+
+  const messageOnOff = (status) => {
+    setMessageStatus(status)
+  }
+
+  console.log(messageStatus)
 
   console.log("room from roomsection", roomNumber)
 
@@ -21,8 +28,8 @@ const Meetings = () => {
       <div className="flex">
         <RoomSection gettingRoomNumber={gettingRoomNumber}></RoomSection>
         <VideoMeet></VideoMeet>
-        <Messaging room={roomNumber}></Messaging>
-        <Users></Users>
+        {messageStatus ? null : <Messaging room={roomNumber}></Messaging>}
+        <Users messageOnOff={messageOnOff}></Users>
       </div>
     </div>
   );
