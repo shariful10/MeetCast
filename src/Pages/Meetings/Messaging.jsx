@@ -52,14 +52,15 @@ const Messaging = (roomNumber) => {
     console.log("room number from parent", roomNumber)
     setRoom(roomNum);
     console.log("room number in child", room)
-    // setRoom(roomNum);
+  };
+  useEffect(()=>{
     if (room !== "") {
       socket.emit("join_room", room);
     }
-  };
+  },[room])
 
   return (
-    <div className="w-[500px] border">
+    <div className="w-full border">
       <div className="w-full">
         <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
