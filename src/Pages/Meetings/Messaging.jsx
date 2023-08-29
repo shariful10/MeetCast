@@ -49,10 +49,9 @@ const Messaging = (roomNumber) => {
   const getRoom = (event) => {
     event.preventDefault();
     const roomNum = event.target.roomNumber.value;
-    console.log("room number from parent", roomNumber)
     setRoom(roomNum);
-    console.log("room number in child", room)
   };
+
   useEffect(()=>{
     if (room !== "") {
       socket.emit("join_room", room);
