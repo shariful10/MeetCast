@@ -33,15 +33,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/userProfile",
-        element: <PrivateRoute>
-          <UserProfile />,
-        </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <UserProfile />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/messaging",
-        element: <PrivateRoute>
-          <Messaging></Messaging>
-        </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <Messaging></Messaging>
+          </PrivateRoute>
+        ),
       },
     ],
   },
