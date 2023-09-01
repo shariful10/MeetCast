@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import Meetings from "../Pages/Meetings/Meetings";
 import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
+import MyMeetings from "../Pages/MyMeetings/MyMeetings";
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -70,9 +71,13 @@ export const router = createBrowserRouter([
 				path: "/dashboard/userProfile",
 				element: <UserProfile />,
 			},
-      {
+			{
 				path: "/dashboard/schedule",
 				element: <MeetingSchedule />,
+			},
+			{
+				path: "/dashboard/myMeetings",
+				element: <MyMeetings />,
 			},
 		],
 	},

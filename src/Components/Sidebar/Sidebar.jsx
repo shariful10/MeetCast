@@ -13,7 +13,7 @@ import { FaGear } from "react-icons/fa6";
 const Sidebar = () => {
 	const navigate = useNavigate();
 	// const [toggle, setToggle] = useState(false);
-	const { user, logOut } = useContext(AuthContext);
+	const { logOut } = useContext(AuthContext);
 	const [isActive, setActive] = useState("false");
 
 	// const toggleHandler = (event) => {
@@ -88,6 +88,18 @@ const Sidebar = () => {
 									<MdMeetingRoom className="w-5 h-5 hover:text-white" />
 
 									<span className="mx-4 font-medium">Meetings</span>
+								</NavLink>
+								<NavLink
+									to="/dashboard/myMeetings"
+									className={({ isActive }) =>
+										`flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
+											isActive ? "bg-[#6b7cff] text-white" : "text-gray-600"
+										}`
+									}
+								>
+									<MdMeetingRoom className="w-5 h-5 hover:text-white" />
+
+									<span className="mx-4 font-medium">My Meetings</span>
 								</NavLink>
 							</li>
 						</ul>
