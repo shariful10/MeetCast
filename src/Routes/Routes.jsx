@@ -10,6 +10,7 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 import MeetingSchedule from './../Pages/MeetingSchedule/MeetingSchedule';
 import Meetings from "../Pages/Meetings/Meetings";
+import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +40,12 @@ export const router = createBrowserRouter([
         path: "/userProfile",
         element: <PrivateRoute>
           <UserProfile />,
+        </PrivateRoute>
+      },
+      {
+        path: "/editUserProfile",
+        element: <PrivateRoute>
+          <EditUserProfile></EditUserProfile>
         </PrivateRoute>
       },
       {
