@@ -12,10 +12,12 @@ import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import Meetings from "../Pages/Meetings/Meetings";
 import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import MyMeetings from "../Pages/MyMeetings/MyMeetings";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Main />,
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: "/",
@@ -33,14 +35,6 @@ export const router = createBrowserRouter([
 				path: "/contact",
 				element: <Contact />,
 			},
-			// {
-			// 	path: "/userProfile",
-			// 	element: (
-			// 		<PrivateRoute>
-			// 			<UserProfile />,
-			// 		</PrivateRoute>
-			// 	),
-			// },
 			{
 				path: "/meetings",
 				element: (
