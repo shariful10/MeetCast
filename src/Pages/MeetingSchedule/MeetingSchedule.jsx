@@ -46,6 +46,18 @@ const MeetingSchedule = () => {
     const minutesOptions = Array.from({ length: 60 }, (_, i) => i.toString());
 
 
+    const resetForm = () => {
+        setMeetingId('');
+        setSelectedTimezone({ value: 'Etc/UTC', label: 'UTC' });
+        setConvertedTime('');
+        setShowPasscode(false);
+        setSelectedDate(new Date());
+        setSelectedTime('12:00');
+        setSelectedAmPm('AM');
+        setMeetingDurationHours('1');
+        setMeetingDurationMinutes('0');
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const totalDurationMinutes =
@@ -81,7 +93,6 @@ const MeetingSchedule = () => {
             });
     };
 
-
     return (
         <div className="mt-28 items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded">
@@ -92,7 +103,7 @@ const MeetingSchedule = () => {
                         <input
                             type="text"
                             defaultValue={defaultTopic}
-                            className="w-1/2 border font-serif rounded-2xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                            className="w-1/2 border font-serif rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                         />
                     </div>
 
@@ -104,7 +115,7 @@ const MeetingSchedule = () => {
                                 name="date"
                                 value={selectedDate.toISOString().split('T')[0]}
                                 onChange={(e) => setSelectedDate(new Date(e.target.value))}
-                                className="w-full border rounded-2xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                                className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                             />
                         </div>
                         <div className="w-1/6">
@@ -112,7 +123,7 @@ const MeetingSchedule = () => {
                                 name="time"
                                 value={selectedTime}
                                 onChange={(e) => setSelectedTime(e.target.value)}
-                                className="w-full border rounded-2xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                                className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                             >
                                 {timeOptions.map((timeOption, index) => (
                                     <option key={index} value={timeOption}>
@@ -126,7 +137,7 @@ const MeetingSchedule = () => {
                                 name="amPm"
                                 value={selectedAmPm}
                                 onChange={(e) => setSelectedAmPm(e.target.value)}
-                                className="w-full border rounded-2xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                                className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                             >
                                 <option value="AM">AM</option>
                                 <option value="PM">PM</option>
@@ -139,7 +150,7 @@ const MeetingSchedule = () => {
                         <TimezoneSelect
                             value={selectedTimezone}
                             onChange={handleTimezoneChange}
-                            className="w-1/2 border rounded-2xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                            className="w-1/2 border rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                         />
                     </div>
                     <div className="flex space-x-4 items-center">
@@ -148,7 +159,7 @@ const MeetingSchedule = () => {
                             <select
                                 value={meetingDurationHours}
                                 onChange={(e) => setMeetingDurationHours(e.target.value)}
-                                className="border rounded-2xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                                className="border rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                             >
                                 {hoursOptions.map((hour) => (
                                     <option key={hour} value={hour}>
@@ -159,7 +170,7 @@ const MeetingSchedule = () => {
                             <select
                                 value={meetingDurationMinutes}
                                 onChange={(e) => setMeetingDurationMinutes(e.target.value)}
-                                className="border rounded-2xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                                className="border rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                             >
                                 {minutesOptions.map((minute) => (
                                     <option key={minute} value={minute}>
@@ -178,12 +189,12 @@ const MeetingSchedule = () => {
                                 type="text"
                                 value={meetingId}
                                 readOnly
-                                className="w-full border  rounded-2xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                                className="w-full border  rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                             />
                             <button
                                 type="button"
                                 onClick={generateRandomMeetingId}
-                                className="bg-blue-500 text-white px-4 py-3 rounded hover:bg-blue-600 font-semibold"
+                                className="bg-secondary text-white px-4 py-3 rounded hover:bg-blue-600 font-semibold"
                             >
                                 Generate
                             </button>
@@ -196,7 +207,7 @@ const MeetingSchedule = () => {
                             type="text"
                             value={convertedTime}
                             readOnly
-                            className="w-1/4 border  rounded-2xl px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                            className="w-1/4 border  rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                         />
                     </div>
 
@@ -206,7 +217,7 @@ const MeetingSchedule = () => {
                             <input
                                 type={showPasscode ? 'text' : 'password'}
                                 name="passcode"
-                                className="w-full border  rounded-2xl px-3 py-2 pr-10 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+                                className="w-full border  rounded-lg px-3 py-2 pr-10 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
                             />
                             <button
                                 type="button"
@@ -218,12 +229,23 @@ const MeetingSchedule = () => {
                         </div>
                     </div>
 
-                    <button
-                        type="submit"
-                        className="bg-secondary hover:bg-transparent border-2 hover:border-[#1d2130] duration-500 spacing-2 w-full py-2 md:py-3 rounded-md hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]"
-                    >
-                        Schedule Meeting
-                    </button>
+                    <div className="flex">
+                        <div className=""></div>
+
+                        <button
+                            type="submit"
+                            className="bg-secondary hover:bg-transparent border-2 hover:border-[#1d2130] duration-500 spacing-2 w-2/12 md:w-1/12 py-2 md:py-3 rounded-md me-2 hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]"
+                        >
+                            Save
+                        </button>
+                        <button
+                            type="button"
+                            onClick={resetForm} // Call the resetForm function
+                            className="bg-secondary hover:bg-transparent border-2 hover:border-[#1d2130] duration-500  spacing-2 w-2/12 md:w-1/12 py-2 md:py-3 rounded-md hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]"
+                        >
+                            Cancel
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
