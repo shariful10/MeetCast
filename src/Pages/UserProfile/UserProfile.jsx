@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
-import Container from "../../Components/Shared/Container/Container";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Container from "../../Components/Shared/Container/Container";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const UserProfile = () => {
 	const { user } = useContext(AuthContext);
