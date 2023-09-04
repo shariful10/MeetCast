@@ -30,9 +30,23 @@ const MyMeetings = () => {
         // Implement copy functionality here...
     };
 
-    const handleJoin = () => {
-        // Implement join functionality here...
+    const handleJoin = (meetingId) => {
+        // Make an HTTP GET request to fetch the meeting data based on the meetingId
+        fetch(`http://localhost:5000/meetings/${meetingId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Fetched meeting data:', data);
+            })
+            .catch((error) => {
+                console.error('Error fetching meeting data:', error);
+            });
     };
+    
 
     const openDeleteDialog = (meetingId) => {
         setMeetingToDelete(meetingId);
