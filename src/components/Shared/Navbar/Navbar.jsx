@@ -166,13 +166,13 @@ const Navbar = () => {
                     </span>
                   </span>
                   <li>
-                    <Link className="font-NotoSans group " to="/userprofile">
+                    <Link className="font-NotoSans group " to="/dashboard/userProfile">
                       Profile
                       <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                     </Link>
                   </li>
                   <li>
-                    <Link className="font-NotoSans  group " to="/schedule">
+                    <Link className="font-NotoSans  group " to="/dashboard/schedule">
                       Meeting
                       <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                     </Link>
