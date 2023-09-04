@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
 import Container from '../../Components/Shared/Container/Container';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const UserProfile = () => {
     const { user, logOut } = useContext(AuthContext);
