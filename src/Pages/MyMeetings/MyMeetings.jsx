@@ -30,9 +30,14 @@ const MyMeetings = () => {
         // Implement copy functionality here...
     };
 
-    const handleJoin = () => {
-        // Implement join functionality here...
-    };
+	const handleJoin = (meetingId) => {
+		const selectedMeeting = meetings.find((meeting) => meeting._id === meetingId);
+		if (selectedMeeting) {
+			console.log("Selected Meeting Data:", selectedMeeting);
+		} else {
+			console.error("Meeting not found");
+		}
+	};
 
     const openDeleteDialog = (meetingId) => {
         setMeetingToDelete(meetingId);
