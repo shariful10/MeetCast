@@ -8,8 +8,9 @@ const MyMeetings = () => {
 	const [meetings, setMeetings] = useState([]);
 	const [meetingToDelete, setMeetingToDelete] = useState(null);
 	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-	// const [value, setValue] = useState("");
+	const [value, setValue] = useState("");
 	const [isCopied, setIsCopied] = useState(false);
+	const roomID = 65464984987;
 
 	useEffect(() => {
 		// Make an HTTP GET request to fetch meeting data
@@ -130,7 +131,7 @@ const MyMeetings = () => {
 										>
 											<input className="hidden" type="text" name="" id="" />
 											<CopyToClipboard
-												text={"https://meetcast-server.vercel.app/room"}
+												text={`https://meetcast-server.vercel.app/room/${roomID}`}
 												onCopy={() => setIsCopied(true)}
 											>
 												<FaCopy className="mr-2 text-2xl" />

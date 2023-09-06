@@ -90,8 +90,8 @@ const MeetingSchedule = () => {
 			.then((data) => {
 				// Handle the response from the backend if needed
 				console.log("Meeting scheduled:", data);
-				toast.success("Meeting Created Successfully");
-				navigate("/dashboard/myMeetings");
+				// toast.success("Meeting Created Successfully");
+				// navigate("/dashboard/myMeetings");
 			})
 			.catch((error) => {
 				console.error("Error scheduling meeting:", error);
