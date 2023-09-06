@@ -34,20 +34,12 @@ const MyMeetings = () => {
 	};
 
 	const handleJoin = (meetingId) => {
-		// Make an HTTP GET request to fetch the meeting data based on the meetingId
-		fetch(`http://localhost:5000/meetings/${meetingId}`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				console.log("Fetched meeting data:", data);
-			})
-			.catch((error) => {
-				console.error("Error fetching meeting data:", error);
-			});
+		const selectedMeeting = meetings.find((meeting) => meeting._id === meetingId);
+		if (selectedMeeting) {
+			console.log("Selected Meeting Data:", selectedMeeting);
+		} else {
+			console.error("Meeting not found");
+		}
 	};
 
 	const openDeleteDialog = (meetingId) => {
