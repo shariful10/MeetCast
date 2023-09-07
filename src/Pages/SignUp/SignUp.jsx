@@ -6,7 +6,11 @@ import { saveUser } from "../../Components/APIs/auth";
 import SocialLogin from "../../Components/Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../Providers/AuthProvider";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { saveUser } from "../../Components/APIs/auth";
+=======
+import img from "../../assets/images/signup.svg";
+>>>>>>> 7706112eb2571a98086691d8bf35032ce9658c20
 =======
 import img from "../../assets/images/signup.svg";
 >>>>>>> 7706112eb2571a98086691d8bf35032ce9658c20

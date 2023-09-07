@@ -106,26 +106,6 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-<<<<<<< HEAD
-#message-container div {
-  background-color: #ccc;
-  padding: 10px;
-}
-
-#message-container div:nth-child(2n) {
-  color: #fff;
-  background-color: #5364ff;
-}
-
-#send-container {
-  /* position: fixed; */
-  padding-bottom: 30px;
-  bottom: 0;
-  background-color: white;
-  max-width: 1200px;
-  width: 80%;
-  display: flex;
-=======
 /* Add this CSS in your stylesheets or CSS-in-JS solution */
 .custom-tab-list {
   display: flex;
@@ -147,5 +127,4 @@ body {
 
 .custom-tab:hover {
   background-color: #0056b3;
->>>>>>> 7706112eb2571a98086691d8bf35032ce9658c20
 }

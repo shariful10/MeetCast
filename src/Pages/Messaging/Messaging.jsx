@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import { AuthContext } from "../../Providers/AuthProvider";
-import Container from "../../Components/Shared/Container/Container";
-import { BsFillSendFill } from "react-icons/bs";
 
 const socket = io.connect("http://localhost:5001");
 
-const Messaging = () => {
+const Messaging = (roomNumber) => {
   const [room, setRoom] = useState("");
   const [chatHistory, setChathistory] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const { user } = useContext(AuthContext);
+
+  console.log(roomNumber.room)
 
   const chatHistoryRef = useRef(null);
   useEffect(() => {
@@ -21,16 +21,19 @@ const Messaging = () => {
     event.preventDefault();
     const message = event.target.message.value;
     const newMessage = {
-      sender: user?.displayName,
+      sender: user?.email,
       message: message,
+      room: room
     };
     setChathistory((prevHistory) => [...prevHistory, newMessage]);
-    socket.emit("the message", newMessage);
-    console.log(newMessage);
+    console.log(newMessage)
+    socket.emit("messege to server", newMessage);
     setMessageInput("");
   };
 
-  console.log(chatHistory);
+  const handleInputChange = (event) => {
+    setMessageInput(event.target.value);
+  };
 
   useEffect(() => {
     const recievedMessage = (data) => {
@@ -47,65 +50,68 @@ const Messaging = () => {
     event.preventDefault();
     const roomNum = event.target.roomNumber.value;
     setRoom(roomNum);
+  };
 
+  useEffect(()=>{
     if (room !== "") {
       socket.emit("join_room", room);
     }
-  };
-
-  console.log(room);
+  },[room])
 
   return (
-    <Container>
-      <div className="max-w-4xl mx-auto py-10">
+    <div className="w-full border">
+      <div className="w-full">
+        <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
-        <form onSubmit={getRoom} className="border p-6 hidden">
+        <form onSubmit={getRoom} className="border p-1 flex">
           <input
-            className="p-1 m-3 rounded-lg"
+            className="rounded-lg py-1 px-2 mx-3 w-2/3"
             type="text"
             name="roomNumber"
-            placeholder="write here"
+            placeholder="Room Number"
           />
-          <button className="border p-4" type="submit">
-            Submit
+          <button className="border rounded-lg px-3 w-1/3" type="submit">
+            Join
           </button>
         </form>
         {/* ------------room section--------------- */}
-        <div className="bg-slate-400 flex flex-col justify-between  relative">
-          <div
-            className="bg-gray-200 overflow-y-auto p-10 h-[80vh]"
-            ref={chatHistoryRef}
-          >
-            {chatHistory.map((messageData, index) => (
-              <p key={index}>
-                <span className="font-bold text-black">
-                  {messageData.sender === user?.displayName
-                    ? "You"
-                    : messageData.sender}
-                </span>
-                :{messageData.message}
+        <div
+          className="bg-white h-[350px] p-1 overflow-y-auto m-auto my-1 rounded"
+          ref={chatHistoryRef}
+        >
+          {chatHistory.map((messageData, index) => (
+            <div
+              className={`${
+                messageData.sender === user?.email
+                  ? "bg-slate-200  mt-2"
+                  : "bg-green-200 mt-2"
+              } flex rounded-lg flex-col` }
+              key={index}
+            >
+              <p className="font-bold text-black bg-blue-300 p-1 text-left m-1 rounded">
+                {messageData.sender === user?.email
+                  ? "You"
+                  : messageData.sender}
               </p>
-            ))}
-          </div>
-          <form onSubmit={sendMessage} className="absolute bottom-0 w-full">
-            <div className="flex items-center">
-              <input
-                className="p-6 m-3 rounded-lg border w-full focus:outline-0"
-                type="text"
-                name="message"
-                placeholder="write here"
-              />
-              <button
-                className="border p-4 hover:rotate-45 duration-300 flex justify-center items-center"
-                type="submit"
-              >
-                <BsFillSendFill size={30} />
-              </button>
+              <span className="p-1">{messageData.message}</span>
             </div>
-          </form>
+          ))}
         </div>
+        <form onSubmit={sendMessage} className="border p-1 flex justify-center">
+          <input
+            className="rounded-lg py-1 px-2 mx-3 w-2/3"
+            type="text"
+            name="message"
+            placeholder="write here"
+            value={messageInput}
+            onChange={handleInputChange}
+          />
+          <button className="border rounded-lg px-3 w-1/3" type="submit">
+            send
+          </button>
+        </form>
       </div>
-    </Container>
+    </div>
   );
 };
 
