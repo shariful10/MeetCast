@@ -13,6 +13,7 @@ import Meetings from "../Pages/Meetings/Meetings";
 import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import MyMeetings from "../Pages/MyMeetings/MyMeetings";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/dashboard/userProfile",
 				element: <UserProfile />,
+			},
+			{
+				path: "/dashboard/editUserProfile",
+				element: <EditUserProfile></EditUserProfile>
 			},
 			{
 				path: "/dashboard/schedule",

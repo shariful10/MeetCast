@@ -14,8 +14,8 @@ const Meetings = () => {
   return (
     <div className="mt-28 border m-2 p-2">
       <div className="flex">
-        <Users gettingRoomNumber={gettingRoomNumber}></Users>
         <Messaging room={roomNumber}></Messaging>
+        <Users gettingRoomNumber={gettingRoomNumber}></Users>
       </div>
     </div>
   );
