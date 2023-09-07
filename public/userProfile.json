@@ -4,7 +4,11 @@
         "user": {
           "photoURL": "user1-photo-url",
           "displayName": "John Doe",
+<<<<<<< HEAD
           "email": "sr.nashif@gmail.com"
+=======
+          "email": "a.nashif7@gmail.com"
+>>>>>>> 7706112eb2571a98086691d8bf35032ce9658c20
         },
         "personalInfo": {
           "phone": "123-456-7890",

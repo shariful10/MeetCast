@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "react-hot-toast";
-import img from "../../assets/images/signup.svg";
+import { TbFidgetSpinner } from "react-icons/tb";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { saveUser } from "../../Components/APIs/auth";
 import SocialLogin from "../../Components/Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../Providers/AuthProvider";
+<<<<<<< HEAD
 import { saveUser } from "../../Components/APIs/auth";
+=======
+import img from "../../assets/images/signup.svg";
+>>>>>>> 7706112eb2571a98086691d8bf35032ce9658c20
 
 const SignUp = () => {
   const { loading, setLoading, createUser, updateUserProfile } =
@@ -20,10 +24,15 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    // const img = form.image.value;
+    // // console.log(img);
 
     // Image Upload
     const image = form.image.files[0];
     const formData = new FormData();
+
+    console.log(image);
+
     formData.append("image", image);
     const url = `https://api.imgbb.com/1/upload?key=${
       import.meta.env.VITE_IMGBB_API
@@ -35,6 +44,7 @@ const SignUp = () => {
     })
       .then((res) => res.json())
       .then((imageData) => {
+        console.log(imageData);
         const imageUrl = imageData.data.display_url;
         createUser(email, password)
           .then((res) => {

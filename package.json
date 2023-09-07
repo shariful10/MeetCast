@@ -13,18 +13,28 @@
     "@emailjs/browser": "^3.11.0",
     "@headlessui/react": "^1.7.17",
     "@tanstack/react-query": "^4.33.0",
+<<<<<<< HEAD
+=======
+    "@zegocloud/zego-uikit-prebuilt": "^1.8.10",
+>>>>>>> 7706112eb2571a98086691d8bf35032ce9658c20
     "aos": "^3.0.0-beta.6",
     "axios": "^1.5.0",
     "emailjs": "^4.0.2",
     "firebase": "^10.1.0",
+    "flowbite-react": "^0.5.0",
     "framer-motion": "^10.15.1",
     "react": "^18.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.14.2",
     "react-spinners": "^0.13.8",
+<<<<<<< HEAD
+=======
+    "react-tabs": "^6.0.2",
+>>>>>>> 7706112eb2571a98086691d8bf35032ce9658c20
     "react-timezone-select": "^2.1.2",
     "socket.io-client": "^4.7.2",
     "swiper": "^10.1.0"
@@ -34,7 +44,7 @@
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.14",
-    "daisyui": "^3.5.1",
+    "daisyui": "^3.6.4",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
