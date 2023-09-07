@@ -39,7 +39,7 @@ const MyMeetings = () => {
 		const selectedMeeting = meetings.find((meeting) => meeting._id === roomID);
 		if (selectedMeeting) {
 			console.log("Selected Meeting Data:", selectedMeeting);
-			navigate(`/room/${roomID.slice(0, 5)}`);
+			navigate(`/room/${roomID}`);
 		} else {
 			console.error("Meeting not found");
 		}
@@ -125,7 +125,7 @@ const MyMeetings = () => {
 										>
 											<input className="hidden" type="text" name="" id="" />
 											<CopyToClipboard
-												text={`https://meetcast-f74c8.web.app/room/${roomID.slice(0, 5)}`}
+												text={`https://meetcast-f74c8.web.app/room/${roomID}`}
 												onCopy={() => setIsCopied(true)}
 											>
 												<FaCopy className="mr-2 text-2xl" />
@@ -138,7 +138,7 @@ const MyMeetings = () => {
 								</td>
 								<td className="border px-4 py-2">
 									<button
-										onClick={() => openDeleteDialog(meeting._id)}
+										onClick={() => openDeleteDialog(_id)}
 										className="text-red-700 px-4 py-2 rounded-full transition duration-300 ease-in-out"
 									>
 										<FaTrash className="text-2xl text-red-800" />
