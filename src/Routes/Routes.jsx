@@ -8,8 +8,10 @@ import Contact from "../Pages/Contact/Contact";
 import Pricing from "../Pages/Pricing/Pricing";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
-import Messaging from "../Pages/Messaging/Messaging";
-
+import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
+import Meetings from "../Pages/Meetings/Meetings";
+import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
+import MyMeetings from "../Pages/MyMeetings/MyMeetings";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -31,19 +33,19 @@ export const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+      // {
+      // 	path: "/userProfile",
+      // 	element: (
+      // 		<PrivateRoute>
+      // 			<UserProfile />,
+      // 		</PrivateRoute>
+      // 	),
+      // },
       {
-        path: "/userProfile",
+        path: "/meetings",
         element: (
           <PrivateRoute>
-            <UserProfile />,
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/messaging",
-        element: (
-          <PrivateRoute>
-            <Messaging></Messaging>
+            <Meetings></Meetings>
           </PrivateRoute>
         ),
       },
@@ -56,5 +58,27 @@ export const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/userProfile",
+        element: <UserProfile />,
+      },
+      {
+        path: "/dashboard/schedule",
+        element: <MeetingSchedule />,
+      },
+      {
+        path: "/dashboard/myMeetings",
+        element: <MyMeetings />,
+      },
+    ],
   },
 ]);

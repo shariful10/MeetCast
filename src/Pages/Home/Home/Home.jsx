@@ -1,5 +1,6 @@
 import CallToAction from "../CallToAction/CallToAction";
 import FaceToFace from "../FaceToFace/FaceToFace";
+import Features from "../Features/Features";
 import GetInTouch from "../GetInTouch/GetInTouch";
 import HeroSection from "../HeroSection";
 import Services from "../Services/Services";
@@ -11,6 +12,7 @@ const Home = () => {
 			<HeroSection />
 			<Vision />
 			<FaceToFace />
+			<Features />
 			<CallToAction />
 			<Services />
 			<GetInTouch />

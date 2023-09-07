@@ -89,6 +89,15 @@ const Navbar = () => {
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    className="text-lg font-NotoSans  group "
+                    to="/meetings"
+                  >
+                    Join a Meeting
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -122,6 +131,12 @@ const Navbar = () => {
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary   mt-[1px]"></span>
               </Link>
             </li>
+            <li>
+              <Link className="text-lg font-NotoSans  group " to="/meetings">
+                Join a Meetings
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
@@ -151,13 +166,16 @@ const Navbar = () => {
                     </span>
                   </span>
                   <li>
-                    <Link className="font-NotoSans group " to="/userprofile">
+                    <Link
+                      className="font-NotoSans group "
+                      to="/dashboard/userProfile"
+                    >
                       Profile
                       <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                     </Link>
                   </li>
                   <li>
-                    <Link className="font-NotoSans  group " to="/messaging">
+                    <Link className="font-NotoSans  group " to="/schedule">
                       Meeting
                       <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                     </Link>

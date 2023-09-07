@@ -5,7 +5,7 @@ import Container from "../Container/Container";
 const Footer = () => {
   return (
     <Container>
-      <footer className="footer p-10 text-base-content">
+      <footer className="footer py-10 text-base-content">
         <div data-aos="fade-up" data-aos-duration="1200">
           <span className="footer-title">Services</span>
           <Link className="link link-hover">Branding</Link>
@@ -41,7 +41,7 @@ const Footer = () => {
               <input
                 type="text"
                 placeholder="username@site.com"
-                className="input input-bordered w-full pr-16"
+                className="input input-bordered w-full pr-12"
               />
               <button className="btn hover:bg-primary bg-secondary text-white absolute top-0 right-0 rounded-l-none duration-300">
                 Subscribe
