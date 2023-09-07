@@ -12,6 +12,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
+import RoomPage from "../Pages/RoomPage/RoomPage";
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
 	{
 		path: "/signup",
 		element: <SignUp />,
+	},
+	{
+		path: "/room/:roomID",
+		element: <RoomPage />,
 	},
 	{
 		path: "/dashboard",
