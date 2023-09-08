@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import Main from "../Layouts/Main/Main";
 import About from "../Pages/About/About";
+import CheckOut from "../Pages/CheckOut/CheckOut";
 import Contact from "../Pages/Contact/Contact";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -13,65 +14,76 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Main />,
-		// errorElement: <ErrorPage />,
-		children: [
-			{
-				path: "/",
-				element: <Home />,
-			},
-			{
-				path: "/about",
-				element: <About />,
-			},
-			{
-				path: "/pricing",
-				element: <Pricing />,
-			},
-			{
-				path: "/contact",
-				element: <Contact />,
-			},
-			{
-				path: "/meetings",
-				element: (
-					<PrivateRoute>
-						<Meetings></Meetings>
-					</PrivateRoute>
-				),
-			},
-		],
-	},
-	{
-		path: "/login",
-		element: <Login />,
-	},
-	{
-		path: "/signup",
-		element: <SignUp />,
-	},
-	{
-		path: "/dashboard",
-		element: (
-			<PrivateRoute>
-				<DashboardLayout />
-			</PrivateRoute>
-		),
-		children: [
-			{
-				path: "/dashboard/userProfile",
-				element: <UserProfile />,
-			},
-			{
-				path: "/dashboard/schedule",
-				element: <MeetingSchedule />,
-			},
-			{
-				path: "/dashboard/myMeetings",
-				element: <MyMeetings />,
-			},
-		],
-	},
+  {
+    path: "/",
+    element: <Main />,
+    // errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      
+      {
+        path: "/meetings",
+        element: (
+          <PrivateRoute>
+            <Meetings></Meetings>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/checkout/:id",
+        element: (
+          <PrivateRoute>
+            <CheckOut />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/checkout/${params.id}`),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/userProfile",
+        element: <UserProfile />,
+      },
+      {
+        path: "/dashboard/schedule",
+        element: <MeetingSchedule />,
+      },
+      {
+        path: "/dashboard/myMeetings",
+        element: <MyMeetings />,
+      },
+    ],
+  },
 ]);

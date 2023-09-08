@@ -1,6 +1,5 @@
 import React from "react";
 import Container from "../../../Components/Shared/Container/Container";
-import Buttons2 from "../../../Components/Buttons2/Buttons2";
 
 const CallToAction = () => {
 	return (
@@ -25,7 +24,7 @@ const CallToAction = () => {
 						documents, and other visual materials.
 					</p>
 					<div data-aos="fade-up" data-aos-duration="1200">
-						<Buttons2 title={"SignUp Now"} />
+						<buttons2 title={"SignUp Now"} />
 					</div>
 				</div>
 				<div className="absolute inset-0 bg-black opacity-70 rounded-2xl"></div>

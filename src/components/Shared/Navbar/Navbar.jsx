@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../../assets/Logo.svg";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import Logo from "../../../assets/Logo.svg";
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);

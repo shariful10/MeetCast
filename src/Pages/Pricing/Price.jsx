@@ -14,6 +14,7 @@ const Price = () => {
             </p>
             <div className="text-center mt-10">
                 <Buttons title={"View pricing"} />
+               
             </div>
         </div>
     </div>

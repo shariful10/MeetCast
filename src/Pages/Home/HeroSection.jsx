@@ -1,6 +1,6 @@
-import heroBg from "../../assets/banner.png";
 import Container from "../../Components/Shared/Container/Container";
 import VerticalLine from "../../Components/VerticalLine/VerticalLine";
+import heroBg from "../../assets/banner.png";
 import heroImage from "../../assets/hero-image.png";
 
 const HeroSection = () => {

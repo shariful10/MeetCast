@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import TimezoneSelect from 'react-timezone-select';
 import { RiEyeLine, RiEyeOffLine } from 'react-icons/ri';
+import TimezoneSelect from 'react-timezone-select';
 
 const MeetingSchedule = () => {
     const [meetingId, setMeetingId] = useState('');

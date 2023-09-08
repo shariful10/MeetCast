@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../../../Components/Shared/Container/Container";
 import { Link } from "react-router-dom";
+import Container from "../../../Components/Shared/Container/Container";
 
 const GetInTouch = () => {
 	return (

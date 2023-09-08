@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
 import { FaCopy, FaTrash } from 'react-icons/fa';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const MyMeetings = () => {
     const { user } = useContext(AuthContext);

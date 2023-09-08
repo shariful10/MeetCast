@@ -3,12 +3,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 // import { GrLogout } from "react-icons/gr";
 // import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
-import { ImHome } from "react-icons/im";
-import Logo from "../../assets/logo.svg";
-import { MdClose, MdMeetingRoom } from "react-icons/md";
-import { IoLogOut } from "react-icons/io5";
-import { AuthContext } from "../../Providers/AuthProvider";
 import { FaGear } from "react-icons/fa6";
+import { ImHome } from "react-icons/im";
+import { IoLogOut } from "react-icons/io5";
+import { MdClose, MdMeetingRoom } from "react-icons/md";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Logo from "../../assets/logo.svg";
 
 const Sidebar = () => {
 	const navigate = useNavigate();
