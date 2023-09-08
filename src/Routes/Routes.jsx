@@ -12,12 +12,15 @@ import SignUp from "../Pages/SignUp/SignUp";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
+import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 import RoomPage from "../Pages/RoomPage/RoomPage";
 export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Main />,
-		// errorElement: <ErrorPage />,
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: "/",
@@ -70,12 +73,20 @@ export const router = createBrowserRouter([
 				element: <UserProfile />,
 			},
 			{
+				path: "/dashboard/editUserProfile",
+				element: <EditUserProfile></EditUserProfile>
+			},
+			{
 				path: "/dashboard/schedule",
 				element: <MeetingSchedule />,
 			},
 			{
 				path: "/dashboard/myMeetings",
 				element: <MyMeetings />,
+			},
+			{
+				path: "/dashboard/googleCalendar",
+				element: <GoogleCalendar></GoogleCalendar>,
 			},
 		],
 	},
