@@ -1,19 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import Main from "../Layouts/Main/Main";
-import Home from "../Pages/Home/Home/Home";
-import Login from "../Pages/Login/Login";
-import SignUp from "../Pages/SignUp/SignUp";
 import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
-import Pricing from "../Pages/Pricing/Pricing";
-import UserProfile from "../Pages/UserProfile/UserProfile";
-import PrivateRoute from "./PrivateRoute";
-import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
+import Home from "../Pages/Home/Home/Home";
+import Login from "../Pages/Login/Login";
 import Meetings from "../Pages/Meetings/Meetings";
-import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import MyMeetings from "../Pages/MyMeetings/MyMeetings";
+import Pricing from "../Pages/Pricing/Pricing";
+import SignUp from "../Pages/SignUp/SignUp";
+import UserProfile from "../Pages/UserProfile/UserProfile";
+import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
+import PrivateRoute from "./PrivateRoute";
+import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
+import RoomPage from "../Pages/RoomPage/RoomPage";
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -55,6 +57,10 @@ export const router = createBrowserRouter([
 		element: <SignUp />,
 	},
 	{
+		path: "/room/:roomID",
+		element: <RoomPage />,
+	},
+	{
 		path: "/dashboard",
 		element: (
 			<PrivateRoute>
@@ -77,6 +83,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/dashboard/myMeetings",
 				element: <MyMeetings />,
+			},
+			{
+				path: "/dashboard/googleCalendar",
+				element: <GoogleCalendar></GoogleCalendar>,
 			},
 		],
 	},
