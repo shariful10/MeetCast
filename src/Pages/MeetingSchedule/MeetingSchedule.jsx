@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import TimezoneSelect from "react-timezone-select";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProvider";
+import TimezoneSelect from "react-timezone-select";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const MeetingSchedule = () => {
 	const { user } = useContext(AuthContext);

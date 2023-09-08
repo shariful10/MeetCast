@@ -1,7 +1,7 @@
+import Lottie from 'lottie-react';
 import React from 'react';
 import { Link, useRouteError } from 'react-router-dom';
 import image from '../../assets/404.json';
-import Lottie from 'lottie-react';
 
 const ErrorPage = () => {
   const { error } = useRouteError();

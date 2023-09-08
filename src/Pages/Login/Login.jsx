@@ -1,10 +1,10 @@
 import React, { useContext, useRef } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
-import img from "../../assets/images/signup.svg";
-import { AuthContext } from "../../Providers/AuthProvider";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Components/Shared/SocialLogin/SocialLogin";
+import { AuthContext } from "../../Providers/AuthProvider";
+import img from "../../assets/images/signup.svg";
 
 const Login = () => {
   const { loading, setLoading, signIn, resetPassword } =

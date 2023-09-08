@@ -1,5 +1,4 @@
 import React from "react";
-import Buttons from "./../../Components/Buttons/Buttons";
 
 const Pricing = () => {
 	return (
@@ -13,7 +12,7 @@ const Pricing = () => {
 					Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
 				</p>
 				<div className="text-center mt-10">
-					<Buttons title={"View pricing"} />
+					<buttons title={"View pricing"} />
 				</div>
 			</div>
 		</div>
