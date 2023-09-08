@@ -13,6 +13,7 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
 import RoomPage from "../Pages/RoomPage/RoomPage";
+import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/dashboard/myMeetings",
 				element: <MyMeetings />,
+			},
+			{
+				path: "/dashboard/googleCalendar",
+				element: <GoogleCalendar></GoogleCalendar>,
 			},
 		],
 	},
