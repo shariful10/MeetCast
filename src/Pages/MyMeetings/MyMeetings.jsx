@@ -2,18 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaCopy, FaTrash } from "react-icons/fa";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useNavigate } from "react-router-dom";
 
 const MyMeetings = () => {
 	const { user } = useContext(AuthContext);
+	const navigate = useNavigate();
 	const [meetings, setMeetings] = useState([]);
 	const [meetingToDelete, setMeetingToDelete] = useState(null);
 	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-	// const [value, setValue] = useState("");
+	const [value, setValue] = useState("");
 	const [isCopied, setIsCopied] = useState(false);
 
 	useEffect(() => {
 		// Make an HTTP GET request to fetch meeting data
-		fetch(`http://localhost:5000/meetings/${user.email}`, {
+		fetch(`${import.meta.env.VITE_API_URL}/meetings/${user.email}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -33,10 +35,11 @@ const MyMeetings = () => {
 		//
 	};
 
-	const handleJoin = (meetingId) => {
-		const selectedMeeting = meetings.find((meeting) => meeting._id === meetingId);
+	const handleJoin = (roomID) => {
+		const selectedMeeting = meetings.find((meeting) => meeting._id === roomID);
 		if (selectedMeeting) {
 			console.log("Selected Meeting Data:", selectedMeeting);
+			navigate(`/room/${roomID}`);
 		} else {
 			console.error("Meeting not found");
 		}
@@ -55,7 +58,7 @@ const MyMeetings = () => {
 	const handleConfirmDelete = () => {
 		if (meetingToDelete) {
 			// Send an HTTP DELETE request to delete the meeting
-			fetch(`http://localhost:5000/meetings/${meetingToDelete}`, {
+			fetch(`${import.meta.env.VITE_API_URL}/meetings/${meetingToDelete}`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",
@@ -97,15 +100,15 @@ const MyMeetings = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{meetings.map((meeting) => (
-							<tr key={meeting._id}>
-								<td className="border px-4 py-2">{meeting.topic}</td>
-								<td className="border px-4 py-2">{meeting.date}</td>
-								<td className="border px-4 py-2">{meeting.time}</td>
-								<td className="border px-4 py-2">{meeting.duration}</td>
+						{meetings.map(({ _id, topic, date, time, duration, roomID }) => (
+							<tr key={_id}>
+								<td className="border px-4 py-2">{topic}</td>
+								<td className="border px-4 py-2">{date}</td>
+								<td className="border px-4 py-2">{time}</td>
+								<td className="border px-4 py-2">{duration}</td>
 								<td className="border px-4 py-2">
 									<button
-										onClick={() => handleJoin(meeting._id)}
+										onClick={() => handleJoin(_id)}
 										className=" bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-800 text-white px-4 py-2 rounded-full shadow-md transition duration-300 ease-in-out"
 									>
 										Join
@@ -113,7 +116,7 @@ const MyMeetings = () => {
 								</td>
 								<td className="border px-4 py-2">
 									<button
-										onClick={() => handleCopy(meeting._id)}
+										onClick={() => handleCopy(_id)}
 										className="relative text-black px-4 py-2 rounded-full transition duration-300 ease-in-out"
 									>
 										<div
@@ -122,7 +125,7 @@ const MyMeetings = () => {
 										>
 											<input className="hidden" type="text" name="" id="" />
 											<CopyToClipboard
-												text={"https://meetcast-server.vercel.app/room"}
+												text={`https://meetcast-f74c8.web.app/room/${roomID}`}
 												onCopy={() => setIsCopied(true)}
 											>
 												<FaCopy className="mr-2 text-2xl" />
@@ -135,7 +138,7 @@ const MyMeetings = () => {
 								</td>
 								<td className="border px-4 py-2">
 									<button
-										onClick={() => openDeleteDialog(meeting._id)}
+										onClick={() => openDeleteDialog(_id)}
 										className="text-red-700 px-4 py-2 rounded-full transition duration-300 ease-in-out"
 									>
 										<FaTrash className="text-2xl text-red-800" />

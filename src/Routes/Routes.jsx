@@ -14,6 +14,7 @@ import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
 import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import RoomPage from "../Pages/RoomPage/RoomPage";
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
 	{
 		path: "/signup",
 		element: <SignUp />,
+	},
+	{
+		path: "/room/:roomID",
+		element: <RoomPage />,
 	},
 	{
 		path: "/dashboard",

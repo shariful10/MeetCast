@@ -79,7 +79,7 @@ const MeetingSchedule = () => {
 		console.log(formData);
 
 		// Send the form data to the backend for processing
-		fetch("http://localhost:5000/schedule-meeting", {
+		fetch(`${import.meta.env.VITE_API_URL}/schedule-meeting`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -90,8 +90,8 @@ const MeetingSchedule = () => {
 			.then((data) => {
 				// Handle the response from the backend if needed
 				console.log("Meeting scheduled:", data);
-				toast.success("Meeting Created Successfully");
-				navigate("/dashboard/myMeetings");
+				// toast.success("Meeting Created Successfully");
+				// navigate("/dashboard/myMeetings");
 			})
 			.catch((error) => {
 				console.error("Error scheduling meeting:", error);
