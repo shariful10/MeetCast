@@ -15,7 +15,7 @@ const MyMeetings = () => {
 
 	useEffect(() => {
 		// Make an HTTP GET request to fetch meeting data
-		fetch(`${import.meta.env.VITE_API_URL}/meetings/${user.email}`, {
+		fetch(`http://localhost:5000/meetings/${user?.email}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -23,17 +23,13 @@ const MyMeetings = () => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				// Update the state with the fetched meeting data
+				console.log(data)
 				setMeetings(data);
 			})
 			.catch((error) => {
 				console.error("Error fetching meeting data:", error);
 			});
 	}, [user.email]);
-
-	const handleCopy = () => {
-		//
-	};
 
 	const handleJoin = (roomID) => {
 		const selectedMeeting = meetings.find((meeting) => meeting._id === roomID);
@@ -58,7 +54,7 @@ const MyMeetings = () => {
 	const handleConfirmDelete = () => {
 		if (meetingToDelete) {
 			// Send an HTTP DELETE request to delete the meeting
-			fetch(`${import.meta.env.VITE_API_URL}/meetings/${meetingToDelete}`, {
+			fetch(`http://localhost:5000/meetings/${meetingToDelete}`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",
@@ -100,9 +96,9 @@ const MyMeetings = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{meetings.map(({ _id, topic, date, time, duration, roomID }) => (
+						{meetings.map(({ _id, tropic, date, time, duration, roomID }) => (
 							<tr key={_id}>
-								<td className="border px-4 py-2">{topic}</td>
+								<td className="border px-4 py-2">{tropic}</td>
 								<td className="border px-4 py-2">{date}</td>
 								<td className="border px-4 py-2">{time}</td>
 								<td className="border px-4 py-2">{duration}</td>
@@ -116,11 +112,9 @@ const MyMeetings = () => {
 								</td>
 								<td className="border px-4 py-2">
 									<button
-										onClick={() => handleCopy(_id)}
 										className="relative text-black px-4 py-2 rounded-full transition duration-300 ease-in-out"
 									>
 										<div
-											onClick={handleCopy}
 											title={isCopied ? "Copied!" : "Copy to clipboard!"}
 										>
 											<input className="hidden" type="text" name="" id="" />

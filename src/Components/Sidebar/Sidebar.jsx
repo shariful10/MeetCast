@@ -8,7 +8,8 @@ import Logo from "../../assets/logo.svg";
 import { MdClose, MdMeetingRoom } from "react-icons/md";
 import { IoLogOut } from "react-icons/io5";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { FaCalendar, FaGear } from "react-icons/fa6";
+import { FaGear } from "react-icons/fa6";
+import { FaCalendar } from "react-icons/fa";
 
 const Sidebar = () => {
 	const navigate = useNavigate();
