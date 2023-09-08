@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TimezoneSelect from "react-timezone-select";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const MeetingSchedule = () => {
+	const { user } = useContext(AuthContext);
 	const [meetingId, setMeetingId] = useState("");
-	const navigate = useNavigate();
 	const [selectedTimezone, setSelectedTimezone] = useState({ value: "Etc/UTC", label: "UTC" });
 	const [convertedTime, setConvertedTime] = useState("");
 	const [showPasscode, setShowPasscode] = useState(false);
@@ -67,6 +66,7 @@ const MeetingSchedule = () => {
 
 		// Gather the form data to be sent to the backend
 		const formData = {
+			email: user.email,
 			topic: e.target.tropic.value,
 			date: e.target.date.value,
 			time: e.target.time.value,
@@ -79,7 +79,7 @@ const MeetingSchedule = () => {
 		console.log(formData);
 
 		// Send the form data to the backend for processing
-		fetch(`${import.meta.env.VITE_API_URL}/schedule-meeting`, {
+		fetch(`${import.meta.env.VITE_API_URL}/meetings`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -90,8 +90,6 @@ const MeetingSchedule = () => {
 			.then((data) => {
 				// Handle the response from the backend if needed
 				console.log("Meeting scheduled:", data);
-				// toast.success("Meeting Created Successfully");
-				// navigate("/dashboard/myMeetings");
 			})
 			.catch((error) => {
 				console.error("Error scheduling meeting:", error);

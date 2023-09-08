@@ -1,58 +1,57 @@
 import React, { useContext } from "react";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { AuthContext } from "./../../Providers/AuthProvider";
 
 const RoomPage = () => {
-	const { roomID } = useParams();
+	// const { roomID } = useParams();
 	const { user } = useContext(AuthContext);
 
-	const myMeetings = async (element) => {
-		const appID = 2059610707;
-		const serverSecret = "5692269139171731f75d087ec95f3344";
-		const userID = Math.floor(Math.random() * 10000) + "";
-		const userName = user.displayName;
+	const interviewConference = async (element) => {
+		const roomID = "123456";
+		// generate Kit Token
+		const appID = 1281063325;
+		const serverSecret = "012c5ab5c910ebebd7b55310b534709f";
 		const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
 			appID,
 			serverSecret,
 			roomID,
-			userID,
-			userName
+			Date.now().toString(),
+			user.displayName
 		);
 
+		// Create instance object from Kit Token.
 		const zp = ZegoUIKitPrebuilt.create(kitToken);
+		// start the call
 		zp.joinRoom({
 			container: element,
+			scenario: {
+				mode: ZegoUIKitPrebuilt.LiveStreaming,
+			},
+			showRequestToCohostButton: true,
+			showScreenSharingButton: true,
+			showRoomDetailsButton: true,
+			// turnOnCameraWhenJoining:false,
+
 			sharedLinks: [
 				{
-					name: "Copy link",
-					url: `https://meetcast-f74c8.web.app/room/${roomID}`,
+					name: "Invitation link",
+					url:
+						window.location.protocol +
+						"//" +
+						window.location.host +
+						window.location.pathname +
+						"?roomID=" +
+						roomID,
 				},
 			],
-			scenario: {
-				mode: ZegoUIKitPrebuilt.GroupCall,
-				config: {
-					role: "Host",
-				},
-			},
-			showScreenSharingButton: true,
-			showTurnOffRemoteMicrophoneButton: true,
-			showRemoveUserButton: true,
-			lowerLeftNotification: {
-				showUserJoinAndLeave: true,
-			},
-			whiteboardConfig: {
-				showAddImageButton: true,
-				showCreateAndCloseButton: true,
-			},
-			turnOnMicrophoneWhenJoining: true,
 		});
 	};
 
 	return (
 		<div
 			className="myCallContainer"
-			ref={myMeetings}
+			ref={interviewConference}
 			style={{ width: "100vw", height: "100vh" }}
 		></div>
 	);
