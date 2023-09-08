@@ -15,7 +15,6 @@ import PrivateRoute from "./PrivateRoute";
 import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import RoomPage from "../Pages/RoomPage/RoomPage";
-import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
 export const router = createBrowserRouter([
 	{
 		path: "/",
