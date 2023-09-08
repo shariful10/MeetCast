@@ -84,7 +84,7 @@ const Messaging = (roomNumber) => {
               className={`${
                 messageData.sender === user?.email
                   ? "bg-slate-200  mt-2"
-                  : "bg-green-200 mt-2 text-right`"
+                  : "bg-green-200 mt-2"
               } flex rounded-lg flex-col` }
               key={index}
             >

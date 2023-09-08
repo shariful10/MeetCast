@@ -1,18 +1,17 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuth from './useAuth';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 
 
 const useAxiosSecure = () => {
-  // const {logOut} = useContext(AuthContext)
-  const { logOut } = useAuth(); 
+  const { logOut } = useContext(AuthContext); 
   const navigate = useNavigate(); 
   
   
   const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000/', 
+    baseURL: `${import.meta.env.VITE_API_URL}`, 
   });
   
   useEffect(() => {

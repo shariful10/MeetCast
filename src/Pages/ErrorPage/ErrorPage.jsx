@@ -1,31 +1,37 @@
+import Lottie from 'lottie-react';
 import React from 'react';
 import { Link, useRouteError } from 'react-router-dom';
-import image from '../../assets/images/page.jpg';
+import image from '../../assets/404.json';
 
 const ErrorPage = () => {
-    const { error, status } = useRouteError()
-    return (
-        <div className="flex justify-center items-center ">
-            <div className='relative text-center mt-4 pt-4'>
+  const { error } = useRouteError();
 
-                <img className="w-screen h-screen" src={image} alt="" />
+  return (
+    <div className='flex flex-col items-center justify-center min-h-screen'>
+      <div className='max-w-lg'>
+        <Lottie className='w-full' animationData={image} loop={true} />
+      </div>
+      <div
+        className='mt-4 text-center'
+        data-aos='fade-up'
+        data-aos-duration='1200'
+        data-aos-delay='400'
+      >
+        <div className=''>
+          <h3 className='text-xl font-bold mb-6'>
+            {error?.message}
+          </h3>
+          <Link
+            to='/'
+            className='bg-secondary hover:bg-transparent border-2 hover:border-[#1d2130] duration-500 spacing-2 w-2/12 md:w-1/12 px-3 py-2 md:py-3 rounded-md me-2 hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]'
+          >
+            Go to homepage
+          </Link>
 
-                <div className='absolute bottom-8 md:bottom-24 md:left-1/3 px-16'
-                data-aos="fade-up"
-                data-aos-duration="1200"
-                data-aos-delay="700"
-                >
-                    <h1 className="text-6xl font-bold md:font-extrabold">{status}</h1>
-                    <h3 className="text-3xl md:font-semibold my-4">{error?.message}</h3>
-                    <Link to='/'>
-                        <button className="bg-secondary w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white">
-                           Go to homepage
-                        </button>
-                    </Link>
-                </div>
-            </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default ErrorPage;
