@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Container from "../../Components/Shared/Container/Container";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../../Providers/AuthProvider";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
