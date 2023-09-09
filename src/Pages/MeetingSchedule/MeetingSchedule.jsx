@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import TimezoneSelect from "react-timezone-select";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const MeetingSchedule = () => {
 	const { user } = useContext(AuthContext);
 	const [meetingId, setMeetingId] = useState("");
+	const navigate = useNavigate();
 	const [selectedTimezone, setSelectedTimezone] = useState({ value: "Etc/UTC", label: "UTC" });
 	const [convertedTime, setConvertedTime] = useState("");
 	const [showPasscode, setShowPasscode] = useState(false);
@@ -42,8 +44,6 @@ const MeetingSchedule = () => {
 		}
 	}
 
-	const defaultTopic = "Let's Discuss";
-
 	const hoursOptions = Array.from({ length: 24 }, (_, i) => i.toString());
 	const minutesOptions = Array.from({ length: 60 }, (_, i) => i.toString());
 
@@ -63,23 +63,32 @@ const MeetingSchedule = () => {
 		e.preventDefault();
 		const totalDurationMinutes =
 			parseInt(meetingDurationHours) * 60 + parseInt(meetingDurationMinutes);
+		const form = e.target;
+		const email = user.email;
+		const tropic = form.tropic.value;
+		const date = form.date.value;
+		const time = form.time.value;
+		const roomID = form.roomID.value;
+		const timezone = selectedTimezone.value;
+		const duration = totalDurationMinutes;
+		const passcode = form.passcode.value;
 
 		// Gather the form data to be sent to the backend
 		const formData = {
-			email: user.email,
-			topic: e.target.tropic.value,
-			date: e.target.date.value,
-			time: e.target.time.value,
-			roomID: e.target.roomID.value,
-			timezone: selectedTimezone.value,
-			duration: totalDurationMinutes,
-			passcode: e.target.passcode.value,
+			email,
+			tropic,
+			date,
+			time,
+			timezone,
+			roomID,
+			duration,
+			passcode,
 		};
 
 		console.log(formData);
 
 		// Send the form data to the backend for processing
-		fetch(`${import.meta.env.VITE_API_URL}/meetings`, {
+		fetch(`http://localhost:5000/meetings`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -90,6 +99,7 @@ const MeetingSchedule = () => {
 			.then((data) => {
 				// Handle the response from the backend if needed
 				console.log("Meeting scheduled:", data);
+				navigate("/dashboard/myMeetings");
 			})
 			.catch((error) => {
 				console.error("Error scheduling meeting:", error);
@@ -106,7 +116,7 @@ const MeetingSchedule = () => {
 						<input
 							type="text"
 							name="tropic"
-							defaultValue={defaultTopic}
+							defaultValue="Lets schedule"
 							className="w-1/2 border font-serif rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
 						/>
 					</div>

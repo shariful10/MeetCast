@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "./../../Providers/AuthProvider";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "./../../Providers/AuthProvider";
 import RoomModal from "./RoomModal";
 
 const RoomSection = ({ gettingRoomNumber }) => {

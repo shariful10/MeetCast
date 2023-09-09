@@ -3,17 +3,18 @@ import { NavLink, useNavigate } from "react-router-dom";
 // import { GrLogout } from "react-icons/gr";
 // import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
-import { ImHome } from "react-icons/im";
+import { FaCalendar } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
 import Logo from "../../assets/logo.svg";
-import { MdClose, MdMeetingRoom } from "react-icons/md";
-import { IoLogOut } from "react-icons/io5";
-import { AuthContext } from "../../Providers/AuthProvider";
-import { FaCalendar, FaGear } from "react-icons/fa6";
+// import { AuthContext } from "../../Providers/AuthProvider";
+import { MdClose, MdMeetingRoom } from 'react-icons/md';
+import { IoLogOut } from 'react-icons/io5';
+import { ImHome } from 'react-icons/im';
+import useAuth from "../Hooks/useAuth";
 
 const Sidebar = () => {
 	const navigate = useNavigate();
-	// const [toggle, setToggle] = useState(false);
-	const { logOut } = useContext(AuthContext);
+	const { logOut } = useAuth();
 	const [isActive, setActive] = useState("false");
 
 	// const toggleHandler = (event) => {

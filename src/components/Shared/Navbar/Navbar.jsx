@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../../assets/Logo.svg";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import Logo from "../../../assets/Logo.svg";
 
 const Navbar = () => {
   const [scrolling, setScrolling] = useState(false);
@@ -72,7 +72,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-lg font-NotoSans  group " to="/about">
+                  <Link className="text-lg font-NotoSans  group" to="/about">
                     About
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                   </Link>
@@ -84,14 +84,14 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="text-lg font-NotoSans  group " to="/contact">
+                  <Link className="text-lg font-NotoSans  group" to="/contact">
                     Contact
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                   </Link>
                 </li>
                 <li>
                   <Link
-                    className="text-lg font-NotoSans  group "
+                    className="text-lg font-NotoSans group"
                     to="/meetings"
                   >
                     Join a Meeting
