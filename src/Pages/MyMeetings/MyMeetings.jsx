@@ -96,9 +96,9 @@ const MyMeetings = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{meetings.map(({ _id, topic, date, time, duration, roomID }) => (
+						{meetings.map(({ _id, tropic, date, time, duration, roomID }) => (
 							<tr key={_id}>
-								<td className="border px-4 py-2">{topic}</td>
+								<td className="border px-4 py-2">{tropic}</td>
 								<td className="border px-4 py-2">{date}</td>
 								<td className="border px-4 py-2">{time}</td>
 								<td className="border px-4 py-2">{duration}</td>
