@@ -7,9 +7,10 @@ const Meetings = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    fetch("userProfile.json")
+    fetch("../../../public/userProfile.json")
       .then((res) => res.json())
-      .then((data) => setUserInfo(data));
+      .then((data) => setUserInfo(data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   return (
