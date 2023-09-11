@@ -17,28 +17,33 @@ import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
+import BlogPage from "../Pages/Blog/BlogPage";
 export const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Main />,
-		errorElement: <ErrorPage />,
-		children: [
-			{
-				path: "/",
-				element: <Home />,
-			},
-			{
-				path: "/about",
-				element: <About />,
-			},
-			{
-				path: "/pricing",
-				element: <Pricing />,
-			},
-			{
-				path: "/contact",
-				element: <Contact />,
-			},
+  {
+    path: "/",
+    element: <Main />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+      },
+      {
+        path: "/blog",
+        element: <BlogPage />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
       {
         path: "/checkout/:id",
         element: (
@@ -49,56 +54,56 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/checkout/${params.id}`),
       },
-			{
-				path: "/meetings",
-				element: (
-					<PrivateRoute>
-						<Meetings></Meetings>
-					</PrivateRoute>
-				),
-			},
-		],
-	},
-	{
-		path: "/login",
-		element: <Login />,
-	},
-	{
-		path: "/signup",
-		element: <SignUp />,
-	},
-	{
-		path: "/room/:roomID",
-		element: <RoomPage />,
-	},
-	{
-		path: "/dashboard",
-		element: (
-			<PrivateRoute>
-				<DashboardLayout />
-			</PrivateRoute>
-		),
-		children: [
-			{
-				path: "/dashboard/userProfile",
-				element: <UserProfile />,
-			},
-			{
-				path: "/dashboard/editUserProfile",
-				element: <EditUserProfile></EditUserProfile>
-			},
-			{
-				path: "/dashboard/schedule",
-				element: <MeetingSchedule />,
-			},
-			{
-				path: "/dashboard/myMeetings",
-				element: <MyMeetings />,
-			},
-			{
-				path: "/dashboard/googleCalendar",
-				element: <GoogleCalendar></GoogleCalendar>,
-			},
-		],
-	},
+      {
+        path: "/meetings",
+        element: (
+          <PrivateRoute>
+            <Meetings></Meetings>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/room/:roomID",
+    element: <RoomPage />,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/userProfile",
+        element: <UserProfile />,
+      },
+      {
+        path: "/dashboard/editUserProfile",
+        element: <EditUserProfile></EditUserProfile>,
+      },
+      {
+        path: "/dashboard/schedule",
+        element: <MeetingSchedule />,
+      },
+      {
+        path: "/dashboard/myMeetings",
+        element: <MyMeetings />,
+      },
+      {
+        path: "/dashboard/googleCalendar",
+        element: <GoogleCalendar></GoogleCalendar>,
+      },
+    ],
+  },
 ]);

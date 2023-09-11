@@ -84,6 +84,12 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link className="text-lg font-NotoSans  group " to="/blog">
+                    Blog
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
+                  </Link>
+                </li>
+                <li>
                   <Link className="text-lg font-NotoSans  group " to="/contact">
                     Contact
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
@@ -122,6 +128,12 @@ const Navbar = () => {
             <li>
               <Link className="text-lg font-NotoSans  group " to="/pricing">
                 Pricing
+                <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary   mt-[1px]"></span>
+              </Link>
+            </li>
+            <li>
+              <Link className="text-lg font-NotoSans  group " to="/blog">
+                Blog
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary   mt-[1px]"></span>
               </Link>
             </li>
@@ -166,13 +178,19 @@ const Navbar = () => {
                     </span>
                   </span>
                   <li>
-                    <Link className="font-NotoSans group " to="/dashboard/userProfile">
+                    <Link
+                      className="font-NotoSans group "
+                      to="/dashboard/userProfile"
+                    >
                       Profile
                       <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                     </Link>
                   </li>
                   <li>
-                    <Link className="font-NotoSans  group " to="/dashboard/schedule">
+                    <Link
+                      className="font-NotoSans  group "
+                      to="/dashboard/schedule"
+                    >
                       Meeting
                       <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                     </Link>

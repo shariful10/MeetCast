@@ -24,8 +24,6 @@ function PricingToggle() {
 
   // get monthly data
 
-
-
   // get yearly data
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +41,7 @@ function PricingToggle() {
     };
 
     fetchData();
-  }, [isMonthly,pricingData]);
+  }, [isMonthly, pricingData]);
 
   return (
     <Container>
@@ -52,7 +50,7 @@ function PricingToggle() {
           <div className="lg:absolute rounded-full  Blur_Gradient top-32 left-0  lg:w-[520px] lg:h-[520px]"></div>
 
           <div className="text-center px-10 mb-8">
-            <h2 className="text-5xl mb-4 font-semibold">
+            <h2 className="text-5xl mb-4 font-extrabold">
               Pricing plans that suit you
             </h2>
             <p>
