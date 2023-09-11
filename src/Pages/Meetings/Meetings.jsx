@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Messaging from "./Messaging";
 import Users from "./Users";
 import Chats from "./Chats";
+
 const Meetings = () => {
-  const [roomNumber, setRoomNumber] = useState()
-  const gettingRoomNumber = (getRoomId) => {
-    const room = getRoomId
-    setRoomNumber(room)
-  }
+  const [userInfo, setUserInfo] = useState(null);
 
-  console.log("room from roomsection", roomNumber)
-
+  useEffect(() => {
+    fetch("userProfile.json")
+      .then((res) => res.json())
+      .then((data) => setUserInfo(data));
+  }, []);
 
   return (
-    <div className="mt-28 border m-2 p-2">
-      <div className="flex">
-        <Chats></Chats>
-        <Messaging room={roomNumber}></Messaging>
-        <Users gettingRoomNumber={gettingRoomNumber}></Users>
+    <div className="mt-28 pb-3 m-2 h-screen">
+      <div className="flex h-screen">
+        <Chats userInfo={userInfo}></Chats>
+        <Messaging></Messaging>
+        <Users userInfo={userInfo}></Users>
       </div>
     </div>
   );

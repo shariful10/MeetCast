@@ -1,9 +1,14 @@
-import React from "react";
-// import photo from "https://ibb.co/rw1r7Zd"
+import React, { useContext } from "react";
+import Conversations from "./Conversations";
+import { AuthContext } from "../../Providers/AuthProvider";
 
-const Chats = () => {
+const Chats = ({ userInfo }) => {
+  const { user } = useContext(AuthContext);
+
+  const friends = userInfo?.filter(friend=>friend.friendShip === "friends")
+
   return (
-    <div className="w-3/6 p-2">
+    <div className="w-3/12 p-2 h-screen" style={{ overflowY: "scroll" }}>
       <div>
         <input
           type="text"
@@ -11,35 +16,10 @@ const Chats = () => {
           className="w-full h-[30px] p-1 border"
         />
       </div>
-      <div className="flex flex-row border m-1 shadow-md rounded-lg hover:bg-slate-200 font-bold p-2">
-        <img src="https://i.ibb.co/HHk8Frh/Jashim.jpg" alt="" className="h-[50px] w-[50px] border rounded-full" />
-        <div className="m-3">
-          <p className="m-auto">Md. Shariful Islam</p>
-        </div>
-      </div>
-      <div className="flex flex-row border m-1 shadow-md rounded-lg hover:bg-slate-200 font-bold p-2">
-        <img src="https://i.ibb.co/HHk8Frh/Jashim.jpg" alt="" className="h-[50px] w-[50px] border rounded-full" />
-        <div className="m-3">
-          <p className="m-auto">Ahemd Nashif</p>
-        </div>
-      </div>
-      <div className="flex flex-row border m-1 shadow-md rounded-lg hover:bg-slate-200 font-bold p-2">
-        <img src="https://i.ibb.co/HHk8Frh/Jashim.jpg" alt="" className="h-[50px] w-[50px] border rounded-full" />
-        <div className="m-3">
-          <p className="m-auto">Akhtar Hossain</p>
-        </div>
-      </div>
-      <div className="flex flex-row border m-1 shadow-md rounded-lg hover:bg-slate-200 font-bold p-2">
-        <img src="https://i.ibb.co/HHk8Frh/Jashim.jpg" alt="" className="h-[50px] w-[50px] border rounded-full" />
-        <div className="m-3">
-          <p className="m-auto">Pranto Sheikh</p>
-        </div>
-      </div>
-      <div className="flex flex-row border m-1 shadow-md rounded-lg hover:bg-slate-200 font-bold p-2">
-        <img src="https://i.ibb.co/HHk8Frh/Jashim.jpg" alt="" className="h-[50px] w-[50px] border rounded-full" />
-        <div className="m-3">
-          <p className="m-auto">Sultan Mahmud Shuvo</p>
-        </div>
+      <div>
+        {friends?.map((info) => (
+          <Conversations key={info.id} info={info}></Conversations>
+        ))}
       </div>
     </div>
   );
