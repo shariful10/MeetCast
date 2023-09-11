@@ -7,14 +7,14 @@ import { ImHome } from "react-icons/im";
 import { AiOutlineBars } from "react-icons/ai";
 import { FaCalendar } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
+import Logo from "../../assets/logo.svg";
+// import { AuthContext } from "../../Providers/AuthProvider";
 import { IoLogOut } from "react-icons/io5";
-import { AuthContext } from "../../Providers/AuthProvider";
-import Logo from "../../assets/Logo.svg";
+import useAuth from "../Hooks/useAuth";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  // const [toggle, setToggle] = useState(false);
-  const { logOut } = useContext(AuthContext);
+  const { logOut } = useAuth();
   const [isActive, setActive] = useState("false");
 
   // const toggleHandler = (event) => {

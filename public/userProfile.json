@@ -1,77 +1,47 @@
 [
   {
-    "userProfile": {
-      "user": {
-        "photoURL": "user1-photo-url",
-        "displayName": "John Doe",
-        "email": "a.nashif7@gmail.com"
-      },
-      "personalInfo": {
-        "phone": "123-456-7890",
-        "language": "English",
-        "timeZone": "(GMT-4:00) Eastern Time",
-        "dateFormat": "dd/mm/yyyy",
-        "timeFormat": "Use 24-hour time"
-      },
-      "meetingInfo": {
-        "personalMeeting": "https://example.com/user1-profile",
-        "hostKey": "user1-host-key"
-      },
-      "signInInfo": {
-        "signInEmail": "john@example.com",
-        "signInPassword": "password123",
-        "linkedAccounts": "https://example.com/user1-profile"
-      }
-    }
+    "id": 1,
+    "displayName": "Alice Smith",
+    "email": "alice@example.com",
+    "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
+    "profileURL": "https://example.com/alicesmith-profile",
+    "userStatus": "online",
+    "friendShip": "friends" 
   },
   {
-    "userProfile": {
-      "user": {
-        "photoURL": "user2-photo-url",
-        "displayName": "Jane Smith",
-        "email": "jane@example.com"
-      },
-      "personalInfo": {
-        "phone": "987-654-3210",
-        "language": "Spanish",
-        "timeZone": "(GMT-7:00) Pacific Time",
-        "dateFormat": "mm/dd/yyyy",
-        "timeFormat": "Use 12-hour time"
-      },
-      "meetingInfo": {
-        "personalMeeting": "https://example.com/user2-profile",
-        "hostKey": "user2-host-key"
-      },
-      "signInInfo": {
-        "signInEmail": "jane@example.com",
-        "signInPassword": "password456",
-        "linkedAccounts": "https://example.com/user2-profile"
-      }
-    }
+    "id": 2,
+    "displayName": "Bob Johnson",
+    "email": "bob@example.com",
+    "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
+    "profileURL": "https://example.com/bobjohnson-profile",
+    "userStatus": "offline",
+    "friendShip": "notFriends" 
   },
   {
-    "userProfile": {
-      "user": {
-        "photoURL": "user3-photo-url",
-        "displayName": "Michael Johnson",
-        "email": "michael@example.com"
-      },
-      "personalInfo": {
-        "phone": "555-123-4567",
-        "language": "French",
-        "timeZone": "(GMT+2:00) Paris Time",
-        "dateFormat": "yyyy-mm-dd",
-        "timeFormat": "Use 12-hour time"
-      },
-      "meetingInfo": {
-        "personalMeeting": "https://example.com/user3-profile",
-        "hostKey": "user3-host-key"
-      },
-      "signInInfo": {
-        "signInEmail": "michael@example.com",
-        "signInPassword": "password789",
-        "linkedAccounts": "https://example.com/user3-profile"
-      }
-    }
+    "id": 3,
+    "displayName": "Ella Brown",
+    "email": "ella@example.com",
+    "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
+    "profileURL": "https://example.com/ellabrown-profile",
+    "userStatus": "offline",
+    "friendShip": "friends" 
+  },
+  {
+    "id": 4,
+    "displayName": "Grace Davis",
+    "email": "grace@example.com",
+    "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
+    "profileURL": "https://example.com/gracedavis-profile",
+    "userStatus": "online",
+    "friendShip": "notFriends" 
+  },
+  {
+    "id": 5,
+    "displayName": "Grace Dublin",
+    "email": "dublin@example.com",
+    "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
+    "profileURL": "https://example.com/gracedublin-profile",
+    "userStatus": "online",
+    "friendShip": "friends" 
   }
 ]

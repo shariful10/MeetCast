@@ -4,13 +4,11 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 const socket = io.connect("http://localhost:5001");
 
-const Messaging = (roomNumber) => {
+const Messaging = () => {
   const [room, setRoom] = useState("");
   const [chatHistory, setChathistory] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const { user } = useContext(AuthContext);
-
-  console.log(roomNumber.room)
 
   const chatHistoryRef = useRef(null);
   useEffect(() => {
@@ -59,32 +57,32 @@ const Messaging = (roomNumber) => {
   },[room])
 
   return (
-    <div className="w-full border">
-      <div className="w-full">
+    <div className="w-6/12 h-full border">
+      <div className="w-full bg-slate-300">
         <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
         {/* ------------room section--------------- */}
-        <form onSubmit={getRoom} className="border p-1 flex">
+        <form onSubmit={getRoom} className="p-1 flex">
           <input
             className="rounded-lg py-1 px-2 mx-3 w-2/3"
             type="text"
             name="roomNumber"
             placeholder="Room Number"
           />
-          <button className="border rounded-lg px-3 w-1/3" type="submit">
+          <button className="rounded-lg px-3 w-1/3" type="submit">
             Join
           </button>
         </form>
         {/* ------------room section--------------- */}
         <div
-          className="bg-white h-[350px] p-1 overflow-y-auto m-auto my-1 rounded"
+          className="bg-white h-[500px] p-1 overflow-y-auto m-auto my-1 rounded"
           ref={chatHistoryRef}
         >
           {chatHistory.map((messageData, index) => (
             <div
               className={`${
                 messageData.sender === user?.email
-                  ? "bg-slate-200  mt-2"
-                  : "bg-green-200 mt-2 text-right`"
+                  ? "bg-slate-200  mt-1"
+                  : "bg-green-200 mt-1 text-right`"
               } flex rounded-lg flex-col` }
               key={index}
             >
@@ -97,16 +95,16 @@ const Messaging = (roomNumber) => {
             </div>
           ))}
         </div>
-        <form onSubmit={sendMessage} className="border p-1 flex justify-center">
+        <form onSubmit={sendMessage} className="p-1 flex justify-center">
           <input
-            className="rounded-lg py-1 px-2 mx-3 w-2/3"
+            className="rounded-lg py-1 px-1 mx-3 w-2/3"
             type="text"
             name="message"
             placeholder="write here"
             value={messageInput}
             onChange={handleInputChange}
           />
-          <button className="border rounded-lg px-3 w-1/3" type="submit">
+          <button className="rounded-lg w-1/3 btn" type="submit">
             send
           </button>
         </form>

@@ -66,7 +66,7 @@ const GetInTouch = () => {
                 data-aos-delay="1000"
               />
               <button
-                className="bg-secondary px-5 md:px-10 py-4 rounded md:font-semibold font-NotoSans get_started_button text-white hover:rounded-md w-full"
+                className="bg-secondary px-5 md:px-10 py-4 rounded-full md:font-semibold font-NotoSans text-white w-full hover:outline hover:bg-transparent outline-white duration-500 -outline-offset-2"
                 data-aos="fade-up"
                 data-aos-duration="1200"
                 data-aos-delay="1400"
