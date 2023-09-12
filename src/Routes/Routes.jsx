@@ -64,7 +64,7 @@ export const router = createBrowserRouter([
         path: "/meetings",
         element: (
           <PrivateRoute>
-            <Meetings></Meetings>
+            <ChatRoom></ChatRoom>
           </PrivateRoute>
         ),
       },
