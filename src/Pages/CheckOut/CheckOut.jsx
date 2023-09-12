@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import Container from "../../Components/Shared/Container/Container";
 import { AuthContext } from "../../Providers/AuthProvider";
-import Address from "./address";
+import Address from "./Address";
 
 const CheckOut = () => {
   const { user } = useContext(AuthContext);
@@ -62,17 +62,16 @@ const CheckOut = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-
-    data.planId = _id
+    data.planId = _id;
     // order
-    fetch(`${import.meta.env.VITE_API_URL}/userAddress/order`, {
+    fetch(`${import.meta.env.VITE_API_URL}/order`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((result) => {
-      window.location.replace(result.url)
+        window.location.replace(result.url);
         console.log(result);
       })
       .catch((error) => {

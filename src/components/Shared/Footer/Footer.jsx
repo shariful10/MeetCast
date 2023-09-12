@@ -32,11 +32,13 @@ const Footer = () => {
             <Link className="link link-hover">Privacy policy</Link>
             <Link className="link link-hover">Cookie policy</Link>
           </div>
-          <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="700">
+          <div>
             <span className="footer-title">Newsletter</span>
             <div className="form-control w-80">
               <label className="label">
-                <span className="label-text">Enter your email address</span>
+                <span className="label-text text-white">
+                  Enter your email address
+                </span>
               </label>
               <div className="relative">
                 <input

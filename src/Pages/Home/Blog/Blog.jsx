@@ -14,14 +14,14 @@ const Blog = () => {
         <h2 className="text-5xl font-extrabold font-manrope mb-16">
           Our Latest Blog Posts
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-          <div className="max-w-[380px]  hover:-translate-y-3 duration-500">
-            <img src={blog1} alt="Blog 1 Image" />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 xl:grid-cols-3 space-y-8 lg:space-y-0">
+          <div className="w-full lg:max-w-[380px]  hover:-translate-y-3 duration-500">
+            <img className="w-full" src={blog1} alt="Blog 1 Image" />
             <div className="flex items-center gap-4 mt-3 font-bold text-gray-500">
               <p>08-09-2023</p>
               <p>Category</p>
             </div>
-            <h2 className="text-xl font-extrabold font-manrope my-3">
+            <h2 className="text-xl sm:text-3xl lg:text-lg font-extrabold font-manrope my-3">
               Believing neglected so so allowance existence departure.
             </h2>
             <p className="text-gray-400">
@@ -29,13 +29,13 @@ const Blog = () => {
               curiosity day assurance bed necessary.
             </p>
           </div>
-          <div className="max-w-[380px] hover:-translate-y-3 duration-500">
-            <img src={blog2} alt="Blog 1 Image" />
+          <div className="w-full lg:max-w-[380px] hover:-translate-y-3 duration-500">
+            <img className="w-full" src={blog2} alt="Blog 1 Image" />
             <div className="flex items-center gap-4 mt-3 font-bold text-gray-500">
               <p>08-09-2023</p>
               <p>Category</p>
             </div>
-            <h2 className="text-xl font-extrabold font-manrope my-3">
+            <h2 className="text-xl sm:text-3xl lg:text-lg font-extrabold font-manrope my-3">
               In design active temper be uneasy. Thirty for remove plenty regard
               you.
             </h2>
@@ -55,7 +55,7 @@ const Blog = () => {
                   <p>08-09-2023</p>
                   <p>Category</p>
                 </div>
-                <h2 className="text-lg font-extrabold font-manrope ">
+                <h2 className="font-extrabold font-manrope ">
                   Believing neglected so so allowance existence departure.
                 </h2>
               </div>
@@ -69,7 +69,7 @@ const Blog = () => {
                   <p>08-09-2023</p>
                   <p>Category</p>
                 </div>
-                <h2 className="text-lg font-extrabold font-manrope ">
+                <h2 className=" font-extrabold font-manrope ">
                   Believing neglected so so allowance existence departure.
                 </h2>
               </div>
@@ -83,7 +83,7 @@ const Blog = () => {
                   <p>08-09-2023</p>
                   <p>Category</p>
                 </div>
-                <h2 className="text-lg font-extrabold font-manrope ">
+                <h2 className="font-extrabold font-manrope ">
                   Believing neglected so so allowance existence departure.
                 </h2>
               </div>
@@ -97,7 +97,7 @@ const Blog = () => {
                   <p>08-09-2023</p>
                   <p>Category</p>
                 </div>
-                <h2 className="text-lg font-extrabold font-manrope ">
+                <h2 className="font-extrabold font-manrope ">
                   Believing neglected so so allowance existence departure.
                 </h2>
               </div>

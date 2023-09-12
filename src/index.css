@@ -63,6 +63,34 @@ body {
 	color: #fff;
 }
 
+.primary_button {
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  outline: 3px solid rgba(255, 255, 255, 0);
+}
+
+.primary_button:hover {
+  outline: 3px solid #1d2130;
+  outline-offset: -8px;
+  background-color: transparent;
+  color: #1d2130;
+}
+
+.secondary_button {
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  outline: 3px solid #6b7cff;
+}
+
+.secondary_button:hover {
+  outline: 3px solid #6b7cff;
+  outline-offset: -8px;
+  background-color: transparent;
+  color: #fff;
+}
+
 .sign_up {
 	border: none;
 	border-radius: 5px;
