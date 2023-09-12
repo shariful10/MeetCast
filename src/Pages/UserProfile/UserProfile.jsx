@@ -15,7 +15,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     axiosSecure
-      .get("/userProfile")
+      .get("/users")
       .then((response) => {
         const userProfile = response.data.find(
           (data) => data?.signInEmail === user.email

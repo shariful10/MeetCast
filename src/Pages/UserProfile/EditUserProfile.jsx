@@ -11,7 +11,7 @@ const EditUserProfile = () => {
 
   useEffect(() => {
     axiosSecure
-      .get("/userProfile")
+      .get("/users")
       .then((response) => {
         const userProfile = response.data.find(
           (data) => data?.signInEmail === user.email
@@ -33,23 +33,24 @@ const EditUserProfile = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    const updateProfile = {
-      ...data,
+    // Prepare the updated user profile data
+    const updatedUserProfile = {
+      ...userProfileData, // Keep the existing data
+      ...data, // Update with new form data
     };
 
-    console.log(" updating ", updateProfile);
+    console.log("Updating profile", updatedUserProfile);
 
-    axiosSecure.post("/userProfile", updateProfile).then((res) => {
-      console.log(res);
-    });
-    // axiosSecure
-    //   .put(`/userProfile/${user.email}`, updateProfile)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error updating profile:", error);
-    //   });
+    // Send the updated user profile to the server
+    axiosSecure
+      .put(`/users/${user.email}`, updatedUserProfile)
+      .then((res) => {
+        console.log("Profile update response:", res);
+        // You can perform further actions here if needed
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
   };
 
   return (
