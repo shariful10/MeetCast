@@ -5,126 +5,126 @@
 @tailwind utilities;
 
 body {
-  --black: #111111;
-  --white: #fdfdfd;
-  --green: #22cc88;
-  --blue: #0055ff;
-  --purple: #8855ff;
-  --red: #ff0055;
-  --orange: #ee4444;
-  --yellow: #ffcc00;
-  --mustard: #ffaa00;
+	--black: #111111;
+	--white: #fdfdfd;
+	--green: #22cc88;
+	--blue: #0055ff;
+	--purple: #8855ff;
+	--red: #ff0055;
+	--orange: #ee4444;
+	--yellow: #ffcc00;
+	--mustard: #ffaa00;
 
-  --background: var(--white);
-  --accent: var(--black);
+	--background: var(--white);
+	--accent: var(--black);
 
-  background-color: var(--background);
-  color: var(--accent);
+	background-color: var(--background);
+	color: var(--accent);
 }
 
-.primary_Link to="/checkout" {
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  outline: 3px solid rgba(255, 255, 255, 0);
+.primary_Link {
+	border: none;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	outline: 3px solid rgba(255, 255, 255, 0);
 }
 
-.primary_Link to="/checkout":hover {
-  outline: 3px solid #1d2130;
-  outline-offset: -8px;
-  background-color: transparent;
-  color: #1d2130;
+.primary_Link:hover {
+	outline: 3px solid #1d2130;
+	outline-offset: -8px;
+	background-color: transparent;
+	color: #1d2130;
 }
 
-.secondary_Link to="/checkout" {
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  outline: 3px solid #6b7cff;
+.secondary_Link {
+	border: none;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	outline: 3px solid #6b7cff;
 }
 
-.secondary_Link to="/checkout":hover {
-  outline: 3px solid #6b7cff;
-  outline-offset: -8px;
-  background-color: transparent;
-  color: #fff;
+.secondary_Link:hover {
+	outline: 3px solid #6b7cff;
+	outline-offset: -8px;
+	background-color: transparent;
+	color: #fff;
 }
 
-.get_started_Link to="/checkout" {
-  border: none;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  outline: 3px solid transparent;
+.get_started_Link {
+	border: none;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	outline: 3px solid transparent;
 }
 
-.get_started_Link to="/checkout":hover {
-  outline: 2px solid #fff;
-  background-color: transparent;
-  color: #fff;
+.get_started_Link:hover {
+	outline: 2px solid #fff;
+	background-color: transparent;
+	color: #fff;
 }
 
 .sign_up {
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  outline: 3px solid #6b7cff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+	outline: 3px solid #6b7cff;
 }
 
 .sign_up:hover {
-  outline: 3px solid #6b7cff;
-  background-color: #fff;
-  color: #6b7cff;
-  border-radius: 8px;
+	outline: 3px solid #6b7cff;
+	background-color: #fff;
+	color: #6b7cff;
+	border-radius: 8px;
 }
 
 .Blur_Gradient {
-  background: radial-gradient(
-    2762.36% 537.65% at -49.5% -250%,
-    #d798e1 17.55%,
-    hsl(126, 85%, 50%) 27.56%,
-    #8ab5e9 49.89%,
-    #c9d4ef 56.53%,
-    #cacffa 65.69%
-  );
-  filter: blur(235px);
+	background: radial-gradient(
+		2762.36% 537.65% at -49.5% -250%,
+		#d798e1 17.55%,
+		hsl(126, 85%, 50%) 27.56%,
+		#8ab5e9 49.89%,
+		#c9d4ef 56.53%,
+		#cacffa 65.69%
+	);
+	filter: blur(235px);
 }
 
 .Pricing_Blur_Gradient {
-  background: radial-gradient(
-    2762.36% 537.65% at -49.5% -250%,
-    #e641ff 17.55%,
-    #40ff53 27.56%,
-    #64a9fd 49.89%,
-    #c9d4ef 56.53%,
-    #5364ff 65.69%
-  );
-  filter: blur(210px);
+	background: radial-gradient(
+		2762.36% 537.65% at -49.5% -250%,
+		#e641ff 17.55%,
+		#40ff53 27.56%,
+		#64a9fd 49.89%,
+		#c9d4ef 56.53%,
+		#5364ff 65.69%
+	);
+	filter: blur(210px);
 }
 
 .custom-shadow {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Add this CSS in your stylesheets or CSS-in-JS solution */
 .custom-tab-list {
-  display: flex;
-  justify-content: space-between;
-  background-color: #f0f0f0;
-  padding: 10px;
-  border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
+	background-color: #f0f0f0;
+	padding: 10px;
+	border-radius: 5px;
 }
 
 .custom-tab {
-  cursor: pointer;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  margin: 0 5px;
+	cursor: pointer;
+	padding: 10px 20px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	margin: 0 5px;
 }
 
 .custom-tab:hover {
-  background-color: #0056b3;
+	background-color: #0056b3;
 }

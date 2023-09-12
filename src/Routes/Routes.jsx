@@ -17,6 +17,7 @@ import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
+import AddBlog from "../Pages/AddBlog/AddBlog";
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/contact",
 				element: <Contact />,
+			},
+			{
+				path: "/add-blog",
+				element: <AddBlog />,
 			},
       {
         path: "/checkout/:id",

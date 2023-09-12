@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "./../../Providers/AuthProvider";
@@ -8,10 +8,9 @@ const RoomPage = () => {
 	const { user } = useContext(AuthContext);
 
 	const interviewConference = async (element) => {
-		// const roomID = "123456";
 		// generate Kit Token
-		const appID = 1281063325;
-		const serverSecret = "012c5ab5c910ebebd7b55310b534709f";
+		const appID = 841852671;
+		const serverSecret = "3c49b68cd447ef33197394a037f3db27";
 		const userName = user.displayName;
 		const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
 			appID,

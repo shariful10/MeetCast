@@ -33,7 +33,7 @@ const CheckOut = () => {
 
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:5000/monthly/${pricing.id}`)
+      .get(`${import.meta.env.VITE_API_URL}/monthly/${pricing.id}`)
       .then((response) => {
         // Use setMonthlyData to store the response data in the state
         setMonthlyData(response.data);
@@ -45,7 +45,7 @@ const CheckOut = () => {
 
   useEffect(() => {
     axiosSecure
-      .get("http://localhost:5000/userAddress")
+      .get(`${import.meta.env.VITE_API_URL}/userAddress`)
       .then((response) => {
         setUserAddress(response.data);
       })
@@ -65,7 +65,7 @@ const CheckOut = () => {
 
     data.planId = _id
     // order
-    fetch("http://localhost:5000/order", {
+    fetch(`${import.meta.env.VITE_API_URL}/userAddress/order`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

@@ -23,7 +23,7 @@ const Contact = () => {
 
 	const notify = () => toast("successfully send your email");
 	return (
-		<div className=" bg-gradient-to-t from-[#e5f0fd] to-[rgba(21, 21, 21, 0)] mt-[96px]">
+		<div className="bg-gradient-to-t from-[#e5f0fd] to-[rgba(21, 21, 21, 0)] mt-[96px]">
 			<Container>
 				<div>
 					<h2 className="text-center text-[56px] font-bold md:mb-16 mb-8">
