@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 w-full z-20 py-2  ${
+      className={`fixed top-0 w-full z-20  ${
         scrolling ? "bg-white z-10 shadow-md" : "bg-transparent"
       } duration-500`}
     >
