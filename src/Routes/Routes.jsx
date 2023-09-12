@@ -17,7 +17,6 @@ import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
-import Messaging from "../Pages/Meetings/Messaging";
 import ChatRoom from "../Pages/Meetings/ChatRoom";
 export const router = createBrowserRouter([
   {
