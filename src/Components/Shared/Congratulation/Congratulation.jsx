@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Congratulation = () => {
 	return (
@@ -10,7 +11,11 @@ const Congratulation = () => {
 				With one of our MeetCast services, you'll get high-level audio and video
 				conferencing system
 			</p>
-			<button className="bg-secondary primary_button w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]">View pricing</button>
+			<Link to="/pricing">
+				<button className="bg-secondary primary_button w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]">
+					View pricing
+				</button>
+			</Link>
 		</div>
 	);
 };
