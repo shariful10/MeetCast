@@ -4,11 +4,19 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 const socket = io.connect("http://localhost:5001");
 
-const Messaging = () => {
-  const [room, setRoom] = useState("");
+const Messaging = (selectedConversation) => {
+  const [room, setRoom] = useState();
   const [chatHistory, setChathistory] = useState([]);
   const [messageInput, setMessageInput] = useState("");
   const { user } = useContext(AuthContext);
+
+  console.log("got from conversation", selectedConversation?.conversation);
+  
+  useEffect(() => {
+    if (selectedConversation?.conversation) {
+      setRoom(selectedConversation.conversation);
+    }
+  }, [selectedConversation]);
 
   const chatHistoryRef = useRef(null);
   useEffect(() => {
@@ -21,10 +29,10 @@ const Messaging = () => {
     const newMessage = {
       sender: user?.email,
       message: message,
-      room: room
+      room: room,
     };
     setChathistory((prevHistory) => [...prevHistory, newMessage]);
-    console.log(newMessage)
+    console.log(newMessage);
     socket.emit("messege to server", newMessage);
     setMessageInput("");
   };
@@ -47,19 +55,21 @@ const Messaging = () => {
   const getRoom = (event) => {
     event.preventDefault();
     const roomNum = event.target.roomNumber.value;
-    setRoom(roomNum);
+    // setRoom(roomNum);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     if (room !== "") {
       socket.emit("join_room", room);
     }
-  },[room])
+  }, [room]);
 
   return (
-    <div className="w-6/12 h-full border">
+    <div className="h-full border">
       <div className="w-full bg-slate-300">
-        <div className="m-auto text-center bg-orange-400">{room? (`Room #${room}`):"#"}</div>
+        <div className="m-auto text-center bg-orange-400">
+          {room ? `Room #${room}` : "#"}
+        </div>
         {/* ------------room section--------------- */}
         <form onSubmit={getRoom} className="p-1 flex">
           <input
@@ -74,7 +84,7 @@ const Messaging = () => {
         </form>
         {/* ------------room section--------------- */}
         <div
-          className="bg-white h-[500px] p-1 overflow-y-auto m-auto my-1 rounded"
+          className="bg-white p-1 overflow-y-auto m-auto my-1 rounded"
           ref={chatHistoryRef}
         >
           {chatHistory.map((messageData, index) => (
@@ -83,7 +93,7 @@ const Messaging = () => {
                 messageData.sender === user?.email
                   ? "bg-slate-200  mt-1"
                   : "bg-green-200 mt-1 text-right`"
-              } flex rounded-lg flex-col` }
+              } flex rounded-lg flex-col`}
               key={index}
             >
               <p className="font-bold text-black bg-blue-300 p-1 text-left m-1 rounded">
