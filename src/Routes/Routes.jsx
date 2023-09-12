@@ -17,6 +17,8 @@ import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
+import BlogPage from "../Pages/Blog/BlogPage";
+import AddBlog from "../Pages/AddBlog/AddBlog";
 import ChatRoom from "../Pages/Meetings/ChatRoom";
 export const router = createBrowserRouter([
   {
@@ -37,9 +39,17 @@ export const router = createBrowserRouter([
         element: <Pricing />,
       },
       {
+        path: "/blog",
+        element: <BlogPage />,
+      },
+      {
         path: "/contact",
         element: <Contact />,
       },
+      {
+				path: "/add-blog",
+				element: <AddBlog />,
+			},
       {
         path: "/checkout/:id",
         element: (
@@ -48,13 +58,13 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/checkout/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/checkout/${params.id}`),
       },
       {
         path: "/meetings",
         element: (
           <PrivateRoute>
-			<ChatRoom></ChatRoom>
+            <Meetings></Meetings>
           </PrivateRoute>
         ),
       },

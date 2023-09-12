@@ -72,7 +72,7 @@ const Consult = () => {
               Wise busy past both park when an ye no. Nay likely her length
               sooner thrown sex lively income.
             </p>
-            <button className="bg-secondary w-[150px] py-3 md:py-4 rounded-md font-medium md:font-semibold font-NotoSans primary_button text-white">
+            <button className="bg-secondary w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white">
               Read More
             </button>
           </div>
@@ -89,7 +89,7 @@ const Consult = () => {
               The expense windows adapted sir. Wrong widen drawn ample eat off
               doors money.
             </p>
-            <button className="bg-secondary w-[150px] py-3 md:py-4 rounded-md font-medium md:font-semibold font-NotoSans primary_button text-white">
+            <button className="bg-secondary w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white">
               Read More
             </button>
           </div>

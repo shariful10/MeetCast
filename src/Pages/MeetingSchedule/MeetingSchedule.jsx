@@ -88,7 +88,7 @@ const MeetingSchedule = () => {
 		console.log(formData);
 
 		// Send the form data to the backend for processing
-		fetch(`http://localhost:5000/meetings`, {
+		fetch(`${import.meta.env.VITE_API_URL}/meetings`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
