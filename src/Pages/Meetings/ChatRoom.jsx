@@ -37,7 +37,7 @@ const ChatRoom = () => {
   };
 
   return (
-    <div className="mt-28 m-auto flex w-4/6">
+    <div className="mt-28 m-auto flex w-5/6">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
