@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Container from "../../Components/Shared/Container/Container";
 import VerticalLine from "../../Components/VerticalLine/VerticalLine";
 import heroBg from "../../assets/banner.png";
@@ -13,7 +14,11 @@ const HeroSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-5 items-center">
           <div>
             <div className="md:max-w-[545px] lg:max-w-[600px] xl:max-w-[700px] order-1">
-              <p className="text-sm md:text-xl my-3 font-semibold capitalize">
+              <p
+                className="text-sm md:text-xl my-3 font-semibold capitalize"
+                data-aos="fade-right"
+                data-aos-duration="1200"
+              >
                 More connected. more collaborative, more intelligent
               </p>
               <VerticalLine
@@ -22,7 +27,12 @@ const HeroSection = () => {
                 width="w-16"
                 marginY="my-3"
               />
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold ">
+              <h1
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold "
+                data-aos="fade-right"
+                data-aos-duration="1200"
+                data-aos-delay="600"
+              >
                 Powering organizations across industries and geographies
               </h1>
               <p
@@ -41,23 +51,32 @@ const HeroSection = () => {
                   data-aos-duration="1200"
                   data-aos-delay="1100"
                 >
-                  <button className="bg-secondary w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white">
-                    SignUp Now
-                  </button>
+                  <Link to="/signup">
+                    <button className="bg-secondary w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white">
+                      SignUp Now
+                    </button>
+                  </Link>
                 </div>
                 <div
                   data-aos="fade-up"
                   data-aos-duration="1200"
                   data-aos-delay="1400"
                 >
-                  <button className="bg-primary w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white">
-                    Explore
-                  </button>
+                  <Link to="/pricing">
+                    <button className="bg-primary w-[150px] py-3 md:py-4 rounded-full font-medium md:font-semibold font-NotoSans primary_button text-white">
+                      View Pricing
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
-          <div className="order-first md:order-last">
+          <div
+            className="order-first md:order-last"
+            data-aos="fade-left"
+            data-aos-duration="1200"
+            data-aos-delay="800"
+          >
             <img src={heroImage} alt="Hero Image" />
           </div>
         </div>
