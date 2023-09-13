@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 w-full z-20 py-2  ${
+      className={`fixed top-0 w-full z-20  ${
         scrolling ? "bg-white z-10 shadow-md" : "bg-transparent"
       } duration-500`}
     >
@@ -97,7 +97,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link className="text-lg font-NotoSans group" to="/meetings">
-                    Join a Meeting
+                    Chat Room
                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
                   </Link>
                 </li>
@@ -142,7 +142,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link className="text-lg font-NotoSans  group " to="/meetings">
-                Join a Meetings
+                Chat Room
                 <span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
               </Link>
             </li>

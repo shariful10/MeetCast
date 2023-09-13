@@ -13,7 +13,7 @@ const Vision = () => {
             data-aos-duration="1200"
           >
             <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">
-              Out Goals
+              Our Goals
             </span>
             <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
               Providing High-Quality Video and Audio
@@ -39,7 +39,7 @@ const Vision = () => {
             data-aos-duration="1200"
           >
             <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">
-              Out Vision
+              Our Vision
             </span>
             <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
               Innovation and Feature Development
