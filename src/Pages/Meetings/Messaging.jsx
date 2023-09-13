@@ -65,7 +65,7 @@ const Messaging = (selectedConversation) => {
   }, [room]);
 
   return (
-    <div className="h-full border w-[720px]">
+    <div className="h-full border w-full">
       <div className="w-full bg-slate-300">
         <div className="m-auto text-center bg-orange-400">
           {room ? `Room #${room}` : "#"}

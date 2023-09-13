@@ -6,7 +6,16 @@
     "photoURL": "https://i.ibb.co/Xp91jK4/Sakib-Khan.jpg",
     "profileURL": "https://example.com/alicesmith-profile",
     "userStatus": "online",
-    "friendShip": "friends" 
+    "friendShip": [
+      {
+        "friendId": 3,
+        "friendEmail": "sr.nashif@gmail.com"
+      },
+      {
+        "friendId": 4,
+        "friendEmail": "john@example.com"
+      }
+    ]
   },
   {
     "id": 2,
@@ -15,7 +24,20 @@
     "photoURL": "https://i.ibb.co/dKpjpTW/Bubli.jpg",
     "profileURL": "https://example.com/bobjohnson-profile",
     "userStatus": "offline",
-    "friendShip": "notFriends" 
+    "friendShip": [
+      {
+        "friendId": 1,
+        "friendEmail": "a.nashif7@gmail.com"
+      },
+      {
+        "friendId": 3,
+        "friendEmail": "sr.nashif@gmail.com"
+      },
+      {
+        "friendId": 4,
+        "friendEmail": "john@example.com"
+      }
+    ]
   },
   {
     "id": 3,
@@ -24,7 +46,20 @@
     "photoURL": "https://i.ibb.co/b7bsvYR/khabib-nurmagomedov-Teacher.jpg",
     "profileURL": "https://example.com/ellabrown-profile",
     "userStatus": "offline",
-    "friendShip": "friends" 
+    "friendShip": [
+      {
+        "friendId": 1,
+        "friendEmail": "a.nashif7@gmail.com"
+      },
+      {
+        "friendId": 3,
+        "friendEmail": "sr.nashif@gmail.com"
+      },
+      {
+        "friendId": 4,
+        "friendEmail": "john@example.com"
+      }
+    ]
   },
   {
     "id": 4,
@@ -33,7 +68,16 @@
     "photoURL": "https://i.ibb.co/mzjQ5Xw/Apu-Biswas-6.gif",
     "profileURL": "https://example.com/gracedavis-profile",
     "userStatus": "online",
-    "friendShip": "notFriends" 
+    "friendShip": [
+      {
+        "friendId": 3,
+        "friendEmail": "sr.nashif@gmail.com"
+      },
+      {
+        "friendId": 4,
+        "friendEmail": "john@example.com"
+      }
+    ]
   },
   {
     "id": 5,
@@ -42,6 +86,19 @@
     "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
     "profileURL": "https://example.com/gracedublin-profile",
     "userStatus": "online",
-    "friendShip": "friends" 
+    "friendShip": [
+      {
+        "friendId": 1,
+        "friendEmail": "a.nashif7@gmail.com"
+      },
+      {
+        "friendId": 3,
+        "friendEmail": "sr.nashif@gmail.com"
+      },
+      {
+        "friendId": 4,
+        "friendEmail": "john@example.com"
+      }
+    ]
   }
 ]
