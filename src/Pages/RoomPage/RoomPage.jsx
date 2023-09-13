@@ -9,8 +9,8 @@ const RoomPage = () => {
 
 	const interviewConference = async (element) => {
 		// generate Kit Token
-		const appID = 841852671;
-		const serverSecret = "3c49b68cd447ef33197394a037f3db27";
+		const appID = 1057129623;
+		const serverSecret = "d741ec33e23e1d7c5fa381cbc27315fd";
 		const userName = user.displayName;
 		const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
 			appID,
@@ -26,13 +26,16 @@ const RoomPage = () => {
 		zp.joinRoom({
 			container: element,
 			scenario: {
-				mode: ZegoUIKitPrebuilt.LiveStreaming,
+				mode: ZegoUIKitPrebuilt.VideoConference,
 			},
 			showRequestToCohostButton: true,
 			showScreenSharingButton: true,
 			showRoomDetailsButton: true,
-			// turnOnCameraWhenJoining:false,
-
+			onUserAvatarSetter: (userList) => {
+				userList.forEach((user) => {
+					user.setUserAvatar(`https://i.ibb.co/SvqC2KS/Shariful.jpg`);
+				});
+			},
 			sharedLinks: [
 				{
 					name: "Invitation link",
@@ -40,9 +43,7 @@ const RoomPage = () => {
 						window.location.protocol +
 						"//" +
 						window.location.host +
-						window.location.pathname +
-						"?roomID=" +
-						roomID,
+						window.location.pathname,
 				},
 			],
 		});

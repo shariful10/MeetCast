@@ -20,6 +20,7 @@ const AddBlog = () => {
 		e.preventDefault();
 		const form = e.target;
 		const email = user.email;
+		const title = form.title.value;
 		const desc = form.desc.value;
 		const author_image = user.photoURL;
 		const author_name = user.displayName;
@@ -33,10 +34,11 @@ const AddBlog = () => {
 				const blogData = {
 					email,
 					image: data.data.display_url,
+					title,
 					desc,
 					author_image,
 					author_name,
-					date
+					date,
 				};
 				addBlog(blogData)
 					.then((data) => {
@@ -67,14 +69,39 @@ const AddBlog = () => {
 				/>
 				<div>
 					<form onSubmit={handleSubmit} className="my-[50px] md:my-[100px]">
-						<textarea
-							name="desc"
-							id=""
-							cols=""
-							rows="10"
-							className="p-5 border-2 border-black rounded-md focus:outline-blue-500 w-full"
-							placeholder="Write a blog"
-						></textarea>
+						<div className="">
+							<label
+								htmlFor="blog-description"
+								className="block text-gray-600 text-[16px] mb-2 font-medium"
+							>
+								Blog Description
+							</label>
+							<input
+								className="w-full px-4 py-3 text-gray-800 border-2 border-black focus:outline-blue-500 rounded-md "
+								name="title"
+								id="title"
+								type="text"
+								placeholder="Blog Title"
+								required
+							/>
+						</div>
+						<div className="mt-5">
+							<label
+								htmlFor="blog-description"
+								className="block text-gray-600 text-[16px] mb-2 font-medium"
+							>
+								Blog Description
+							</label>
+							<textarea
+								name="desc"
+								id=""
+								cols=""
+								rows="10"
+								className="p-5 border-2 border-black rounded-md focus:outline-blue-500 w-full"
+								placeholder="Write a blog"
+								required
+							></textarea>
+						</div>
 						<h4 className="my-5">Feature Image:</h4>
 						<div className="">
 							<div className="file_upload border-gray-300 rounded-lg bg-blue-500 py-4 px-5 max-w-fit">
