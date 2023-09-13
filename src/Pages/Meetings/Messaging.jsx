@@ -11,7 +11,7 @@ const Messaging = (selectedConversation) => {
   const { user } = useContext(AuthContext);
 
   console.log("got from conversation", selectedConversation?.conversation);
-  
+
   useEffect(() => {
     if (selectedConversation?.conversation) {
       setRoom(selectedConversation.conversation);
@@ -65,7 +65,7 @@ const Messaging = (selectedConversation) => {
   }, [room]);
 
   return (
-    <div className="h-full border">
+    <div className="h-full border w-[720px]">
       <div className="w-full bg-slate-300">
         <div className="m-auto text-center bg-orange-400">
           {room ? `Room #${room}` : "#"}
@@ -82,43 +82,50 @@ const Messaging = (selectedConversation) => {
             Join
           </button>
         </form>
-        {/* ------------room section--------------- */}
-        <div
-          className="bg-white p-1 overflow-y-auto m-auto my-1 rounded"
-          ref={chatHistoryRef}
-        >
-          {chatHistory.map((messageData, index) => (
+      </div>
+      {/* ------------room section--------------- */}
+      <div
+        className="bg-white w-full overflow-y-auto m-auto my-1 h-[400px] rounded flex-grow p-3"
+        ref={chatHistoryRef}
+      >
+        {chatHistory.map((messageData, index) => (
+          <div
+            className={`rounded-lg`}
+            key={index}
+          >
+            <div>
+              {messageData.sender != user?.email && messageData.sender && (
+                <div className="btn btn-primary w-[100px] font-bold text-black bg-blue-300 p-1 text-left m-1 rounded">
+                  {messageData.sender}
+                </div>
+              )}
+            </div>
             <div
               className={`${
                 messageData.sender === user?.email
                   ? "bg-slate-200  mt-1"
-                  : "bg-green-200 mt-1 text-right`"
-              } flex rounded-lg flex-col`}
-              key={index}
+                  : "bg-green-200 mt-1 text-right"
+              } w-2/3 bg-slate-300 p-1 text-left m-1 rounded whitespace-normal`}
+              style={{ overflowWrap: "break-word" }}
             >
-              <p className="font-bold text-black bg-blue-300 p-1 text-left m-1 rounded">
-                {messageData.sender === user?.email
-                  ? "You"
-                  : messageData.sender}
-              </p>
-              <span className="p-1">{messageData.message}</span>
+              {messageData.message}
             </div>
-          ))}
-        </div>
-        <form onSubmit={sendMessage} className="p-1 flex justify-center">
-          <input
-            className="rounded-lg py-1 px-1 mx-3 w-2/3"
-            type="text"
-            name="message"
-            placeholder="write here"
-            value={messageInput}
-            onChange={handleInputChange}
-          />
-          <button className="rounded-lg w-1/3 btn" type="submit">
-            send
-          </button>
-        </form>
+          </div>
+        ))}
       </div>
+      <form onSubmit={sendMessage} className="p-1 flex justify-center">
+        <input
+          className="rounded-lg py-1 px-1 mx-3 w-2/3"
+          type="text"
+          name="message"
+          placeholder="write here"
+          value={messageInput}
+          onChange={handleInputChange}
+        />
+        <button className="rounded-lg w-1/3 btn" type="submit">
+          send
+        </button>
+      </form>
     </div>
   );
 };

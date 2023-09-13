@@ -78,6 +78,7 @@ const SignUp = () => {
         name: name,
         email: email,
         image: url,
+        userStatus: "online",
       }),
     });
     return;
