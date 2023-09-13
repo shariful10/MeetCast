@@ -6,8 +6,8 @@ const Users = ({ userInfo }) => {
   const { user } = useContext(AuthContext);
 
   // console.log("userData", userInfo)
-  const onlineUsers = userInfo?.filter(onlineUser=>onlineUser.userStatus === "online")
-  const offlineUsers = userInfo?.filter(offlineUser=>offlineUser.userStatus === "offline")
+  const onlineUsers = userInfo?.filter(onlineUser=>onlineUser?.userStatus === "online")
+  const offlineUsers = userInfo?.filter(offlineUser=>offlineUser?.userStatus === "offline")
   console.log(" check online",offlineUsers)
 
   return (

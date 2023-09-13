@@ -20,6 +20,7 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const userStatus = "online";
     // const img = form.image.value;
     // // console.log(img);
 
@@ -77,6 +78,7 @@ const SignUp = () => {
         name: name,
         email: email,
         image: url,
+        userStatus
       }),
     });
     return;

@@ -8,7 +8,7 @@ const Chats = ({ userInfo }) => {
   const friends = userInfo?.filter(friend=>friend.friendShip === "friends")
 
   return (
-    <div className="w-3/12 p-2 h-screen" style={{ overflowY: "scroll" }}>
+    <div className="p-2 h-screen" style={{ overflowY: "scroll" }}>
       <div>
         <input
           type="text"
