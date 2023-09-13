@@ -15,7 +15,7 @@ const MyMeetings = () => {
 
 	useEffect(() => {
 		// Make an HTTP GET request to fetch meeting data
-		fetch(`http://localhost:5000/meetings/${user?.email}`, {
+		fetch(`${import.meta.env.VITE_API_URL}/meetings/${user?.email}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -54,7 +54,7 @@ const MyMeetings = () => {
 	const handleConfirmDelete = () => {
 		if (meetingToDelete) {
 			// Send an HTTP DELETE request to delete the meeting
-			fetch(`http://localhost:5000/meetings/${meetingToDelete}`, {
+			fetch(`${import.meta.env.VITE_API_URL}/meetings/${meetingToDelete}`, {
 				method: "DELETE",
 				headers: {
 					"Content-Type": "application/json",
@@ -83,7 +83,7 @@ const MyMeetings = () => {
 		<div className="bg-white p-6 rounded-lg shadow-lg">
 			<h2 className="text-2xl font-semibold mb-4">My Meetings</h2>
 			<div className="overflow-x-auto">
-				<table className="w-full table-auto">
+				<table className="w-full table-auto text-left">
 					<thead>
 						<tr>
 							<th className="px-4 py-2 bg-blue-400 text-white text-lg">Topic</th>
@@ -96,18 +96,18 @@ const MyMeetings = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{meetings.map(({ _id, topic, date, time, duration, roomID }) => (
+						{meetings.map(({ _id, tropic, date, time, duration, roomID }) => (
 							<tr key={_id}>
-								<td className="border px-4 py-2">{topic}</td>
+								<td className="border px-4 py-2">{tropic}</td>
 								<td className="border px-4 py-2">{date}</td>
 								<td className="border px-4 py-2">{time}</td>
 								<td className="border px-4 py-2">{duration}</td>
 								<td className="border px-4 py-2">
 									<button
 										onClick={() => handleJoin(_id)}
-										className=" bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-800 text-white px-4 py-2 rounded-full shadow-md transition duration-300 ease-in-out"
+										className=" bg-[#6b7cff] text-white px-4 py-2 rounded-full shadow-md transition duration-300 ease-in-out"
 									>
-										Join
+										Join Room
 									</button>
 								</td>
 								<td className="border px-4 py-2">

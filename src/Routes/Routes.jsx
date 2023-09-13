@@ -8,7 +8,6 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
-import Meetings from "../Pages/Meetings/Meetings";
 import MyMeetings from "../Pages/MyMeetings/MyMeetings";
 import Pricing from "../Pages/Pricing/Pricing";
 import RoomPage from "../Pages/RoomPage/RoomPage";
@@ -19,6 +18,8 @@ import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
 import BlogPage from "../Pages/Blog/BlogPage";
 import BlogPost from "../Pages/Blog/BlogPost";
+import AddBlog from "../Pages/AddBlog/AddBlog";
+import ChatRoom from "../Pages/Meetings/ChatRoom";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/add-blog",
+        element: <AddBlog />,
+      },
+      {
         path: "/checkout/:id",
         element: (
           <PrivateRoute>
@@ -57,13 +62,13 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/checkout/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/checkout/${params.id}`),
       },
       {
         path: "/meetings",
         element: (
           <PrivateRoute>
-            <Meetings></Meetings>
+            <ChatRoom></ChatRoom>
           </PrivateRoute>
         ),
       },

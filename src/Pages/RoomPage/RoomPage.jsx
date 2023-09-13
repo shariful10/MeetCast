@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "./../../Providers/AuthProvider";
@@ -8,10 +8,9 @@ const RoomPage = () => {
 	const { user } = useContext(AuthContext);
 
 	const interviewConference = async (element) => {
-		// const roomID = "123456";
 		// generate Kit Token
-		const appID = 1281063325;
-		const serverSecret = "012c5ab5c910ebebd7b55310b534709f";
+		const appID = 1057129623;
+		const serverSecret = "d741ec33e23e1d7c5fa381cbc27315fd";
 		const userName = user.displayName;
 		const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
 			appID,
@@ -27,13 +26,16 @@ const RoomPage = () => {
 		zp.joinRoom({
 			container: element,
 			scenario: {
-				mode: ZegoUIKitPrebuilt.LiveStreaming,
+				mode: ZegoUIKitPrebuilt.VideoConference,
 			},
 			showRequestToCohostButton: true,
 			showScreenSharingButton: true,
 			showRoomDetailsButton: true,
-			// turnOnCameraWhenJoining:false,
-
+			onUserAvatarSetter: (userList) => {
+				userList.forEach((user) => {
+					user.setUserAvatar(`https://i.ibb.co/SvqC2KS/Shariful.jpg`);
+				});
+			},
 			sharedLinks: [
 				{
 					name: "Invitation link",
@@ -41,9 +43,7 @@ const RoomPage = () => {
 						window.location.protocol +
 						"//" +
 						window.location.host +
-						window.location.pathname +
-						"?roomID=" +
-						roomID,
+						window.location.pathname,
 				},
 			],
 		});

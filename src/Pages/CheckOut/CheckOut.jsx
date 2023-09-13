@@ -33,7 +33,7 @@ const CheckOut = () => {
 
   useEffect(() => {
     axiosSecure
-      .get(`https://meetcast-server.vercel.app/monthly/${pricing.id}`)
+      .get(`${import.meta.env.VITE_API_URL}/monthly/${pricing.id}`)
       .then((response) => {
         // Use setMonthlyData to store the response data in the state
         setMonthlyData(response.data);
@@ -45,7 +45,7 @@ const CheckOut = () => {
 
   useEffect(() => {
     axiosSecure
-      .get("https://meetcast-server.vercel.app/userAddress")
+      .get(`${import.meta.env.VITE_API_URL}/userAddress`)
       .then((response) => {
         setUserAddress(response.data);
       })
@@ -64,7 +64,7 @@ const CheckOut = () => {
   const onSubmit = (data) => {
     data.planId = _id;
     // order
-    fetch("https://meetcast-server.vercel.app/order", {
+    fetch(`${import.meta.env.VITE_API_URL}/order`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
