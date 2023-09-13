@@ -29,7 +29,7 @@ const Footer = () => {
           </div>
           <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="700">
             <span className="footer-title">Follow Us</span>
-            <div className="social-icons">
+            <div className="social-icons md:flex md:space-x-4">
               <a
                 href="https://www.facebook.com/yourcompany"
                 target="_blank"
@@ -54,26 +54,6 @@ const Footer = () => {
               >
                 <FaLinkedin size={iconSize} />
               </a>
-            </div>
-          </div>
-          <div>
-            <span className="footer-title">Newsletter</span>
-            <div className="form-control w-80">
-              <label className="label">
-                <span className="label-text text-white">
-                  Enter your email address
-                </span>
-              </label>
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="username@site.com"
-                  className="input input-bordered w-full pr-12"
-                />
-                <button className="btn hover:bg-primary bg-secondary text-white absolute top-0 right-0 rounded-l-none duration-300">
-                  Subscribe
-                </button>
-              </div>
             </div>
           </div>
         </footer>
