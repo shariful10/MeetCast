@@ -18,6 +18,7 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
 import BlogPage from "../Pages/Blog/BlogPage";
+import BlogPost from "../Pages/Blog/BlogPost";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path: "/blog",
         element: <BlogPage />,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogPost />,
       },
       {
         path: "/contact",
