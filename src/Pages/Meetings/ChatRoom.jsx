@@ -24,7 +24,8 @@ const ChatRoom = () => {
   };
 
   return (
-    <div className="mt-28 w-1080 pb-3 m-2 h-screen">
+    <div className="flex mt-28 ">
+      <div className="w-1080 pb-3 m-2 h-screen">
       {/* <div className="flex h-screen">
         <Chats userInfo={userInfo}></Chats>
         <Messaging></Messaging>
@@ -67,6 +68,8 @@ const ChatRoom = () => {
           </ul>
         </div>
       </div>
+    </div>
+    <Users userInfo={userInfo}></Users>
     </div>
   );
 };
