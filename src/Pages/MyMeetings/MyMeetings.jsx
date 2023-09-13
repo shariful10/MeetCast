@@ -83,7 +83,7 @@ const MyMeetings = () => {
 		<div className="bg-white p-6 rounded-lg shadow-lg">
 			<h2 className="text-2xl font-semibold mb-4">My Meetings</h2>
 			<div className="overflow-x-auto">
-				<table className="w-full table-auto">
+				<table className="w-full table-auto text-left">
 					<thead>
 						<tr>
 							<th className="px-4 py-2 bg-blue-400 text-white text-lg">Topic</th>
