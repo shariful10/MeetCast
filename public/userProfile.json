@@ -3,7 +3,7 @@
     "id": 1,
     "displayName": "Alice Smith",
     "email": "alice@example.com",
-    "photoURL": "https://i.ibb.co/Xp91jK4/Sakib-Khan.jpg",
+    "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
     "profileURL": "https://example.com/alicesmith-profile",
     "userStatus": "online",
     "friendShip": "friends" 
@@ -12,7 +12,7 @@
     "id": 2,
     "displayName": "Bob Johnson",
     "email": "bob@example.com",
-    "photoURL": "https://i.ibb.co/dKpjpTW/Bubli.jpg",
+    "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
     "profileURL": "https://example.com/bobjohnson-profile",
     "userStatus": "offline",
     "friendShip": "notFriends" 
@@ -21,7 +21,7 @@
     "id": 3,
     "displayName": "Ella Brown",
     "email": "ella@example.com",
-    "photoURL": "https://i.ibb.co/b7bsvYR/khabib-nurmagomedov-Teacher.jpg",
+    "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
     "profileURL": "https://example.com/ellabrown-profile",
     "userStatus": "offline",
     "friendShip": "friends" 
@@ -30,7 +30,7 @@
     "id": 4,
     "displayName": "Grace Davis",
     "email": "grace@example.com",
-    "photoURL": "https://i.ibb.co/mzjQ5Xw/Apu-Biswas-6.gif",
+    "photoURL": "https://i.ibb.co/HHk8Frh/Jashim.jpg",
     "profileURL": "https://example.com/gracedavis-profile",
     "userStatus": "online",
     "friendShip": "notFriends" 
