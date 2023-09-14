@@ -1,5 +1,6 @@
 import React from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const ServiceCard = ({ Icon, title, subTitle, animation }) => {
   return (
@@ -11,10 +12,12 @@ const ServiceCard = ({ Icon, title, subTitle, animation }) => {
         </div>
         <div>
           <p className="text-gray-500 mt-5 mb-3">{subTitle}</p>
-          <button className="flex items-center text-secondary group">
-            Read More{" "}
-            <HiOutlineArrowNarrowRight className="ml-2 group-hover:ml-4 duration-300" />
-          </button>
+          <Link to="/pricing">
+            <button className="flex items-center text-secondary group">
+              View Pricing{" "}
+              <HiOutlineArrowNarrowRight className="ml-2 group-hover:ml-4 duration-300" />
+            </button>
+          </Link>
         </div>
       </div>
     </div>

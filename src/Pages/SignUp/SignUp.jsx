@@ -30,9 +30,8 @@ const SignUp = () => {
     console.log(image);
 
     formData.append("image", image);
-    const url = `https://api.imgbb.com/1/upload?key=${
-      import.meta.env.VITE_IMGBB_API
-    }`;
+    const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API
+      }`;
     console.log(url);
     fetch(url, {
       method: "POST",

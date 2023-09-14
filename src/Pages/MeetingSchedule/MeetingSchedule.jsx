@@ -160,11 +160,11 @@ const MeetingSchedule = () => {
 					</div>
 
 					<div className="flex space-x-4 items-center">
-						<label className="block text-base  w-1/4">Time Zone</label>
+						<label className="block text-base w-1/4">Time Zone</label>
 						<TimezoneSelect
 							value={selectedTimezone}
 							onChange={handleTimezoneChange}
-							className="w-1/2 border rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+							className="w-1/2 rounded-lg py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
 						/>
 					</div>
 					<div className="flex space-x-4 items-center">

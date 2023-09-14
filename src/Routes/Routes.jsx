@@ -17,6 +17,7 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
 import BlogPage from "../Pages/Blog/BlogPage";
+import BlogPost from "../Pages/Blog/BlogPost";
 import AddBlog from "../Pages/AddBlog/AddBlog";
 import ChatRoom from "../Pages/Meetings/ChatRoom";
 import AdminHome from "../Pages/AdminHome/AdminHome";
