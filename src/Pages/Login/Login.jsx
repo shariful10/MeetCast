@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Components/Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../Providers/AuthProvider";
 import img from "../../assets/images/signup.svg";
+import { saveUser } from "../../Components/APIs/auth";
 
 const Login = () => {
   const { loading, setLoading, signIn, resetPassword } =
@@ -23,6 +24,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("Successfully Login");
+        saveUser(res.user);
         navigate(from, { replace: true });
       })
       .catch((err) => {

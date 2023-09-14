@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { RiAdminFill } from "react-icons/ri";
-// import Logo from "../../assets/logo.svg";
+import { BsPersonFillCheck } from "react-icons/bs";
+import { MdAdminPanelSettings } from "react-icons/md";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -14,7 +15,7 @@ const UserManagement = () => {
 		return res.data;
 	});
 
-	const handleMakeAdmin = (user) => {
+	const handleMakeEditor = (user) => {
 		axiosSecure.patch(`/users/editor/${user._id}`, { role: "editor" }).then((data) => {
 			console.log(data.data);
 			if (data.data.modifiedCount) {
@@ -22,6 +23,10 @@ const UserManagement = () => {
 				refetch();
 			}
 		});
+	};
+
+	const handledelete = (id) => {
+		console.log("delete");
 	};
 
 	return (
@@ -49,6 +54,12 @@ const UserManagement = () => {
 										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Email
+									</th>
+									<th
+										scope="col"
+										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+									>
+										Role
 									</th>
 									<th
 										scope="col"
@@ -91,19 +102,45 @@ const UserManagement = () => {
 													{user.email}
 												</p>
 											</td>
-											<td
-												onClick={() => handleMakeAdmin(user)}
-												className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
-											>
+											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												{user?.role === "admin" ? (
-													<p className="text-blue-500 font-medium">Admin</p>
-												) : user?.role === "editor" ? (
-													<p className="text-green-600 font-medium">Editor</p>
+													<p className="text-blue-500 font-medium">
+														Admin
+													</p>
+												) : user.role === "editor" ? (
+													<p className="text-green-600 font-medium">
+														Editor
+													</p>
 												) : (
-													<RiAdminFill className="h-6 w-6 text-blue-500" />
+													<p className="text-gray-700 font-medium">
+														User
+													</p>
 												)}
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+												{user?.role === "admin" ? (
+													<div className="flex gap-2">
+														<MdAdminPanelSettings className="h-6 w-6 text-blue-500" />
+														<p className="text-blue-500 font-medium">
+															(Not Changeable)
+														</p>
+													</div>
+												) : user?.role === "editor" ? (
+													<p title="Already Editor" className="text-green-600 font-medium">
+														<BsPersonFillCheck className="h-6 w-6" />
+													</p>
+												) : (
+													<RiAdminFill
+														onClick={() => handleMakeEditor(user)}
+														title="Make Editor"
+														className="h-6 w-6 text-blue-500"
+													/>
+												)}
+											</td>
+											<td
+												onClick={() => handledelete(user._id)}
+												className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
+											>
 												<FaTrash className="h-6 w-6 text-red-500" />
 											</td>
 										</tr>
