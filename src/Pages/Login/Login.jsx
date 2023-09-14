@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../Components/Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../Providers/AuthProvider";
 import img from "../../assets/images/signup.svg";
+import { saveUser } from "../../Components/APIs/auth";
 
 const Login = () => {
   const { loading, setLoading, signIn, resetPassword } =
@@ -23,6 +24,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("Successfully Login");
+        saveUser(res.user);
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -82,7 +84,7 @@ const Login = () => {
                     id="email"
                     required
                     placeholder="Enter Your Email Here"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-secondary bg-gray-200 text-gray-900"
                     data-temp-mail-org="0"
                   />
                 </div>
@@ -98,7 +100,7 @@ const Login = () => {
                     id="password"
                     required
                     placeholder="Password"
-                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                    className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-secondary bg-gray-200 text-gray-900"
                   />
                 </div>
               </div>

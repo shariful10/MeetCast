@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
+import TimezoneSelect from "react-timezone-select";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-import TimezoneSelect from "react-timezone-select";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const MeetingSchedule = () => {
@@ -73,16 +72,9 @@ const MeetingSchedule = () => {
 		const timezone = selectedTimezone.value;
 		const duration = totalDurationMinutes;
 		const passcode = form.passcode.value;
+
 		// Gather the form data to be sent to the backend
 		const formData = {
-			// email: user.email,
-			// topic: e.target.tropic.value,
-			// date: e.target.date.value,
-			// time: e.target.time.value,
-			// roomID: e.target.roomID.value,
-			// timezone: selectedTimezone.value,
-			// duration: totalDurationMinutes,
-			// passcode: e.target.passcode.value,
 			email,
 			tropic,
 			date,
@@ -96,7 +88,7 @@ const MeetingSchedule = () => {
 		console.log(formData);
 
 		// Send the form data to the backend for processing
-		fetch(`http://localhost:5000/meetings`, {
+		fetch(`${import.meta.env.VITE_API_URL}/meetings`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -107,13 +99,6 @@ const MeetingSchedule = () => {
 			.then((data) => {
 				// Handle the response from the backend if needed
 				console.log("Meeting scheduled:", data);
-				Swal.fire({
-					position: "top-end",
-					icon: "success",
-					title: "Created meeting successfully",
-					showConfirmButton: false,
-					timer: 1500,
-				});
 				navigate("/dashboard/myMeetings");
 			})
 			.catch((error) => {
@@ -175,11 +160,11 @@ const MeetingSchedule = () => {
 					</div>
 
 					<div className="flex space-x-4 items-center">
-						<label className="block text-base  w-1/4">Time Zone</label>
+						<label className="block text-base w-1/4">Time Zone</label>
 						<TimezoneSelect
 							value={selectedTimezone}
 							onChange={handleTimezoneChange}
-							className="w-1/2 border rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
+							className="w-1/2 rounded-lg py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
 						/>
 					</div>
 					<div className="flex space-x-4 items-center">

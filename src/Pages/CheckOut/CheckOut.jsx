@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import Container from "../../Components/Shared/Container/Container";
 import { AuthContext } from "../../Providers/AuthProvider";
-import Address from "./address";
+import Address from "./Address";
 
 const CheckOut = () => {
   const { user } = useContext(AuthContext);
@@ -37,7 +37,7 @@ const CheckOut = () => {
 
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:5000/monthly/${pricing.id}`)
+      .get(`${import.meta.env.VITE_API_URL}/monthly/${pricing.id}`)
       .then((response) => {
         setPlan(response.data);
       })

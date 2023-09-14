@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import Main from "../Layouts/Main/Main";
 import About from "../Pages/About/About";
+import BlogPage from "../Pages/Blog/BlogPage";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
@@ -20,27 +21,31 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Main />,
-		errorElement: <ErrorPage />,
-		children: [
-			{
-				path: "/",
-				element: <Home />,
-			},
-			{
-				path: "/about",
-				element: <About />,
-			},
-			{
-				path: "/pricing",
-				element: <Pricing />,
-			},
-			{
-				path: "/contact",
-				element: <Contact />,
-			},
+  {
+    path: "/",
+    element: <Main />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+      },
+      {
+        path: "/blog",
+        element: <BlogPage />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
       {
         path: "/checkout/:id",
         element: (
