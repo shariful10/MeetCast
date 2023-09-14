@@ -4,33 +4,22 @@ import { RiAdminFill } from "react-icons/ri";
 // import Logo from "../../assets/logo.svg";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const UserManagement = () => {
 	const [axiosSecure] = useAxiosSecure();
-	const [userData, setUserData] = useState([]);
 
-	useEffect(() => {
-		// Make an HTTP GET request to fetch meeting data
-		fetch(`${import.meta.env.VITE_API_URL}/users`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setUserData(data);
-			})
-			.catch((error) => {
-				console.error("Error fetching meeting data:", error);
-			});
-	}, []);
+	const { data: users = [], refetch } = useQuery(["users"], async () => {
+		const res = await axiosSecure.get("/users");
+		return res.data;
+	});
 
 	const handleMakeAdmin = (user) => {
 		axiosSecure.patch(`/users/editor/${user._id}`, { role: "editor" }).then((data) => {
 			console.log(data.data);
 			if (data.data.modifiedCount) {
 				toast.success("User Role Changed To Editor");
+				refetch();
 			}
 		});
 	};
@@ -76,8 +65,8 @@ const UserManagement = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{userData &&
-									userData.map((user) => (
+								{users &&
+									users.map((user) => (
 										<tr key={user._id}>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												<div className="flex items-center">

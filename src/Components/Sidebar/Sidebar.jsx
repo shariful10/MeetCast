@@ -18,6 +18,8 @@ const Sidebar = () => {
 	const [isActive, setActive] = useState("false");
 	const [isAdmin] = useAdmin();
 	const [isEditor] = useEditor();
+	console.log(isAdmin)
+	console.log(isEditor)
 
 	// Sidebar Responsive Handler
 	const handleToggle = () => {
