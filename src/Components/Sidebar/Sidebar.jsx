@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { AiOutlineBars } from "react-icons/ai";
-import { FaBloggerB, FaCalendar } from "react-icons/fa";
+import { FaCalendar } from "react-icons/fa";
 import { FaGear, FaUserGroup } from "react-icons/fa6";
 import { HiMiniHomeModern } from "react-icons/hi2";
-import { ImHome } from "react-icons/im";
+import { ImBlog, ImHome } from "react-icons/im";
 import { IoLogOut } from "react-icons/io5";
 import { MdClose, MdMeetingRoom } from "react-icons/md";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import Logo from "../../assets/logo.svg";
+import Logo from "../../assets/Logo.svg";
 import useAdmin from "../Hooks/useAdmin";
 import useAuth from "../Hooks/useAuth";
 import useEditor from "../Hooks/useEditor";
@@ -18,6 +18,8 @@ const Sidebar = () => {
 	const [isActive, setActive] = useState("false");
 	const [isAdmin] = useAdmin();
 	const [isEditor] = useEditor();
+	console.log(isAdmin);
+	console.log(isEditor);
 
 	// Sidebar Responsive Handler
 	const handleToggle = () => {
@@ -167,7 +169,7 @@ const Sidebar = () => {
 											}`
 										}
 									>
-										<FaBloggerB className="w-5 h-5 hover:text-white" />
+										<ImBlog className="w-5 h-5 hover:text-white" />
 
 										<span className="mx-4 font-medium">Add a Blog</span>
 									</NavLink>
@@ -238,7 +240,7 @@ const Sidebar = () => {
 											}`
 										}
 									>
-										<FaBloggerB className="w-5 h-5 hover:text-white" />
+										<ImBlog className="w-5 h-5 hover:text-white" />
 
 										<span className="mx-4 font-medium">Add a Blog</span>
 									</NavLink>

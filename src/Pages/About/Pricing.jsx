@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Buttons from "../../Components/Buttons/Buttons";
 
 const Pricing = () => {
@@ -14,7 +15,7 @@ const Pricing = () => {
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
         </p>
         <div className="text-center mt-10">
-          <Buttons title={"View pricing"} />
+         <Link to='/pricing'> <Buttons title={"View pricing"} /></Link>
         </div>
       </div>
     </div>
