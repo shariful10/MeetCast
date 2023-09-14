@@ -58,7 +58,7 @@ const AddBlog = () => {
 
 	return (
 		<Container>
-			<h2 className="text-center text-5xl font-semibold mt-[96px] border-b-2 border-black w-[300px] pb-4 md:mx-auto">
+			<h2 className="text-center text-5xl font-semibold border-b-2 border-black w-[300px] pb-4 md:mx-auto">
 				Add A Blog
 			</h2>
 			<div className="grid md:grid-cols-2 justify-center items-center gap-6">

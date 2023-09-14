@@ -1,6 +1,7 @@
 // Save User To Database
 export const saveUser = (user) => {
 	const currentUser = {
+		name: user.displayName,
 		email: user.email,
 		image: user.photoURL,
 	};
