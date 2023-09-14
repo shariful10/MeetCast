@@ -2,6 +2,7 @@ import React from "react";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { HiPhoneMissedCall } from "react-icons/hi";
 import Container from "../../../Components/Shared/Container/Container";
+import Buttons from "../../../Components/Buttons/Buttons";
 
 const FaceToFace = () => {
   return (
@@ -36,7 +37,7 @@ const FaceToFace = () => {
               </div>
             </div>
             <div className="text-center md:text-left">
-              <buttons title={"Join a Meeting"} />
+              <Buttons title={"Join a Meeting"} />
             </div>
           </div>
           <div className="md:flex order-first md:order-last gap-10 space-y-10 items-center">
