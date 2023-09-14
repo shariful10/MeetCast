@@ -18,7 +18,6 @@ const useAdmin = () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			// console.log("is admin response", res);
 			return res.data.admin;
 		},
 	});

@@ -1,38 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { RiAdminFill } from "react-icons/ri";
-// import Logo from "../../assets/logo.svg";
+import { BsPersonFillCheck } from "react-icons/bs";
+import { MdAdminPanelSettings } from "react-icons/md";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const UserManagement = () => {
 	const [axiosSecure] = useAxiosSecure();
-	const [userData, setUserData] = useState([]);
 
-	useEffect(() => {
-		// Make an HTTP GET request to fetch meeting data
-		fetch(`${import.meta.env.VITE_API_URL}/users`, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setUserData(data);
-			})
-			.catch((error) => {
-				console.error("Error fetching meeting data:", error);
-			});
-	}, []);
+	const { data: users = [], refetch } = useQuery(["users"], async () => {
+		const res = await axiosSecure.get("/users");
+		return res.data;
+	});
 
-	const handleMakeAdmin = (user) => {
+	const handleMakeEditor = (user) => {
 		axiosSecure.patch(`/users/editor/${user._id}`, { role: "editor" }).then((data) => {
 			console.log(data.data);
 			if (data.data.modifiedCount) {
 				toast.success("User Role Changed To Editor");
+				refetch();
 			}
 		});
+	};
+
+	const handledelete = (id) => {
+		console.log("delete");
 	};
 
 	return (
@@ -65,6 +59,12 @@ const UserManagement = () => {
 										scope="col"
 										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
+										Role
+									</th>
+									<th
+										scope="col"
+										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+									>
 										Make Editor
 									</th>
 									<th
@@ -76,8 +76,8 @@ const UserManagement = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{userData &&
-									userData.map((user) => (
+								{users &&
+									users.map((user) => (
 										<tr key={user._id}>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												<div className="flex items-center">
@@ -102,19 +102,45 @@ const UserManagement = () => {
 													{user.email}
 												</p>
 											</td>
-											<td
-												onClick={() => handleMakeAdmin(user)}
-												className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
-											>
+											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												{user?.role === "admin" ? (
-													<p className="text-blue-500 font-medium">Admin</p>
-												) : user?.role === "editor" ? (
-													<p className="text-green-600 font-medium">Editor</p>
+													<p className="text-blue-500 font-medium">
+														Admin
+													</p>
+												) : user.role === "editor" ? (
+													<p className="text-green-600 font-medium">
+														Editor
+													</p>
 												) : (
-													<RiAdminFill className="h-6 w-6 text-blue-500" />
+													<p className="text-gray-700 font-medium">
+														User
+													</p>
 												)}
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+												{user?.role === "admin" ? (
+													<div className="flex gap-2">
+														<MdAdminPanelSettings className="h-6 w-6 text-blue-500" />
+														<p className="text-blue-500 font-medium">
+															(Not Changeable)
+														</p>
+													</div>
+												) : user?.role === "editor" ? (
+													<p title="Already Editor" className="text-green-600 font-medium">
+														<BsPersonFillCheck className="h-6 w-6" />
+													</p>
+												) : (
+													<RiAdminFill
+														onClick={() => handleMakeEditor(user)}
+														title="Make Editor"
+														className="h-6 w-6 text-blue-500"
+													/>
+												)}
+											</td>
+											<td
+												onClick={() => handledelete(user._id)}
+												className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
+											>
 												<FaTrash className="h-6 w-6 text-red-500" />
 											</td>
 										</tr>
