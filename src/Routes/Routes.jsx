@@ -25,6 +25,8 @@ import EditorHome from "../Pages/EditorHome/EditorHome";
 import EditorRoute from "./EditorRoute";
 import AdminRoute from "./AdminRoute";
 import MyBlog from "../Pages/Dashboard/MyBlog";
+import PaymentSucc from "../Pages/PaymentSucc/PaymentSucc";
+import PaymentFaild from "../Pages/PaymentFaild/PaymentFaild";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -78,6 +80,14 @@ export const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/payment/success/:tranId",
+    element: <PaymentSucc></PaymentSucc>,
+  },
+  {
+    path: "/payment/faild/:tranId",
+    element: <PaymentFaild></PaymentFaild>,
   },
   {
     path: "/room/:roomID",
