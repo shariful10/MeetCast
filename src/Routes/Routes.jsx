@@ -25,6 +25,7 @@ import EditorHome from "../Pages/EditorHome/EditorHome";
 import EditorRoute from "./EditorRoute";
 import AdminRoute from "./AdminRoute";
 import MyBlog from "../Pages/Dashboard/MyBlog";
+import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -129,7 +130,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/googleCalendar",
-        element: <GoogleCalendar></GoogleCalendar>,
+        element: <GoogleCalendar></GoogleCalendar>
       },
     ],
   },
