@@ -11,6 +11,7 @@ import {
 	updateProfile,
 } from "firebase/auth";
 import app from "./../Firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -43,6 +44,7 @@ const AuthProvider = ({ children }) => {
 
 	const logOut = () => {
 		setLoading(true);
+		localStorage.removeItem("access-token");
 		return signOut(auth);
 	};
 
@@ -56,8 +58,18 @@ const AuthProvider = ({ children }) => {
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser);
-			// console.log("current user", currentUser);
+
+			if (currentUser?.email) {
+				axios
+					.post(`${import.meta.env.VITE_API_URL}/jwt`, { email: currentUser.email })
+					.then((data) => {
+						localStorage.setItem("access-token", data.data.token);
+					});
+			} else {
+				localStorage.removeItem("access-token");
+			}
 			setLoading(false);
+			// console.log(currentUser);
 		});
 		return () => {
 			return unsubscribe();
