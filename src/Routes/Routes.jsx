@@ -10,6 +10,8 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import Meetings from "../Pages/Meetings/Meetings";
 import MyMeetings from "../Pages/MyMeetings/MyMeetings";
+import PaymentFaild from "../Pages/PaymentFaild/PaymentFaild";
+import PaymentSucc from "../Pages/PaymentSucc/PaymentSucc";
 import Pricing from "../Pages/Pricing/Pricing";
 import RoomPage from "../Pages/RoomPage/RoomPage";
 import SignUp from "../Pages/SignUp/SignUp";
@@ -47,7 +49,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/checkout/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/checkout/${params.id}`),
       },
 			{
 				path: "/meetings",
@@ -66,6 +68,14 @@ export const router = createBrowserRouter([
 	{
 		path: "/signup",
 		element: <SignUp />,
+	},
+	{
+		path: "/payment/success/:tranId",
+		element: <PaymentSucc></PaymentSucc>
+	},
+	{
+		path: "/payment/faild/:tranId",
+		element: <PaymentFaild></PaymentFaild>
 	},
 	{
 		path: "/room/:roomID",

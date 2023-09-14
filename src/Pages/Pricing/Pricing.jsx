@@ -24,16 +24,16 @@ function PricingToggle() {
 
   // get monthly data
 
-
-
   // get yearly data
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axiosSecure.get(
           isMonthly
-            ? "http://localhost:5000/monthly"
-            : "http://localhost:5000/yearly"
+            ? `http://localhost:5000/monthly`
+            : `http://localhost:5000/yearly`
         );
         const data = response.data;
         setPricingData(data);
@@ -43,7 +43,25 @@ function PricingToggle() {
     };
 
     fetchData();
-  }, [isMonthly,pricingData]);
+  }, [isMonthly]);
+  
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axiosSecure.get(
+  //         isMonthly
+  //           ? "http://localhost:5000/monthly"
+  //           : "http://localhost:5000/yearly"
+  //       );
+  //       const data = response.data;
+  //       setPricingData(data);
+  //     } catch (error) {
+  //       console.error("An error occurred:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [isMonthly,pricingData]);
 
   return (
     <Container>
@@ -181,7 +199,7 @@ export default PricingToggle;
 
                     <Link
                       className="py-4 px-10 mt-6 text-white bg-[#1D2130] rounded-md"
-                      to="/checkout"
+                     
                     >
                       Get started
                     </Link>
@@ -228,7 +246,7 @@ export default PricingToggle;
 
                     <Link
                       className="py-4 px-10 mt-6 text-white bg-[#1D2130] rounded-md"
-                      to="/checkout"
+                     
                     >
                       Get started
                     </Link>
@@ -276,7 +294,7 @@ export default PricingToggle;
 
                     <Link
                       className="py-4 px-10 mt-6 text-white bg-[#1D2130] rounded-md"
-                      to="/checkout"
+                     
                     >
                       Get started
                     </Link>

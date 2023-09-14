@@ -1,10 +1,13 @@
 import React, { useContext, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-// import { GrLogout } from "react-icons/gr";
-// import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
 import { FaCalendar } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
+import { ImHome } from "react-icons/im";
+import { IoLogOut } from "react-icons/io5";
+import { MdClose, MdMeetingRoom, MdNoMeetingRoom } from "react-icons/md";
+import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Logo from '../../assets/logo.svg';
 
 const Sidebar = () => {
 	const navigate = useNavigate();
@@ -81,7 +84,7 @@ const Sidebar = () => {
 										}`
 									}
 								>
-									<MdMeetingRoom className="w-5 h-5 hover:text-white" />
+									<MdNoMeetingRoom className="w-5 h-5 hover:text-white" />
 
 									<span className="mx-4 font-medium">Meetings</span>
 								</NavLink>

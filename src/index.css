@@ -22,42 +22,42 @@ body {
   color: var(--accent);
 }
 
-.primary_Link to="/checkout" {
+.primary_Link {
   border: none;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   outline: 3px solid rgba(255, 255, 255, 0);
 }
 
-.primary_Link to="/checkout":hover {
+.primary_Link {
   outline: 3px solid #1d2130;
   outline-offset: -8px;
   background-color: transparent;
   color: #1d2130;
 }
 
-.secondary_Link to="/checkout" {
+.secondary_Link {
   border: none;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   outline: 3px solid #6b7cff;
 }
 
-.secondary_Link to="/checkout":hover {
+.secondary_Link:hover {
   outline: 3px solid #6b7cff;
   outline-offset: -8px;
   background-color: transparent;
   color: #fff;
 }
 
-.get_started_Link to="/checkout" {
+.get_started_Link {
   border: none;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   outline: 3px solid transparent;
 }
 
-.get_started_Link to="/checkout":hover {
+.get_started_Link:hover {
   outline: 2px solid #fff;
   background-color: transparent;
   color: #fff;
