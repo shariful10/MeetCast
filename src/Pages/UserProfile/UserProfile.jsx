@@ -36,13 +36,13 @@ const UserProfile = () => {
           <div className="ps-6">
             <img
               src={user?.photoURL}
-              className="h-[250px] ms-0 rounded-3xl"
+              className="h-[150px] ms-0 rounded-3xl"
               alt=""
             />
           </div>
           <div className="w-full ms-6 mt-2">
-              <h2 className="text-2xl font-bold">{user.displayName}</h2>
-              <p className="my-3">Web Developer</p>
+            <h2 className="text-2xl font-bold">{user.displayName}</h2>
+            <p className="my-3">Web Developer</p>
           </div>
         </div>
         <div className="divider text-2xl">
@@ -97,30 +97,6 @@ const UserProfile = () => {
                   {showHost ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </p>
-            </div>
-          </div>
-        </div>
-        <div className="divider text-2xl">
-          <p>Sign In</p>
-        </div>
-        <div className="flex">
-          <div className="w-full p-1">
-            <div className="grid grid-cols-2">
-              <p className="m-3">Sign-in Email</p>
-              <p className="m-3">{user.email}</p>
-            </div>
-            <div className="grid grid-cols-2">
-              <p className="m-3">Sign-in Password</p>
-              <p className="m-3 flex items-center gap-3">
-                {showPass ? "abc23dr" : "ab...dr"}
-                <span onClick={() => setShowPass(!showPass)}>
-                  {showPass ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </p>
-            </div>
-            <div className="grid grid-cols-2">
-              <p className="m-3">Linked Accounts</p>
-              <p className="m-3">https://us04web.zoom.us/profile</p>
             </div>
           </div>
         </div>

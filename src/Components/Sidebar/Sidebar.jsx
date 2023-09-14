@@ -117,6 +117,18 @@ const Sidebar = () => {
 
 									<span className="mx-4 font-medium">Calendar</span>
 								</NavLink>
+								<NavLink
+									to="/dashboard/adminHome"
+									className={({ isActive }) =>
+										`flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
+											isActive ? "bg-[#6b7cff] text-white" : "text-gray-600"
+										}`
+									}
+								>
+									<FaCalendar className="w-5 h-5 hover:text-white" />
+
+									<span className="mx-4 font-medium">Admin Home</span>
+								</NavLink>
 							</li>
 						</ul>
 					</nav>

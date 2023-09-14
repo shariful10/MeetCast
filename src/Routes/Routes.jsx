@@ -20,6 +20,7 @@ import BlogPage from "../Pages/Blog/BlogPage";
 import BlogPost from "../Pages/Blog/BlogPost";
 import AddBlog from "../Pages/AddBlog/AddBlog";
 import ChatRoom from "../Pages/Meetings/ChatRoom";
+import AdminHome from "../Pages/AdminHome/AdminHome";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -113,6 +114,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/googleCalendar",
         element: <GoogleCalendar></GoogleCalendar>,
+      },
+      {
+        path: "/dashboard/adminHome",
+        element: <AdminHome></AdminHome>
       },
     ],
   },
