@@ -17,6 +17,7 @@ module.exports = {
     "react/no-unescaped-entities": 0,
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
+    "no-unused-vars": "off",
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },

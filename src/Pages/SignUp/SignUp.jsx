@@ -20,7 +20,6 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const userStatus = "online";
     // const img = form.image.value;
     // // console.log(img);
 
@@ -31,8 +30,9 @@ const SignUp = () => {
     console.log(image);
 
     formData.append("image", image);
-    const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API
-      }`;
+    const url = `https://api.imgbb.com/1/upload?key=${
+      import.meta.env.VITE_IMGBB_API
+    }`;
     console.log(url);
     fetch(url, {
       method: "POST",
@@ -78,7 +78,6 @@ const SignUp = () => {
         name: name,
         email: email,
         image: url,
-        userStatus
       }),
     });
     return;
@@ -102,7 +101,7 @@ const SignUp = () => {
           <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
             <div className="mb-8 text-center">
               <h1 className="my-3 text-4xl font-bold">Sign Up</h1>
-              <p className="text-sm text-gray-400">Welcome to AirCNC</p>
+              <p className="text-sm text-gray-400">Welcome to Meetcast</p>
             </div>
             <form
               onSubmit={handleSubmit}

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Chats from "./Chats";
 import Messaging from "./Messaging";
 import Users from "./Users";
-import { Outlet } from "react-router-dom";
 import Conversations from "./Conversations";
 
 const ChatRoom = () => {
@@ -26,7 +25,7 @@ const ChatRoom = () => {
   console.log("User", friends);
 
   useEffect(() => {
-    fetch("userProfile.json")
+    fetch("/userProfile.json")
       .then((res) => res.json())
       .then((data) => setUserInfo(data))
       .catch((error) => console.error("Error fetching data:", error));

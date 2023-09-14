@@ -5,7 +5,7 @@ import About from "../Pages/About/About";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
+import UserManagement from "./../Pages/UserManagement/UserManagement";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import MyMeetings from "../Pages/MyMeetings/MyMeetings";
@@ -21,6 +21,10 @@ import BlogPost from "../Pages/Blog/BlogPost";
 import AddBlog from "../Pages/AddBlog/AddBlog";
 import ChatRoom from "../Pages/Meetings/ChatRoom";
 import AdminHome from "../Pages/AdminHome/AdminHome";
+import EditorHome from "../Pages/EditorHome/EditorHome";
+import EditorRoute from "./EditorRoute";
+import AdminRoute from "./AdminRoute";
+import MyBlog from "../Pages/Dashboard/MyBlog";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -44,16 +48,8 @@ export const router = createBrowserRouter([
         element: <BlogPage />,
       },
       {
-        path: "/blog/:id",
-        element: <BlogPost />,
-      },
-      {
         path: "/contact",
         element: <Contact />,
-      },
-      {
-        path: "/add-blog",
-        element: <AddBlog />,
       },
       {
         path: "/checkout/:id",
@@ -96,12 +92,32 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
+        path: "/dashboard/admin-home",
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/editor-home",
+        element: (
+          <EditorRoute>
+            <EditorHome />
+          </EditorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/add-blog",
+        element: <AddBlog />,
+      },
+      {
         path: "/dashboard/userProfile",
         element: <UserProfile />,
       },
       {
         path: "/dashboard/editUserProfile",
-        element: <EditUserProfile></EditUserProfile>,
+        element: <EditUserProfile />,
       },
       {
         path: "/dashboard/schedule",
@@ -114,10 +130,6 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/googleCalendar",
         element: <GoogleCalendar></GoogleCalendar>,
-      },
-      {
-        path: "/dashboard/admin-Home",
-        element: <AdminHome></AdminHome>
       },
     ],
   },
