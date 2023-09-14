@@ -116,7 +116,7 @@ export const router = createBrowserRouter([
         element: <GoogleCalendar></GoogleCalendar>,
       },
       {
-        path: "/dashboard/adminHome",
+        path: "/dashboard/admin-Home",
         element: <AdminHome></AdminHome>
       },
     ],
