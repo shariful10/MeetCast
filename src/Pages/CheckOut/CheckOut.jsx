@@ -11,12 +11,6 @@ const CheckOut = () => {
   const [axiosSecure] = useAxiosSecure();
 
   const [userAddress, setUserAddress] = useState([]);
-  // console.log(userAddress);
-
-  // const [monthlyData, setMonthlyData] = useState();
-  // const [yearlyData, setYearlyData] = useState();
-  const [plan, setPlan] = useState();
-  console.log(plan);
 
   const [monthlyData, setMonthlyData] = useState();
 
@@ -26,8 +20,7 @@ const CheckOut = () => {
 
   const pricing = useParams();
 
-  // const { _id, price } = monthlyData || {};
-  // const { _id:YearlyID,  } = yearlyData || {};
+  const { _id, price } = monthlyData || {};
 
   // const {city,country,email,state,streetAddress,zip} = foundAddress;
 
@@ -37,27 +30,17 @@ const CheckOut = () => {
     axiosSecure
       .get(`${import.meta.env.VITE_API_URL}/monthly/${pricing.id}`)
       .then((response) => {
-        setPlan(response.data);
+        // Use setMonthlyData to store the response data in the state
+        setMonthlyData(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching monthly data:", error);
+        console.error("Error fetching user address:", error);
       });
   }, [axiosSecure, pricing.id]);
 
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:5000/yearly/${pricing.id}`)
-      .then((response) => {
-        setPlan(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching yearly data:", error);
-      });
-  }, [axiosSecure, pricing.id]);
-
-  useEffect(() => {
-    axiosSecure
-      .get(`http://localhost:5000/userAddress`)
+      .get(`${import.meta.env.VITE_API_URL}/userAddress`)
       .then((response) => {
         setUserAddress(response.data);
       })
@@ -70,14 +53,13 @@ const CheckOut = () => {
     register,
     handleSubmit,
     watch,
-    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
     data.planId = pricing;
     // order
-    fetch(`http://localhost:5000/order`, {
+    fetch(`${import.meta.env.VITE_API_URL}/order`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -85,7 +67,7 @@ const CheckOut = () => {
       .then((response) => response.json())
       .then((result) => {
         window.location.replace(result.url);
-        // console.log(result);
+        console.log(result);
       })
       .catch((error) => {
         // Handle any errors that occur during the request
@@ -174,12 +156,14 @@ const CheckOut = () => {
               <div className="divider"></div>
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-lg font-semibold">{plan?.title}</h2>
+                  <h2 className="text-lg font-semibold">
+                    {monthlyData?.title}
+                  </h2>
                   <p>10 User(s)</p>
                   <p className="text-xs">Annual Subscription</p>
                 </div>
 
-                <p>${plan?.price}</p>
+                <p>${monthlyData?.price}</p>
               </div>
 
               <div className="divider"></div>
@@ -191,7 +175,7 @@ const CheckOut = () => {
 
                 <div>
                   <p>$00.00</p>
-                  <p>${plan?.price}.00</p>
+                  <p>${monthlyData?.price}.00</p>
                 </div>
               </div>
               <div className="divider"></div>
