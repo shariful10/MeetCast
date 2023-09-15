@@ -25,12 +25,7 @@ import UserManagement from "./../Pages/UserManagement/UserManagement";
 import AdminRoute from "./AdminRoute";
 import EditorRoute from "./EditorRoute";
 import PrivateRoute from "./PrivateRoute";
-<<<<<<< HEAD
-import MyBlog from "../Pages/Dashboard/MyBlog";
-import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
-=======
 import BlogPost from "../Pages/Blog/BlogPost";
->>>>>>> development
 export const router = createBrowserRouter([
   {
     path: "/",
