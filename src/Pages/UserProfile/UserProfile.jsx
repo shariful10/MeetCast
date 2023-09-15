@@ -27,7 +27,7 @@ const UserProfile = () => {
       .catch((error) => {
         console.error("Error fetching user data:", error);
       });
-  }, []);
+  }, [axiosSecure, user.email]);
 
   console.log(userInfo);
 

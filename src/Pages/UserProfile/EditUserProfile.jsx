@@ -21,7 +21,7 @@ const EditUserProfile = () => {
       .catch((error) => {
         console.error("Error fetching user data:", error);
       });
-  }, []);
+  }, [axiosSecure, user.email]);
 
   const {
     register,
