@@ -1,4 +1,5 @@
 import { default as React } from "react";
+import { FaRegShareSquare } from "react-icons/fa";
 import { Cell, Pie, PieChart } from "recharts";
 import useAdmin from "../../Components/Hooks/useAdmin";
 import useAuth from "../../Components/Hooks/useAuth";
@@ -25,7 +26,7 @@ const UserProfile = () => {
   console.log(isAdmin);
 
   return (
-    <div className="flex justify-around bg-gray-50 gap-6 font-manrope">
+    <div className="flex justify-around bg-gray-50 gap-6  mt-[40px] font-manrope">
       {/* user profile  */}
       <div className="w-1/3">
         <div className="px-6 py-2 shadow-xl rounded-xl">
@@ -47,17 +48,26 @@ const UserProfile = () => {
             <div>
               <div className="my-4 px-2 py-4 border-2 rounded-2xl  bg-slate-100">
                 {" "}
-                <p className="text-start text-gray-600 ms-12">Email</p>
-                <p className="text-black -ms-10 text-sm">{user?.email}</p>
+                <p className="text-start text-gray-600 ms-10">Email</p>
+                <p className="text-black -ms-16 text-sm">{user?.email}</p>
               </div>
 
               <div className="my-4 px-2 py-4 border-2 rounded-2xl bg-slate-100">
                 {isAdmin === true ? (
-                  <p className="text-start text-gray-600 ms-9">Admin</p>
+                  <>
+                  <p className="text-start ms-10 text-gray-600">Role</p>
+                  <p className="text-start text-gray-600 ms-10">Admin</p>
+                </>
                 ) : isEditor === true ? (
-                  <p className="text-start text-gray-600 mx-9">Editor</p>
+                  <>
+                  <p className="text-start ms-10 text-gray-600">Role</p>
+                  <p className="text-start text-gray-600 ms-10">Editor</p>
+                </>
                 ) : (
-                  <p className="text-start text-gray-600 mx-9">User</p>
+                  <div>
+                    <p className="text-start ms-10 text-gray-600">Role</p>
+                    <p className="text-start text-gray-600 ms-10">User</p>
+                  </div>
                 )}
               </div>
 
@@ -74,18 +84,31 @@ const UserProfile = () => {
       </div>
       {/* user Information  */}
 
-      <div className="w-2/3 px-6 py-2 shadow-xl border border-sky-400 rounded-xl">
+      <div className="w-2/3 px-6 py-2 shadow-xl rounded-xl">
         {/* user cart  */}
         <div className="grid grid-cols-3 gap-2 mb-10">
-          <div className="border-2 border-sky-500 rounded-xl py-2 px-4">
-            <TotalMeeting></TotalMeeting>
+          <div className=" shadow-md rounded-xl py-2 px-4">
+            <div className="flex justify-around items-center px-4 py-2">
+              <div className="w-1/3">
+                <p className="text-4xl text-[#5fb5ee]">2</p>
+
+                <p className="text-base">Meeting </p>
+                <div className="mt-2">
+                  <FaRegShareSquare className="text-gray-600"></FaRegShareSquare>
+                </div>
+              </div>
+
+              <div className="w-full">
+                <TotalMeeting></TotalMeeting>
+              </div>
+            </div>
           </div>
-          <div className="border-2 border-sky-500 rounded-xl  py-2 px-4">
+          <div className="shadow-lg rounded-xl  py-2 px-4">
             {" "}
             <PieChart width={170} height={130}>
               <Pie
                 data={data}
-                cx={100}
+                cx={80}
                 cy={70}
                 innerRadius={30}
                 outerRadius={50}
@@ -102,23 +125,31 @@ const UserProfile = () => {
               </Pie>
             </PieChart>
           </div>
-          <div className="border-2 border-sky-500 rounded-xl py-2 px-4">
+          <div className="shadow-lg rounded-xl py-2 px-4">
             <div className="flex justify-around items-center px-4 py-2">
               <div className="w-1/3">
                 <p className="text-4xl text-[#ff8042]">5</p>
-                
-                <p className="">Cancelled </p>
-                <p className="">5</p>
+
+                <p className="text-base">Cancelled </p>
+                <div className="mt-2">
+                  <FaRegShareSquare className="text-gray-600"></FaRegShareSquare>
+                </div>
               </div>
 
-             <div className="w-full">
-             <PendingMeeting></PendingMeeting>
-             </div>
+              <div className="w-full">
+                <PendingMeeting></PendingMeeting>
+              </div>
             </div>
           </div>
         </div>
         {/* user appointemnts */}
-        <div className="border-2 border-sky-500 rounded-xl h-2/4 py-2 px-4"></div>
+        <div className=" rounded-xl h-2/4 py-2 px-4">
+          <img
+            className="rounded-2xl"
+            src="https://i.ibb.co/Jk4JH30/service-3-jpg.jpg"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );
