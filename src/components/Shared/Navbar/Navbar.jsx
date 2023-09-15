@@ -110,8 +110,8 @@ const Navbar = () => {
 												isAdmin
 													? "/dashboard/admin-home"
 													: isEditor
-													? "/dashboard/editor-home"
-													: "/dashboard/userProfile"
+													? "/dashboard/UserHome"
+													: "/dashboard/userHome"
 											}`}
 										>
 											Dashboard
@@ -172,8 +172,8 @@ const Navbar = () => {
 										isAdmin
 											? "/dashboard/admin-home"
 											: isEditor
-											? "/dashboard/editor-home"
-											: "/dashboard/userProfile"
+											? "/dashboard/userHome"
+											: "/dashboard/userHome"
 									}`}
 								>
 									Dashboard

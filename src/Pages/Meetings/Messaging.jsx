@@ -10,11 +10,12 @@ const Messaging = (selectedConversation) => {
   const [messageInput, setMessageInput] = useState("");
   const { user } = useContext(AuthContext);
 
-  console.log("got from conversation", selectedConversation?.conversation);
+  // console.log("got from conversation", selectedConversation?.conversation);
+  console.log("got from conversation", selectedConversation.conversation.displayName);
 
   useEffect(() => {
     if (selectedConversation?.conversation) {
-      setRoom(selectedConversation.conversation);
+      setRoom(selectedConversation.conversation.displayName);
     }
   }, [selectedConversation]);
 
@@ -65,14 +66,14 @@ const Messaging = (selectedConversation) => {
   }, [room]);
 
   return (
-    <div className="h-full border w-[720px]">
+    <div className="h-full border w-full">
       <div className="w-full bg-slate-300">
         <div className="m-auto text-center bg-orange-400">
-          {room ? `Room #${room}` : "#"}
+          {room ? `Chatting up #${room}` : "#"}
         </div>
         {/* ------------room section--------------- */}
         <form onSubmit={getRoom} className="p-1 flex">
-          <input
+          {/* <input
             className="rounded-lg py-1 px-2 mx-3 w-2/3"
             type="text"
             name="roomNumber"
@@ -80,7 +81,7 @@ const Messaging = (selectedConversation) => {
           />
           <button className="rounded-lg px-3 w-1/3" type="submit">
             Join
-          </button>
+          </button> */}
         </form>
       </div>
       {/* ------------room section--------------- */}
