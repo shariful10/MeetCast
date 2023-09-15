@@ -27,6 +27,7 @@ import EditorRoute from "./EditorRoute";
 import PrivateRoute from "./PrivateRoute";
 import BlogPost from "../Pages/Blog/BlogPost";
 import GoogleCalendar from "../Pages/GoogleCalendar/GoogleCalendar";
+import UserProfileOriginal from "../Pages/UserProfile/UserProfileOriginal";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -127,7 +128,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/userProfile",
-        element: <UserProfile />,
+        element: <UserProfileOriginal></UserProfileOriginal>
       },
       {
         path: "/dashboard/editUserProfile",
