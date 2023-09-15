@@ -1,8 +1,23 @@
 import React from "react";
-import { FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { RiAdminFill } from "react-icons/ri";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import { BsPersonFillCheck } from "react-icons/bs";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 const MyBlog = () => {
+  const [axiosSecure] = useAxiosSecure();
+
+  const { data: blogs = [], refetch } = useQuery(["blogs"], async () => {
+    const res = await axiosSecure.get("/blogs");
+    return res.data;
+  });
+
+  const handledelete = (id) => {
+    console.log("delete", id);
+  };
   return (
     <div className="container mx-auto px-4 sm:px-8">
       <div className="py-8">
@@ -15,25 +30,31 @@ const MyBlog = () => {
                     scope="col"
                     className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-blue-500"
                   >
-                    User Image
+                    Blog Image
                   </th>
                   <th
                     scope="col"
                     className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-blue-500"
                   >
-                    Name
+                    Title
                   </th>
                   <th
                     scope="col"
                     className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
                   >
-                    Email
+                    Author Name
                   </th>
                   <th
                     scope="col"
                     className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
                   >
-                    Make Editor
+                    Status
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+                  >
+                    Edit
                   </th>
                   <th
                     scope="col"
@@ -44,16 +65,16 @@ const MyBlog = () => {
                 </tr>
               </thead>
               <tbody>
-                {userData &&
-                  userData.map((user) => (
-                    <tr key={user._id}>
+                {blogs &&
+                  blogs.map((blog) => (
+                    <tr key={blog._id}>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <div className="flex items-center">
                           <div className="flex-shrink-0">
                             <div className="block relative">
                               <img
                                 alt="profile"
-                                src={user.image}
+                                src={blog.image}
                                 className="mx-auto object-cover rounded h-14 w-16"
                               />
                             </div>
@@ -62,28 +83,33 @@ const MyBlog = () => {
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p className="text-black whitespace-no-wrap">
-                          {user.name ? user.name : ""}
+                          {blog.title ? blog.title : ""}
                         </p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p className="text-black whitespace-no-wrap">
-                          {user.email}
+                          {blog.author_name}
                         </p>
                       </td>
-                      <td
-                        onClick={() => handleMakeAdmin(user)}
-                        className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
-                      >
-                        {user?.role === "admin" ? (
-                          <p className="text-blue-500 font-medium">Admin</p>
-                        ) : user?.role === "editor" ? (
-                          <p className="text-green-600 font-medium">Editor</p>
+                      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        {blog?.status === "approved" ? (
+                          <p className="text-blue-500 font-medium">Approved</p>
                         ) : (
-                          <RiAdminFill className="h-6 w-6 text-blue-500" />
+                          blog.status === "pending" && (
+                            <p className="text-green-600 font-medium">
+                              Pending
+                            </p>
+                          )
                         )}
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <FaTrash className="h-6 w-6 text-red-500" />
+                        <FaEdit className="h-6 w-6 text-green-500 cursor-pointer" />
+                      </td>
+                      <td
+                        onClick={() => handledelete(blog._id)}
+                        className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
+                      >
+                        <FaTrash className="h-6 w-6 text-red-500 cursor-pointer" />
                       </td>
                     </tr>
                   ))}

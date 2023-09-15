@@ -1,13 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import blogImage from "../../assets/images/Blog/blog-image.png";
 import Container from "../../Components/Shared/Container/Container";
 import blog1 from "../../assets/images/Blog/blog-post-1.png";
 import blog2 from "../../assets/images/Blog/blog-post-2.png";
 import blog3 from "../../assets/images/Blog/blog-post-3.png";
 import Buttons from "../../Components/Buttons/Buttons";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import ReactHtmlParser from "react-html-parser"; // Import react-html-parser
 
 const BlogPost = () => {
+  const [axiosSecure] = useAxiosSecure();
+  const { id: blogID } = useParams();
+  console.log(blogID);
+
+  const { data: blogs = [] } = useQuery(["approved-blogs"], async () => {
+    const res = await axiosSecure.get("/approved-blogs");
+    return res.data;
+  });
+
+  // Find the specific blog that matches the blogID
+  const blog = blogs.find((blog) => blog._id === blogID);
+  console.log(blog);
+
+  const date = new Date(blog.date); // Convert the string to a Date object
+
+  // Extract the date part as a string in "YYYY-MM-DD" format
+  const formattedDate = date.toISOString().split("T")[0];
+
   return (
     <Container>
       <div className="my-16 max-w-7xl mx-auto">
@@ -17,68 +38,28 @@ const BlogPost = () => {
         <p className="flex gap-2 items-center my-8 justify-center">
           <img
             className="w-10 h-10 rounded-full object-cover object-top"
-            src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            src={blog?.author_image}
             alt="Author Image"
           />
-          <Link className="font-semibold text-sm">Luke Matthews</Link> |
-          <span className="text-sm">November 8, 2021</span>
+          <Link className="font-semibold text-sm">{blog?.author_name}</Link> |
+          <span className="text-sm">{formattedDate}</span>
         </p>
         <div>
           <img
             className="w-full max-h-[520px] rounded-3xl mb-8"
-            src={blogImage}
+            src={blog?.image}
             alt="Blog Image"
           />
         </div>
         <div className="max-w-3xl mx-auto">
           <h4 className="text-lg lg:text-3xl font-extrabold mb-4">
-            This is a small blog post headline
+            {blog?.subTitle}
           </h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-            repudiandae ducimus facilis odit vel nesciunt maiores harum quia
-            laboriosam, dignissimos libero veniam iusto fuga impedit?
-            Repudiandae temporibus in fugit, odio velit reprehenderit asperiores
-            consequuntur dolorum aperiam voluptatem quo beatae esse alias quam
-            itaque explicabo hic pariatur vero quod necessitatibus veritatis,
-            nostrum rerum suscipit sapiente? Dignissimos quam eligendi similique
-            doloremque facere?
-          </p>
-          <br />
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo,
-            sapiente? Ad quibusdam, earum enim quasi animi impedit! Debitis,
-            mollitia. Delectus dolores ducimus facere quaerat aliquam ab
-            aspernatur consequatur animi in ratione ea voluptates, cupiditate a
-            quod eum ut officiis, sint quasi natus quam excepturi veritatis!
-            Nulla eos vitae, at tempora voluptatibus aperiam corrupti accusamus
-            beatae neque ullam ab cupiditate, modi quisquam dolores dolorum,
-            architecto molestiae.
-          </p>
-          <h4 className="text-lg lg:text-3xl font-extrabold my-4">
-            This is a small blog post headline
-          </h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
-            repudiandae ducimus facilis odit vel nesciunt maiores harum quia
-            laboriosam, dignissimos libero veniam iusto fuga impedit?
-            Repudiandae temporibus in fugit, odio velit reprehenderit asperiores
-            consequuntur dolorum aperiam voluptatem quo beatae esse alias quam
-            itaque explicabo hic pariatur vero quod necessitatibus veritatis,
-            nostrum rerum suscipit sapiente? Dignissimos quam eligendi similique
-            doloremque facere?
-          </p>
-          <br />
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo,
-            sapiente? Ad quibusdam, earum enim quasi animi impedit! Debitis,
-            mollitia. Delectus dolores ducimus facere quaerat aliquam ab
-            aspernatur consequatur animi in ratione ea voluptates, cupiditate a
-            quod eum ut officiis, sint quasi natus quam excepturi veritatis!
-            Nulla eos vitae, at tempora voluptatibus aperiam corrupti accusamus
-            beatae neque ullam ab cupiditate, modi quisquam dolores dolorum,
-            architecto molestiae.
-          </p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: blog?.description, // Use the HTML string from the Quill editor
+            }}
+          ></div>
         </div>
         <div className="my-10">
           <h3 className="text-3xl font-extrabold text-center">Releted Post</h3>

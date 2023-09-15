@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ServiceCard = ({ Icon, title, subTitle, animation }) => {
   return (
-    <div data-aos={animation} data-aos-duration="1200">
+    <div data-aos={animation} data-aos-duration="1200" className="bg-white">
       <div className="flex flex-col justify-between hover:-translate-y-2 hover:shadow-2xl duration-500 min-h-[330px] shadow-md rounded-lg px-8 py-10 max-w-sm border">
         <div>
           <Icon size={50} />
