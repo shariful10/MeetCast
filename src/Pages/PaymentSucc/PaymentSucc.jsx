@@ -6,15 +6,14 @@ const PaymentSucc = () => {
   const { tranId } = useParams();
   const [axiosSecure] = useAxiosSecure();
   const [Payment, setPaymentData] = useState([]);
-  console.log(Payment);
 
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:5000/payment/success/${tranId}`)
+      .get(`${import.meta.env.VITE_API_URL}/payment/success/${tranId}`)
       .then((response) => {
         setPaymentData(response.data);
       });
-  }, []);
+  }, [axiosSecure, tranId]);
 
   return (
     <div className="font-manrope">

@@ -11,28 +11,21 @@ const CheckOut = () => {
   const [axiosSecure] = useAxiosSecure();
 
   const [userAddress, setUserAddress] = useState([]);
-  // console.log(userAddress);
 
-  // const [monthlyData, setMonthlyData] = useState();
-  // const [yearlyData, setYearlyData] = useState();
-  const [plan, setPlan] = useState();
-  console.log(plan);
+  const [monthlyData, setMonthlyData] = useState();
 
   const foundAddress = userAddress.find(
     (address) => address?.email == user?.email
   );
-  // console.log(foundAddress);
 
   const pricing = useParams();
-  // console.log(pricing.id);
 
   // const { _id, price } = monthlyData || {};
   // const { _id:YearlyID,  } = yearlyData || {};
 
   // const {city,country,email,state,streetAddress,zip} = foundAddress;
 
-  // const orderData = { foundAddress, product: _id, productPrice: price };
-  // console.log(orderData);
+  const orderData = { foundAddress, product: _id, productPrice: price };
 
   useEffect(() => {
     axiosSecure
@@ -43,7 +36,7 @@ const CheckOut = () => {
       .catch((error) => {
         console.error("Error fetching monthly data:", error);
       });
-  }, []);
+  }, [axiosSecure, pricing.id]);
 
   useEffect(() => {
     axiosSecure
@@ -65,7 +58,7 @@ const CheckOut = () => {
       .catch((error) => {
         console.error("Error fetching user address:", error);
       });
-  }, []);
+  }, [axiosSecure]);
 
   const {
     register,
@@ -76,10 +69,7 @@ const CheckOut = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    // console.log("data",data)
     data.planId = pricing;
-
-    // console.log(_id);
     // order
     fetch(`http://localhost:5000/order`, {
       method: "POST",
@@ -96,8 +86,6 @@ const CheckOut = () => {
         console.error(error);
       });
   };
-
-  // console.log(watch("example")); // watch input value by passing the name of
 
   return (
     <Container>
