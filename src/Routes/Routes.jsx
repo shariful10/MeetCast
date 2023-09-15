@@ -5,6 +5,7 @@ import About from "../Pages/About/About";
 import AddBlog from "../Pages/AddBlog/AddBlog";
 import AdminHome from "../Pages/AdminHome/AdminHome";
 import BlogPage from "../Pages/Blog/BlogPage";
+import BlogPost from "../Pages/Blog/BlogPost";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import Contact from "../Pages/Contact/Contact";
 import MyBlog from "../Pages/Dashboard/MyBlog";
@@ -19,6 +20,7 @@ import PaymentSucc from "../Pages/PaymentSucc/PaymentSucc";
 import Pricing from "../Pages/Pricing/Pricing";
 import RoomPage from "../Pages/RoomPage/RoomPage";
 import SignUp from "../Pages/SignUp/SignUp";
+import UserHome from "../Pages/UserHome/UserHome";
 import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
@@ -26,7 +28,6 @@ import UserManagement from "./../Pages/UserManagement/UserManagement";
 import AdminRoute from "./AdminRoute";
 import EditorRoute from "./EditorRoute";
 import PrivateRoute from "./PrivateRoute";
-import BlogPost from "../Pages/Blog/BlogPost";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -126,8 +127,16 @@ export const router = createBrowserRouter([
         element: <AddBlog />,
       },
       {
+        path: "/dashboard/adminUserProfile",
+        element: <EditUserProfile />,
+      },
+      {
         path: "/dashboard/userProfile",
         element: <UserProfile />,
+      },
+      {
+        path: "/dashboard/userHome",
+        element: <UserHome></UserHome>
       },
       {
         path: "/dashboard/editUserProfile",
