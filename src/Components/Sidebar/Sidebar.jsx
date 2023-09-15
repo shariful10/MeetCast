@@ -6,7 +6,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import { FaCalendar } from "react-icons/fa";
 import { HiMiniHomeModern } from "react-icons/hi2";
 import { FaGear, FaUserGroup } from "react-icons/fa6";
-import Logo from "../../assets/logo.svg";
+import Logo from "../../assets/Logo.svg";
 import { IoLogOut } from "react-icons/io5";
 import useAuth from "../Hooks/useAuth";
 import useAdmin from "../Hooks/useAdmin";
