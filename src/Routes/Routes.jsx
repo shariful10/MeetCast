@@ -2,19 +2,29 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import Main from "../Layouts/Main/Main";
 import About from "../Pages/About/About";
+import AddBlog from "../Pages/AddBlog/AddBlog";
+import AdminHome from "../Pages/AdminHome/AdminHome";
+import BlogPage from "../Pages/Blog/BlogPage";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import Contact from "../Pages/Contact/Contact";
+import MyBlog from "../Pages/Dashboard/MyBlog";
+import EditorHome from "../Pages/EditorHome/EditorHome";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import UserManagement from "./../Pages/UserManagement/UserManagement";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
+import ChatRoom from "../Pages/Meetings/ChatRoom";
 import MyMeetings from "../Pages/MyMeetings/MyMeetings";
+import PaymentFaild from "../Pages/PaymentFaild/PaymentFaild";
+import PaymentSucc from "../Pages/PaymentSucc/PaymentSucc";
 import Pricing from "../Pages/Pricing/Pricing";
 import RoomPage from "../Pages/RoomPage/RoomPage";
 import SignUp from "../Pages/SignUp/SignUp";
 import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
+import UserManagement from "./../Pages/UserManagement/UserManagement";
+import AdminRoute from "./AdminRoute";
+import EditorRoute from "./EditorRoute";
 import PrivateRoute from "./PrivateRoute";
 import BlogPage from "../Pages/Blog/BlogPage";
 import BlogPost from "../Pages/Blog/BlogPost";
@@ -79,6 +89,14 @@ export const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
+  },
+  {
+    path: "/payment/success/:tranId",
+    element: <PaymentSucc></PaymentSucc>,
+  },
+  {
+    path: "/payment/faild/:tranId",
+    element: <PaymentFaild></PaymentFaild>,
   },
   {
     path: "/room/:roomID",

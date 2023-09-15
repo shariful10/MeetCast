@@ -11,25 +11,20 @@ const CheckOut = () => {
   const [axiosSecure] = useAxiosSecure();
 
   const [userAddress, setUserAddress] = useState([]);
-  console.log(userAddress);
 
   const [monthlyData, setMonthlyData] = useState();
-  console.log(monthlyData);
 
   const foundAddress = userAddress.find(
     (address) => address?.email == user?.email
   );
-  console.log(foundAddress);
 
   const pricing = useParams();
-  console.log(pricing.id);
 
   const { _id, price } = monthlyData || {};
 
   // const {city,country,email,state,streetAddress,zip} = foundAddress;
 
   const orderData = { foundAddress, product: _id, productPrice: price };
-  console.log(orderData);
 
   useEffect(() => {
     axiosSecure
@@ -41,7 +36,7 @@ const CheckOut = () => {
       .catch((error) => {
         console.error("Error fetching user address:", error);
       });
-  }, []);
+  }, [axiosSecure, pricing.id]);
 
   useEffect(() => {
     axiosSecure
@@ -52,7 +47,7 @@ const CheckOut = () => {
       .catch((error) => {
         console.error("Error fetching user address:", error);
       });
-  }, []);
+  }, [axiosSecure]);
 
   const {
     register,
@@ -62,7 +57,7 @@ const CheckOut = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    data.planId = _id;
+    data.planId = pricing;
     // order
     fetch(`${import.meta.env.VITE_API_URL}/order`, {
       method: "POST",
@@ -79,8 +74,6 @@ const CheckOut = () => {
         console.error(error);
       });
   };
-
-  console.log(watch("example")); // watch input value by passing the name of
 
   return (
     <Container>
