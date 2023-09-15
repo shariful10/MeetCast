@@ -53,7 +53,7 @@ const CheckOut = () => {
       .catch((error) => {
         console.error("Error fetching yearly data:", error);
       });
-  }, []);
+  }, [axiosSecure, pricing.id]);
 
   useEffect(() => {
     axiosSecure
