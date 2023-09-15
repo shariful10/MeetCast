@@ -9,7 +9,7 @@ const Totalincome = () => {
 
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:5000/users`)
+      .get(`http://localhost:5000/monthly`)
       .then((response) => {
         setAllUsers(response.data);
       })
@@ -19,10 +19,10 @@ const Totalincome = () => {
   }, []);
 
   return (
-    <div className="h-[180px] w-[300px] m-auto bg-white rounded-lg shadow-lg p-6 text-center flex flex-grow">
+    <div className="w-[300px] m-auto bg-slate-100 hover:bg-slate-200 rounded-lg shadow-lg p-6 text-center flex flex-grow">
       <div className="w-5/6">
-        <h3 className="text-start text-2xl font-bold">Income</h3>
-        <h2 className="text-start text-4xl">{allUsers?.length || "00"}</h2>
+        <h3 className="text-start text-2xl font-bold">Revenue</h3>
+        <h2 className="text-start text-4xl">$ {allUsers?.length || "00"}</h2>
         <h2 className="text-start text-sm mt-6">
           <span className="text-green-600 me-3">
             <FontAwesomeIcon icon={faArrowUp} /> 10%

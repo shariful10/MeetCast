@@ -19,7 +19,7 @@ const UserNumberCard = () => {
   }, []);
 
   return (
-    <div className="h-[180px] w-[300px] m-auto bg-white rounded-lg shadow-lg p-6 text-center flex flex-grow">
+    <div className="w-[300px] m-auto bg-slate-100 hover:bg-slate-200 rounded-lg shadow-lg p-6 text-center flex flex-grow">
       <div className="w-5/6">
         <h3 className="text-start text-2xl font-bold">USERS</h3>
         <h2 className="text-start text-4xl">{allUsers?.length || "00"}</h2>
