@@ -105,7 +105,7 @@ const Sidebar = () => {
 										<span className="mx-4 font-medium">Admin Home</span>
 									</NavLink>
 									<NavLink
-										to="/dashboard/userProfile"
+										to="/dashboard/adminUserProfile"
 										className={({ isActive }) =>
 											`flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
 												isActive
@@ -177,7 +177,7 @@ const Sidebar = () => {
 							) : isEditor ? (
 								<li>
 									<NavLink
-										to="/dashboard/editor-home"
+										to="/dashboard/UserHome"
 										className={({ isActive }) =>
 											`flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
 												isActive
@@ -190,7 +190,7 @@ const Sidebar = () => {
 										<span className="mx-4 font-medium">Editor Home</span>
 									</NavLink>
 									<NavLink
-										to="/dashboard/userProfile"
+										to="/dashboard/UserProfile"
 										className={({ isActive }) =>
 											`flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
 												isActive
@@ -261,6 +261,19 @@ const Sidebar = () => {
 								</li>
 							) : (
 								<li>
+									<NavLink
+										to="/dashboard/userHome"
+										className={({ isActive }) =>
+											`flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
+												isActive
+													? "bg-[#6b7cff] text-white"
+													: "text-gray-600"
+											}`
+										}
+									>
+										<FaGear className="w-5 h-5 hover:text-white" />
+										<span className="mx-4 font-medium">User Home</span>
+									</NavLink>
 									<NavLink
 										to="/dashboard/userProfile"
 										className={({ isActive }) =>

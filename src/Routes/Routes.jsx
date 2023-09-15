@@ -19,6 +19,7 @@ import PaymentSucc from "../Pages/PaymentSucc/PaymentSucc";
 import Pricing from "../Pages/Pricing/Pricing";
 import RoomPage from "../Pages/RoomPage/RoomPage";
 import SignUp from "../Pages/SignUp/SignUp";
+import UserHome from "../Pages/UserHome/UserHome";
 import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
@@ -121,8 +122,16 @@ export const router = createBrowserRouter([
         element: <AddBlog />,
       },
       {
+        path: "/dashboard/adminUserProfile",
+        element: <EditUserProfile />,
+      },
+      {
         path: "/dashboard/userProfile",
         element: <UserProfile />,
+      },
+      {
+        path: "/dashboard/userHome",
+        element: <UserHome></UserHome>
       },
       {
         path: "/dashboard/editUserProfile",
