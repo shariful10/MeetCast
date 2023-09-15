@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
+import { AuthContext } from "../../Providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import useAuth from "../../Components/Hooks/useAuth";
-import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import Container from "../../Components/Shared/Container/Container";
 
-const UserProfile = () => {
-  const {user} = useAuth()
-  const [userInfo, setUserInfo ] = useState()
+const UserProfileOriginal = () => {
+  const { user } = useContext(AuthContext);
+  const [userInfo, setUserInfo] = useState();
   const [axiosSecure] = useAxiosSecure();
   const [showPass, setShowPass] = useState(false);
   const [showHost, setShowHost] = useState(false);
@@ -25,30 +25,30 @@ const UserProfile = () => {
       .catch((error) => {
         console.error("Error fetching user data:", error);
       });
-  }, [axiosSecure, user.email]);
+  }, []);
 
   console.log(userInfo);
 
   return (
     <Container>
-      <div className="w-full m-auto bg-white p-2">
-        <div className="grid grid-cols-1 md:grid-cols-2 mt-24">
+      <div className="w-full m-auto rounded-lg flex flex-col p-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 mt-24 m-auto w-5/6 bg-slate-300 p-6 rounded-lg">
           <div className="ps-6">
             <img
               src={user?.photoURL}
-              className="h-[250px] ms-0 rounded-3xl"
+              className="h-[150px] ms-0 rounded-3xl"
               alt=""
             />
           </div>
           <div className="w-full ms-6 mt-2">
-              <h2 className="text-2xl font-bold">{user.displayName}</h2>
-              <p className="my-3">Web Developer</p>
+            <h2 className="text-2xl font-bold">{user.displayName}</h2>
+            <p className="my-3">Web Developer</p>
           </div>
         </div>
-        <div className="divider text-2xl">
-          <p>Personal</p>
-        </div>
-        <div className="flex">
+        <div className="flex flex-col m-auto w-5/6 bg-slate-300 p-6 mt-3 rounded-lg">
+          <div className="divider text-2xl">
+            <p>Personal</p>
+          </div>
           <div className="w-full p-1">
             <div className="grid grid-cols-2">
               <p className="m-3">Phone</p>
@@ -80,10 +80,10 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
-        <div className="divider text-2xl">
-          <p>Meeting</p>
-        </div>
-        <div className="flex">
+        <div className="flex flex-col p-6 m-auto w-5/6 bg-slate-300 rounded-lg mt-3">
+          <div className="divider text-2xl">
+            <p>Meeting</p>
+          </div>
           <div className="w-full p-1">
             <div className="grid grid-cols-2">
               <p className="m-3">Personal Meeting</p>
@@ -100,30 +100,6 @@ const UserProfile = () => {
             </div>
           </div>
         </div>
-        <div className="divider text-2xl">
-          <p>Sign In</p>
-        </div>
-        <div className="flex">
-          <div className="w-full p-1">
-            <div className="grid grid-cols-2">
-              <p className="m-3">Sign-in Email</p>
-              <p className="m-3">{user.email}</p>
-            </div>
-            <div className="grid grid-cols-2">
-              <p className="m-3">Sign-in Password</p>
-              <p className="m-3 flex items-center gap-3">
-                {showPass ? "abc23dr" : "ab...dr"}
-                <span onClick={() => setShowPass(!showPass)}>
-                  {showPass ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </p>
-            </div>
-            <div className="grid grid-cols-2">
-              <p className="m-3">Linked Accounts</p>
-              <p className="m-3">https://us04web.zoom.us/profile</p>
-            </div>
-          </div>
-        </div>
         <div className="flex justify-center mt-6">
           <Link to={"/dashboard/editUserProfile"}>
             <button className="btn btn-primary text-white">Edit Profile</button>
@@ -134,4 +110,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default UserProfileOriginal;

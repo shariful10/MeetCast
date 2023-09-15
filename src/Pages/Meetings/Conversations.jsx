@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Conversations = ({ info, onClick }) => {
   const handleConversationClick = () => {
-    onClick(info.id); // Notify the parent ChatRoom component about the selected conversation
+    onClick(info); // Notify the parent ChatRoom component about the selected conversation
   };
 
   return (

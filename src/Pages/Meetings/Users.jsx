@@ -11,7 +11,7 @@ const Users = ({ userInfo }) => {
   console.log(" check online",offlineUsers)
 
   return (
-    <div className="w-3/12 border p-1 h-screen" style={{ overflowY: "scroll" }}>
+    <div className="w-80  border p-1 h-screen" style={{ overflowY: "scroll" }}>
       <div className="p-1 divider">
         <p className="font-bold">Online Users</p>
       </div>

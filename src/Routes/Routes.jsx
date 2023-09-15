@@ -3,12 +3,12 @@ import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import Main from "../Layouts/Main/Main";
 import About from "../Pages/About/About";
 import AddBlog from "../Pages/AddBlog/AddBlog";
-import AdminHome from "../Pages/AdminHome/AdminHome";
+// import AdminHome from "../Pages/AdminHome/AdminHome";
+import AdminHome from './../Pages/AdminHome/AdminHome';
 import BlogPage from "../Pages/Blog/BlogPage";
 import BlogPost from "../Pages/Blog/BlogPost";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import Contact from "../Pages/Contact/Contact";
-import MyBlog from "../Pages/Dashboard/MyBlog";
 import EditorHome from "../Pages/EditorHome/EditorHome";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
@@ -68,6 +68,7 @@ export const router = createBrowserRouter([
 				loader: ({ params }) =>
 					fetch(`${import.meta.env.VITE_API_URL}/checkout/${params.id}`),
 			},
+
 			{
 				path: "/meetings",
 				element: (
