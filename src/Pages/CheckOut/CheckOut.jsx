@@ -11,6 +11,12 @@ const CheckOut = () => {
   const [axiosSecure] = useAxiosSecure();
 
   const [userAddress, setUserAddress] = useState([]);
+  // console.log(userAddress);
+
+  // const [monthlyData, setMonthlyData] = useState();
+  // const [yearlyData, setYearlyData] = useState();
+  const [plan, setPlan] = useState();
+  console.log(plan);
 
   const [monthlyData, setMonthlyData] = useState();
 
