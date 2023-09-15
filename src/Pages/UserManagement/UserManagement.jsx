@@ -26,7 +26,10 @@ const UserManagement = () => {
 	};
 
 	const handledelete = (id) => {
-		console.log("delete");
+		axiosSecure.delete(`/users/${id}`).then((data) => {
+			toast.success("User Deleted Successfully");
+			refetch();
+		})
 	};
 
 	return (
