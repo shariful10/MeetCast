@@ -31,7 +31,7 @@ const CheckOut = () => {
 
   // const {city,country,email,state,streetAddress,zip} = foundAddress;
 
-  const orderData = { foundAddress, product: _id, productPrice: price };
+  // const orderData = { foundAddress, product: _id, productPrice: price };
 
   useEffect(() => {
     axiosSecure

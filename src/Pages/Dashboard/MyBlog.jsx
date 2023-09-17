@@ -1,19 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { RiAdminFill } from "react-icons/ri";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import { BsPersonFillCheck } from "react-icons/bs";
-import { MdAdminPanelSettings } from "react-icons/md";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const MyBlog = () => {
   const [axiosSecure] = useAxiosSecure();
+  const { user, loading } = useContext(AuthContext);
 
-  const { data: blogs = [], refetch } = useQuery(["blogs"], async () => {
-    const res = await axiosSecure.get("/blogs");
-    return res.data;
+  const { data: blogs = [], isLoading } = useQuery({
+    queryKey: ["my-blogs"],
+    enabled: !!user && !loading,
+    queryFn: async () => {
+      const res = await axiosSecure(`/my-blogs?email=${user?.email}`);
+      return res.data;
+    },
   });
+
+  console.log(blogs);
 
   const handledelete = (id) => {
     console.log("delete", id);
