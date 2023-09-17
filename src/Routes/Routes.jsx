@@ -94,11 +94,15 @@ export const router = createBrowserRouter([
 	},
 	{
 		path: "/payment/faild/:tranId",
-		element: <PaymentFaild></PaymentFaild>,
+		element: <PaymentFaild />,
 	},
 	{
 		path: "/room/:roomID",
-		element: <RoomPage />,
+		element: (
+			<PrivateRoute>
+				<RoomPage />
+			</PrivateRoute>
+		),
 	},
 	{
 		path: "/dashboard",
@@ -107,6 +111,7 @@ export const router = createBrowserRouter([
 				<DashboardLayout />
 			</PrivateRoute>
 		),
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: "/dashboard/admin-home",
@@ -126,31 +131,59 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/dashboard/userHome",
-				element: <UserHome />,
+				element: (
+					<PrivateRoute>
+						<UserHome />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/dashboard/add-blog",
-				element: <AddBlog />,
+				element: (
+					<EditorRoute>
+						<AddBlog />
+					</EditorRoute>
+				),
 			},
 			{
 				path: "/dashboard/userProfile",
-				element: <UserProfileOriginal />,
+				element: (
+					<PrivateRoute>
+						<UserProfileOriginal />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/dashboard/editUserProfile",
-				element: <EditUserProfile />,
+				element: (
+					<PrivateRoute>
+						<EditUserProfile />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/dashboard/schedule",
-				element: <MeetingSchedule />,
+				element: (
+					<PrivateRoute>
+						<MeetingSchedule />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/dashboard/myMeetings",
-				element: <MyMeetings />,
+				element: (
+					<PrivateRoute>
+						<MyMeetings />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: "/dashboard/UserManagement",
-				element: <UserManagement />,
+				element: (
+					<AdminRoute>
+						<UserManagement />
+					</AdminRoute>
+				),
 			},
 			{
 				path: "/dashboard/my-blog",
@@ -158,7 +191,11 @@ export const router = createBrowserRouter([
 			},
 			{
 				path: "/dashboard/manage-blogs",
-				element: <ManageBlogs />,
+				element: (
+					<AdminRoute>
+						<ManageBlogs />
+					</AdminRoute>
+				),
 			},
 		],
 	},

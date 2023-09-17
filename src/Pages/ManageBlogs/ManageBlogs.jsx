@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import { FaTrash } from "react-icons/fa";
 import { AiFillCheckCircle } from "react-icons/ai";
-import { MdOutlinePending } from "react-icons/md";
 import toast from "react-hot-toast";
+import { FaTrashCan } from "react-icons/fa6";
 
 const ManageBlogs = () => {
 	const [axiosSecure] = useAxiosSecure();
@@ -43,43 +43,43 @@ const ManageBlogs = () => {
 								<tr>
 									<th
 										scope="col"
-										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-blue-500"
+										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-[#6b7cff]"
 									>
 										Blog Image
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-blue-500"
+										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-[#6b7cff]"
 									>
 										Blog Title
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Author Name
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Author Email
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Status
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Approve Blog
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Action
 									</th>
@@ -123,7 +123,7 @@ const ManageBlogs = () => {
 														Approved
 													</p>
 												) : (
-													<p className="text-blue-700 font-medium">
+													<p className="text-[#6b7cff] font-medium">
 														Panding
 													</p>
 												)}
@@ -139,17 +139,19 @@ const ManageBlogs = () => {
 												) : (
 													<p
 														onClick={() => handleMakeAppruve(blog)}
-														className="bg-blue-500 py-3 text-white rounded text-center cursor-pointer"
+														className="bg-[#6b7cff] py-3 text-white rounded text-center cursor-pointer"
 													>
 														Approve Blog
 													</p>
 												)}
 											</td>
-											<td
-												onClick={() => handledelete(blog._id)}
-												className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
-											>
-												<FaTrash className="h-6 w-6 text-red-500" />
+											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+												<button
+													onClick={() => handledelete(blog._id)}
+													className="bg-red-700 hover:bg-red-500 p-3 rounded-[100%]"
+												>
+													<FaTrashCan className="h-5 w-5 text-white" />
+												</button>
 											</td>
 										</tr>
 									))}
