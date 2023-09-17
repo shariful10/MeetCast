@@ -54,13 +54,16 @@ const EditUserProfile = () => {
 
   return (
     <Container>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col bg-white p-6">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full flex flex-col bg-white p-6"
+      >
         <div className="divider text-2xl w-4/6 p-6 rounded-lg mt-3">
           <p>Display Information</p>
         </div>
         <div className="flex justify-center w-4/6 font-bold bg-slate-200 p-6 rounded-lg">
-            <p className="m-1 w-1/2 text-start ms-6">Information</p>
-            <p className="m-1 w-1/2 text-center">Change</p>
+          <p className="m-1 w-1/2 text-start ms-6">Information</p>
+          <p className="m-1 w-1/2 text-center">Change</p>
         </div>
         <div className="flex w-4/6 bg-slate-200 p-6 rounded-lg mt-3">
           <div className="w-2/6 p-6">

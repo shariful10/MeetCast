@@ -1,11 +1,11 @@
-import { faArrowUp, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 const TotalBlogs = () => {
   const [allUsers, setAllUsers] = useState();
   const [axiosSecure] = useAxiosSecure();
-//  added 
+
   useEffect(() => {
     axiosSecure
       .get(`${import.meta.env.VITE_API_URL}/blogs`)

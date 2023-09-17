@@ -25,14 +25,14 @@ const UserProfileOriginal = () => {
       .catch((error) => {
         console.error("Error fetching user data:", error);
       });
-  }, []);
+  }, [axiosSecure, user.email]);
 
   console.log(userInfo);
 
   return (
     <Container>
-      <div className="w-full m-auto rounded-lg flex flex-col p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 mt-24 m-auto w-5/6 bg-slate-300 p-6 rounded-lg">
+      <div className="w-full mx-auto rounded-lg flex flex-col px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 m-auto w-5/6 bg-slate-300 p-6 rounded-lg">
           <div className="ps-6">
             <img
               src={user?.photoURL}

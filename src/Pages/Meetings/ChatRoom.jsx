@@ -36,7 +36,7 @@ const ChatRoom = () => {
   };
 
   return (
-    <div className="mt-28 m-auto flex w-5/6">
+    <div className="mt-28 m-auto flex w-5/6 h-[500px]">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
@@ -57,11 +57,11 @@ const ChatRoom = () => {
             </div>
           }
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side h-[500px]">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          <ul className="menu p-4 w-80 bg-base-200 text-base-content">
             {/* Sidebar content here */}
-            <div>
+            <div className="">
               {friends?.map((info) => (
                 <Conversations
                   key={info.id}
@@ -75,7 +75,7 @@ const ChatRoom = () => {
       </div>
       {/* <Users userInfo={userInfo}></Users> */}
       <div
-        className="w-80  border p-1 h-screen"
+        className="w-80 h-[500px] border p-1"
         style={{ overflowY: "scroll" }}
       >
         <div className="p-1 divider">

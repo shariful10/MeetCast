@@ -3,8 +3,8 @@ import DashboardLayout from "../Layouts/DashboardLayout/DashboardLayout";
 import Main from "../Layouts/Main/Main";
 import About from "../Pages/About/About";
 import AddBlog from "../Pages/AddBlog/AddBlog";
-import MyBlog from './../Pages/Dashboard/MyBlog';
-import AdminHome from './../Pages/AdminHome/AdminHome';
+import MyBlog from "./../Pages/Dashboard/MyBlog";
+import AdminHome from "./../Pages/AdminHome/AdminHome";
 import BlogPage from "../Pages/Blog/BlogPage";
 import BlogPost from "../Pages/Blog/BlogPost";
 import CheckOut from "../Pages/CheckOut/CheckOut";
@@ -28,6 +28,8 @@ import UserManagement from "./../Pages/UserManagement/UserManagement";
 import AdminRoute from "./AdminRoute";
 import EditorRoute from "./EditorRoute";
 import PrivateRoute from "./PrivateRoute";
+import UserProfileOriginal from "../Pages/UserProfile/UserProfileOriginal";
+import ManageBlogs from "../Pages/ManageBlogs/ManageBlogs";
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -68,8 +70,6 @@ export const router = createBrowserRouter([
 				loader: ({ params }) =>
 					fetch(`${import.meta.env.VITE_API_URL}/checkout/${params.id}`),
 			},
-
-
 			{
 				path: "/meetings",
 				element: (
@@ -120,25 +120,21 @@ export const router = createBrowserRouter([
 				path: "/dashboard/editor-home",
 				element: (
 					<EditorRoute>
-						<UserHome />
+						<EditorHome />
 					</EditorRoute>
 				),
+			},
+			{
+				path: "/dashboard/userHome",
+				element: <UserHome />,
 			},
 			{
 				path: "/dashboard/add-blog",
 				element: <AddBlog />,
 			},
 			{
-				path: "/dashboard/adminUserProfile",
-				element: <EditUserProfile />,
-			},
-			{
 				path: "/dashboard/userProfile",
-				element: <UserProfile />,
-			},
-			{
-				path: "/dashboard/userHome",
-				element: <UserHome />,
+				element: <UserProfileOriginal />,
 			},
 			{
 				path: "/dashboard/editUserProfile",
@@ -159,6 +155,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/dashboard/my-blog",
 				element: <MyBlog />,
+			},
+			{
+				path: "/dashboard/manage-blogs",
+				element: <ManageBlogs />,
 			},
 		],
 	},

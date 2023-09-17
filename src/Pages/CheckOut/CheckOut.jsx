@@ -29,7 +29,7 @@ const CheckOut = () => {
 
 	// const {city,country,email,state,streetAddress,zip} = foundAddress;
 
-	// const orderData = { foundAddress, product: _id, productPrice: price };
+  // const orderData = { foundAddress, product: _id, productPrice: price };
 
 	useEffect(() => {
 		axiosSecure
@@ -44,18 +44,18 @@ const CheckOut = () => {
 
 	useEffect(() => {
 		axiosSecure
-			.get(`http://localhost:5000/yearly/${pricing.id}`)
+			.get(`${import.meta.env.VITE_API_URL}/yearly/${pricing.id}`)
 			.then((response) => {
 				setPlan(response.data);
 			})
 			.catch((error) => {
 				console.error("Error fetching yearly data:", error);
 			});
-	}, []);
+	}, [axiosSecure, pricing.id]);
 
 	useEffect(() => {
 		axiosSecure
-			.get(`http://localhost:5000/userAddress`)
+			.get(`${import.meta.env.VITE_API_URL}/userAddress`)
 			.then((response) => {
 				setUserAddress(response.data);
 			})
@@ -75,7 +75,7 @@ const CheckOut = () => {
 	const onSubmit = (data) => {
 		data.planId = pricing;
 		// order
-		fetch(`http://localhost:5000/order`, {
+		fetch(`${import.meta.env.VITE_API_URL}/order`, {
 			method: "POST",
 			headers: { "content-type": "application/json" },
 			body: JSON.stringify(data),
