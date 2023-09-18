@@ -11,7 +11,10 @@ const Messaging = (selectedConversation) => {
   const { user } = useContext(AuthContext);
 
   // console.log("got from conversation", selectedConversation?.conversation);
-  console.log("got from conversation", selectedConversation.conversation.displayName);
+  console.log(
+    "got from conversation",
+    selectedConversation.conversation.displayName
+  );
 
   useEffect(() => {
     if (selectedConversation?.conversation) {
@@ -53,12 +56,6 @@ const Messaging = (selectedConversation) => {
     };
   }, []);
 
-  const getRoom = (event) => {
-    event.preventDefault();
-    const roomNum = event.target.roomNumber.value;
-    // setRoom(roomNum);
-  };
-
   useEffect(() => {
     if (room !== "") {
       socket.emit("join_room", room);
@@ -68,32 +65,16 @@ const Messaging = (selectedConversation) => {
   return (
     <div className="h-full border w-full">
       <div className="w-full bg-slate-300">
-        <div className="m-auto text-center bg-orange-400">
+        <div className="m-auto text-center bg-orange-400 h-80px">
           {room ? `Chatting up #${room}` : "#"}
         </div>
-        {/* ------------room section--------------- */}
-        <form onSubmit={getRoom} className="p-1 flex">
-          {/* <input
-            className="rounded-lg py-1 px-2 mx-3 w-2/3"
-            type="text"
-            name="roomNumber"
-            placeholder="Room Number"
-          />
-          <button className="rounded-lg px-3 w-1/3" type="submit">
-            Join
-          </button> */}
-        </form>
       </div>
-      {/* ------------room section--------------- */}
       <div
         className="bg-white w-full overflow-y-auto m-auto my-1 h-[400px] rounded flex-grow p-3"
         ref={chatHistoryRef}
       >
         {chatHistory.map((messageData, index) => (
-          <div
-            className={`rounded-lg`}
-            key={index}
-          >
+          <div className={`rounded-lg`} key={index}>
             <div>
               {messageData.sender != user?.email && messageData.sender && (
                 <div className="btn btn-primary w-[100px] font-bold text-black bg-blue-300 p-1 text-left m-1 rounded">
