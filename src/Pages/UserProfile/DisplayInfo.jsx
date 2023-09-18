@@ -29,7 +29,7 @@ const DisplayInfo = () => {
   };
 
   const onSubmit = (data) => {
-    console.log("this data",data);
+    console.log("this data", data);
     const updateProfile = {
       ...data,
     };
@@ -118,7 +118,12 @@ const DisplayInfo = () => {
             </div>
           </div>
         </div>
-        <button className="btn btn-primary mt-2 w-1/3 m-auto" onClick={handleSubmit(onSubmit)}>Submit</button>
+        <button
+          className="btn btn-primary my-2 w-1/3"
+          onClick={handleSubmit(onSubmit)}
+        >
+          Submit
+        </button>
       </div>
     </div>
   );

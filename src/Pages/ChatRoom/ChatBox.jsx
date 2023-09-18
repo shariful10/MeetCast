@@ -44,7 +44,7 @@ const ChatBox = () => {
     init();
   }, []);
   return (
-    <div>
+    <div className="mt-24 mb-3">
       <h2 className="text-center">
         <Link to={"/"}>
           <button className="btn btn-sm m-3">Back Home</button>

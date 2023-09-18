@@ -63,16 +63,16 @@ const PersonalInfo = () => {
           {isEditingName ? (
             <input
               type="text"
-              defaultValue={"Bangla"}
+              defaultValue={"Bangladesh"}
               onChange={handleNameChange}
               onBlur={handleNameBlur}
-              placeholder="Bangla"
+              placeholder="Bangladesh"
               className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
               {...register("language")}
             />
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleNameClick}>
-              <p className="ms-1">Bangla</p>
+              <p className="ms-1">Bangladesh</p>
             </h2>
           )}
         </div>
@@ -81,16 +81,16 @@ const PersonalInfo = () => {
           {isEditingName ? (
             <input
               type="text"
-              defaultValue={"Bangla"}
+              defaultValue={"www.abcd@gmail.com"}
               onChange={handleNameChange}
               onBlur={handleNameBlur}
-              placeholder="Bangla"
+              placeholder="www.abcd@gmail.com"
               className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
               {...register("language")}
             />
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleNameClick}>
-              <p className="ms-1">Bangla</p>
+              <p className="ms-1">www.abcd@gmail.com</p>
             </h2>
           )}
         </div>
@@ -99,16 +99,16 @@ const PersonalInfo = () => {
           {isEditingName ? (
             <input
               type="text"
-              defaultValue={"Bangla"}
+              defaultValue={"United Statue of Brick and Bolters"}
               onChange={handleNameChange}
               onBlur={handleNameBlur}
-              placeholder="Bangla"
+              placeholder="United Statue of Brick and Bolters"
               className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
               {...register("language")}
             />
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleNameClick}>
-              <p className="ms-1">Bangla</p>
+              <p className="ms-1">United Statue of Brick and Bolters</p>
             </h2>
           )}
         </div>
