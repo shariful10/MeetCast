@@ -8,7 +8,7 @@ const UserProfileDashboardLayout = () => {
         <div className="relative min-h-screen md:flex">
         <UserProfileDashBoard></UserProfileDashBoard>
         <div className="">
-            <div className="w-full ms-5">
+            <div className="w-[720px] ms-5">
                 <Outlet />
             </div>
         </div>

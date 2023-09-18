@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 const DisplayInfo = () => {
   const { user } = useContext(AuthContext);
   const [showPhone, setShowPhone] = useState(false);
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [displayName, setDisplayName] = useState(user.displayName); // Replace with user?.displayName
+
   const {
     register,
     handleSubmit,
@@ -12,80 +15,112 @@ const DisplayInfo = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const handleNameClick = () => {
+    setIsEditingName(true);
+  };
 
+  const handleNameChange = (e) => {
+    setDisplayName(e.target.value);
+  };
+
+  const handleNameBlur = () => {
+    setIsEditingName(false);
+    // You can save the updated displayName here, e.g., by making an API request.
+  };
+
+  const onSubmit = (data) => {
+    console.log("this data",data);
     const updateProfile = {
       ...data,
     };
   };
 
   return (
-    <>
-      <div className="flex flex-col m-auto w-full bg-slate-300 rounded-lg">
-        <div className="divider text-2xl p-3">
-          <p>Display Information</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-1 w-full p-6 bg-slate-300 rounded-lg">
-          <div className="ps-6 flex">
-            <img
-              src={user?.photoURL}
-              className="h-[150px] ms-0 rounded-3xl"
-              alt=""
-            />
-            <div className="grid ms-6">
-              <p className="m-1">My Bio</p>
-              <p className="m-1 w-[400px]">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque
-                laudantium eius ad aut officiis, nam non nemo quae laboriosam
-                quisquam dolorem. Sapiente quas minima totam, iure iste
-                consequatur aspernatur voluptatem.
-              </p>
-              <input
-                type="text"
-                className=" m-1 h-[30px] bg-white p-3 border shadow-lg"
-                {...register("language", { required: true })}
-              />
+    <div className="flex flex-col m-auto w-full bg-slate-300 rounded-lg">
+      <div className="divider text-2xl p-3">
+        <p>Display Information</p>
+      </div>
+      <div className="w-full p-6 bg-slate-300 rounded-lg">
+        <div className="flex bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
+          <img
+            src={user?.photoURL}
+            className="h-[150px] rounded-3xl w-2/6"
+            alt=""
+          />
+          <div className="px-3">
+            <div>
+              <div className="w-full grid grid-cols-2">
+                {isEditingName ? (
+                  <input
+                    type="text"
+                    defaultValue={displayName}
+                    onChange={handleNameChange}
+                    onBlur={handleNameBlur}
+                    placeholder="Name"
+                    className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
+                    {...register("displayName")}
+                  />
+                ) : (
+                  <h2
+                    className="text-2xl font-bold w-full cursor-pointer"
+                    onClick={handleNameClick}
+                  >
+                    {displayName}
+                  </h2>
+                )}
+              </div>
+              <div className="text-2xl font-bold w-full">
+                {isEditingName ? (
+                  <input
+                    type="text"
+                    defaultValue={"Web Developer"}
+                    onChange={handleNameChange}
+                    onBlur={handleNameBlur}
+                    placeholder="Desgination"
+                    className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
+                    {...register("designation")}
+                  />
+                ) : (
+                  <h2
+                    className="text-2xl font-bold w-full cursor-pointer"
+                    onClick={handleNameClick}
+                  >
+                    {"Web Developer"}
+                  </h2>
+                )}
+              </div>
+            </div>
+            <div>
+              <div className="flex">
+                <p className="m-1">My Bio</p>
+              </div>
+
+              {isEditingName ? (
+                <textarea
+                  type="text"
+                  defaultValue={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque laudantium eius ad aut officiis, nam non nemo quae laboriosam quisquam dolorem. Sapiente quas minima totam, iure iste consequatur aspernatur oluptatem`}
+                  onChange={handleNameChange}
+                  onBlur={handleNameBlur}
+                  placeholder="Write Something about yourself"
+                  rows={5}
+                  cols={30}
+                  className="m-1 bg-white p-3 border shadow-lg w-full"
+                  {...register("bio")}
+                ></textarea>
+              ) : (
+                <p className="m-1 w-[400px]">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Eaque laudantium eius ad aut officiis, nam non nemo quae
+                  laboriosam quisquam dolorem. Sapiente quas minima totam, iure
+                  iste consequatur aspernatur voluptatem.
+                </p>
+              )}
             </div>
           </div>
-          <div className="w-full mt-6 ms-6 grid grid-cols-3">
-            <h2 className="text-2xl font-bold">{user?.displayName}</h2>
-            <input
-              type="text"
-              className="m-1 h-[30px] bg-white p-3 border shadow-lg"
-              {...register("language", { required: true })}
-            />
-          </div>
-          <div className="w-full ms-6 grid grid-cols-3">
-            <p className="my-1">Web Developer</p>
-            <input
-              type="text"
-              className=" m-1 h-[30px] bg-white p-3 border shadow-lg"
-              {...register("language", { required: true })}
-            />
-          </div>
         </div>
-
-        <div className="grid ms-6 grid-cols-3">
-          <p className="m-3">Website/Protfolio</p>
-          <p className="m-3">Bangla, English</p>
-          <input
-            type="text"
-            className=" m-1 h-[30px] bg-white p-3 border shadow-lg"
-            {...register("language", { required: true })}
-          />
-        </div>
-        <div className="grid grid-cols-3">
-          <p className="m-3">Work/Education</p>
-          <p className="m-3">Bangla, English</p>
-          <input
-            type="text"
-            className=" m-1 h-[30px] bg-white p-3 border shadow-lg"
-            {...register("language", { required: true })}
-          />
-        </div>
+        <button className="btn btn-primary mt-2 w-1/3 m-auto" onClick={handleSubmit(onSubmit)}>Submit</button>
       </div>
-    </>
+    </div>
   );
 };
 
