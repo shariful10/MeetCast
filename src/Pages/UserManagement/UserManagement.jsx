@@ -6,6 +6,7 @@ import { MdAdminPanelSettings } from "react-icons/md";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { FaTrashCan } from "react-icons/fa6";
 
 const UserManagement = () => {
 	const [axiosSecure] = useAxiosSecure();
@@ -29,7 +30,7 @@ const UserManagement = () => {
 		axiosSecure.delete(`/users/${id}`).then((data) => {
 			toast.success("User Deleted Successfully");
 			refetch();
-		})
+		});
 	};
 
 	return (
@@ -42,37 +43,37 @@ const UserManagement = () => {
 								<tr>
 									<th
 										scope="col"
-										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-blue-500"
+										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-[#6b7cff]"
 									>
 										User Image
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-blue-500"
+										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-[#6b7cff]"
 									>
 										Name
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Email
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Role
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Make Editor
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Action
 									</th>
@@ -107,7 +108,7 @@ const UserManagement = () => {
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												{user?.role === "admin" ? (
-													<p className="text-blue-500 font-medium">
+													<p className="text-[#6b7cff] font-medium">
 														Admin
 													</p>
 												) : user.role === "editor" ? (
@@ -123,28 +124,33 @@ const UserManagement = () => {
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												{user?.role === "admin" ? (
 													<div className="flex gap-2">
-														<MdAdminPanelSettings className="h-6 w-6 text-blue-500" />
-														<p className="text-blue-500 font-medium">
+														<MdAdminPanelSettings className="h-6 w-6 text-[#6b7cff]" />
+														<p className="text-[#6b7cff] font-medium">
 															(Not Changeable)
 														</p>
 													</div>
 												) : user?.role === "editor" ? (
-													<p title="Already Editor" className="text-green-600 font-medium">
+													<p
+														title="Already Editor"
+														className="text-green-600 font-medium"
+													>
 														<BsPersonFillCheck className="h-6 w-6" />
 													</p>
 												) : (
 													<RiAdminFill
 														onClick={() => handleMakeEditor(user)}
 														title="Make Editor"
-														className="h-6 w-6 text-blue-500"
+														className="h-6 w-6 text-[#6b7cff]"
 													/>
 												)}
 											</td>
-											<td
-												onClick={() => handledelete(user._id)}
-												className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
-											>
-												<FaTrash className="h-6 w-6 text-red-500" />
+											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+												<button
+													onClick={() => handledelete(user._id)}
+													className="bg-red-700 hover:bg-red-500 p-3 rounded-[100%]"
+												>
+													<FaTrashCan className="h-5 w-5 text-white" />
+												</button>
 											</td>
 										</tr>
 									))}

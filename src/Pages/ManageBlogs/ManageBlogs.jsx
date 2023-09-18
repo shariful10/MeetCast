@@ -1,29 +1,38 @@
-import React, { useContext } from "react";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import React from "react";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router";
+import { FaTrash } from "react-icons/fa";
+import { AiFillCheckCircle } from "react-icons/ai";
 import toast from "react-hot-toast";
-import { AuthContext } from "../../Providers/AuthProvider";
 import { FaTrashCan } from "react-icons/fa6";
 
-const MyBlog = () => {
+const ManageBlogs = () => {
 	const [axiosSecure] = useAxiosSecure();
-	const { user, loading } = useContext(AuthContext);
+	const { id: blogID } = useParams();
 
-	const { data: blogs = [], isLoading } = useQuery({
-		queryKey: ["my-blogs"],
-		enabled: !!user && !loading,
-		queryFn: async () => {
-			const res = await axiosSecure(`/my-blogs?email=${user?.email}`);
-			return res.data;
-		},
+	const { data: blogs = [], refetch } = useQuery(["blogs"], async () => {
+		const res = await axiosSecure.get(`/blogs`);
+		return res.data;
 	});
 
-	console.log(blogs);
+	const handleMakeAppruve = (blog) => {
+		axiosSecure.patch(`/blogs/admin/${blog._id}`, { status: "approved" }).then((data) => {
+			console.log(data.data);
+			if (data.data.modifiedCount) {
+				toast.success("Blog Approved!");
+				refetch();
+			}
+		});
+	};
 
 	const handledelete = (id) => {
-		console.log("delete", id);
+		axiosSecure.delete(`/blogs/${id}`).then((data) => {
+			toast.success("Blog Deleted Successfully");
+			refetch();
+		});
 	};
+
 	return (
 		<div className="container mx-auto px-4 sm:px-8">
 			<div className="py-8">
@@ -34,37 +43,43 @@ const MyBlog = () => {
 								<tr>
 									<th
 										scope="col"
-										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-blue-500"
+										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-[#6b7cff]"
 									>
 										Blog Image
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-blue-500"
+										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-[#6b7cff]"
 									>
-										Title
+										Blog Title
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Author Name
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+									>
+										Author Email
+									</th>
+									<th
+										scope="col"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Status
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
-										Edit
+										Approve Blog
 									</th>
 									<th
 										scope="col"
-										className="px-5 py-3  bg-blue-500 border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
 										Action
 									</th>
@@ -89,7 +104,7 @@ const MyBlog = () => {
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												<p className="text-black whitespace-no-wrap">
-													{blog.title ? blog.title : ""}
+													{blog.title}
 												</p>
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -98,20 +113,37 @@ const MyBlog = () => {
 												</p>
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+												<p className="text-black whitespace-no-wrap">
+													{blog.email}
+												</p>
+											</td>
+											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												{blog?.status === "approved" ? (
-													<p className="text-blue-500 font-medium">
+													<p className="text-green-500 font-medium">
 														Approved
 													</p>
 												) : (
-													blog.status === "pending" && (
-														<p className="text-green-600 font-medium">
-															Pending
-														</p>
-													)
+													<p className="text-[#6b7cff] font-medium">
+														Panding
+													</p>
 												)}
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-												<FaEdit className="h-6 w-6 text-green-500 cursor-pointer" />
+												{blog?.status === "approved" ? (
+													<p
+														title="Already Approved"
+														className="text-green-400 font-medium"
+													>
+														<AiFillCheckCircle className="h-6 w-6" />
+													</p>
+												) : (
+													<p
+														onClick={() => handleMakeAppruve(blog)}
+														className="bg-[#6b7cff] py-3 text-white rounded text-center cursor-pointer"
+													>
+														Approve Blog
+													</p>
+												)}
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												<button
@@ -132,4 +164,4 @@ const MyBlog = () => {
 	);
 };
 
-export default MyBlog;
+export default ManageBlogs;

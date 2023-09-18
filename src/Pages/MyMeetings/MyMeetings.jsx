@@ -3,6 +3,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { FaCopy, FaTrash } from "react-icons/fa";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useNavigate } from "react-router-dom";
+import { FaTrashCan } from "react-icons/fa6";
 
 const MyMeetings = () => {
 	const { user } = useContext(AuthContext);
@@ -80,19 +81,18 @@ const MyMeetings = () => {
 	};
 
 	return (
-		<div className="bg-white p-6 rounded-lg shadow-lg">
-			<h2 className="text-2xl font-semibold mb-4">My Meetings</h2>
+		<div className="bg-white p-6">
 			<div className="overflow-x-auto">
 				<table className="w-full table-auto text-left">
 					<thead>
 						<tr>
-							<th className="px-4 py-2 bg-blue-400 text-white text-lg">Topic</th>
-							<th className="px-4 py-2 bg-blue-400 text-white text-lg">Date</th>
-							<th className="px-4 py-2 bg-blue-400 text-white text-lg">Time</th>
-							<th className="px-4 py-2 bg-blue-400 text-white text-lg">Duration</th>
-							<th className="px-4 py-2 bg-blue-400 text-white text-lg">Join</th>
-							<th className="px-4 py-2 bg-blue-400 text-white text-lg">Copy</th>
-							<th className="px-4 py-2 bg-blue-400 text-white text-lg">Delete</th>
+							<th className="px-4 py-2 bg-[#6b7cff] text-white text-lg rounded-tl">Topic</th>
+							<th className="px-4 py-2 bg-[#6b7cff] text-white text-lg">Date</th>
+							<th className="px-4 py-2 bg-[#6b7cff] text-white text-lg">Time</th>
+							<th className="px-4 py-2 bg-[#6b7cff] text-white text-lg">Duration</th>
+							<th className="px-4 py-2 bg-[#6b7cff] text-white text-lg">Join</th>
+							<th className="px-4 py-2 bg-[#6b7cff] text-white text-lg">Copy</th>
+							<th className="px-4 py-2 bg-[#6b7cff] text-white text-lg rounded-tr">Delete</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -129,9 +129,11 @@ const MyMeetings = () => {
 								<td className="border px-4 py-2">
 									<button
 										onClick={() => openDeleteDialog(_id)}
-										className="text-red-700 px-4 py-2 rounded-full transition duration-300 ease-in-out"
+										className="px-4 py-2 rounded-full transition duration-300 ease-in-out"
 									>
-										<FaTrash className="text-2xl text-red-800" />
+										<button className="bg-red-700 hover:bg-red-500 p-3 rounded-[100%]">
+											<FaTrashCan className="h-5 w-5 text-white" />
+										</button>
 									</button>
 								</td>
 							</tr>

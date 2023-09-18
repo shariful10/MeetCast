@@ -31,7 +31,7 @@ const Address = () => {
     const addressData = { ...data, email };
     console.log(addressData);
     axiosSecure
-      .post("http://localhost:5000/userAddress", addressData, {
+      .post(`${import.meta.env.vite_api_url}/userAddress`, addressData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -46,14 +46,14 @@ const Address = () => {
 
   useEffect(() => {
     axiosSecure
-      .get("http://localhost:5000/userAddress")
+      .get(`${import.meta.env.vite_api_url}/userAddress`)
       .then((response) => {
         setUserAddresss(response.data);
       })
       .catch((error) => {
         console.error("Error fetching user address:", error);
       });
-  }, []);
+  }, [axiosSecure]);
 
   const foundAddress = userAddresss.find(
     (address) => address?.email == user?.email

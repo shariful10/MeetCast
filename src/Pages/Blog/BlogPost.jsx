@@ -13,7 +13,6 @@ import ReactHtmlParser from "react-html-parser"; // Import react-html-parser
 const BlogPost = () => {
   const [axiosSecure] = useAxiosSecure();
   const { id: blogID } = useParams();
-  console.log(blogID);
 
   const { data: blogs = [] } = useQuery(["approved-blogs"], async () => {
     const res = await axiosSecure.get("/approved-blogs");
@@ -28,6 +27,16 @@ const BlogPost = () => {
 
   // Extract the date part as a string in "YYYY-MM-DD" format
   const formattedDate = date.toISOString().split("T")[0];
+
+  if (!blog) {
+    // Handle the case when the blog is not found
+    return (
+      <div>
+        <p>Blog not found.</p>
+        {/* You can add a link or a button to navigate to another page */}
+      </div>
+    );
+  }
 
   return (
     <Container>
