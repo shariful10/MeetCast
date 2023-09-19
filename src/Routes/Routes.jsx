@@ -27,9 +27,7 @@ import UserManagement from "./../Pages/UserManagement/UserManagement";
 import AdminRoute from "./AdminRoute";
 import EditorRoute from "./EditorRoute";
 import PrivateRoute from "./PrivateRoute";
-import UserProfileOriginal from "../Pages/UserProfile/UserProfileOriginal";
 import ManageBlogs from "../Pages/ManageBlogs/ManageBlogs";
-import UserProfileDashBoard from "../Pages/UserProfile/UserProfileDashBoard";
 import DisplayInfo from "../Pages/UserProfile/DisplayInfo";
 import PersonalInfo from "../Pages/UserProfile/PersonalInfo";
 import MeetingInfo from "../Pages/UserProfile/MeetingInfo";
@@ -159,7 +157,7 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: "/dashboard/userProfile/displayInfo",
+            path: "/dashboard/userProfile/",
             element: <DisplayInfo></DisplayInfo>,
           },
           {
