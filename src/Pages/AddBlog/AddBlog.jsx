@@ -5,9 +5,8 @@ import { addBlog } from "../../Components/APIs/blogs";
 import { imageUpload } from "../../Components/APIs/auth";
 import useAuth from "./../../Components/Hooks/useAuth";
 import { TbFidgetSpinner } from "react-icons/tb";
-import ReactQuill from "react-quill"; // Import react-quill
-
-import "react-quill/dist/quill.snow.css"; // Import styles for react-quill
+// import ReactQuill from "react-quill"; // Import react-quill
+// import "react-quill/dist/quill.snow.css"; // Import styles for react-quill
 
 const AddBlog = () => {
   const { user } = useAuth();
@@ -45,7 +44,6 @@ const AddBlog = () => {
           author_image,
           author_name,
           date,
-          status: "approved",
         };
         addBlog(blogData)
           .then((data) => {
@@ -53,7 +51,7 @@ const AddBlog = () => {
             setUploadButtonText("Uploaded!");
             setLoading(false);
             toast.success("Blog Publish Successfully");
-            // form.reset();
+            form.reset();
           })
           .catch((err) => console.log(err));
       })
@@ -111,7 +109,7 @@ const AddBlog = () => {
             >
               Blog Description <span className="text-red-600">*</span>
             </label>
-            <ReactQuill
+            {/* <ReactQuill
               ref={quillRef}
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-5"
               name="description"
@@ -140,7 +138,7 @@ const AddBlog = () => {
                 "link",
                 "image",
               ]}
-            />
+            /> */}
           </div>
 
           <div className="">
