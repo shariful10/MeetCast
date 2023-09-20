@@ -11,7 +11,7 @@ const MeetingInfo = () => {
 
   useEffect(() => {
     axiosSecure
-      .get("/userProfile")
+      .get("/users")
       .then((res) => {
         setAllUsers(res.data);
       })
@@ -19,8 +19,8 @@ const MeetingInfo = () => {
         console.error("Error fetching user data:", error);
       });
   }, []);
-
-  console.log(allUsers);
+  const mainUser = allUsers?.find(userFind=>userFind.email === user.email)
+  console.log("main User", mainUser)
 
   const {
     register,
@@ -50,7 +50,7 @@ const MeetingInfo = () => {
     console.log(" updating ", updateMeetingInfo);
 
     axiosSecure
-      .put(`/userProfile/${user.email}`, updateMeetingInfo)
+      .put(`/users/${user.email}`, updateMeetingInfo)
       .then((response) => {
         console.log("Updating",response.data);
       })
@@ -79,7 +79,7 @@ const MeetingInfo = () => {
             />
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleNameClick}>
-              <p className="ms-1">www.abcd.com</p>
+              <p className="ms-1">{mainUser?.personalLink}</p>
             </h2>
           )}
         </div>
@@ -97,7 +97,7 @@ const MeetingInfo = () => {
             />
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleNameClick}>
-              <p className="ms-1">usdhf2340213jk123</p>
+              <p className="ms-1">{mainUser?.hostkey}</p>
             </h2>
           )}
         </div>

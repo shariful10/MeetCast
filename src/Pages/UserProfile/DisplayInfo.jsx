@@ -1,12 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 
 const DisplayInfo = () => {
   const { user } = useContext(AuthContext);
   const [showPhone, setShowPhone] = useState(false);
-  const [isEditingName, setIsEditingName] = useState(false);
-  const [displayName, setDisplayName] = useState(user.displayName); // Replace with user?.displayName
+  const [isEditing, setIsEditing] = useState(false);
+  const [displayName, setDisplayName] = useState(user.displayName); // Replace with mainUser?.displayName
+  const [axiosSecure] = useAxiosSecure();
+  const [allUsers, setAllUsers] = useState();
+
+  useEffect(() => {
+    axiosSecure
+      .get("/users")
+      .then((res) => {
+        setAllUsers(res.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
+  const mainUser = allUsers?.find(userFind=>userFind.email === user.email)
+  console.log("main User", mainUser)
 
   const {
     register,
@@ -15,16 +31,16 @@ const DisplayInfo = () => {
     formState: { errors },
   } = useForm();
 
-  const handleNameClick = () => {
-    setIsEditingName(true);
+  const handleClick = () => {
+    setIsEditing(true);
   };
 
-  const handleNameChange = (e) => {
+  const handleChange = (e) => {
     setDisplayName(e.target.value);
   };
 
-  const handleNameBlur = () => {
-    setIsEditingName(false);
+  const handleBlur = () => {
+    setIsEditing(false);
     // You can save the updated displayName here, e.g., by making an API request.
   };
 
@@ -33,6 +49,16 @@ const DisplayInfo = () => {
     const updateProfile = {
       ...data,
     };
+    console.log(" updating ", updateProfile);
+
+    axiosSecure
+      .put(`/users/${user.email}`, updateProfile)
+      .then((response) => {
+        console.log("Updating",response.data);
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
   };
 
   return (
@@ -41,67 +67,64 @@ const DisplayInfo = () => {
         <p>Display Information</p>
       </div>
       <div className="w-full p-6 bg-slate-300 rounded-lg">
-        <div className="flex sm:flex-col md:flex-row bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2"  onBlur={()=>isEditingName(false)}>
+        <div className="flex sm:flex-col md:flex-row bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
           <img
-            src={user?.photoURL}
+            src={mainUser?.image}
             className="h-[150px] rounded-3xl w-2/6 object-contain"
             alt=""
           />
           <div className="px-3">
             <div>
               <div className="w-full grid grid-cols-2">
-                {isEditingName ? (
+                {isEditing ? (
                   <input
                     type="text"
-                    defaultValue={displayName}
-                    onChange={handleNameChange}
-                    onBlur={handleNameBlur}
-                    placeholder="Name"
+                    defaultValue={mainUser?.displayName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
                     {...register("displayName")}
                   />
                 ) : (
                   <h2
                     className="text-2xl font-bold w-full cursor-pointer"
-                    onClick={handleNameClick}
+                    onClick={handleClick}
                   >
-                    {displayName}
+                    {mainUser?.displayName}
                   </h2>
                 )}
               </div>
-              <div className="text-2xl font-bold w-full">
-                {isEditingName ? (
+              <div className="w-full">
+                {isEditing ? (
                   <input
                     type="text"
-                    defaultValue={"Web Developer"}
-                    onChange={handleNameChange}
-                    onBlur={handleNameBlur}
+                    defaultValue={mainUser?.designation}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     placeholder="Desgination"
                     className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
                     {...register("designation")}
                   />
                 ) : (
                   <h2
-                    className="text-2xl font-bold w-full cursor-pointer"
-                    onClick={handleNameClick}
+                    className="w-full cursor-pointer"
+                    onClick={handleClick}
                   >
-                    {"Web Developer"}
+                    {mainUser?.designation}
                   </h2>
                 )}
               </div>
             </div>
-            <div>
+            <div className="mt-6">
               <div className="flex">
                 <p className="m-1">My Bio</p>
               </div>
-
-              {isEditingName ? (
+              {isEditing ? (
                 <textarea
                   type="text"
-                  defaultValue={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque laudantium eius ad aut officiis, nam non nemo quae laboriosam quisquam dolorem. Sapiente quas minima totam, iure iste consequatur aspernatur oluptatem`}
-                  onChange={handleNameChange}
-                  onBlur={handleNameBlur}
-                  placeholder="Hi! I am Dude."
+                  defaultValue={user.bio}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   rows={5}
                   cols={30}
                   className="m-1 bg-white p-3 border shadow-lg w-full"
@@ -109,7 +132,7 @@ const DisplayInfo = () => {
                 ></textarea>
               ) : (
                 <p className="m-1 w-[400px]">
-                  Hi! I am Dude.
+                  {mainUser?.bio}
                 </p>
               )}
             </div>

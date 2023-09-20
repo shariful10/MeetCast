@@ -1,12 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
+import { faBullseye } from "@fortawesome/free-solid-svg-icons";
 
 const PersonalInfo = () => {
   const { user } = useContext(AuthContext);
   const [showPhone, setShowPhone] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [displayName, setDisplayName] = useState(user.displayName); // Replace with user?.displayName
+  const [allUsers, setAllUsers] = useState();
+  const [axiosSecure] = useAxiosSecure();
+
+  useEffect(() => {
+    axiosSecure
+      .get("/users")
+      .then((res) => {
+        setAllUsers(res.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
+  const mainUser = allUsers?.find(userFind=>userFind.email === user.email)
+  console.log("main User", mainUser)
 
   const {
     register,
@@ -33,6 +49,17 @@ const PersonalInfo = () => {
     const updateProfile = {
       ...data,
     };
+    console.log(" updating ", updateProfile);
+
+    axiosSecure
+      .put(`/users/${user.email}`, updateProfile)
+      .then((response) => {
+        console.log("Updating",response.data);
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
+      isEditing(false)
   };
   return (
     <div className="flex flex-col m-auto w-full shadow-lg rounded-lg">
@@ -45,7 +72,7 @@ const PersonalInfo = () => {
           {isEditing ? (
             <input
               type="text"
-              defaultValue={"Bangla"}
+              defaultValue={mainUser?.language}
               onChange={handleChange}
               onBlur={handleBlur}
               placeholder="Bangla"
@@ -54,7 +81,7 @@ const PersonalInfo = () => {
             />
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-              <p className="ms-1">Bangla</p>
+              <p className="ms-1">{mainUser?.language}</p>
             </h2>
           )}
         </div>
@@ -63,16 +90,15 @@ const PersonalInfo = () => {
           {isEditing ? (
             <input
               type="text"
-              defaultValue={"Bangladesh"}
+              defaultValue={mainUser?.country}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Bangladesh"
               className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
               {...register("country")}
             />
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-              <p className="ms-1">Bangladesh</p>
+              <p className="ms-1">{mainUser?.country}</p>
             </h2>
           )}
         </div>
@@ -81,7 +107,7 @@ const PersonalInfo = () => {
           {isEditing ? (
             <input
               type="text"
-              defaultValue={"www.abcd@gmail.com"}
+              defaultValue={mainUser?.Website}
               onChange={handleChange}
               onBlur={handleBlur}
               placeholder="www.abcd@gmail.com"
@@ -90,7 +116,7 @@ const PersonalInfo = () => {
             />
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-              <p className="ms-1">www.abcd.com</p>
+              <p className="ms-1">{mainUser?.Website}</p>
             </h2>
           )}
         </div>
@@ -99,16 +125,15 @@ const PersonalInfo = () => {
           {isEditing ? (
             <input
               type="text"
-              defaultValue={"United Statue of Brick and Bolters"}
+              defaultValue={mainUser?.work}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="United Statue of Brick and Bolters"
               className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
               {...register("work")}
             />
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-              <p className="ms-1">United Statue of Brick and Bolters</p>
+              <p className="ms-1">{mainUser?.work}</p>
             </h2>
           )}
         </div>
