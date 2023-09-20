@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { BsImageFill } from "react-icons/bs";
 import toast from "react-hot-toast";
 import { addBlog } from "../../Components/APIs/blogs";
@@ -11,9 +11,10 @@ import "react-quill/dist/quill.snow.css"; // Import styles for react-quill
 
 const AddBlog = () => {
   const { user } = useAuth();
-  const quillRef = useRef(null);
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
   const [loading, setLoading] = useState(false);
+  // Initialize state for the HTML content
+  const [description, setDescription] = useState("");
 
   const handleImageChange = (image) => {
     setUploadButtonText(image.name);
@@ -25,8 +26,7 @@ const AddBlog = () => {
     const email = user.email;
     const title = form.title.value;
     const subTitle = form.subTitle.value;
-    // Access the editor's contents using the ref
-    const description = quillRef.current.getEditor().root.innerHTML; // Get the HTML content
+    const descriptionHTML = description; // Get the HTML content
     const author_image = user.photoURL;
     const author_name = user.displayName;
     const date = new Date();
@@ -41,7 +41,7 @@ const AddBlog = () => {
           image: data.data.display_url,
           title,
           subTitle,
-          description,
+          descriptionHTML,
           author_image,
           author_name,
           date,
@@ -112,21 +112,17 @@ const AddBlog = () => {
               Blog Description <span className="text-red-600">*</span>
             </label>
             <ReactQuill
-              ref={quillRef}
               className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-5"
               name="description"
               id="description"
               placeholder="Write your blog..."
-              modules={{
-                toolbar: [
-                  ["bold", "italic", "underline", "strike"],
-                  ["blockquote", "code-block"],
-                  [{ list: "ordered" }, { list: "bullet" }],
-                  [{ indent: "-1" }, { indent: "+1" }],
-                  ["link", "image"],
-                  ["clean"],
-                ],
-              }}
+              value={description} // Set the value to the state variable
+              onChange={setDescription} // Update the state variable on change
+              modules={
+                {
+                  // ...
+                }
+              }
               formats={[
                 "bold",
                 "italic",

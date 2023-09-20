@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import blogImage from "../../assets/images/Blog/blog-image.png";
 import Container from "../../Components/Shared/Container/Container";
 import blog1 from "../../assets/images/Blog/blog-post-1.png";
 import blog2 from "../../assets/images/Blog/blog-post-2.png";
@@ -8,7 +7,6 @@ import blog3 from "../../assets/images/Blog/blog-post-3.png";
 import Buttons from "../../Components/Buttons/Buttons";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import ReactHtmlParser from "react-html-parser"; // Import react-html-parser
 
 const BlogPost = () => {
   const [axiosSecure] = useAxiosSecure();
