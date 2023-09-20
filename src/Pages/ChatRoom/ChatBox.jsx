@@ -53,7 +53,6 @@ const ChatBox = () => {
       </h2>
       <div className="m-auto">
       <Common></Common>
-        {/* <Chat></Chat> */}
       </div>
     </div>
   );

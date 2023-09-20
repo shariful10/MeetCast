@@ -4,6 +4,6 @@ import { expect } from "vitest"
 
 it("should have hello world", ()=>{
     render(<UserAvatar></UserAvatar>)
-    const messege = screen.queryByText("Hello Wordl")
+    const messege = screen.queryByText("Hello World")
     expect(messege).toBeVisible()
 })

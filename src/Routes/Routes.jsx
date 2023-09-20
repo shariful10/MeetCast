@@ -74,14 +74,6 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_API_URL}/checkout/${params.id}`),
       },
-      {
-        path: "/meetings",
-        element: (
-          <PrivateRoute>
-            <ChatBox></ChatBox>
-          </PrivateRoute>
-        ),
-      },
     ],
   },
   {
@@ -105,6 +97,14 @@ export const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <RoomPage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/meetings",
+    element: (
+      <PrivateRoute>
+        <ChatBox></ChatBox>
       </PrivateRoute>
     ),
   },

@@ -36,7 +36,7 @@ const DisplayInfo = () => {
   };
 
   return (
-    <div className="flex flex-col m-auto w-full bg-slate-300 rounded-lg">
+    <div className="flex flex-col m-auto w-full shadow-lg rounded-lg">
       <div className="divider text-2xl p-3">
         <p>Display Information</p>
       </div>
