@@ -13,7 +13,6 @@ import EditorHome from "../Pages/EditorHome/EditorHome";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
-import ChatRoom from "../Pages/Meetings/ChatRoom";
 import MyMeetings from "../Pages/MyMeetings/MyMeetings";
 import PaymentFaild from "../Pages/PaymentFaild/PaymentFaild";
 import PaymentSucc from "../Pages/PaymentSucc/PaymentSucc";
@@ -33,6 +32,8 @@ import PersonalInfo from "../Pages/UserProfile/PersonalInfo";
 import MeetingInfo from "../Pages/UserProfile/MeetingInfo";
 import ChatBox from "../Pages/ChatRoom/ChatBox";
 import UserProfileDashboardLayout from "../Layouts/UserProfileDashboardLayout/UserProfileDashboardLayout";
+import UserPrivacySettings from "../Pages/UserProfile/UserPrivacySettings";
+import UserBillingAndSubscription from "../Pages/UserProfile/UserBillingAndSubscription";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -167,6 +168,14 @@ export const router = createBrowserRouter([
           {
             path: "/dashboard/userProfile/meetingInfo",
             element: <MeetingInfo></MeetingInfo>
+          },
+          {
+            path: "/dashboard/userProfile/billing",
+            element: <UserBillingAndSubscription></UserBillingAndSubscription>
+          },
+          {
+            path: "/dashboard/userProfile/privacy",
+            element: <UserPrivacySettings></UserPrivacySettings>
           },
         ],
       },

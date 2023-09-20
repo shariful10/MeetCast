@@ -5,10 +5,10 @@ import UserProfileDashBoard from "../../Pages/UserProfile/UserProfileDashBoard";
 
 const UserProfileDashboardLayout = () => {
     return (
-        <div className="relative min-h-screen md:flex">
+        <div className="relative min-h-screen md:flex m-auto">
         <UserProfileDashBoard></UserProfileDashBoard>
         <div className="">
-            <div className="w-[720px] ms-5">
+            <div className="max-w-[720px] sm:w-full sm:mt-3 md:mt-0 md:ms-3">
                 <Outlet />
             </div>
         </div>

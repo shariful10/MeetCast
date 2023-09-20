@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 
-const PersonalInfo = () => {
+const UserPrivacySettings = () => {
   const { user } = useContext(AuthContext);
   const [showPhone, setShowPhone] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -30,14 +30,15 @@ const PersonalInfo = () => {
 
   const onSubmit = (data) => {
     console.log("this data", data);
-    const updateProfile = {
+    const privacySettings = {
       ...data,
     };
   };
+
   return (
     <div className="flex flex-col m-auto w-full bg-slate-300 rounded-lg">
       <div className="divider text-2xl p-3">
-        <p>Personal Information</p>
+        <p>Privecy Settings</p>
       </div>
       <div className="w-full p-6">
         <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
@@ -58,65 +59,60 @@ const PersonalInfo = () => {
             </h2>
           )}
         </div>
-        <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
-          <p className="ms-1 font-bold">Country:</p>
+        <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
+          <p className="ms-1 font-bold">Profile Visibility:</p>
           {isEditing ? (
-            <input
-              type="text"
-              defaultValue={"Bangladesh"}
+            <select
+              className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
+              {...register("profileVisibility")}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Bangladesh"
-              className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
-              {...register("country")}
-            />
+            >
+              <option value="public">Public</option>
+              <option value="friends">Friends Only</option>
+              <option value="private">Private</option>
+            </select>
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-              <p className="ms-1">Bangladesh</p>
+              {/* Display the user's current visibility setting */}
+              <p className="ms-1">{"Public"}</p>
             </h2>
           )}
         </div>
-        <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
-          <p className="ms-1 font-bold">Website:</p>
+        <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
+          <p className="ms-1 font-bold">Email Address:</p>
+            <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
+              <p className="ms-1">{"user.email"}</p>
+            </h2>
+        </div>
+        <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
+          <p className="ms-1 font-bold">Email Notification:</p>
           {isEditing ? (
-            <input
-              type="text"
-              defaultValue={"www.abcd@gmail.com"}
+            <select
+              defaultValuevalue={"Enabled"}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="www.abcd@gmail.com"
               className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
-              {...register("Website")}
-            />
+              {...register("emailNotification")}
+            >
+              <option value="enabled">Enabled</option>
+              <option value="disabled">Disabled</option>
+            </select>
           ) : (
             <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-              <p className="ms-1">www.abcd.com</p>
+              <p className="ms-1">{"Enabled"}</p>
             </h2>
           )}
         </div>
-        <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
-          <p className="ms-1 font-bold">Work/Education:</p>
-          {isEditing ? (
-            <input
-              type="text"
-              defaultValue={"United Statue of Brick and Bolters"}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              placeholder="United Statue of Brick and Bolters"
-              className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
-              {...register("work")}
-            />
-          ) : (
-            <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-              <p className="ms-1">United Statue of Brick and Bolters</p>
-            </h2>
-          )}
-        </div>
-        
       </div>
-      <button className="btn btn-primary m-auto my-2 w-1/3" onClick={handleSubmit(onSubmit)}>Submit</button>
+      <button
+        className="btn btn-primary m-auto my-2 w-1/3"
+        onClick={handleSubmit(onSubmit)}
+      >
+        Submit
+      </button>
     </div>
   );
 };
 
-export default PersonalInfo;
+export default UserPrivacySettings;

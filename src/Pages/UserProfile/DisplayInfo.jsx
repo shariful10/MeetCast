@@ -41,10 +41,10 @@ const DisplayInfo = () => {
         <p>Display Information</p>
       </div>
       <div className="w-full p-6 bg-slate-300 rounded-lg">
-        <div className="flex bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
+        <div className="flex sm:flex-col md:flex-row bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2"  onBlur={()=>isEditingName(false)}>
           <img
             src={user?.photoURL}
-            className="h-[150px] rounded-3xl w-2/6"
+            className="h-[150px] rounded-3xl w-2/6 object-contain"
             alt=""
           />
           <div className="px-3">
@@ -101,7 +101,7 @@ const DisplayInfo = () => {
                   defaultValue={`Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque laudantium eius ad aut officiis, nam non nemo quae laboriosam quisquam dolorem. Sapiente quas minima totam, iure iste consequatur aspernatur oluptatem`}
                   onChange={handleNameChange}
                   onBlur={handleNameBlur}
-                  placeholder="Write Something about yourself"
+                  placeholder="Hi! I am Dude."
                   rows={5}
                   cols={30}
                   className="m-1 bg-white p-3 border shadow-lg w-full"
@@ -109,10 +109,7 @@ const DisplayInfo = () => {
                 ></textarea>
               ) : (
                 <p className="m-1 w-[400px]">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Eaque laudantium eius ad aut officiis, nam non nemo quae
-                  laboriosam quisquam dolorem. Sapiente quas minima totam, iure
-                  iste consequatur aspernatur voluptatem.
+                  Hi! I am Dude.
                 </p>
               )}
             </div>

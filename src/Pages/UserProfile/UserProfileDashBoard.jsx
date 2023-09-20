@@ -1,41 +1,38 @@
 import React from "react";
-import DisplayInfo from "./DisplayInfo";
-import PersonalInfo from "./PersonalInfo";
-import MeetingInfo from "./MeetingInfo";
 import { Link } from "react-router-dom";
 
 const UserProfileDashBoard = () => {
   return (
-    <div className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+    <div className="menu p-4 w-full md:w-80 min-h-full bg-base-200 text-base-content">
       {/* Sidebar content here */}
       <Link to={"/dashboard/userProfile/"}>
-        <div className="text-2xl h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
-          Profile Photo and Avatar
+        <div className="bg-slate-100 p-4 h-[60px] hover:bg-slate-300 rounded-lg shadow-lg mt-2 w-full">
+          <h3 className="mt-1 mx-auto">Profile Photo and Avatar</h3>
         </div>
       </Link>
       <Link to={"/dashboard/userProfile/"}>
-        <div className="text-2xl h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
-          Display Information
+        <div className="bg-slate-100 p-4 h-[60px] hover:bg-slate-300 rounded-lg shadow-lg mt-2 w-full">
+          <h3 className="mt-1 mx-auto">Display Information</h3>
         </div>
       </Link>
       <Link to={"/dashboard/userProfile/personalInfo"}>
-        <div className="text-2xl h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
-          Personal Information
+        <div className="bg-slate-100 p-4 h-[60px] hover:bg-slate-300 rounded-lg shadow-lg mt-2 w-full">
+          <h3 className="mt-1 mx-auto">Personal Information</h3>
         </div>
       </Link>
       <Link to={"/dashboard/userProfile/meetingInfo"}>
-        <div className="text-2xl h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
-          Meeting Settings
+        <div className="bg-slate-100 p-4 h-[60px] hover:bg-slate-300 rounded-lg shadow-lg mt-2 w-full">
+          <h3 className="mt-1 mx-auto">Meeting Settings</h3>
         </div>
       </Link>
-      <Link to={"/dashboard/userProfile/meetingInfo"}>
-        <div className="text-2xl h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
-          Privacy Settings
+      <Link to={"/dashboard/userProfile/privacy"}>
+        <div className="bg-slate-100 p-4 h-[60px] hover:bg-slate-300 rounded-lg shadow-lg mt-2 w-full">
+          <h3 className="mt-1 mx-auto">Privacy Settings</h3>
         </div>
       </Link>
-      <Link to={"/dashboard/userProfile/meetingInfo"}>
-        <div className="text-2xl h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
-          Billing and Subscription
+      <Link to={"/dashboard/userProfile/billing"}>
+        <div className="bg-slate-100 p-4 h-[60px] hover:bg-slate-300 rounded-lg shadow-lg mt-2 w-full">
+          <h3 className="mt-1 mx-auto">Billing and Subscription</h3>
         </div>
       </Link>
     </div>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ZIMKitManager, Common } from "@zegocloud/zimkit-react";
+import { ZIMKitManager, Common, Chat } from "@zegocloud/zimkit-react";
 import "@zegocloud/zimkit-react/index.css";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
@@ -51,7 +51,10 @@ const ChatBox = () => {
         </Link>
         {userInformation}{" "}
       </h2>
+      <div className="m-auto">
       <Common></Common>
+        {/* <Chat></Chat> */}
+      </div>
     </div>
   );
 };

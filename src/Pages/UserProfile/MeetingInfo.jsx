@@ -1,12 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 
-const PersonalInfo = () => {
+const MeetingInfo = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { user } = useContext(AuthContext);
-  const [showPhone, setShowPhone] = useState(false);
   const [isEditingName, setIsEditingName] = useState(false);
-  const [displayName, setDisplayName] = useState(user.displayName); // Replace with user?.displayName
+  const [allUsers, setAllUsers] = useState();
+
+  useEffect(() => {
+    axiosSecure
+      .get("/userProfile")
+      .then((res) => {
+        setAllUsers(res.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
+
+  console.log(allUsers);
 
   const {
     register,
@@ -29,11 +43,22 @@ const PersonalInfo = () => {
   };
 
   const onSubmit = (data) => {
-    console.log("this data", data);
-    const updateProfile = {
+    const updateMeetingInfo = {
       ...data,
     };
+
+    console.log(" updating ", updateMeetingInfo);
+
+    axiosSecure
+      .put(`/userProfile/${user.email}`, updateMeetingInfo)
+      .then((response) => {
+        console.log("Updating",response.data);
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
   };
+
   return (
     <div className="flex flex-col m-auto w-full bg-slate-300 rounded-lg">
       <div className="divider text-2xl p-3">
@@ -77,9 +102,14 @@ const PersonalInfo = () => {
           )}
         </div>
       </div>
-      <button className="btn btn-primary m-auto my-2 w-1/3" onClick={handleSubmit(onSubmit)}>Submit</button>
+      <button
+        className="btn btn-primary m-auto my-2 w-1/3"
+        onClick={handleSubmit(onSubmit)}
+      >
+        Submit
+      </button>
     </div>
   );
 };
 
-export default PersonalInfo;
+export default MeetingInfo;
