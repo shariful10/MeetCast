@@ -26,7 +26,7 @@ const BlogPost = () => {
   // Extract the date part as a string in "YYYY-MM-DD" format
   const formattedDate = date.toISOString().split("T")[0];
 
-  if (!blog) {
+  if (!blog._id) {
     // Handle the case when the blog is not found
     return (
       <div>
@@ -40,7 +40,7 @@ const BlogPost = () => {
     <Container>
       <div className="my-16 max-w-7xl mx-auto">
         <h1 className="text-3xl lg:text-5xl font-extrabold text-center max-w-3xl mx-auto">
-          New invoicing features to help you get paid faster
+          {blog.title}
         </h1>
         <p className="flex gap-2 items-center my-8 justify-center">
           <img
@@ -62,11 +62,7 @@ const BlogPost = () => {
           <h4 className="text-lg lg:text-3xl font-extrabold mb-4">
             {blog?.subTitle}
           </h4>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: blog?.description, // Use the HTML string from the Quill editor
-            }}
-          ></div>
+          <p>{blog?.description}</p>
         </div>
         <div className="my-10">
           <h3 className="text-3xl font-extrabold text-center">Releted Post</h3>

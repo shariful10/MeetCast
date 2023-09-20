@@ -30,173 +30,184 @@ import EditorRoute from "./EditorRoute";
 import PrivateRoute from "./PrivateRoute";
 import UserProfileOriginal from "../Pages/UserProfile/UserProfileOriginal";
 import ManageBlogs from "../Pages/ManageBlogs/ManageBlogs";
+import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 export const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <Main />,
-		errorElement: <ErrorPage />,
-		children: [
-			{
-				path: "/",
-				element: <Home />,
-			},
-			{
-				path: "/about",
-				element: <About />,
-			},
-			{
-				path: "/pricing",
-				element: <Pricing />,
-			},
-			{
-				path: "/blog",
-				element: <BlogPage />,
-			},
-			{
-				path: "/blog/:id",
-				element: <BlogPost />,
-			},
-			{
-				path: "/contact",
-				element: <Contact />,
-			},
-			{
-				path: "/checkout/:id",
-				element: (
-					<PrivateRoute>
-						<CheckOut />
-					</PrivateRoute>
-				),
-				loader: ({ params }) =>
-					fetch(`${import.meta.env.VITE_API_URL}/checkout/${params.id}`),
-			},
-			{
-				path: "/meetings",
-				element: (
-					<PrivateRoute>
-						<ChatRoom></ChatRoom>
-					</PrivateRoute>
-				),
-			},
-		],
-	},
-	{
-		path: "/login",
-		element: <Login />,
-	},
-	{
-		path: "/signup",
-		element: <SignUp />,
-	},
-	{
-		path: "/payment/success/:tranId",
-		element: <PaymentSucc></PaymentSucc>,
-	},
-	{
-		path: "/payment/faild/:tranId",
-		element: <PaymentFaild />,
-	},
-	{
-		path: "/room/:roomID",
-		element: (
-			<PrivateRoute>
-				<RoomPage />
-			</PrivateRoute>
-		),
-	},
-	{
-		path: "/dashboard",
-		element: (
-			<PrivateRoute>
-				<DashboardLayout />
-			</PrivateRoute>
-		),
-		errorElement: <ErrorPage />,
-		children: [
-			{
-				path: "/dashboard/admin-home",
-				element: (
-					<AdminRoute>
-						<AdminHome />
-					</AdminRoute>
-				),
-			},
-			{
-				path: "/dashboard/editor-home",
-				element: (
-					<EditorRoute>
-						<EditorHome />
-					</EditorRoute>
-				),
-			},
-			{
-				path: "/dashboard/userHome",
-				element: (
-					<PrivateRoute>
-						<UserHome />
-					</PrivateRoute>
-				),
-			},
-			{
-				path: "/dashboard/add-blog",
-				element: (
-					<EditorRoute>
-						<AddBlog />
-					</EditorRoute>
-				),
-			},
-			{
-				path: "/dashboard/userProfile",
-				element: (
-					<PrivateRoute>
-						<UserProfileOriginal />
-					</PrivateRoute>
-				),
-			},
-			{
-				path: "/dashboard/editUserProfile",
-				element: (
-					<PrivateRoute>
-						<EditUserProfile />
-					</PrivateRoute>
-				),
-			},
-			{
-				path: "/dashboard/schedule",
-				element: (
-					<PrivateRoute>
-						<MeetingSchedule />
-					</PrivateRoute>
-				),
-			},
-			{
-				path: "/dashboard/myMeetings",
-				element: (
-					<PrivateRoute>
-						<MyMeetings />
-					</PrivateRoute>
-				),
-			},
-			{
-				path: "/dashboard/UserManagement",
-				element: (
-					<AdminRoute>
-						<UserManagement />
-					</AdminRoute>
-				),
-			},
-			{
-				path: "/dashboard/my-blog",
-				element: <MyBlog />,
-			},
-			{
-				path: "/dashboard/manage-blogs",
-				element: (
-					<AdminRoute>
-						<ManageBlogs />
-					</AdminRoute>
-				),
-			},
-		],
-	},
+  {
+    path: "/",
+    element: <Main />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+      },
+      {
+        path: "/blog",
+        element: <BlogPage />,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogPost />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/checkout/:id",
+        element: (
+          <PrivateRoute>
+            <CheckOut />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/checkout/${params.id}`),
+      },
+      {
+        path: "/meetings",
+        element: (
+          <PrivateRoute>
+            <ChatRoom></ChatRoom>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/payment/success/:tranId",
+    element: <PaymentSucc></PaymentSucc>,
+  },
+  {
+    path: "/payment/faild/:tranId",
+    element: <PaymentFaild />,
+  },
+  {
+    path: "/room/:roomID",
+    element: (
+      <PrivateRoute>
+        <RoomPage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/dashboard/admin-home",
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/editor-home",
+        element: (
+          <EditorRoute>
+            <EditorHome />
+          </EditorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/userHome",
+        element: (
+          <PrivateRoute>
+            <UserHome />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/add-blog",
+        element: (
+          <EditorRoute>
+            <AddBlog />
+          </EditorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/update-blog/:id",
+        element: (
+          <EditorRoute>
+            <UpdateBlog />
+          </EditorRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/blog/${params.id}`),
+      },
+      {
+        path: "/dashboard/userProfile",
+        element: (
+          <PrivateRoute>
+            <UserProfileOriginal />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/editUserProfile",
+        element: (
+          <PrivateRoute>
+            <EditUserProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/schedule",
+        element: (
+          <PrivateRoute>
+            <MeetingSchedule />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/myMeetings",
+        element: (
+          <PrivateRoute>
+            <MyMeetings />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/UserManagement",
+        element: (
+          <AdminRoute>
+            <UserManagement />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my-blog",
+        element: <MyBlog />,
+      },
+      {
+        path: "/dashboard/manage-blogs",
+        element: (
+          <AdminRoute>
+            <ManageBlogs />
+          </AdminRoute>
+        ),
+      },
+    ],
+  },
 ]);

@@ -5,16 +5,11 @@ import { addBlog } from "../../Components/APIs/blogs";
 import { imageUpload } from "../../Components/APIs/auth";
 import useAuth from "./../../Components/Hooks/useAuth";
 import { TbFidgetSpinner } from "react-icons/tb";
-import ReactQuill from "react-quill"; // Import react-quill
-
-import "react-quill/dist/quill.snow.css"; // Import styles for react-quill
 
 const AddBlog = () => {
   const { user } = useAuth();
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
   const [loading, setLoading] = useState(false);
-  // Initialize state for the HTML content
-  const [description, setDescription] = useState("");
 
   const handleImageChange = (image) => {
     setUploadButtonText(image.name);
@@ -26,7 +21,7 @@ const AddBlog = () => {
     const email = user.email;
     const title = form.title.value;
     const subTitle = form.subTitle.value;
-    const descriptionHTML = description; // Get the HTML content
+    const description = form.description.value; // Get the HTML content
     const author_image = user.photoURL;
     const author_name = user.displayName;
     const date = new Date();
@@ -41,11 +36,11 @@ const AddBlog = () => {
           image: data.data.display_url,
           title,
           subTitle,
-          descriptionHTML,
+          description,
           author_image,
           author_name,
           date,
-          status: "approved",
+          status: "pending",
         };
         addBlog(blogData)
           .then((data) => {
@@ -53,7 +48,7 @@ const AddBlog = () => {
             setUploadButtonText("Uploaded!");
             setLoading(false);
             toast.success("Blog Publish Successfully");
-            // form.reset();
+            form.reset();
           })
           .catch((err) => console.log(err));
       })
@@ -111,32 +106,13 @@ const AddBlog = () => {
             >
               Blog Description <span className="text-red-600">*</span>
             </label>
-            <ReactQuill
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-5"
+            <textarea
+              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900  rounded-lg block w-full p-5"
               name="description"
               id="description"
-              placeholder="Write your blog..."
-              value={description} // Set the value to the state variable
-              onChange={setDescription} // Update the state variable on change
-              modules={
-                {
-                  // ...
-                }
-              }
-              formats={[
-                "bold",
-                "italic",
-                "underline",
-                "strike",
-                "blockquote",
-                "code-block",
-                "list",
-                "bullet",
-                "indent",
-                "link",
-                "image",
-              ]}
-            />
+              cols="30"
+              rows="5"
+            ></textarea>
           </div>
 
           <div className="">
