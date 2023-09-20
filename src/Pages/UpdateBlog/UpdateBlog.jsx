@@ -1,12 +1,13 @@
 import React from "react";
 import useAuth from "../../Components/Hooks/useAuth";
 import { TbFidgetSpinner } from "react-icons/tb";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateBlog = () => {
   const blog = useLoaderData();
   const { loading } = useAuth();
+  const navigate = useNavigate();
 
   const { _id, title, subTitle, description } = blog;
 
@@ -40,6 +41,7 @@ const UpdateBlog = () => {
         console.log(data);
         if (data.modifiedCount) {
           Swal.fire("Modification Successful", `${title}`, "success");
+          navigate("/dashboard/my-blog");
         }
       })
       .catch((error) => {

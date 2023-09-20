@@ -48,7 +48,7 @@ const AddBlog = () => {
             setUploadButtonText("Uploaded!");
             setLoading(false);
             toast.success("Blog Publish Successfully");
-            form.reset();
+            // form.reset();
           })
           .catch((err) => console.log(err));
       })
