@@ -35,6 +35,7 @@ import UserProfileDashboardLayout from "../Layouts/UserProfileDashboardLayout/Us
 import UserPrivacySettings from "../Pages/UserProfile/UserPrivacySettings";
 import UserBillingAndSubscription from "../Pages/UserProfile/UserBillingAndSubscription";
 import UserAvatar from "../Pages/UserProfile/UserAvatar";
+import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -59,12 +60,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blog/:id",
-        element: (
-					<PrivateRoute>
-						<BlogPost />
-					</PrivateRoute>
-				),
+        element: <BlogPost />,
       },
+      
       {
         path: "/contact",
         element: <Contact />,
@@ -155,6 +153,16 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/update-blog/:id",
+        element: (
+          <EditorRoute>
+            <UpdateBlog />
+          </EditorRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/blog/${params.id}`),
+      },
+      {
         path: "/dashboard/userProfile",
         element: (
           <PrivateRoute>
@@ -187,14 +195,6 @@ export const router = createBrowserRouter([
             element: <UserPrivacySettings></UserPrivacySettings>
           },
         ],
-      },
-      {
-        path: "/dashboard/editUserProfile",
-        element: (
-          <PrivateRoute>
-            <EditUserProfile />
-          </PrivateRoute>
-        ),
       },
       {
         path: "/dashboard/schedule",

@@ -6,14 +6,24 @@ import Buttons from "../../Components/Buttons/Buttons";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import Loader from "../../Components/Shared/Loader/Loader";
 
 const BlogPage = () => {
   const [axiosSecure] = useAxiosSecure();
 
-  const { data: blogs = [] } = useQuery(["approved-blogs"], async () => {
-    const res = await axiosSecure.get("/approved-blogs");
-    return res.data;
-  });
+  const { data: blogs = [], isLoading } = useQuery(
+    ["approved-blogs"],
+    async () => {
+      const res = await axiosSecure.get("/approved-blogs");
+      return res.data;
+    }
+  );
+
+  {
+    if (isLoading) {
+      return <Loader />;
+    }
+  }
 
   return (
     <div>
