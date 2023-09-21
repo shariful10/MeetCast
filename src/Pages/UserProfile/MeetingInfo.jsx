@@ -6,7 +6,7 @@ import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 const MeetingInfo = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useContext(AuthContext);
-  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [allUsers, setAllUsers] = useState();
 
   useEffect(() => {
@@ -29,16 +29,16 @@ const MeetingInfo = () => {
     formState: { errors },
   } = useForm();
 
-  const handleNameClick = () => {
-    setIsEditingName(true);
+  const handleClick = () => {
+    setIsEditing(true);
   };
 
-  const handleNameChange = (e) => {
+  const handleChange = (e) => {
     setDisplayName(e.target.value);
   };
 
-  const handleNameBlur = () => {
-    setIsEditingName(false);
+  const handleBlur = () => {
+    setIsEditing(false);
     // You can save the updated displayName here, e.g., by making an API request.
   };
 
@@ -67,36 +67,36 @@ const MeetingInfo = () => {
       <div className="w-full p-6">
         <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
           <p className="ms-1 font-bold">Personal Link:</p>
-          {isEditingName ? (
+          {isEditing ? (
             <input
               type="text"
               defaultValue={"www.abcd.com"}
-              onChange={handleNameChange}
-              onBlur={handleNameBlur}
+              onChange={handleChange}
+              onBlur={handleBlur}
               placeholder="www.abcd.com"
               className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
               {...register("personalLink")}
             />
           ) : (
-            <h2 className="ms-0 cursor-pointer" onClick={handleNameClick}>
+            <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
               <p className="ms-1">{mainUser?.personalLink}</p>
             </h2>
           )}
         </div>
         <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
           <p className="ms-1 font-bold">Host Key:</p>
-          {isEditingName ? (
+          {isEditing ? (
             <input
               type="text"
               defaultValue={"usdhf2340213jk123"}
-              onChange={handleNameChange}
-              onBlur={handleNameBlur}
+              onChange={handleChange}
+              onBlur={handleBlur}
               placeholder="usdhf2340213jk123"
               className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
               {...register("hostkey")}
             />
           ) : (
-            <h2 className="ms-0 cursor-pointer" onClick={handleNameClick}>
+            <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
               <p className="ms-1">{mainUser?.hostkey}</p>
             </h2>
           )}
