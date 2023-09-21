@@ -60,7 +60,7 @@ const MeetingInfo = () => {
   };
 
   return (
-    <div className="flex flex-col m-auto max-w-[720px] shadow-lg rounded-lg">
+    <div className="flex flex-col m-auto w-full md:w-[720px] shadow-lg rounded-lg">
       <div className="divider text-2xl p-3">
         <p>Meeting Information</p>
       </div>

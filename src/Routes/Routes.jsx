@@ -34,6 +34,7 @@ import ChatBox from "../Pages/ChatRoom/ChatBox";
 import UserProfileDashboardLayout from "../Layouts/UserProfileDashboardLayout/UserProfileDashboardLayout";
 import UserPrivacySettings from "../Pages/UserProfile/UserPrivacySettings";
 import UserBillingAndSubscription from "../Pages/UserProfile/UserBillingAndSubscription";
+import UserAvatar from "../Pages/UserProfile/UserAvatar";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -161,6 +162,10 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         children: [
+          {
+            path: "/dashboard/userProfile/editPhoto",
+            element: <UserAvatar></UserAvatar>
+          },
           {
             path: "/dashboard/userProfile/",
             element: <DisplayInfo></DisplayInfo>,

@@ -31,7 +31,7 @@ const UserProfileOriginal = () => {
 
   return (
     <Container>
-      <div className="w-full m-auto rounded-lg flex flex-col p-6">
+      <div className="max-w-[720px] m-auto rounded-lg flex flex-col p-6">
         <DisplayInfo></DisplayInfo>
         <PersonalInfo></PersonalInfo>
         <MeetingInfo></MeetingInfo>

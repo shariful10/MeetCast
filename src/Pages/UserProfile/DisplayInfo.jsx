@@ -62,14 +62,14 @@ const DisplayInfo = () => {
   };
 
   return (
-    <div className="flex flex-col m-auto w-full shadow-lg rounded-lg">
+    <div className="flex flex-col m-auto w-full md:w-[720px] shadow-lg rounded-lg">
       <div className="divider text-2xl p-3">
         <p>Display Information</p>
       </div>
-      <div className="w-full p-6 bg-slate-300 rounded-lg">
+      <div className="w-full p-6 shadow-lg rounded-lg">
         <div className="flex sm:flex-col md:flex-row bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
           <img
-            src={mainUser?.image}
+            src={mainUser?.avatarSvg}
             className="h-[150px] rounded-3xl w-2/6 object-contain"
             alt=""
           />

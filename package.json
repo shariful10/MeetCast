@@ -12,6 +12,8 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@dicebear/collection": "^7.0.1",
+    "@dicebear/core": "^7.0.1",
     "@emailjs/browser": "^3.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
@@ -23,6 +25,7 @@
     "@zegocloud/zego-uikit-prebuilt": "^1.8.10",
     "@zegocloud/zimkit-react": "^1.2.1",
     "aos": "^3.0.0-beta.6",
+    "avataaars": "^2.0.0",
     "axios": "^1.5.0",
     "chart.js": "^4.4.0",
     "cors": "^2.8.5",
@@ -32,8 +35,10 @@
     "flowbite-react": "^0.5.0",
     "font-awesome": "^4.7.0",
     "framer-motion": "^10.15.1",
+    "install": "^0.13.0",
     "jsdom": "^22.1.0",
     "lottie-react": "^2.4.0",
+    "npm": "^10.1.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-copy-to-clipboard": "^5.1.0",
