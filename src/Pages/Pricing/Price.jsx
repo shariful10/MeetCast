@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Buttons from '../../Components/Buttons/Buttons';
 
 const Price = () => {
@@ -10,10 +11,10 @@ const Price = () => {
                 Are you ready to grow your <br className="hidden md:inline" /> business with us?
             </h2>
             <p className="text-gray-400 mt-3 md:mt-4">
-                Lorem ipsum dolor sit amet, <br /> consetetur sadipscing elitr.
+            Ready to Grow Your Business with Us?
             </p>
             <div className="text-center mt-10">
-                <Buttons title={"View pricing"} />
+                <Link to='/pricing'><Buttons title={"View pricing"} /></Link>
                
             </div>
         </div>

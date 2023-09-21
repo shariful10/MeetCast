@@ -1,13 +1,13 @@
 import React from "react";
-import Container from "../../Components/Shared/Container/Container";
 import { FaPerbyte } from "react-icons/fa";
+import { FaCreativeCommonsNcEu } from "react-icons/fa6";
 import {
   LuCalendarRange,
   LuMail,
   LuMegaphone,
   LuThumbsUp,
 } from "react-icons/lu";
-import { FaCreativeCommonsNcEu } from "react-icons/fa6";
+import Container from "../../Components/Shared/Container/Container";
 import OurTeam from "./OurTeam";
 import Pricing from "./Pricing";
 
@@ -24,9 +24,8 @@ const About = () => {
               </h2>
               <p className="md:text-center lg:w-1/2 mx-auto text-[#1D2130] ">
                 {" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                quo blanditiis necessitatibus vitae magni eos dolores recusandae
-                dignissimos delectus fugit esse.
+                Make meaningful connections with meetings, team chat,
+                whiteboard, phone, and more in one offering.
               </p>
             </div>
             <div
@@ -71,10 +70,10 @@ const About = () => {
           We're a team of data analysts
         </p>
         <p className="text-gray-400 lg:w-1/2 mx-auto">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum.
+          Meetcast does not use any of your audio, video, chat, screen sharing,
+          attachments, or other communications like customer content such as
+          poll results, whiteboard, and reactions to train Meetcast's or
+          third-party artificial intelligence models.
         </p>
       </div>
       <div className="flex flex-col md:flex-row justify-around items-center gap-8 md:gap-20 rounded-xl py-12 md:py-24 px-6 md:px-16 bg-[#e7e9ff]">
@@ -90,10 +89,11 @@ const About = () => {
             To upscale your business to the next level
           </h2>
           <p className="text-gray-400 mt-4">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum.
+            To take your business to the next level, you must embrace
+            innovation, expansion, and adaptation. Innovation leads to
+            differentiation, expansion opens new markets, and adaptation ensures
+            relevance in a changing world. Upscaling isn't just about growth;
+            it's about securing long-term success.
           </p>
         </div>
         <div
@@ -109,10 +109,13 @@ const About = () => {
           </h2>
           <p className="text-gray-400 mt-4">
             {" "}
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum.
+            At Meetcast, we understand the unique challenges and opportunities
+            that growing companies face. Our mission is to provide tailored
+            solutions that empower your business to thrive. From scalable
+            technology solutions to strategic consultancy, we are dedicated to
+            helping you navigate the path to success. With our expertise and
+            commitment, you can focus on what you do best while we handle the
+            rest. Let's grow together.
           </p>
         </div>
       </div>
@@ -123,8 +126,7 @@ const About = () => {
               Our corporate values
             </h2>
             <p className="text-gray-400 mt-4">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy.
+              Our Corporate Values: Excellence, Integrity, Innovation.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 py-8 md:py-20 px-6 md:px-10 rounded-xl bg-[#F9F0FB]">
@@ -136,8 +138,7 @@ const About = () => {
                 Best in Class
               </h2>
               <p className="text-gray-400 mt-2">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy.
+                Our Zoom classes provide exceptional learning experiences.
               </p>
             </div>
             <div data-aos="flip-down" data-aos-duration="1000">
@@ -148,8 +149,8 @@ const About = () => {
                 Authenticity
               </h2>
               <p className="text-gray-400 mt-2">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy.
+                Authenticity is our core value. We foster genuine connections
+                and trust in everything we do.
               </p>
             </div>
             <div data-aos="flip-down" data-aos-duration="1000">
@@ -161,8 +162,8 @@ const About = () => {
                 Email Support
               </h2>
               <p className="text-gray-400 mt-2">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy.
+                Swift and reliable. We're here to assist you promptly and
+                effectively via email. Your inquiries are our priority.
               </p>
             </div>
             <div data-aos="flip-down" data-aos-duration="1000">
@@ -173,8 +174,8 @@ const About = () => {
                 Discounts Available{" "}
               </h2>
               <p className="text-gray-400 mt-2">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy.
+                Don't miss out! Explore our current offers and save on your
+                favorite products/services today.
               </p>
             </div>
             <div data-aos="flip-down" data-aos-duration="1000">
@@ -186,8 +187,8 @@ const About = () => {
                 Powerful Marketing
               </h2>
               <p className="text-gray-400 mt-2">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy.
+                Amplify your brand's reach and impact with our expert marketing
+                solutions.
               </p>
             </div>
             <div data-aos="flip-down" data-aos-duration="1000">
@@ -198,8 +199,8 @@ const About = () => {
                 Inventory management
               </h2>
               <p className="text-gray-400 mt-2">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy.
+                Streamline your operations, optimize stock levels, and boost
+                efficiency with our comprehensive solutions.
               </p>
             </div>
           </div>
