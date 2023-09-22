@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { BsImageFill } from "react-icons/bs";
 import { TbFidgetSpinner } from "react-icons/tb";
+import useAuth from "../../Components/Hooks/useAuth";
 
 const AddBlog = () => {
 	const { user } = useAuth();
