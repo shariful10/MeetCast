@@ -59,6 +59,7 @@ const DisplayInfo = () => {
       .catch((error) => {
         console.error("Error updating profile:", error);
       });
+      setIsEditing(false)
   };
 
   return (
@@ -72,6 +73,7 @@ const DisplayInfo = () => {
             src={mainUser?.avatarSvg}
             className="h-[150px] rounded-3xl w-2/6 object-contain"
             alt=""
+            onClick={handleClick}
           />
           <div className="px-3">
             <div>
@@ -87,8 +89,8 @@ const DisplayInfo = () => {
                   />
                 ) : (
                   <h2
-                    className="text-2xl font-bold w-full cursor-pointer"
-                    onClick={handleClick}
+                    className="text-2xl border font-bold w-full cursor-pointer"
+                   
                   >
                     {mainUser?.displayName}
                   </h2>

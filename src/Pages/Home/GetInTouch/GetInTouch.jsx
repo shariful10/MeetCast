@@ -50,17 +50,17 @@ const GetInTouch = () => {
             </div>
             <div className="max-w-[400px] w-full">
               <input
-                type="text"
+                type="email"
                 placeholder="Email Address"
-                className="bg-[#F2F3F4] bg-opacity-20 p-4 rounded-md w-full mb-10"
+                className="bg-[#F2F3F4] p-4 rounded-md w-full mb-10"
                 data-aos="fade-up"
                 data-aos-duration="1200"
                 data-aos-delay="600"
               />
               <input
-                type="password"
-                placeholder="Password"
-                className="bg-[#F2F3F4] bg-opacity-20 p-4 rounded-md w-full mb-10"
+                type="text"
+                placeholder="Subject"
+                className="bg-[#F2F3F4] p-4 rounded-md w-full mb-10"
                 data-aos="fade-up"
                 data-aos-duration="1200"
                 data-aos-delay="1000"

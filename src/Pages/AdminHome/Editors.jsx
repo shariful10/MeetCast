@@ -41,9 +41,9 @@ const Editors = () => {
               <h3 className="p-2 m-auto text-2xl">{editors.name}</h3>
             </td>
             <td className="w-[300px]">
-              <h3 className="p-2 m-auto text-center btn h-[60px] text-black font-bold w-1/2">
+              {/* <h3 className="p-2 m-auto text-center btn h-[60px] text-black font-bold w-1/2">
                 {editors.role}
-              </h3>
+              </h3> */}
             </td>
             <td className="w-30">
               <h3 className="p-2 m-auto ">{editors.email}</h3>

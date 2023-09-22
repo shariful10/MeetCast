@@ -35,10 +35,7 @@ const UserAvatar = () => {
   // console.log("Gekki", svg)
 
   const onSubmit = (data) => {
-
     const inputAvatarName = data.avatar;
-
-    
     const avatarDataUri = createAvatar(lorelei, {
       size: 128,
       seed: inputAvatarName,

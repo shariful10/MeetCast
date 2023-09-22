@@ -57,6 +57,7 @@ const MeetingInfo = () => {
       .catch((error) => {
         console.error("Error updating profile:", error);
       });
+      setIsEditing(false)
   };
 
   return (
