@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import blog1 from "../../assets/images/blog-1.png";
 
 const BlogCard = ({ blog }) => {
-	const date = new Date(blog.date); // Convert the string to a Date object
+  const date = new Date(blog.date); // Convert the string to a Date object
 
-	// Extract the date part as a string in "YYYY-MM-DD" format
-	const formattedDate = date.toISOString().split("T")[0];
+  // Extract the date part as a string in "YYYY-MM-DD" format
+  const formattedDate = date.toISOString().split("T")[0];
 
 	return (
 		<div className="w-full lg:max-w-[450px] shadow-lg p-5 border border-gray-100 2xl:p-4 pb-6 rounded-xl">

@@ -12,10 +12,13 @@ const Pricing = () => {
           business with us?
         </h2>
         <p className="text-gray-400 mt-3 md:mt-4">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+          Ready to Grow Your Business with Us?
         </p>
         <div className="text-center mt-10">
-         <Link to='/pricing'> <Buttons title={"View pricing"} /></Link>
+          <Link to="/pricing">
+            {" "}
+            <Buttons title={"View pricing"} />
+          </Link>
         </div>
       </div>
     </div>

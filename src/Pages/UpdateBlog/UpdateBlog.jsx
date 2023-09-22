@@ -26,7 +26,7 @@ const UpdateBlog = () => {
 		};
 
 		// Fetch start
-		fetch(`http://localhost:5000/update/${_id}`, {
+		fetch(`${import.meta.env.VITE_API_URL}/update/${_id}`, {
 			method: "PATCH",
 			headers: { "content-Type": "application/json" },
 			body: JSON.stringify(updatedBlog),

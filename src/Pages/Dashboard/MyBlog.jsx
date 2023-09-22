@@ -8,8 +8,8 @@ import { FaTrashCan } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const MyBlog = () => {
-	const [axiosSecure] = useAxiosSecure();
-	const { user, loading } = useContext(AuthContext);
+  const [axiosSecure] = useAxiosSecure();
+  const { user, loading } = useContext(AuthContext);
 
 	const { data: blogs = [], refetch } = useQuery({
 		queryKey: ["my-blogs"],

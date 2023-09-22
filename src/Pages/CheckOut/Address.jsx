@@ -31,7 +31,7 @@ const Address = () => {
     const addressData = { ...data, email };
     console.log(addressData);
     axiosSecure
-      .post(`${import.meta.env.vite_api_url}/userAddress`, addressData, {
+      .post(`${import.meta.env.VITE_API_URL}/userAddress`, addressData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -46,7 +46,7 @@ const Address = () => {
 
   useEffect(() => {
     axiosSecure
-      .get(`${import.meta.env.vite_api_url}/userAddress`)
+      .get(`${import.meta.env.VITE_API_URL}/userAddress`)
       .then((response) => {
         setUserAddresss(response.data);
       })

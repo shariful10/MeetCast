@@ -93,8 +93,8 @@ const CheckOut = () => {
 
 	return (
 		<Container>
-			<div className="flex justify-around gap-6 my-10 mt-36">
-				<div className="w-1/2">
+			<div className="lg:flex lg:justify-around gap-6 my-10 mt-36">
+				<div className="lg:w-1/2">
 					<div className="w-full">
 						<div className="flex justify-around items-center gap-6">
 							<h2 className="text-3xl font-semibold font-manrope">CheckOut</h2>
@@ -153,7 +153,7 @@ const CheckOut = () => {
 					</div>
 					<div>{user ? <></> : <Address></Address>}</div>
 				</div>
-				<div className="w-1/2">
+				<div className="lg:w-1/2 my-6">
 					<div className="bg-white shadow-lg rounded-lg overflow-hidden">
 						<div className="p-4">
 							{/* Product Title */}
@@ -212,22 +212,22 @@ const CheckOut = () => {
 											{...register("name", { required: true })}
 										/>
 									</div>
-									<div className="flex justify-center gap-6 my-4">
+									<div className="lg:flex lg:justify-center lg:gap-6 my-4">
 										<input
 											required
-											className="border border-gray-400 w-[313px] h-10 px-4 py-2 rounded-md"
+											className="border border-gray-400 lg:w-[313px] w-full lg:h-10 px-4 py-2 rounded-md"
 											placeholder="Email"
 											{...register("email", { required: true })}
 										/>
 										<input
 											required
-											className="border border-gray-400 w-1/5 h-10 px-4 py-2 rounded-md"
+											className="border border-gray-400 my-5 lg:my-0 lg:w-1/5 w-full lg:h-10 px-4 py-2 rounded-md"
 											placeholder="Number"
 											{...register("number", { required: true })}
 										/>
 										<input
 											required
-											className="border border-gray-400 w-1/5 h-10 px-4 py-2 rounded-md"
+											className="border border-gray-400 lg:w-1/5 w-full h-10 px-4 py-2 rounded-md"
 											placeholder="City"
 											{...register("city", { required: true })}
 										/>

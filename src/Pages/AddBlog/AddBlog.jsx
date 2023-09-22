@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { BsImageFill } from "react-icons/bs";
 import toast from "react-hot-toast";
-import { addBlog } from "../../Components/APIs/blogs";
-import { imageUpload } from "../../Components/APIs/auth";
-import useAuth from "./../../Components/Hooks/useAuth";
+import { BsImageFill } from "react-icons/bs";
 import { TbFidgetSpinner } from "react-icons/tb";
 
 const AddBlog = () => {
@@ -154,4 +151,8 @@ const AddBlog = () => {
 	);
 };
 
+
 export default AddBlog;
+
+
+

@@ -5,7 +5,7 @@ import Container from "../../Components/Shared/Container/Container";
 const FaqSection = () => {
   return (
     <Container>
-      <div className="lg:flex lg:justify-around px-10 font-bold gap-6 my-40">
+      <div className="lg:flex lg:justify-around  font-bold gap-6 my-40">
         <div className="w-full lg:w-1/2">
           {/* <h3 className="text-4xl">Frequestly Asked <br /> Questions</h3> */}
           <img src="https://i.ibb.co/ygqX8FG/question-mark-bubble-speech-sign-symbol-icon-3d-rendering.jpg alt=" />
@@ -17,9 +17,7 @@ const FaqSection = () => {
               <Accordion.Content>
                 <p className="mb-2 text-gray-600">
                   <p>
-                    Flowbite is an open-source library of interactive components
-                    built on top of Tailwind CSS including buttons, dropdowns,
-                    modals, navbars, and more.
+                  To grow your business, focus on understanding your customers, delivering exceptional value, and effective marketing. Build strong customer relationships, expand your product or service offerings, and invest wisely in technology and marketing.  Consistent effort and strategic planning are key to sustainable business growth.
                   </p>
                 </p>
                 <p className="text-gray-600">
