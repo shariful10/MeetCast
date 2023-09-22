@@ -23,7 +23,6 @@ const UserProfile = () => {
   console.log(user);
   const [isAdmin] = useAdmin();
   const [isEditor] = useEditor();
-  console.log(isAdmin);
 
   return (
     <div className="flex justify-around bg-gray-50 gap-6  mt-[40px] font-manrope">
