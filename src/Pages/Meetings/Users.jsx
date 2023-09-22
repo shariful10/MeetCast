@@ -11,9 +11,9 @@ const Users = ({ userInfo }) => {
   console.log(" check online",offlineUsers)
 
   return (
-    <div className="w-80  border p-1 h-screen" style={{ overflowY: "scroll" }}>
+    <div className="w-80 border bg-red-600 p-1 h-[400px]" style={{ overflowY: "scroll" }}>
       <div className="p-1 divider">
-        <p className="font-bold">Online Users</p>
+        <p className="font-bold">Onlinee Users</p>
       </div>
       <div>
         {onlineUsers?.map((info) => (

@@ -6,11 +6,9 @@ import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import Container from "../../Components/Shared/Container/Container";
 import Loader from "../../Components/Shared/Loader/Loader";
 
-
 const BlogPost = () => {
   const [axiosSecure] = useAxiosSecure();
   const { id: blogID } = useParams();
-
 
   const { data: allBlogs = [], isLoading } = useQuery(
     ["allBlogs"],
@@ -19,7 +17,6 @@ const BlogPost = () => {
       return res.data;
     }
   );
-
 
   // make the text short:
   function truncateText(text, maxLength) {
@@ -30,7 +27,6 @@ const BlogPost = () => {
   }
   // make the text short:
 
-
   const { data: blogs = [] } = useQuery(["approved-blogs"], async () => {
     const res = await axiosSecure.get("/approved-blogs");
     return res.data;
@@ -40,13 +36,11 @@ const BlogPost = () => {
   // Find the specific blog that matches the blogID
   const blog = blogs.find((blog) => blog._id === blogID);
 
-
   const date = new Date(blog.date); // Convert the string to a Date object
 
 
   // Extract the date part as a string in "YYYY-MM-DD" format
   const formattedDate = date.toISOString().split("T")[0];
-
 
   {
     if (isLoading) {
@@ -54,13 +48,11 @@ const BlogPost = () => {
     }
   }
 
-
   return (
     <Container>
       <div className="my-20 max-w-7xl mx-auto">
         <div className="lg:flex gap-8 ">
           {/* blog details Start */}
-
 
           <div className="w-full p-5 lg:p-10 bg-gray-100 rounded-2xl">
             <div>
@@ -95,14 +87,11 @@ const BlogPost = () => {
             </div>
           </div>
 
-
           {/* blog details End */}
-
 
           {/* Recent Blogs Start */}
           <div className="space-y-8 max-w-sm">
             <h4 className="text-xl font-extrabold">Recent Blogs</h4>
-
 
             {/* recent blogs map */}
             {allBlogs.slice(0, 5).map((allBlog) => (
@@ -146,6 +135,4 @@ const BlogPost = () => {
   );
 };
 
-
 export default BlogPost;
-

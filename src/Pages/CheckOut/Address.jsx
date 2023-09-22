@@ -53,7 +53,7 @@ const Address = () => {
       .catch((error) => {
         console.error("Error fetching user address:", error);
       });
-  }, []);
+  }, [axiosSecure]);
 
   const foundAddress = userAddresss.find(
     (address) => address?.email == user?.email

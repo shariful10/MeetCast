@@ -7,7 +7,7 @@ import heroImage from "../../assets/hero-image.png";
 const HeroSection = () => {
   return (
     <div
-      className="bg-white md:h-[800px] bg-contain bg-no-repeat w-full md:flex justify-center items-center py-32 md:py-20"
+      className="bg-white md:h-[800px] bg-contain bg-no-repeat w-full md:flex justify-center items-center py-32 md:py-20 font-manrope"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       <Container>
@@ -28,7 +28,7 @@ const HeroSection = () => {
                 marginY="my-3"
               />
               <h1
-                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold "
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold font-manrope"
                 data-aos="fade-right"
                 data-aos-duration="1200"
                 data-aos-delay="600"

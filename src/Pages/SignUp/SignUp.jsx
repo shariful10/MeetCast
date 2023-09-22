@@ -5,9 +5,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { saveUser } from "../../Components/APIs/auth";
 import SocialLogin from "../../Components/Shared/SocialLogin/SocialLogin";
 import { AuthContext } from "../../Providers/AuthProvider";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import img from "../../assets/images/signup.svg";
 
 const SignUp = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { loading, setLoading, createUser, updateUserProfile } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -69,6 +71,7 @@ const SignUp = () => {
         console.log(err.message);
         toast.error(err.message);
       });
+
     fetch(`${import.meta.env.VITE_IMGBB_API}/users`, {
       method: "POST",
       headers: {
@@ -80,6 +83,16 @@ const SignUp = () => {
         image: url,
       }),
     });
+
+    axiosSecure
+      .post("/userProfile", {
+        name: name,
+        email: email,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+
     return;
   };
 

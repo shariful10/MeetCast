@@ -1,34 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { FaTrash } from "react-icons/fa";
-import { RiAdminFill } from "react-icons/ri";
-import { BsPersonFillCheck } from "react-icons/bs";
-import { MdAdminPanelSettings } from "react-icons/md";
-import toast from "react-hot-toast";
+import React from "react";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router";
+import { FaTrash } from "react-icons/fa";
+import { AiFillCheckCircle } from "react-icons/ai";
+import toast from "react-hot-toast";
 import { FaTrashCan } from "react-icons/fa6";
 
-const UserManagement = () => {
+const ManageBlogs = () => {
 	const [axiosSecure] = useAxiosSecure();
+	const { id: blogID } = useParams();
 
-	const { data: users = [], refetch } = useQuery(["users"], async () => {
-		const res = await axiosSecure.get("/users");
+	const { data: blogs = [], refetch } = useQuery(["blogs"], async () => {
+		const res = await axiosSecure.get(`/blogs`);
 		return res.data;
 	});
 
-	const handleMakeEditor = (user) => {
-		axiosSecure.patch(`/users/editor/${user._id}`, { role: "editor" }).then((data) => {
+	const handleMakeAppruve = (blog) => {
+		axiosSecure.patch(`/blogs/admin/${blog._id}`, { status: "approved" }).then((data) => {
 			console.log(data.data);
 			if (data.data.modifiedCount) {
-				toast.success("User Role Changed To Editor");
+				toast.success("Blog Approved!");
 				refetch();
 			}
 		});
 	};
 
 	const handledelete = (id) => {
-		axiosSecure.delete(`/users/${id}`).then((data) => {
-			toast.success("User Deleted Successfully");
+		axiosSecure.delete(`/blogs/${id}`).then((data) => {
+			toast.success("Blog Deleted Successfully");
 			refetch();
 		});
 	};
@@ -45,31 +45,37 @@ const UserManagement = () => {
 										scope="col"
 										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-[#6b7cff]"
 									>
-										User Image
+										Blog Image
 									</th>
 									<th
 										scope="col"
 										className="px-5 py-3 border-b border-gray-200 text-white  text-left text-sm uppercase font-medium bg-[#6b7cff]"
 									>
-										Name
+										Blog Title
 									</th>
 									<th
 										scope="col"
 										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
-										Email
+										Author Name
 									</th>
 									<th
 										scope="col"
 										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
-										Role
+										Author Email
 									</th>
 									<th
 										scope="col"
 										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
 									>
-										Make Editor
+										Status
+									</th>
+									<th
+										scope="col"
+										className="px-5 py-3  bg-[#6b7cff] border-b border-gray-200 text-white text-left text-sm uppercase font-medium"
+									>
+										Approve Blog
 									</th>
 									<th
 										scope="col"
@@ -80,16 +86,16 @@ const UserManagement = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{users &&
-									users.map((user) => (
-										<tr key={user._id}>
+								{blogs &&
+									blogs.map((blog) => (
+										<tr key={blog._id}>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												<div className="flex items-center">
 													<div className="flex-shrink-0">
 														<div className="block relative">
 															<img
 																alt="profile"
-																src={user.image}
+																src={blog.image}
 																className="mx-auto object-cover rounded h-14 w-16"
 															/>
 														</div>
@@ -98,55 +104,50 @@ const UserManagement = () => {
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												<p className="text-black whitespace-no-wrap">
-													{user.name ? user.name : ""}
+													{blog.title}
 												</p>
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												<p className="text-black whitespace-no-wrap">
-													{user.email}
+													{blog.author_name}
 												</p>
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-												{user?.role === "admin" ? (
-													<p className="text-[#6b7cff] font-medium">
-														Admin
-													</p>
-												) : user.role === "editor" ? (
-													<p className="text-green-600 font-medium">
-														Editor
+												<p className="text-black whitespace-no-wrap">
+													{blog.email}
+												</p>
+											</td>
+											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+												{blog?.status === "approved" ? (
+													<p className="text-green-500 font-medium">
+														Approved
 													</p>
 												) : (
-													<p className="text-gray-700 font-medium">
-														User
+													<p className="text-[#6b7cff] font-medium">
+														Panding
 													</p>
 												)}
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-												{user?.role === "admin" ? (
-													<div className="flex gap-2">
-														<MdAdminPanelSettings className="h-6 w-6 text-[#6b7cff]" />
-														<p className="text-[#6b7cff] font-medium">
-															(Not Changeable)
-														</p>
-													</div>
-												) : user?.role === "editor" ? (
+												{blog?.status === "approved" ? (
 													<p
-														title="Already Editor"
-														className="text-green-600 font-medium"
+														title="Already Approved"
+														className="text-green-400 font-medium"
 													>
-														<BsPersonFillCheck className="h-6 w-6" />
+														<AiFillCheckCircle className="h-6 w-6" />
 													</p>
 												) : (
-													<RiAdminFill
-														onClick={() => handleMakeEditor(user)}
-														title="Make Editor"
-														className="h-6 w-6 text-[#6b7cff]"
-													/>
+													<p
+														onClick={() => handleMakeAppruve(blog)}
+														className="bg-[#6b7cff] py-3 text-white rounded text-center cursor-pointer"
+													>
+														Approve Blog
+													</p>
 												)}
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												<button
-													onClick={() => handledelete(user._id)}
+													onClick={() => handledelete(blog._id)}
 													className="bg-red-700 hover:bg-red-500 p-3 rounded-[100%]"
 												>
 													<FaTrashCan className="h-5 w-5 text-white" />
@@ -163,4 +164,4 @@ const UserManagement = () => {
 	);
 };
 
-export default UserManagement;
+export default ManageBlogs;

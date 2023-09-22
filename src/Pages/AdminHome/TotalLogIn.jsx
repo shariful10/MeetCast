@@ -30,7 +30,7 @@ const TotalLogIn = () => {
         </h2>
       </div>
       <div className="flex justify-center text-2xl">
-      <FontAwesomeIcon icon={faRightToBracket} />
+        <FontAwesomeIcon icon={faRightToBracket} />
       </div>
     </div>
   );

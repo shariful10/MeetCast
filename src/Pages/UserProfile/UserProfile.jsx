@@ -6,8 +6,8 @@ import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import Container from "../../Components/Shared/Container/Container";
 
 const UserProfile = () => {
-  const {user} = useAuth()
-  const [userInfo, setUserInfo ] = useState()
+  const { user } = useAuth();
+  const [userInfo, setUserInfo] = useState();
   const [axiosSecure] = useAxiosSecure();
   const [showPass, setShowPass] = useState(false);
   const [showHost, setShowHost] = useState(false);
@@ -31,7 +31,7 @@ const UserProfile = () => {
 
   return (
     <Container>
-      <div className="w-full m-auto bg-white p-2">
+      <div className="w-full mx-auto shadow-lg p-2">
         <div className="grid grid-cols-1 md:grid-cols-2 mt-24">
           <div className="ps-6">
             <img
@@ -41,8 +41,8 @@ const UserProfile = () => {
             />
           </div>
           <div className="w-full ms-6 mt-2">
-              <h2 className="text-2xl font-bold">{user.displayName}</h2>
-              <p className="my-3">Web Developer</p>
+            <h2 className="text-2xl font-bold">{user.displayName}</h2>
+            <p className="my-3">Web Developer</p>
           </div>
         </div>
         <div className="divider text-2xl">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faMoneyBill  } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 
 const Totalincome = () => {
   const [allUsers, setAllUsers] = useState();
@@ -31,7 +31,7 @@ const Totalincome = () => {
         </h2>
       </div>
       <div className="flex justify-center text-2xl">
-      <FontAwesomeIcon icon={faMoneyBill} />
+        <FontAwesomeIcon icon={faMoneyBill} />
       </div>
     </div>
   );
