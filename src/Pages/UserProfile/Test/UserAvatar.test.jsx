@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import UserAvatar from "../UserAvatar"
-import { expect } from "vitest"
+import { expect, it } from "vitest"
 
 it("should have hello world", ()=>{
     render(<UserAvatar></UserAvatar>)

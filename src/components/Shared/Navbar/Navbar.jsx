@@ -67,31 +67,31 @@ const Navbar = () => {
 						>
 							<ul className="w-48 h-52 flex flex-col justify-between">
 								<li>
-									<Link className="text-lg font-NotoSans  group " to="/">
+									<Link className="text-lg font-NotoSans group " to="/">
 										Home
 										<span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
 									</Link>
 								</li>
 								<li>
-									<Link className="text-lg font-NotoSans  group" to="/about">
+									<Link className="text-lg font-NotoSans group" to="/about">
 										About
 										<span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
 									</Link>
 								</li>
 								<li>
-									<Link className="text-lg font-NotoSans  group " to="/pricing">
+									<Link className="text-lg font-NotoSans group " to="/pricing">
 										Pricing
 										<span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
 									</Link>
 								</li>
 								<li>
-									<Link className="text-lg font-NotoSans  group " to="/blog">
+									<Link className="text-lg font-NotoSans group " to="/blog">
 										Blog
 										<span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
 									</Link>
 								</li>
 								<li>
-									<Link className="text-lg font-NotoSans  group " to="/contact">
+									<Link className="text-lg font-NotoSans group " to="/contact">
 										Contact
 										<span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary mt-[1px]"></span>
 									</Link>
@@ -129,7 +129,7 @@ const Navbar = () => {
 				<div className="navbar-center hidden lg:flex">
 					<ul className="flex gap-6 py-4">
 						<li>
-							<Link className="text-lg font-NotoSans  group " to="/">
+							<Link className="text-lg font-NotoSans group" to="/">
 								Home
 								<span className="block max-w-0 group-hover:max-w-full transition-all duration-700 h-1 bg-primary   mt-[1px]"></span>
 							</Link>
@@ -186,12 +186,9 @@ const Navbar = () => {
 				<div className="navbar-end">
 					{user ? (
 						<div className="dropdown dropdown-end">
-							<label
-								className="btn btn-ghost btn-circle avatar"
-								onClick={() => setProfileOpen(!profileOpen)}
-							>
+							<label onClick={() => setProfileOpen(!profileOpen)}>
 								<div className="w-10 rounded-full">
-									<img src={user?.photoURL} />
+									<img className="rounded-full" src={user?.photoURL} />
 								</div>
 							</label>
 
@@ -211,7 +208,7 @@ const Navbar = () => {
 									</span>
 									<li>
 										<Link
-											className="font-NotoSans group "
+											className="font-NotoSans group"
 											to="/dashboard/userProfile"
 										>
 											Profile
@@ -220,7 +217,7 @@ const Navbar = () => {
 									</li>
 									<li>
 										<Link
-											className="font-NotoSans  group "
+											className="font-NotoSans group"
 											to="/dashboard/schedule"
 										>
 											Meeting
@@ -229,7 +226,7 @@ const Navbar = () => {
 									</li>
 									<li>
 										<Link
-											className="font-NotoSans  group "
+											className="font-NotoSans group "
 											onClick={() => logOut()}
 										>
 											Log Out
