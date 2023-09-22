@@ -6,7 +6,6 @@ import AuthProvider from "./Providers/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { router } from "./Routes/Routes";
-import CustomChatBot from "./Components/Shared/CustomChatBot/CustomChatBot";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +30,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             },
           }}
         />
-        <CustomChatBot />
         <RouterProvider router={router} />
       </AuthProvider>
     </QueryClientProvider>
