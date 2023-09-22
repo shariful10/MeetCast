@@ -5,12 +5,13 @@ import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { FaTrashCan } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const MyBlog = () => {
 	const [axiosSecure] = useAxiosSecure();
 	const { user, loading } = useContext(AuthContext);
 
-	const { data: blogs = [], isLoading } = useQuery({
+	const { data: blogs = [], refetch } = useQuery({
 		queryKey: ["my-blogs"],
 		enabled: !!user && !loading,
 		queryFn: async () => {
@@ -19,10 +20,11 @@ const MyBlog = () => {
 		},
 	});
 
-	console.log(blogs);
-
 	const handledelete = (id) => {
-		console.log("delete", id);
+		axiosSecure.delete(`/blogs/${id}`).then((data) => {
+			toast.success("Blog Deleted Successfully");
+			refetch();
+		});
 	};
 	return (
 		<div className="container mx-auto px-4 sm:px-8">
@@ -99,24 +101,26 @@ const MyBlog = () => {
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												{blog?.status === "approved" ? (
-													<p className="text-blue-500 font-medium">
+													<p className="text-green-500 font-medium">
 														Approved
 													</p>
 												) : (
 													blog.status === "pending" && (
-														<p className="text-green-600 font-medium">
+														<p className="text-orange-500 font-medium">
 															Pending
 														</p>
 													)
 												)}
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-												<FaEdit className="h-6 w-6 text-green-500 cursor-pointer" />
+												<Link to={`/dashboard/update-blog/${blog?._id}`}>
+													<FaEdit className="h-6 w-6 text-blue-500 cursor-pointer" />
+												</Link>
 											</td>
 											<td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 												<button
 													onClick={() => handledelete(blog._id)}
-													className="bg-red-700 hover:bg-red-500 p-3 rounded-[100%]"
+													className="bg-red-500 hover:bg-red-700 p-3 rounded-[100%]"
 												>
 													<FaTrashCan className="h-5 w-5 text-white" />
 												</button>

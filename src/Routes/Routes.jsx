@@ -30,6 +30,7 @@ import EditorRoute from "./EditorRoute";
 import PrivateRoute from "./PrivateRoute";
 import UserProfileOriginal from "../Pages/UserProfile/UserProfileOriginal";
 import ManageBlogs from "../Pages/ManageBlogs/ManageBlogs";
+import UpdateBlog from "../Pages/UpdateBlog/UpdateBlog";
 export const router = createBrowserRouter([
 	{
 		path: "/",
@@ -148,6 +149,15 @@ export const router = createBrowserRouter([
 						<AddBlog />
 					</EditorRoute>
 				),
+			},
+			{
+				path: "/dashboard/update-blog/:id",
+				element: (
+					<EditorRoute>
+						<UpdateBlog />
+					</EditorRoute>
+				),
+				loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/blog/${params.id}`),
 			},
 			{
 				path: "/dashboard/userProfile",
