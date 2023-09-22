@@ -1,5 +1,6 @@
-import { default as React } from "react";
+import { default as React, useEffect, useState } from "react";
 import { FaRegShareSquare } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { Cell, Pie, PieChart } from "recharts";
 import useAdmin from "../../Components/Hooks/useAdmin";
 import useAuth from "../../Components/Hooks/useAuth";
@@ -24,9 +25,30 @@ const UserProfile = () => {
   const [isAdmin] = useAdmin();
   const [isEditor] = useEditor();
   console.log(isAdmin);
+  const [totalMeeting, setTotalMeeting] = useState([]);
+  console.log(totalMeeting.length);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Make a network request to fetch data from the provided URL.
+        const response = await axiosSecure.get(
+          `${import.meta.env.VITE_API_URL}/meetings/${user?.email}`
+        );
+        console.log(response.data);
+
+        const totalMeeting = response.data;
+        setTotalMeeting(totalMeeting);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <div className="flex justify-around bg-gray-50 gap-6  mt-[40px] font-manrope">
+    <div className="lg:flex lg:justify-around bg-gray-50 gap-6  mt-[40px] font-manrope">
       {/* user profile  */}
       <div className="w-1/3">
         <div className="px-6 py-2 shadow-xl rounded-xl">
@@ -43,26 +65,26 @@ const UserProfile = () => {
               New Client
             </p>
             <button className=" bg-[#5fb5ee] py-2 px-4 rounded-2xl my-2 text-white w-2/3 font-semibold">
-              Appointemnts
+              <Link to="/dashboard/myMeetings">My Meeting</Link>
             </button>
             <div>
               <div className="my-4 px-2 py-4 border-2 rounded-2xl  bg-slate-100">
                 {" "}
                 <p className="text-start text-gray-600 ms-10">Email</p>
-                <p className="text-black -ms-16 text-sm">{user?.email}</p>
+                <p className="text-black -ms-8 text-sm">{user?.email}</p>
               </div>
 
               <div className="my-4 px-2 py-4 border-2 rounded-2xl bg-slate-100">
                 {isAdmin === true ? (
                   <>
-                  <p className="text-start ms-10 text-gray-600">Role</p>
-                  <p className="text-start text-gray-600 ms-10">Admin</p>
-                </>
+                    <p className="text-start ms-10 text-gray-600">Role</p>
+                    <p className="text-start text-gray-600 ms-10">Admin</p>
+                  </>
                 ) : isEditor === true ? (
                   <>
-                  <p className="text-start ms-10 text-gray-600">Role</p>
-                  <p className="text-start text-gray-600 ms-10">Editor</p>
-                </>
+                    <p className="text-start ms-10 text-gray-600">Role</p>
+                    <p className="text-start text-gray-600 ms-10">Editor</p>
+                  </>
                 ) : (
                   <div>
                     <p className="text-start ms-10 text-gray-600">Role</p>
@@ -90,16 +112,21 @@ const UserProfile = () => {
           <div className=" shadow-md rounded-xl py-2 px-4">
             <div className="flex justify-around items-center px-4 py-2">
               <div className="w-1/3">
-                <p className="text-4xl text-[#5fb5ee]">2</p>
+                <p className="text-4xl text-[#5fb5ee]">{totalMeeting.length}</p>
 
                 <p className="text-base">Meeting </p>
                 <div className="mt-2">
+                
+                  <Link to="/dashboard/myMeetings">
                   <FaRegShareSquare className="text-gray-600"></FaRegShareSquare>
+                </Link>
                 </div>
               </div>
 
               <div className="w-full">
-                <TotalMeeting></TotalMeeting>
+                <Link to="/dashboard/myMeetings">
+                  <TotalMeeting />
+                </Link>
               </div>
             </div>
           </div>
@@ -143,7 +170,7 @@ const UserProfile = () => {
           </div>
         </div>
         {/* user appointemnts */}
-        <div className=" rounded-xl h-2/4 py-2 px-4">
+        <div className="rounded-xl h-2/4 py-2 px-4 mt-24">
           <img
             className="rounded-2xl"
             src="https://i.ibb.co/Jk4JH30/service-3-jpg.jpg"

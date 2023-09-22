@@ -17,9 +17,7 @@ const FaqSection = () => {
               <Accordion.Content>
                 <p className="mb-2 text-gray-600">
                   <p>
-                    Flowbite is an open-source library of interactive components
-                    built on top of Tailwind CSS including buttons, dropdowns,
-                    modals, navbars, and more.
+                  To grow your business, focus on understanding your customers, delivering exceptional value, and effective marketing. Build strong customer relationships, expand your product or service offerings, and invest wisely in technology and marketing.  Consistent effort and strategic planning are key to sustainable business growth.
                   </p>
                 </p>
                 <p className="text-gray-600">

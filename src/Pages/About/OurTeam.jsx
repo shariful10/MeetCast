@@ -6,8 +6,7 @@ const OurTeam = () => {
       <div className="md:w-1/4 ms-0 md:ms-16">
         <h2 className="text-3xl font-bold font-manrope my-4">Our talented Team</h2>
         <p>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore.
+        Our Talented Team is the driving force behind our success. Comprising dedicated professionals with diverse expertise, we collaborate seamlessly to deliver exceptional results. With passion and commitment, we tackle every challenge, ensuring our clients receive top-notch service and innovative solutions.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:w-4/6 text-center">

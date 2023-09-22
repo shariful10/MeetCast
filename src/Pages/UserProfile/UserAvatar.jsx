@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
-import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
-import { useForm } from "react-hook-form";
-import { useMemo } from "react";
-import { createAvatar } from "@dicebear/core";
 import { lorelei } from "@dicebear/collection";
+import { createAvatar } from "@dicebear/core";
+import React, { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const UserAvatar = () => {
