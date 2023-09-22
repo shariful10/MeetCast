@@ -31,7 +31,7 @@ const UserProfile = () => {
 
   return (
     <Container>
-      <div className="w-full mx-auto bg-white p-2">
+      <div className="w-full mx-auto shadow-lg p-2">
         <div className="grid grid-cols-1 md:grid-cols-2 mt-24">
           <div className="ps-6">
             <img

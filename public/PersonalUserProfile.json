@@ -1,0 +1,144 @@
+[
+    {
+      "profile": {
+        "userId": "1",
+        "username": "alice_smith",
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "email": "a.nashif7@gmail.com",
+        "profilePicture": "https://example.com/alice_profile.jpg",
+        "avatar": "https://example.com/alice_avatar.png",
+        "personalInfo": {
+          "dateOfBirth": "1995-08-20",
+          "gender": "Female",
+          "location": "Los Angeles, USA",
+          "languages": ["English", "French"],
+          "interests": ["Traveling", "Reading", "Photography"]
+        },
+        "contactInfo": {
+          "phone": "+1 (123) 555-7890",
+          "address": "456 Oak St, Apt 789, Los Angeles, USA",
+          "website": "https://alicesmith.com"
+        },
+        "socialMedia": {
+          "twitter": "https://twitter.com/alice_smith",
+          "linkedin": "https://www.linkedin.com/in/alicesmith",
+          "facebook": "https://www.facebook.com/alicesmith"
+        },
+        "meetingSettings": {
+          "timezone": "Pacific Standard Time (PST)",
+          "meetingNotifications": true,
+          "meetingPreferences": {
+            "meetingDuration": "45 minutes",
+            "defaultLocation": "Home Office",
+            "meetingReminders": true
+          }
+        },
+        "privacySettings": {
+          "profileVisibility": "Public",
+          "dataSharing": "Limited",
+          "blockList": ["user123", "user456"]
+        },
+        "billingAndSubscription": {
+          "subscriptionType": "Free",
+          "nextBillingDate": "N/A",
+          "paymentMethod": "N/A"
+        }
+      }
+    },
+    {
+      "profile": {
+        "userId": "2",
+        "username": "james_johnson",
+        "firstName": "James",
+        "lastName": "Johnson",
+        "email": "james@example.com",
+        "profilePicture": "https://example.com/james_profile.jpg",
+        "avatar": "https://example.com/james_avatar.png",
+        "personalInfo": {
+          "dateOfBirth": "1988-03-12",
+          "gender": "Male",
+          "location": "Chicago, USA",
+          "languages": ["English", "Spanish", "German"],
+          "interests": ["Sports", "Music", "Cooking"]
+        },
+        "contactInfo": {
+          "phone": "+1 (456) 789-1234",
+          "address": "789 Elm St, Apt 123, Chicago, USA",
+          "website": "https://jamesjohnson.com"
+        },
+        "socialMedia": {
+          "twitter": "https://twitter.com/james_johnson",
+          "linkedin": "https://www.linkedin.com/in/jamesjohnson",
+          "facebook": "https://www.facebook.com/jamesjohnson"
+        },
+        "meetingSettings": {
+          "timezone": "Central Standard Time (CST)",
+          "meetingNotifications": true,
+          "meetingPreferences": {
+            "meetingDuration": "60 minutes",
+            "defaultLocation": "Office",
+            "meetingReminders": true
+          }
+        },
+        "privacySettings": {
+          "profileVisibility": "Public",
+          "dataSharing": "Limited",
+          "blockList": ["user789", "user101"]
+        },
+        "billingAndSubscription": {
+          "subscriptionType": "Premium",
+          "nextBillingDate": "2023-09-30",
+          "paymentMethod": "Credit Card ending in **** **** **** 5678"
+        }
+      }
+    },
+    {
+      "profile": {
+        "userId": "3",
+        "username": "sarah_miller",
+        "firstName": "Sarah",
+        "lastName": "Miller",
+        "email": "sarah@example.com",
+        "profilePicture": "https://example.com/sarah_profile.jpg",
+        "avatar": "https://example.com/sarah_avatar.png",
+        "personalInfo": {
+          "dateOfBirth": "1992-11-05",
+          "gender": "Female",
+          "location": "San Francisco, USA",
+          "languages": ["English", "Spanish"],
+          "interests": ["Art", "Yoga", "Travel"]
+        },
+        "contactInfo": {
+          "phone": "+1 (789) 123-4567",
+          "address": "123 Maple St, Apt 456, San Francisco, USA",
+          "website": "https://sarahmiller.com"
+        },
+        "socialMedia": {
+          "twitter": "https://twitter.com/sarah_miller",
+          "linkedin": "https://www.linkedin.com/in/sarahmiller",
+          "facebook": "https://www.facebook.com/sarahmiller"
+        },
+        "meetingSettings": {
+          "timezone": "Pacific Standard Time (PST)",
+          "meetingNotifications": true,
+          "meetingPreferences": {
+            "meetingDuration": "30 minutes",
+            "defaultLocation": "Home",
+            "meetingReminders": true
+          }
+        },
+        "privacySettings": {
+          "profileVisibility": "Public",
+          "dataSharing": "Limited",
+          "blockList": ["user333", "user444"]
+        },
+        "billingAndSubscription": {
+          "subscriptionType": "Basic",
+          "nextBillingDate": "2023-10-15",
+          "paymentMethod": "PayPal"
+        }
+      }
+    }
+  ]
+  
