@@ -1,13 +1,11 @@
 import React, { useContext, useState } from "react";
 import TimezoneSelect from "react-timezone-select";
 import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const MeetingSchedule = () => {
 	const { user } = useContext(AuthContext);
 	const [meetingId, setMeetingId] = useState("");
-	const navigate = useNavigate();
 	const [selectedTimezone, setSelectedTimezone] = useState({ value: "Etc/UTC", label: "UTC" });
 	const [convertedTime, setConvertedTime] = useState("");
 	const [showPasscode, setShowPasscode] = useState(false);
@@ -99,7 +97,6 @@ const MeetingSchedule = () => {
 			.then((data) => {
 				// Handle the response from the backend if needed
 				console.log("Meeting scheduled:", data);
-				navigate("/dashboard/myMeetings");
 			})
 			.catch((error) => {
 				console.error("Error scheduling meeting:", error);
@@ -196,7 +193,7 @@ const MeetingSchedule = () => {
 					</div>
 
 					<div className="flex space-x-4 items-center">
-						<label className="block text-base  w-1/4">Meeting ID</label>
+						<label htmlFor="meetingId" className="block text-base  w-1/4">Meeting ID</label>
 						<div className="flex space-x-2">
 							<input
 								type="text"
