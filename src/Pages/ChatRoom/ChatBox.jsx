@@ -11,7 +11,7 @@ const ChatBox = () => {
 
   console.log(user);
 
-  const userInformation = `${user.displayName}${id}`;
+  const userInformation = `user${id}`;
 
   const [state, setState] = useState({
     appConfig: {
@@ -44,12 +44,12 @@ const ChatBox = () => {
     init();
   }, []);
   return (
-    <div className="mt-24 mb-3">
+    <div className="mb-3">
       <h2 className="text-center">
         <Link to={"/"}>
           <button className="btn btn-sm m-3">Back Home</button>
         </Link>
-        {userInformation}{" "}
+        {userInformation}
       </h2>
       <div className="m-auto">
       <Common></Common>

@@ -59,6 +59,7 @@ const PersonalInfo = () => {
       .catch((error) => {
         console.error("Error updating profile:", error);
       });
+      setIsEditing(false)
   };
   return (
     <div className="flex flex-col m-auto md:w-[720px] shadow-lg rounded-lg">
@@ -74,7 +75,6 @@ const PersonalInfo = () => {
               defaultValue={mainUser?.language}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Bangla"
               className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
               {...register("language")}
             />
