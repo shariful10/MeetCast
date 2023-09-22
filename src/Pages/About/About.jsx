@@ -206,7 +206,9 @@ const About = () => {
           </div>
         </div>
         <OurTeam></OurTeam>
+        <div className="my-6">
         <Pricing></Pricing>
+        </div>
       </Container>
     </div>
   );

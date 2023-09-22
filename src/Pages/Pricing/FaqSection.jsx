@@ -5,7 +5,7 @@ import Container from "../../Components/Shared/Container/Container";
 const FaqSection = () => {
   return (
     <Container>
-      <div className="lg:flex lg:justify-around px-10 font-bold gap-6 my-40">
+      <div className="lg:flex lg:justify-around  font-bold gap-6 my-40">
         <div className="w-full lg:w-1/2">
           {/* <h3 className="text-4xl">Frequestly Asked <br /> Questions</h3> */}
           <img src="https://i.ibb.co/ygqX8FG/question-mark-bubble-speech-sign-symbol-icon-3d-rendering.jpg alt=" />

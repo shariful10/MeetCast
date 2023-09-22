@@ -78,7 +78,7 @@ function PricingToggle() {
             </button>
           </div>
 
-          <div className="flex justify-around">
+          <div className="lg:flex lg:justify-around">
             {pricingData.map((pricing) => (
               <div
                 key={pricing?._id}
@@ -124,7 +124,7 @@ function PricingToggle() {
         <div>
           <FaqSection></FaqSection>
         </div>
-        <div>
+        <div className="mb-10">
           <Price></Price>
         </div>
       </div>
