@@ -77,11 +77,11 @@ const About = () => {
         </p>
       </div>
       <Container>
-      <div className="flex flex-col md:flex-row justify-around items-center gap-8 md:gap-20  py-12 md:py-24  bg-[#e7e9ff]">
+      <div className="flex flex-col md:flex-row justify-around items-center gap-8 md:gap-20  py-12 md:py-24 px-6 bg-[#e7e9ff]">
         <div
           data-aos="zoom-out-up"
           data-aos-duration="1000"
-          className="text-left w-[640px]"
+          className="text-left w-full lg:w-[640px]"
         >
           <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">
             Out Goals
@@ -100,7 +100,7 @@ const About = () => {
         <div
           data-aos="zoom-out-down"
           data-aos-duration="1000"
-          className="text-left w-[640px] mt-8 md:mt-0"
+          className="text-left w-full lg:w-[640px] mt-8 md:mt-0"
         >
           <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">
             Out Goals
