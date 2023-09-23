@@ -76,17 +76,18 @@ const About = () => {
           third-party artificial intelligence models.
         </p>
       </div>
-      <div className="flex flex-col md:flex-row justify-around items-center gap-8 md:gap-20 rounded-xl py-12 md:py-24 px-6 md:px-16 bg-[#e7e9ff]">
+      <Container>
+      <div className="flex flex-col md:flex-row justify-around items-center gap-8 md:gap-20  py-12 md:py-24  bg-[#e7e9ff]">
         <div
           data-aos="zoom-out-up"
           data-aos-duration="1000"
-          className="text-left"
+          className="text-left w-[640px]"
         >
           <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">
             Out Goals
           </span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold">
-            To upscale your business to the next level
+            To upscale your business to <br /> the next level
           </h2>
           <p className="text-gray-400 mt-4">
             To take your business to the next level, you must embrace
@@ -99,7 +100,7 @@ const About = () => {
         <div
           data-aos="zoom-out-down"
           data-aos-duration="1000"
-          className="text-left mt-8 md:mt-0"
+          className="text-left w-[640px] mt-8 md:mt-0"
         >
           <span className="md:text-2xl font-bold bg-gradient-to-r from-[#373FFF] to-[#3ACAF8] text-transparent bg-clip-text">
             Out Goals
@@ -119,6 +120,7 @@ const About = () => {
           </p>
         </div>
       </div>
+      </Container>
       <Container>
         <div>
           <div className="my-10 md:text-center">
@@ -129,7 +131,7 @@ const About = () => {
               Our Corporate Values: Excellence, Integrity, Innovation.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 py-8 md:py-20 px-6 md:px-10 rounded-xl bg-[#F9F0FB]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-16 py-8 md:py-20 px-6 md:px-10  bg-[#F9F0FB]">
             <div data-aos="flip-down" data-aos-duration="1000">
               <span className="text-4xl pb-6  text-[#6B7CFF]">
                 <LuThumbsUp className="mb-6" />
