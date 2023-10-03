@@ -1,3 +1,3 @@
-![MeetCast](https://i.ibb.co/BLdSLg6/Meet-Cast-1.png)
+![MeetCast](https://i.ibb.co/zNkmzvM/meetcast.png)
 
-## Live Priview: [MeetCast](https://meetcast-f74c8.web.app)
+## Live Priview: [MeetCast](https://meetcast.netlify.app)
