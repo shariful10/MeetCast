@@ -17,7 +17,6 @@ import MyMeetings from "../Pages/MyMeetings/MyMeetings";
 import PaymentFaild from "../Pages/PaymentFaild/PaymentFaild";
 import PaymentSucc from "../Pages/PaymentSucc/PaymentSucc";
 import Pricing from "../Pages/Pricing/Pricing";
-import RoomPage from "../Pages/RoomPage/RoomPage";
 import SignUp from "../Pages/SignUp/SignUp";
 import UserHome from "../Pages/UserHome/UserHome";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
@@ -100,14 +99,6 @@ export const router = createBrowserRouter([
 		element: (
 			<PrivateRoute>
 				<PaymentFaild />
-			</PrivateRoute>
-		),
-	},
-	{
-		path: "/room/:roomID",
-		element: (
-			<PrivateRoute>
-				<RoomPage />
 			</PrivateRoute>
 		),
 	},
