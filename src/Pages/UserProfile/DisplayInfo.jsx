@@ -10,6 +10,8 @@ const DisplayInfo = () => {
   const [displayName, setDisplayName] = useState(user.displayName); // Replace with mainUser?.displayName
   const [axiosSecure] = useAxiosSecure();
   const [allUsers, setAllUsers] = useState();
+  const [changeData, setChangeData] = useState();
+  const [shouldRefetch, setShouldRefetch] = useState(false);
 
   useEffect(() => {
     axiosSecure
@@ -20,9 +22,9 @@ const DisplayInfo = () => {
       .catch((error) => {
         console.error("Error fetching user data:", error);
       });
-  }, []);
-  const mainUser = allUsers?.find(userFind=>userFind.email === user.email)
-  console.log("main User", mainUser)
+  }, [shouldRefetch]);
+  const mainUser = allUsers?.find((userFind) => userFind.email === user.email);
+  console.log("main User", mainUser);
 
   const {
     register,
@@ -51,52 +53,76 @@ const DisplayInfo = () => {
     };
     console.log(" updating ", updateProfile);
 
+    setChangeData(updateProfile);
+
     axiosSecure
       .put(`/users/${user.email}`, updateProfile)
       .then((response) => {
-        console.log("Updating",response.data);
+        console.log("Updating", response.data);
+        setShouldRefetch(true);
       })
       .catch((error) => {
         console.error("Error updating profile:", error);
       });
-      setIsEditing(false)
+    setShouldRefetch(false);
+    setIsEditing(false);
   };
+
+  console.log("setting change data", changeData);
 
   return (
     <div className="flex flex-col m-auto w-full md:w-[720px] shadow-lg rounded-lg">
       <div className="divider text-2xl p-3">
         <p>Display Information</p>
       </div>
-      <div className="w-full p-6 shadow-lg rounded-lg">
-        <div className="flex sm:flex-col md:flex-row bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
-          <img
-            src={mainUser?.avatarSvg}
-            className="h-[150px] rounded-3xl w-2/6 object-contain"
-            alt=""
-            onClick={handleClick}
-          />
+      <div className="w-full p-6 shadow-lg rounded-lg" onClick={handleClick}>
+        <div className="grid grid-cols-1 md:grid-cols-2 bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2">
+          {!mainUser ? (
+            <img
+              src={"https://i.ibb.co/G07ZkQ0/Blank-Image.jpg"}
+              className="h-[250px] w-[250px] object-contain m-auto"
+              alt=""
+            />
+          ) : (
+            <img
+              src={mainUser?.avatarSvg}
+              className="h-[250px] w-[250px] rounded-3xl object-contain m-auto border shadow-lg bg-white"
+              alt=""
+              onClick={handleClick}
+            />
+          )}
+
           <div className="px-3">
             <div>
-              <div className="w-full grid grid-cols-2">
+              <div className="w-full ">
+                <span className="font-bold">Name:</span>
                 {isEditing ? (
                   <input
                     type="text"
-                    defaultValue={mainUser?.displayName}
+                    defaultValue={
+                      !mainUser
+                        ? changeData?.displayName
+                        : mainUser?.displayName
+                    }
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
+                    className="m-1 h-[30px] bg-white p-3 border shadow-lg"
                     {...register("displayName")}
                   />
                 ) : (
-                  <h2
-                    className="text-2xl border font-bold w-full cursor-pointer"
-                   
-                  >
-                    {mainUser?.displayName}
-                  </h2>
+                  <div className="">
+                    {mainUser ? (
+                      <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
+                        <p className="ms-0">{mainUser?.displayName}</p>
+                      </h2>
+                    ) : (
+                      <span className="loading loading-dots loading-md"></span>
+                    )}
+                  </div>
                 )}
               </div>
-              <div className="w-full">
+              <div className="w-full flex">
+                <span className="font-bold">Designation: </span>
                 {isEditing ? (
                   <input
                     type="text"
@@ -104,27 +130,30 @@ const DisplayInfo = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     placeholder="Desgination"
-                    className="m-1 h-[30px] bg-white p-3 border shadow-lg w-full"
+                    className="m-1 h-[30px] bg-white p-3 border shadow-lg"
                     {...register("designation")}
                   />
                 ) : (
-                  <h2
-                    className="w-full cursor-pointer"
-                    onClick={handleClick}
-                  >
-                    {mainUser?.designation}
-                  </h2>
+                  <div>
+                    {mainUser ? (
+                      <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
+                        <p className="ms-0">{mainUser?.designation}</p>
+                      </h2>
+                    ) : (
+                      <span className="loading loading-dots loading-md"></span>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
             <div className="mt-6">
               <div className="flex">
-                <p className="m-1">My Bio</p>
+                <p className="m-1 font-bold">My Bio</p>
               </div>
               {isEditing ? (
                 <textarea
                   type="text"
-                  defaultValue={user.bio}
+                  defaultValue={mainUser?.bio}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   rows={5}
@@ -133,19 +162,30 @@ const DisplayInfo = () => {
                   {...register("bio")}
                 ></textarea>
               ) : (
-                <p className="m-1 w-[400px]">
-                  {mainUser?.bio}
-                </p>
+                <div>
+                  {mainUser ? (
+                    <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
+                      <p className="ms-1">{mainUser?.bio}</p>
+                    </h2>
+                  ) : (
+                    <span className="loading loading-dots loading-md"></span>
+                  )}
+                </div>
               )}
             </div>
           </div>
         </div>
-        <button
-          className="btn btn-primary my-2 w-1/3"
-          onClick={handleSubmit(onSubmit)}
-        >
-          Submit
-        </button>
+        <div className="flex justify-around">
+          <button className="btn btn-primary my-2 w-1/3" onClick={handleClick}>
+            Edit
+          </button>
+          <button
+            className="btn btn-primary my-2 w-1/3"
+            onClick={handleSubmit(onSubmit)}
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ const UserPrivacySettings = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [allUsers, setAllUsers] = useState();
   const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [shouldRefetch, setShouldRefetch] = useState(false);
 
   useEffect(() => {
     axiosSecure
@@ -20,7 +21,7 @@ const UserPrivacySettings = () => {
       .catch((error) => {
         console.error("Error fetching user data:", error);
       });
-  }, []);
+  }, [shouldRefetch]);
   const mainUser = allUsers?.find((userFind) => userFind.email === user.email);
   console.log("main User", mainUser);
 
@@ -54,10 +55,13 @@ const UserPrivacySettings = () => {
       .put(`/users/${user.email}`, privacySettings)
       .then((response) => {
         console.log("Updating", response.data);
+        setShouldRefetch(true);
       })
       .catch((error) => {
         console.error("Error updating profile:", error);
       });
+      setShouldRefetch(false);
+      setIsEditing(false)
   };
 
   return (
@@ -80,16 +84,23 @@ const UserPrivacySettings = () => {
               <option value="private">Private</option>
             </select>
           ) : (
-            <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-              <p className="ms-1">{mainUser?.profileVisibility}</p>
-            </h2>
+            <div>
+              {
+                mainUser? (<h2 className="ms-0 cursor-pointer" onClick={handleClick}>
+                <p className="ms-1">{mainUser?.profileVisibility}</p>
+              </h2>): (<span className="loading loading-dots loading-md"></span>)
+              }
+
+            </div>
           )}
         </div>
         <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
           <p className="ms-1 font-bold">Email Address:</p>
-          <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-            <p className="ms-1">{mainUser?.email}</p>
-          </h2>
+          {
+                mainUser? (<h2 className="ms-0 cursor-pointer" onClick={handleClick}>
+                <p className="ms-1">{mainUser?.email}</p>
+              </h2>): (<span className="loading loading-dots loading-md"></span>)
+              }
         </div>
         <div className="grid grid-cols-3 h-[80px] bg-slate-100 p-6 hover:bg-slate-200 rounded-lg shadow-lg mt-2 w-full">
           <p className="ms-1 font-bold">Email Notification:</p>
@@ -114,18 +125,28 @@ const UserPrivacySettings = () => {
             ))}
           </div>
           ) : (
-            <h2 className="ms-0 cursor-pointer" onClick={handleClick}>
-              <p className="ms-1">{"Enabled"}</p>
-            </h2>
+            <div>
+              {
+                mainUser? (<h2 className="ms-0 cursor-pointer" onClick={handleClick}>
+                <p className="ms-1">{mainUser?.emailNotification}</p>
+              </h2>): (<span className="loading loading-dots loading-md"></span>)
+              }
+
+            </div>
           )}
         </div>
       </div>
-      <button
-        className="btn btn-primary m-auto my-2 w-1/3"
-        onClick={handleSubmit(onSubmit)}
-      >
-        Submit
-      </button>
+      <div className="flex justify-around">
+        <button className="btn btn-primary my-2 w-1/3" onClick={handleClick}>
+          Edit
+        </button>
+        <button
+          className="btn btn-primary my-2 w-1/3"
+          onClick={handleSubmit(onSubmit)}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

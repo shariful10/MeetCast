@@ -12,7 +12,7 @@ const UserAvatar = () => {
   const [allUsers, setAllUsers] = useState();
   const [avatarName, setAvatarName] = useState("");
   const [avatar, setAvatar] = useState(allUsers?.avatar);
-
+  const [avatarToAPI, setAvatarToAPI] = useState();
 
   const {
     register,
@@ -21,9 +21,9 @@ const UserAvatar = () => {
     formState: { errors },
   } = useForm();
 
-  console.log(avatarName)
+  console.log(avatarName);
 
-  // const avatar = useMemo(() => {
+  // const createAvatar = useMemo(() => {
   //   console.log("stack", avatarName);
   //   return createAvatar(lorelei, {
   //     size: 128 /* other options */,
@@ -31,35 +31,27 @@ const UserAvatar = () => {
   //   }).toDataUriSync();
   // }, []);
 
-  
-
   // console.log("Gekki", svg)
 
   const onSubmit = (data) => {
-
     const inputAvatarName = data.avatar;
-
-    
     const avatarDataUri = createAvatar(lorelei, {
       size: 128,
       seed: inputAvatarName,
     }).toDataUriSync();
-
     const svg = avatarDataUri.toString();
-
-    console.log(svg)
+    console.log(svg);
     const avatarToApi = {
       avatar: data.avatar,
-      avatarSvg: svg
-    }
-
+      avatarSvg: svg,
+    };
     setAvatar(avatarDataUri);
     setAvatarName(inputAvatarName);
 
     axiosSecure
       .put(`/users/${user.email}`, avatarToApi)
       .then((response) => {
-        console.log("Updating",response.data);
+        console.log("Updating", response.data);
       })
       .catch((error) => {
         console.error("Error updating profile:", error);
@@ -71,11 +63,19 @@ const UserAvatar = () => {
       <div className="divider text-2xl p-3">
         <p>Create an Avatar</p>
       </div>
-      <img src={avatar} alt="Avatar" className="h-[300px] w-full" />
-      <form  onSubmit={handleSubmit(onSubmit)} className="flex justify-center flex-col">
+      <div className="grid grid-cols-1">
+        {!avatar ? (
+          <img
+            src={"https://i.ibb.co/G07ZkQ0/Blank-Image.jpg"}
+            className="h-[450px] object-contain m-auto"
+            alt=""
+          />
+        ) : (
+          <img src={avatar} alt="Avatar" className="h-[450px] w-full m-auto" />
+        )}
         <input
           type="text"
-          placeholder={"Type a Name"}
+          placeholder={"Type anything"}
           className="mt-2 h-[30px] w-1/2 border p-3 m-auto"
           {...register("avatar")}
         />
@@ -85,7 +85,7 @@ const UserAvatar = () => {
           value="Submit"
           onClick={handleSubmit(onSubmit)}
         />
-      </form >
+      </div>
     </div>
   );
 };

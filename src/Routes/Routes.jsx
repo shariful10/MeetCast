@@ -20,7 +20,6 @@ import Pricing from "../Pages/Pricing/Pricing";
 import RoomPage from "../Pages/RoomPage/RoomPage";
 import SignUp from "../Pages/SignUp/SignUp";
 import UserHome from "../Pages/UserHome/UserHome";
-import EditUserProfile from "../Pages/UserProfile/EditUserProfile";
 import MeetingSchedule from "./../Pages/MeetingSchedule/MeetingSchedule";
 import UserManagement from "./../Pages/UserManagement/UserManagement";
 import AdminRoute from "./AdminRoute";

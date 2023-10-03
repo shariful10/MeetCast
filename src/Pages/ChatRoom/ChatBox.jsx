@@ -46,7 +46,7 @@ const ChatBox = () => {
   return (
     <div className="mb-3">
       <h2 className="text-center">
-        <Link to={"/"}>
+        <Link to={"/"}> 
           <button className="btn btn-sm m-3">Back Home</button>
         </Link>
         {userInformation}
