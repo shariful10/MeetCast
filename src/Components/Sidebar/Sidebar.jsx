@@ -8,7 +8,7 @@ import { IoLogOut } from "react-icons/io5";
 import { SiBloglovin } from "react-icons/si";
 import { MdClose, MdManageAccounts, MdMeetingRoom } from "react-icons/md";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import Logo from "../../assets/Logo.svg";
+import Logo from "../../assets/meetcast-logo.svg";
 import useAdmin from "../Hooks/useAdmin";
 import useAuth from "../Hooks/useAuth";
 import useEditor from "../Hooks/useEditor";
@@ -33,7 +33,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar */}
-      <div className="bg-gray-200 text-gray-800 flex justify-between md:hidden">
+      <div className="bg-[#6b7cff29] text-gray-800 flex justify-between md:hidden">
         <div>
           <div className="block cursor-pointer p-4 font-bold">
             <img className="w-40" src={Logo} alt="Logo" />
@@ -42,7 +42,7 @@ const Sidebar = () => {
 
         <button
           onClick={handleToggle}
-          className="mobile-menu-button p-4 focus:outline-none focus:bg-gray-200"
+          className="mobile-menu-button p-4 focus:outline-none focus:bg-[#6b7cff04]"
         >
           {!isActive ? (
             <MdClose className="h-5 w-5" />
@@ -53,15 +53,15 @@ const Sidebar = () => {
       </div>
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 md:bg-[#6b7cff1d] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
-        }  md:translate-x-0  transition duration-200 ease-in-out`}
+        }  md:translate-x-0 transition duration-200 ease-in-out`}
       >
         <div>
           {/* Branding & Profile Info */}
           <div>
             <div className="w-full md:flex py-2 justify-center items-center mx-auto">
-              <img className="w-40" src={Logo} alt="Logo" />
+              <img className="w-40 mx-auto" src={Logo} alt="Logo" />
             </div>
             <div className="flex flex-col items-center mt-6 -mx-2">
               <Link to="/dashboard">
@@ -134,10 +134,10 @@ const Sidebar = () => {
                   >
                     <AiFillSchedule className="w-5 h-5 hover:text-white" />
 
-                    <span className="mx-4 font-medium">Meeting Schedule</span>
+                    <span className="mx-4 font-medium">Create Meeting</span>
                   </NavLink>
                   <NavLink
-                    to="/dashboard/myMeetings"
+                    to="/dashboard/my-meetings"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
                         isActive ? "bg-[#6b7cff] text-white" : "text-gray-600"
@@ -164,7 +164,7 @@ const Sidebar = () => {
               ) : isEditor ? (
                 <li>
                   <NavLink
-                    to="/dashboard/userHome"
+                    to="/dashboard/editor-home"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform hover:bg-[#6b7cff]   hover:text-white ${
                         isActive ? "bg-[#6b7cff] text-white" : "text-gray-600"
@@ -195,10 +195,10 @@ const Sidebar = () => {
                   >
                     <AiFillSchedule className="w-5 h-5 hover:text-white" />
 
-                    <span className="mx-4 font-medium">Meeting Schedule</span>
+                    <span className="mx-4 font-medium">Create Meeting</span>
                   </NavLink>
                   <NavLink
-                    to="/dashboard/myMeetings"
+                    to="/dashboard/my-meetings"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
                         isActive ? "bg-[#6b7cff] text-white" : "text-gray-600"
@@ -268,10 +268,10 @@ const Sidebar = () => {
                   >
                     <AiFillSchedule className="w-5 h-5 hover:text-white" />
 
-                    <span className="mx-4 font-medium">Meeting Schedule</span>
+                    <span className="mx-4 font-medium">Create Meeting</span>
                   </NavLink>
                   <NavLink
-                    to="/dashboard/myMeetings"
+                    to="/dashboard/my-meetings"
                     className={({ isActive }) =>
                       `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
                         isActive ? "bg-[#6b7cff] text-white" : "text-gray-600"
@@ -281,18 +281,6 @@ const Sidebar = () => {
                     <MdMeetingRoom className="w-5 h-5 hover:text-white" />
 
                     <span className="mx-4 font-medium">My Meetings</span>
-                  </NavLink>
-                  <NavLink
-                    to="/dashboard/googleCalendar"
-                    className={({ isActive }) =>
-                      `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-[#6b7cff]   hover:text-white ${
-                        isActive ? "bg-[#6b7cff] text-white" : "text-gray-600"
-                      }`
-                    }
-                  >
-                    <FaCalendar className="w-5 h-5 hover:text-white" />
-
-                    <span className="mx-4 font-medium">Calendar</span>
                   </NavLink>
                 </li>
               )}

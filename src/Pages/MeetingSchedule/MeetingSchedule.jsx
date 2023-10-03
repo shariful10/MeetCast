@@ -1,24 +1,31 @@
 import React, { useContext, useState } from "react";
 import TimezoneSelect from "react-timezone-select";
-import { RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import { AuthContext } from "../../Providers/AuthProvider";
+import useAxiosSecure from "../../Components/Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const MeetingSchedule = () => {
-	const { user } = useContext(AuthContext);
-	const [meetingId, setMeetingId] = useState("");
+	const [axiosSecure] = useAxiosSecure();
+	const { user, loading } = useContext(AuthContext);
+	const navigate = useNavigate();
 	const [selectedTimezone, setSelectedTimezone] = useState({ value: "Etc/UTC", label: "UTC" });
 	const [convertedTime, setConvertedTime] = useState("");
-	const [showPasscode, setShowPasscode] = useState(false);
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [selectedTime, setSelectedTime] = useState("12:00");
 	const [selectedAmPm, setSelectedAmPm] = useState("AM");
 	const [meetingDurationHours, setMeetingDurationHours] = useState("1");
 	const [meetingDurationMinutes, setMeetingDurationMinutes] = useState("0");
 
-	const generateRandomMeetingId = () => {
-		const newMeetingId = new Date().getTime().toString() + Math.floor(Math.random() * 1000);
-		setMeetingId(newMeetingId);
-	};
+	const { data: myMeetings = [] } = useQuery({
+		queryKey: ["myMeetings"],
+		enabled: !!user && !loading,
+		queryFn: async () => {
+			const res = await axiosSecure(`/getMeetingData`);
+			return res.data;
+		},
+	});
 
 	const handleTimezoneChange = (timezone) => {
 		setSelectedTimezone(timezone);
@@ -46,10 +53,8 @@ const MeetingSchedule = () => {
 	const minutesOptions = Array.from({ length: 60 }, (_, i) => i.toString());
 
 	const resetForm = () => {
-		setMeetingId("");
 		setSelectedTimezone({ value: "Asia/UTC", label: "UTC" });
 		setConvertedTime("");
-		setShowPasscode(false);
 		setSelectedDate(new Date());
 		setSelectedTime("12:00");
 		setSelectedAmPm("AM");
@@ -63,40 +68,43 @@ const MeetingSchedule = () => {
 			parseInt(meetingDurationHours) * 60 + parseInt(meetingDurationMinutes);
 		const form = e.target;
 		const email = user.email;
-		const tropic = form.tropic.value;
+		const topic = form.topic.value;
 		const date = form.date.value;
 		const time = form.time.value;
-		const roomID = form.roomID.value;
 		const timezone = selectedTimezone.value;
 		const duration = totalDurationMinutes;
-		const passcode = form.passcode.value;
+		const hostUrl = myMeetings.hostRoomUrl;
+		const guestUrl = myMeetings.roomUrl;
 
 		// Gather the form data to be sent to the backend
 		const formData = {
 			email,
-			tropic,
+			topic,
 			date,
 			time,
 			timezone,
-			roomID,
 			duration,
-			passcode,
+			hostUrl,
+			guestUrl,
 		};
-
 		console.log(formData);
 
-		// Send the form data to the backend for processing
 		fetch(`${import.meta.env.VITE_API_URL}/meetings`, {
 			method: "POST",
 			headers: {
-				"Content-Type": "application/json",
+				"content-type": "application/json",
 			},
 			body: JSON.stringify(formData),
 		})
-			.then((response) => response.json())
-			.then((data) => {
-				// Handle the response from the backend if needed
-				console.log("Meeting scheduled:", data);
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
+				}
+				return response.json();
+			})
+			.then(() => {
+				toast.success("Meeting Created Successfully")
+				navigate(`/dashboard/my-meetings`);
 			})
 			.catch((error) => {
 				console.error("Error scheduling meeting:", error);
@@ -112,7 +120,7 @@ const MeetingSchedule = () => {
 						<label className="block text-base  w-1/4">Topic</label>
 						<input
 							type="text"
-							name="tropic"
+							name="topic"
 							defaultValue="Lets schedule"
 							className="w-1/2 border font-serif rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
 						/>
@@ -193,26 +201,6 @@ const MeetingSchedule = () => {
 					</div>
 
 					<div className="flex space-x-4 items-center">
-						<label htmlFor="meetingId" className="block text-base  w-1/4">Meeting ID</label>
-						<div className="flex space-x-2">
-							<input
-								type="text"
-								value={meetingId}
-								name="roomID"
-								readOnly
-								className="w-full border  rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
-							/>
-							<button
-								type="button"
-								onClick={generateRandomMeetingId}
-								className="bg-secondary text-white px-4 py-3 rounded hover:bg-blue-600 font-semibold"
-							>
-								Generate
-							</button>
-						</div>
-					</div>
-
-					<div className="flex space-x-4 items-center">
 						<label className="block text-base  w-1/4">Current Time</label>
 						<input
 							type="text"
@@ -220,24 +208,6 @@ const MeetingSchedule = () => {
 							readOnly
 							className="w-1/4 border  rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
 						/>
-					</div>
-
-					<div className="flex space-x-4 items-center">
-						<label className="block text-base  w-1/4">Passcode</label>
-						<div className="relative">
-							<input
-								type={showPasscode ? "text" : "password"}
-								name="passcode"
-								className="w-full border  rounded-lg px-3 py-2 pr-10 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-800"
-							/>
-							<button
-								type="button"
-								onClick={() => setShowPasscode(!showPasscode)}
-								className="absolute top-4 right-2 text-gray-600"
-							>
-								{showPasscode ? <RiEyeLine /> : <RiEyeOffLine />}
-							</button>
-						</div>
 					</div>
 
 					<div className="flex">
@@ -252,7 +222,7 @@ const MeetingSchedule = () => {
 						<button
 							type="button"
 							onClick={resetForm} // Call the resetForm function
-							className="bg-secondary hover:bg-transparent border-2 hover:border-[#1d2130] duration-500  spacing-2 w-2/12 md:w-1/12 py-2 md:py-3 rounded-md hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]"
+							className="bg-red-500 hover:bg-transparent border-2 hover:border-[#1d2130] duration-500  spacing-2 w-2/12 md:w-1/12 py-2 md:py-3 rounded-md hover:rounded-md font-medium md:font-semibold font-NotoSans text-white hover:text-[#1d2130]"
 						>
 							Cancel
 						</button>

@@ -9,19 +9,21 @@ import Services from "../Services/Services";
 import Vision from "../Vision/Vision";
 
 const Home = () => {
-  return (
-    <div>
-      <HeroSection />
-      <Vision />
-      <FaceToFace />
-      <Features />
-      <CallToAction />
-      <Services />
-      <Consult />
-      <Blog />
-      <GetInTouch />
-    </div>
-  );
+	return (
+		<>
+			<div>
+				<HeroSection />
+				<Vision />
+				<FaceToFace />
+				<Features />
+				<CallToAction />
+				<Services />
+				<Consult />
+				<Blog />
+				<GetInTouch />
+			</div>
+		</>
+	);
 };
 
 export default Home;

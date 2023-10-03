@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import Logo from "../../../assets/Logo.svg";
+import Logo from "../../../assets/meetcast-logo.svg";
 import useAdmin from "../../Hooks/useAdmin";
 import useEditor from "../../Hooks/useEditor";
 
@@ -36,12 +36,12 @@ const Navbar = () => {
 			} duration-500`}
 		>
 			<div
-				className="navbar max-w-[1520px] mx-auto p-3 md:p-5 2xl:p-0"
+				className="navbar max-w-[1280px] mx-auto p-3 md:p-5 2xl:p-0"
 				onClick={() => open && setOpen(false)}
 			>
 				<div className="navbar-start">
 					<div className="dropdown">
-						<label onClick={() => setOpen(!open)} className="btn btn-ghost lg:hidden">
+						<label onClick={() => setOpen(!open)} className="lg:hidden">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								className="h-5 w-5"
@@ -110,7 +110,7 @@ const Navbar = () => {
 												isAdmin
 													? "/dashboard/admin-home"
 													: isEditor
-													? "/dashboard/UserHome"
+													? "/dashboard/editor-home"
 													: "/dashboard/userHome"
 											}`}
 										>
@@ -123,7 +123,7 @@ const Navbar = () => {
 						</div>
 					</div>
 					<Link className="hidden md:block">
-						<img className="w-40" src={Logo} alt="Logo" />
+						<img className="w-40 m-1" src={Logo} alt="Logo" />
 					</Link>
 				</div>
 				<div className="navbar-center hidden lg:flex">
@@ -172,7 +172,7 @@ const Navbar = () => {
 										isAdmin
 											? "/dashboard/admin-home"
 											: isEditor
-											? "/dashboard/userHome"
+											? "/dashboard/editor-home"
 											: "/dashboard/userHome"
 									}`}
 								>
@@ -187,7 +187,7 @@ const Navbar = () => {
 					{user ? (
 						<div className="dropdown dropdown-end">
 							<label onClick={() => setProfileOpen(!profileOpen)}>
-								<div className="w-10 rounded-full">
+								<div className="w-10 rounded-full border-2 border-secondary p-[1px]">
 									<img className="rounded-full" src={user?.photoURL} />
 								</div>
 							</label>

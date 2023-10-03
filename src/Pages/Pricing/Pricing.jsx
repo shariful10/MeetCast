@@ -9,7 +9,7 @@ import Price from "./Price";
 function PricingToggle() {
   const [isMonthly, setIsMonthly] = useState(true);
   const [pricingData, setPricingData] = useState([]);
-  console.log(pricingData);
+  // console.log(pricingData);
   const [monthly, setMonthly] = useState([]);
   const [yearly, setYearly] = useState([]);
 
@@ -20,7 +20,7 @@ function PricingToggle() {
   const [axiosSecure] = useAxiosSecure();
 
   // get monthly data
-  console.log(import.meta.env.VITE_API_URL);
+  // console.log(import.meta.env.VITE_API_URL);
   // get yearly data
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function PricingToggle() {
     };
 
     fetchData();
-  }, [axiosSecure]);
+  }, [axiosSecure, isMonthly]);
 
   return (
     <Container>

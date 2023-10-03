@@ -8,7 +8,7 @@ const Consult = () => {
   return (
     <div className="max-w-7xl mx-auto py-16 bg-white">
       <Container>
-        <div className="md:flex items-center justify-between flex-wrap space-y-7 lg:space-y-0 border-2 border-gray-200 rounded-2xl p-10">
+        <div className="md:flex items-center justify-between flex-wrap space-y-7 lg:space-y-0 border-2 border-secbg-secondary rounded-2xl p-10">
           <h2
             className="font-manrope text-4xl font-extrabold text-center md:text-left"
             data-aos="fade-right"
@@ -23,8 +23,8 @@ const Consult = () => {
             data-aos-duration="1200"
             data-aos-delay="400"
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-gray-200">
-              <LiaStarSolid size={25} />
+            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-secondary">
+              <LiaStarSolid className="text-white" size={25} />
             </div>
             <p className="text-neutral-500 font-semibold">
               Reviewed by <br /> Thousands Users
@@ -36,8 +36,8 @@ const Consult = () => {
             data-aos-duration="1200"
             data-aos-delay="800"
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-gray-200">
-              <LiaCertificateSolid size={25} />
+            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-secondary">
+              <LiaCertificateSolid className="text-white" size={25} />
             </div>
             <p className="text-neutral-500 font-semibold">
               Trusted by <br /> Millions Users
@@ -49,8 +49,8 @@ const Consult = () => {
             data-aos-duration="1200"
             data-aos-delay="1200"
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-gray-200">
-              <HiOutlineLightBulb size={25} />
+            <div className="flex items-center justify-center w-12 h-12 rounded-md bg-secondary">
+              <HiOutlineLightBulb className="text-white" size={25} />
             </div>
             <p className="text-neutral-500 font-semibold">
               Most Innovative <br /> Ideas

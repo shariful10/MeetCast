@@ -3,7 +3,7 @@ import React from "react";
 const OurTeam = () => {
   return (
     <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-0 my-16">
-      <div className="md:w-1/4 ms-0 md:ms-16">
+      <div className="md:w-1/4">
         <h2 className="text-3xl font-bold font-manrope my-4">Our talented Team</h2>
         <p>
         Our Talented Team is the driving force behind our success. Comprising dedicated professionals with diverse expertise, we collaborate seamlessly to deliver exceptional results. With passion and commitment, we tackle every challenge, ensuring our clients receive top-notch service and innovative solutions.

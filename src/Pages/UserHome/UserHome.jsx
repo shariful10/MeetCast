@@ -18,14 +18,12 @@ const data = [
 ];
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-const UserProfile = () => {
+const UserHome = () => {
 	const { user } = useAuth();
 	const [axiosSecure] = useAxiosSecure();
-	console.log(user);
 	const [isAdmin] = useAdmin();
 	const [isEditor] = useEditor();
 	const [totalMeeting, setTotalMeeting] = useState([]);
-	console.log(totalMeeting.length);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -180,7 +178,7 @@ const UserProfile = () => {
 };
 
 
-export default UserProfile;
+export default UserHome;
 
 
 

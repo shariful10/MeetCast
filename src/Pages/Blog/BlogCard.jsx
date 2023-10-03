@@ -11,7 +11,7 @@ const BlogCard = ({ blog }) => {
 	return (
 		<div className="w-full lg:max-w-[450px] shadow-lg p-5 border border-gray-100 2xl:p-4 pb-6 rounded-xl">
 			<Link to={`/blog/${blog._id}`}>
-				<img className="w-full rounded-xl h-[200px]" src={blog?.image} alt="Blog 1 Image" />
+				<img className="w-full rounded-xl h-[180px]" src={blog?.image} alt="Blog 1 Image" />
 			</Link>
 			<p className="flex gap-2 items-center mt-5 mb-2">
 				<img
@@ -26,7 +26,7 @@ const BlogCard = ({ blog }) => {
 				<Link to={`/blog/${blog._id}`}>{blog?.title}</Link>
 				<div className="h-1 bg-secondary w-0 mt-3 group-hover:w-1/2 duration-500"></div>
 			</h2>
-			<p className="text-gray-400">{blog?.subTitle}</p>
+			<p className="text-gray-400">{blog?.subTitle.slice(0, 50)}...</p>
 			<div className="mt-4">
 				<Link to={`/blog/${blog?._id}`} className="group">
 					<button className="text-secondary">

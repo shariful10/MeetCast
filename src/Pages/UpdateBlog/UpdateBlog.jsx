@@ -119,7 +119,7 @@ const UpdateBlog = () => {
 									<TbFidgetSpinner className="animate-spin" size={24} />
 								</div>
 							) : (
-								"Publish Blog"
+								"Update Blog"
 							)}
 						</button>
 					</div>

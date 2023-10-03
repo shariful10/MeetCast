@@ -25,19 +25,15 @@ const BlogPost = () => {
     }
     return text.substring(0, maxLength) + " ..."; // Truncate and add an ellipsis
   }
-  // make the text short:
 
   const { data: blogs = [] } = useQuery(["approved-blogs"], async () => {
     const res = await axiosSecure.get("/approved-blogs");
     return res.data;
   });
 
-
   // Find the specific blog that matches the blogID
   const blog = blogs.find((blog) => blog._id === blogID);
-
   const date = new Date(blog.date); // Convert the string to a Date object
-
 
   // Extract the date part as a string in "YYYY-MM-DD" format
   const formattedDate = date.toISOString().split("T")[0];
