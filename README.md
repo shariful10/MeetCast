@@ -1,6 +1,6 @@
 ![MeetCast](https://i.ibb.co/zNkmzvM/meetcast.png)
 
-# MeetCast - Video Conferencing Website
+# MeetCast - Online Video Conference
 
 MeetCast is a powerful video conferencing platform designed to facilitate seamless virtual meetings, conferences, and collaborations. With a user-friendly interface and robust features, MeetCast provides an unparalleled communication experience for individuals and teams alike.
 
